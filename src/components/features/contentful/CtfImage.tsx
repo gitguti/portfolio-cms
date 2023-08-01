@@ -18,8 +18,10 @@ export const CtfImage = ({ url, width, height, title, nextImageProps }: ImagePro
       src={url}
       width={width}
       height={height}
+      sizes="100vw"
+      quality="85"
       alt={title || ''}
-      sizes="(max-width: 1200px) 100vw, 50vw"
+      // sizes="(max-width: 1200px) 100vw, 50vw"
       placeholder="blur"
       blurDataURL={blurURL.toString()}
       {...nextImageProps}
