@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply text-sm text-gray800 md:text-sm bg-gray-100 dark:bg-zinc-900;
+    @apply text-sm text-gray800 md:text-sm bg-gray-100;
   }
 
   .h1,

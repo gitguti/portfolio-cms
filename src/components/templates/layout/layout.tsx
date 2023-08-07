@@ -10,9 +10,9 @@ interface LayoutPropsInterface {
 export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };
