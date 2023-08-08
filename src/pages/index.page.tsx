@@ -44,15 +44,15 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <Cursor />
         <div className="scrollx flex w-[200vw]">
           <section className="h-screen w-screen">
-            <div className="flex h-full flex-col justify-center px-8 md:flex-row">
-              <div className="flex w-full flex-col justify-around border-b-2 border-neutral-800 py-8 px-4 md:w-3/5 md:border-b-0 md:border-r">
+            <div className="flex h-full flex-col justify-center px-2 md:flex-row md:px-8">
+              <div className="flex w-full flex-col justify-around py-4 md:w-3/5 md:border-b-2 md:border-b-0 md:border-r md:border-neutral-800 md:py-8 md:px-4">
                 <div className="flex w-full flex-col justify-start border-b-2 border-neutral-800 py-8 px-4 md:border-b-0">
                   {/* <Link href="/404" className='h2 dark:text-zinc-100 mb-8'> Work</Link>
               <Link href="/404" className='h2 dark:text-zinc-100 leading-8'> About</Link> */}
-                  <span className="animatedFIU fadeInUp mb-6 text-4xl text-neutral-800 dark:text-zinc-100 md:mb-2 md:text-5xl">
+                  <span className="animatedFIU fadeInUp text-4xl text-neutral-800 dark:text-zinc-100 md:text-5xl">
                     Hey, I&apos;m a
                   </span>
-                  <h1 className="outer animatedSID  slideInDown my-4 h-32  overflow-hidden font-serif text-7xl leading-[8rem] text-neutral-800 dark:text-zinc-50 md:text-[7rem]">
+                  <h1 className="outer animatedSID slideInDown h-24 overflow-hidden  font-serif text-4xl leading-[8rem] text-neutral-800 dark:text-zinc-50 md:h-32 md:text-[7rem]">
                     <span>
                       Maker: <br></br>
                       Product Designer: <br></br>
@@ -70,11 +70,11 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     About
                   </Link> */}
                 </div>
-                <div className="relative flex flex-col border-neutral-800 pt-8 md:border-t">
+                <div className="relative hidden pt-8 md:flex md:flex-col md:border-t md:border-neutral-800">
                   <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-800">
                     Skills
                   </h3>
-                  <div className="flex gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
+                  <div className="gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
                     <div className="">
                       Product:<br></br>
                       Lean UX<br></br>
@@ -165,7 +165,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </div>
                   </a>
                 </div>
-                <h3 className="vertical absolute bottom-10 right-32 font-serif text-[12rem] font-light text-neutral-800">
+                <h3 className="vertical absolute bottom-10 right-32 hidden font-serif text-[12rem] font-light text-neutral-800 md:flex">
                   Work
                 </h3>
               </div>
