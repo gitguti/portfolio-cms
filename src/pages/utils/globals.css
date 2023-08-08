@@ -49,8 +49,8 @@
   }
 
   .vertical {
-    writing-mode: sideways-lr;
-text-orientation: upright;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 
   .cursor {
