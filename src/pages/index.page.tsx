@@ -49,10 +49,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <div className="flex w-full flex-col justify-start border-b-2 border-neutral-800 py-8 px-4 md:border-b-0">
                   {/* <Link href="/404" className='h2 dark:text-zinc-100 mb-8'> Work</Link>
               <Link href="/404" className='h2 dark:text-zinc-100 leading-8'> About</Link> */}
-                  <span className="animatedFIU fadeInUp mb-6 text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-5xl">
+                  <span className="animatedFIU fadeInUp mb-6 text-4xl text-neutral-800 dark:text-zinc-100 md:mb-2 md:text-5xl">
                     Hey, I&apos;m a
                   </span>
-                  <h1 className="outer animatedSID  slideInDown my-4 h-24  overflow-hidden font-serif text-7xl leading-[6.5rem] text-zinc-700 dark:text-zinc-50 md:text-[7rem]">
+                  <h1 className="outer animatedSID  slideInDown my-4 h-24  overflow-hidden font-serif text-7xl leading-[6.5rem] text-neutral-800 dark:text-zinc-50 md:text-[7rem]">
                     <span>
                       Maker: <br></br>
                       Product Designer: <br></br>
@@ -60,7 +60,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                       Wild Unicorn: <br></br>
                     </span>
                   </h1>
-                  <p className="animatedFIL fadeInUp text-2xl font-light dark:text-zinc-50 ">
+                  <p className="animatedFIL fadeInUp text-2xl font-light text-neutral-700 dark:text-zinc-50 ">
                     <span className="font-serif">[sounds builder] </span>A passionate about building
                     through design and code. My goal is to create products that solve user needs
                     with a delightful experience
@@ -74,7 +74,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-800">
                     Skills
                   </h3>
-                  <div className="flex gap-x-16 text-sm font-light dark:text-neutral-400">
+                  <div className="flex gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
                     <div className="">
                       Product:<br></br>
                       Lean UX<br></br>
@@ -117,7 +117,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="GitHub"
                   >
-                    <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+                    <div className="dark:bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
                       <TbBrandGithubFilled className="h-8 w-8 md:h-8 md:w-8" color="white" />
                     </div>
                   </a>
@@ -127,7 +127,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
-                    <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+                    <div className="dark:bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
                       <FaLinkedinIn className="h-12 w-12 p-2 md:h-14 md:w-14" fill="white" />
                     </div>
                   </a>
@@ -137,7 +137,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Dribbble"
                   >
-                    <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+                    <div className="dark:bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
                       <FaTwitter className="h-12 w-12 p-2 md:h-14 md:w-14" fill="white" />
                     </div>
                   </a>
@@ -147,7 +147,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Dribbble"
                   >
-                    <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+                    <div className="dark:bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
                       <TbBrandDribbbleFilled
                         className="h-12 w-12 p-2 md:h-14 md:w-14 "
                         color="white"
@@ -160,7 +160,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Email"
                   >
-                    <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+                    <div className="dark:bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
                       <MdEmail className="h-12 w-12 p-2 md:h-14 md:w-14" fill="white" />
                     </div>
                   </a>
@@ -173,7 +173,9 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           </section>
           <section className="h-screen w-screen">
             <Container className="my-8  md:mb-10 lg:mb-16">
-              <h2 className="mb-4 text-gray-50 md:mb-6">{t('landingPage.latestArticles')}</h2>
+              <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">
+                {t('landingPage.latestArticles')}
+              </h2>
               <ArticleTileGrid className="md:grid-cols-2 lg:grid-cols-3" articles={posts} />
             </Container>
           </section>
