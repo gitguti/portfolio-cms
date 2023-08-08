@@ -47,52 +47,59 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 <div className="flex w-full flex-col justify-start border-b-2 border-neutral-800 py-8 px-4 md:border-b-0">
                   {/* <Link href="/404" className='h2 dark:text-zinc-100 mb-8'> Work</Link>
               <Link href="/404" className='h2 dark:text-zinc-100 leading-8'> About</Link> */}
-                  <span className="mb-6 text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-5xl">
+                  <span className="animatedFIU fadeInUp mb-6 text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-5xl">
                     Hey, I&apos;m a
                   </span>
-                  <h1 className="outer my-4  h-24 overflow-hidden font-serif  text-7xl leading-[6.5rem] text-zinc-700 dark:text-zinc-50 md:text-[7rem]">
+                  <h1 className="outer animatedSID  slideInDown my-4 h-24  overflow-hidden font-serif text-7xl leading-[6.5rem] text-zinc-700 dark:text-zinc-50 md:text-[7rem]">
                     <span>
-                      Maker <br></br>
-                      Product Designer <br></br>
-                      UX Engineer <br></br>
-                      Wild Unicorn <br></br>
+                      Maker: <br></br>
+                      Product Designer: <br></br>
+                      UX Engineer: <br></br>
+                      Wild Unicorn: <br></br>
                     </span>
                   </h1>
-                  <p className="text-2xl font-light dark:text-zinc-50">
-                    Passionate about building through design and code. My goal is to create products
-                    that solve user needs with a delightful experience
+                  <p className="animatedFIL fadeInUp text-2xl font-light dark:text-zinc-50 ">
+                    <span className="font-serif">[sounds builder] </span>A passionate about building
+                    through design and code. My goal is to create products that solve user needs
+                    with a delightful experience
                   </p>
-                  <Link href="/404" className="h2 leading-8 dark:text-zinc-100">
+                  {/* <Link href="/404" className="h4 leading-8 dark:text-zinc-100">
                     {' '}
                     About
-                  </Link>
+                  </Link> */}
                 </div>
-                <div className="flex flex-col border-neutral-800 pt-8 md:border-t">
-                  <div className="flex gap-x-16 text-lg font-light dark:text-zinc-50">
-                    <h2>Skills</h2>
-                    <div className="font-serif">
-                      Product<br></br>
-                      UI/UX<br></br>
-                      Full-stack Dev<br></br>
-                      User Research<br></br>
-                      Service Design<br></br>
-                      Brand<br></br>
+                <div className="relative flex flex-col border-neutral-800 pt-8 md:border-t">
+                  <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-800">
+                    Skills
+                  </h3>
+                  <div className="flex gap-x-16 text-sm font-light dark:text-neutral-400">
+                    <div className="">
+                      Product:<br></br>
+                      Lean UX<br></br>
+                      Design Thinking<br></br>
+                      JTBD<br></br>
+                      UX Research<br></br>
+                      Design system<br></br>
+                      Atomic Design<br></br>
+                      UI Design<br></br>
                     </div>
-                    <div className="font-mono">
-                      Code<br></br>
+                    <div className="">
+                      Code:<br></br>
                       React<br></br>
-                      TypeScript<br></br>
-                      Swift<br></br>
-                      Rust<br></br>
-                      Elixir<br></br>
+                      NextJS<br></br>
+                      Chakra UI<br></br>
+                      StoryBook<br></br>
+                      Tailwind CSS<br></br>
+                      Gsap<br></br>
+                      Framer Motion<br></br>
+                      Spline<br></br>
                     </div>
-                    <div>
-                      Design<br></br>
+                    <div className="">
+                      Tools:<br></br>
                       Figma<br></br>
-                      Framer<br></br>
-                      Illustrator<br></br>
-                      Photoshop<br></br>
-                      After Effects<br></br>
+                      Miro<br></br>
+                      FigJam<br></br>
+                      Adobe Illustrator<br></br>
                     </div>
                   </div>
                   {/* <p className="dark:text-zinc-50 h3">
@@ -101,7 +108,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </div>
               </div>
               <div className="w-full border-l-0 border-neutral-300 py-8 px-2 md:w-2/5 md:px-12">
-                <h2 className="mb-6 text-gray-100">Contact</h2>
                 <div className="flex h-fit gap-4">
                   <a
                     href="http://github.com/gitguti"
@@ -157,6 +163,9 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </div>
                   </a>
                 </div>
+                <h3 className="vertical absolute bottom-10 right-32 font-serif text-[12rem] font-light text-neutral-800">
+                  Work
+                </h3>
               </div>
             </div>
           </section>
