@@ -69,7 +69,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   </Link> */}
                 </div>
                 <div className="relative flex flex-col border-neutral-800 pt-8 md:border-t">
-                  <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-800">
+                  <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-700 opacity-10">
                     Skills
                   </h3>
                   <div className="flex gap-x-16 text-sm font-light dark:text-neutral-400">
@@ -163,7 +163,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </div>
                   </a>
                 </div>
-                <h3 className="vertical absolute bottom-10 right-32 font-serif text-[12rem] font-light text-neutral-800">
+                <h3 className="vertical absolute bottom-10 right-32 font-serif text-[12rem] font-light text-neutral-700 opacity-10">
                   Work
                 </h3>
               </div>
