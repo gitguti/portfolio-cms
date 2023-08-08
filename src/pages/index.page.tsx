@@ -20,6 +20,7 @@ import { getServerSideTranslations } from './utils/get-serverside-translations';
 import { ArticleTileGrid } from '@src/components/features/article';
 import { SeoFields } from '@src/components/features/seo';
 import { Container } from '@src/components/shared/container';
+import { Cursor } from '@src/components/shared/cursor';
 import { PageBlogPostOrder } from '@src/lib/__generated/sdk';
 import { client, previewClient } from '@src/lib/client';
 import { revalidateDuration } from '@src/pages/utils/constants';
@@ -40,6 +41,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
       <div className="relative overflow-x-hidden">
+        <Cursor />
         <div className="scrollx flex w-[200vw]">
           <section className="h-screen w-screen">
             <div className="flex h-full flex-col justify-center px-8 md:flex-row">
