@@ -41,18 +41,22 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       {page.seoFields && <SeoFields {...page.seoFields} />}
       <div className="relative overflow-x-hidden">
         <div className="scrollx flex w-[200vw]">
-          <section className="h-screen w-screen p-[5vw]">
-            <div className="flex h-full flex-col justify-center md:flex-row">
-              <div className="flex w-full flex-col justify-end border-b-2 border-black py-8 md:w-3/5 md:border-0">
-                <span className="mb-6 font-serif text-4xl md:text-7xl">gitmel gutierrez</span>
-                <h1 className="mb-4 text-7xl font-bold md:text-8xl">Product Designer</h1>
+          <section className="h-screen w-screen">
+            <div className="flex h-full flex-col justify-center px-8 md:flex-row">
+              <div className="flex w-full flex-col justify-end border-b-2 border-neutral-300 py-8 px-4 md:w-3/5 md:border-b-0">
+                <span className="mb-6 font-serif text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-7xl">
+                  gitmel gutierrez
+                </span>
+                <h1 className="mb-4 text-7xl font-bold text-zinc-700 dark:text-zinc-50  md:text-8xl">
+                  Product Designer
+                </h1>
                 {/* <p>
             Passionate about building through desing & code.
               </p> */}
                 <Link href="/404"> About me</Link>
               </div>
-              <div className="w-full border-l-0 border-black py-8 md:w-2/5 md:border-l-2">
-                <p>Contact</p>
+              <div className="w-full border-l-0 border-neutral-300 py-8 px-2 md:w-2/5 md:px-12">
+                <h2 className="mb-6 text-gray-100">Contact</h2>
                 <div className="flex h-fit gap-4">
                   <a
                     href="http://github.com/gitguti"
@@ -60,7 +64,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="GitHub"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black md:h-24 md:w-24">
+                    <div className="bg-neutral-950 flex h-14 w-14 items-center justify-center rounded-full transition duration-500 ease-in hover:-translate-y-3 hover:border hover:border-neutral-500 hover:ease-in md:h-24 md:w-24">
                       <TbBrandGithubFilled className="h-8 w-8 md:h-20 md:w-20" color="white" />
                     </div>
                   </a>
@@ -70,7 +74,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black md:h-24 md:w-24">
+                    <div className="bg-neutral-950 flex h-14 w-14 items-center justify-center rounded-full transition duration-500 ease-in hover:-translate-y-3 hover:border hover:border-neutral-500 hover:ease-in md:h-24 md:w-24">
                       <FaLinkedinIn className="h-12 w-12 p-2 md:h-20 md:w-20" fill="white" />
                     </div>
                   </a>
@@ -80,7 +84,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Dribbble"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black md:h-24 md:w-24">
+                    <div className="bg-neutral-950 flex h-14 w-14 items-center justify-center rounded-full transition duration-500 ease-in hover:-translate-y-3 hover:border hover:border-neutral-500 hover:ease-in md:h-24 md:w-24">
                       <FaTwitter className="h-12 w-12 p-2 md:h-20 md:w-20" fill="white" />
                     </div>
                   </a>
@@ -90,7 +94,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Dribbble"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black md:h-24 md:w-24">
+                    <div className="bg-neutral-950 flex h-14 w-14 items-center justify-center rounded-full transition duration-500 ease-in hover:-translate-y-3 hover:border hover:border-neutral-500 hover:ease-in md:h-24 md:w-24">
                       <TbBrandDribbbleFilled
                         className="h-12 w-12 p-2 md:h-20 md:w-20 "
                         color="white"
@@ -103,7 +107,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     rel="noopener noreferrer"
                     aria-label="Email"
                   >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black md:h-24 md:w-24">
+                    <div className="bg-neutral-950 flex h-14 w-14 items-center justify-center rounded-full transition duration-500 ease-in hover:-translate-y-3 hover:border hover:border-neutral-500 hover:ease-in md:h-24 md:w-24">
                       <MdEmail className="h-12 w-12 p-2 md:h-20 md:w-20" fill="white" />
                     </div>
                   </a>
@@ -111,7 +115,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               </div>
             </div>
           </section>
-          <section className="h-auto w-screen p-[5vw]">
+          <section className="h-auto w-screen">
             <Container className="my-8  md:mb-10 lg:mb-16">
               <h2 className="mb-4 md:mb-6">{t('landingPage.latestArticles')}</h2>
               <ArticleTileGrid className="md:grid-cols-2 lg:grid-cols-3" articles={posts} />
