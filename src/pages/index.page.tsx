@@ -110,7 +110,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     aria-label="GitHub"
                   >
                     <div className="bg-neutral-950 md:h-18 md:w-18 flex h-14 w-14 items-center justify-center rounded-full border-2 border-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
-                      <TbBrandGithubFilled className="h-8 w-8 md:h-14 md:w-14" color="white" />
+                      <TbBrandGithubFilled className="h-8 w-8 md:h-8 md:w-8" color="white" />
                     </div>
                   </a>
                   <a
