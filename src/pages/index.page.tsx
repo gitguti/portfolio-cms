@@ -44,11 +44,16 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           <section className="h-screen w-screen">
             <div className="flex h-full flex-col justify-center px-8 md:flex-row">
               <div className="flex w-full flex-col justify-end border-b-2 border-neutral-300 py-8 px-4 md:w-3/5 md:border-b-0">
-                <span className="mb-6 font-serif text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-7xl">
+                <span className="mb-6 text-4xl text-zinc-700 dark:text-zinc-100 md:mb-2 md:text-7xl">
                   gitmel gutierrez
                 </span>
-                <h1 className="mb-4 text-7xl font-bold text-zinc-700 dark:text-zinc-50  md:text-8xl">
-                  Product Designer
+                <h1 className="outer my-4  h-24 overflow-hidden font-serif  text-7xl leading-[6.5rem] text-zinc-700 dark:text-zinc-50 md:text-[5.5rem]">
+                  <span>
+                    Product Designer<br></br>
+                    Maker <br></br>
+                    UX Engineer <br></br>
+                    Unicorn <br></br>
+                  </span>
                 </h1>
                 {/* <p>
             Passionate about building through desing & code.

@@ -9,12 +9,12 @@
 
   .h1,
   h1 {
-    @apply text-xl leading-tighter font-medium md:text-4xl;
+    @apply text-xl font-light md:text-4xl;
   }
 
   .h2,
   h2 {
-    @apply text-xl leading-tight font-medium md:text-3xl;
+    @apply text-xl leading-tight font-light md:text-3xl;
   }
 
   .h3,
@@ -41,6 +41,40 @@
 
   .bg-transparent {
     background-color: 'transparent';
+  }
+
+  .outer span {
+    position: relative;
+    animation: animation 10s ease infinite;
+  }
+
+  @keyframes animation {
+    0%,100% {
+      top: 0;
+    }
+    20% {
+      top: 0%;
+    }
+    25% {
+      top: -7rem;
+    }
+    45% {
+      top: -7rem;
+    }
+
+    50% {
+      top: -14rem;
+    }
+
+    70% {
+      top: -14rem;
+    }
+    75% {
+      top: -21rem;
+    }
+    95% {
+      top: -21rem;
+    }
   }
 }
 
