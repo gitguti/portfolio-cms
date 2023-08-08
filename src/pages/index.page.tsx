@@ -71,10 +71,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   </Link> */}
                 </div>
                 <div className="relative hidden pt-8 md:flex md:flex-col md:border-t md:border-neutral-800">
-                  <h3 className="absolute -bottom-14 right-0 font-serif text-9xl font-light text-neutral-800">
+                  <h3 className="absolute -bottom-28 right-0 font-serif text-9xl font-light text-neutral-800">
                     Skills
                   </h3>
-                  <div className="gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
+                  <div className="flex gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
                     <div className="">
                       Product:<br></br>
                       Lean UX<br></br>
