@@ -52,7 +52,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <span className="animatedFIU fadeInUp mb-6 text-4xl text-neutral-800 dark:text-zinc-100 md:mb-2 md:text-5xl">
                     Hey, I&apos;m a
                   </span>
-                  <h1 className="outer animatedSID  slideInDown my-4 h-24  overflow-hidden font-serif text-7xl leading-[6.5rem] text-neutral-800 dark:text-zinc-50 md:text-[7rem]">
+                  <h1 className="outer animatedSID  slideInDown my-4 h-32  overflow-hidden font-serif text-7xl leading-[8rem] text-neutral-800 dark:text-zinc-50 md:text-[7rem]">
                     <span>
                       Maker: <br></br>
                       Product Designer: <br></br>
