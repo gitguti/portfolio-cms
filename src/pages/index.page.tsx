@@ -49,8 +49,8 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </span>
                 <h1 className="outer my-4  h-24 overflow-hidden font-serif  text-7xl leading-[6.5rem] text-zinc-700 dark:text-zinc-50 md:text-[5.5rem]">
                   <span>
-                    Product Designer<br></br>
                     Maker <br></br>
+                    Product Designer <br></br>
                     UX Engineer <br></br>
                     Unicorn <br></br>
                   </span>
