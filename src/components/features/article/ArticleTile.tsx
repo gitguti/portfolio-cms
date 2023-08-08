@@ -20,9 +20,10 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
     <Link className="flex flex-col" href={`/${article.slug}`}>
       <div
         className={twMerge(
-          'flex flex-1 flex-col overflow-hidden rounded-2xl border border-gray300 shadow-lg',
+          'flex flex-1 flex-col overflow-hidden rounded-2xl border border-neutral-800 shadow-xl',
           className,
-        )}>
+        )}
+      >
         {article.featuredImage && (
           <div {...inspectorProps({ fieldId: 'featuredImage' })}>
             <CtfImage
@@ -31,18 +32,19 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
             />
           </div>
         )}
-        <div className="flex flex-1 flex-col py-3 px-4 md:px-5 md:py-4 lg:px-7 lg:py-5">
+        <div className="flex-1py-3 flex justify-between px-4 md:px-5 md:py-4 lg:px-7 lg:py-5">
           {title && (
-            <p className="h3 mb-2 text-gray800 md:mb-3" {...inspectorProps({ fieldId: 'title' })}>
+            <p className="h3 text-gray-200" {...inspectorProps({ fieldId: 'title' })}>
               {title}
             </p>
           )}
 
-          <div className="mt-auto flex items-center">
-            <ArticleAuthor article={article} />
+          <div className="flex items-center">
+            {/* <ArticleAuthor article={article} /> */}
             <div
-              className={twMerge('ml-auto pl-2 text-xs text-gray600')}
-              {...inspectorProps({ fieldId: 'publishedDate' })}>
+              className={twMerge('ml-auto pl-2 text-xs text-gray-500')}
+              {...inspectorProps({ fieldId: 'publishedDate' })}
+            >
               <FormatDate date={publishedDate} />
             </div>
           </div>
