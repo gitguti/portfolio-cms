@@ -7,20 +7,10 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="border-t-color mt-10 border-t border-gray200">
-      <Container className="py-8">
-        <h2 className="h4 mb-4">{t('footer.aboutUs')}</h2>
-        <div className="max-w-4xl">{t('footer.description')}</div>
-        <div className="mt-8">
-          {t('footer.powerBy')}{' '}
-          <Link
-            href="https://www.contentful.com"
-            rel="noopener noreferrer"
-            target="_blank"
-            className="text-blue500"
-          >
-            Contentful
-          </Link>
+    <footer className="fixed bottom-0 z-10 w-full py-2 px-2 md:px-1">
+      <Container className="flex items-center justify-end">
+        <div className=" text-xs text-neutral-800 dark:text-neutral-500">
+          © Gitmel Gutierrez / Hecho con ❤️ en Next / 2023
         </div>
       </Container>
     </footer>
