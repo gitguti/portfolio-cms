@@ -11,7 +11,7 @@ export function initScrollAnimations() {
       pin: true,
       scrub: 1,
       end: '+=3000',
-      markers: true,
+      markers: false,
     },
   });
 
