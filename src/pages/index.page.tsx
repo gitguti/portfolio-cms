@@ -182,14 +182,19 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
       </div>
       <section className="flex h-screen flex-col items-center justify-center">
-        <h1 className="w-3/4 text-center font-serif text-[10rem] leading-[10.5rem] text-neutral-800 dark:text-zinc-100">
+        <h1 className="w-10/12 text-center font-serif text-6xl text-neutral-800 dark:text-zinc-100 md:w-3/4 md:text-9xl md:leading-[10.5rem] lg:text-[10rem]">
           Let&apos;s get <span className="font-sans">your next project</span>{' '}
           <span className="underline underline-offset-8">done</span>
         </h1>
         {/* <h1 className='text-[10rem] font-serif text-neutral-800 dark:text-zinc-100'><span className='font-sans'>next project</span> done</h1> */}
-        <p className="mt-10 text-2xl text-neutral-800 dark:text-zinc-300">
+        <p className="mt-10 text-lg text-neutral-800 dark:text-zinc-300 md:text-2xl">
           Available for <strong>Contractual, Part-time</strong> or <strong>Full-time</strong>
         </p>
+        <a href="mailto:gitmelgutierrez@gmail.com" target="_blank" rel="noopener noreferrer">
+          <button className="hover:text-neutral-950 mt-5 border border-neutral-800 bg-transparent py-2 px-4 text-2xl font-bold text-neutral-800 transition ease-out hover:scale-125 hover:ease-in-out dark:border-zinc-50 dark:text-white">
+            Say Hello!
+          </button>
+        </a>
       </section>
     </>
   );
