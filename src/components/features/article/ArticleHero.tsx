@@ -42,7 +42,7 @@ export const ArticleHero = ({
       <div className="relative flex flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
         <div className="mb-2 flex flex-wrap items-center">
           {/* <ArticleAuthor article={article} /> */}
-          {isFeatured && (
+          {/* {isFeatured && (
             <ArticleLabel
               className={twMerge(
                 'ml-auto pl-2 lg:absolute lg:top-8 xl:top-12',
@@ -51,10 +51,10 @@ export const ArticleHero = ({
             >
               {t('article.featured')}
             </ArticleLabel>
-          )}
+          )} */}
           <div
             className={twMerge(
-              'ml-auto hidden pl-2 text-xs text-gray600',
+              'ml-auto hidden pl-2 text-xs text-neutral-600 dark:text-zinc-200',
               isReversedLayout ? 'lg:block' : '',
             )}
             {...inspectorProps({ fieldId: 'publishedDate' })}
@@ -62,14 +62,25 @@ export const ArticleHero = ({
             <FormatDate date={publishedDate} />
           </div>
         </div>
-        <h1 {...inspectorProps({ fieldId: 'title' })}>{title}</h1>
+        <h1
+          className={twMerge('mb-4 font-medium text-neutral-800 dark:text-zinc-100')}
+          {...inspectorProps({ fieldId: 'title' })}
+        >
+          {title}
+        </h1>
         {shortDescription && (
-          <p className="mt-2" {...inspectorProps({ fieldId: 'shortDescription' })}>
+          <p
+            className="mt-2 text-neutral-700 dark:text-zinc-400"
+            {...inspectorProps({ fieldId: 'shortDescription' })}
+          >
             {shortDescription}
           </p>
         )}
         <div
-          className={twMerge('mt-2 text-xs text-gray600', isReversedLayout ? 'lg:hidden' : '')}
+          className={twMerge(
+            'mt-2 text-xs text-neutral-700 dark:text-zinc-400',
+            isReversedLayout ? 'lg:hidden' : '',
+          )}
           {...inspectorProps({ fieldId: 'publishedDate' })}
         >
           <FormatDate date={publishedDate} />
