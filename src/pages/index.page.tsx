@@ -71,7 +71,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   </Link> */}
                 </div>
                 <div className="relative hidden pt-8 md:flex md:flex-col md:border-t md:border-neutral-800">
-                  <h3 className="absolute -bottom-20 right-0 font-serif text-9xl font-light text-neutral-800">
+                  <h3 className="absolute -bottom-10 right-0 font-serif font-light text-neutral-800 md:text-[8rem] lg:text-[10rem]">
                     Skills
                   </h3>
                   <div className="flex gap-x-16 text-sm font-light text-neutral-700 dark:text-neutral-400">
@@ -165,7 +165,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </div>
                   </a>
                 </div>
-                <h3 className="vertical absolute bottom-10 right-32 hidden font-serif text-[12rem] font-light text-neutral-800 md:flex">
+                <h3 className="vertical absolute bottom-10 right-32 hidden font-serif font-light text-neutral-800 md:flex md:text-[10rem] lg:text-[12rem]">
                   Work
                 </h3>
               </div>
@@ -182,7 +182,11 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
       </div>
       <section className="flex h-screen flex-col items-center justify-center">
-        <h1 className="w-10/12 text-center font-serif text-6xl text-neutral-800 dark:text-zinc-100 md:w-3/4 md:text-9xl md:leading-[10.5rem] lg:text-[10rem]">
+        <h1
+          className="w-10/12 text-center font-serif text-6xl text-neutral-800 dark:text-zinc-100 md:w-3/4
+        md:text-7xl md:leading-[7.5rem]
+        lg:text-[10rem] lg:leading-[10rem]"
+        >
           Let&apos;s get <span className="font-sans">your next project</span>{' '}
           <span className="underline underline-offset-8">done</span>
         </h1>
