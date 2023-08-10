@@ -45,14 +45,14 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <div className="scrollx flex w-[200vw]">
           <section className="h-screen w-screen">
             <div className="flex h-full flex-col justify-center px-2 md:flex-row md:px-8">
-              <div className="flex w-full flex-col justify-around py-4 md:w-3/5 md:border-b-2 md:border-b-0 md:border-r md:border-neutral-800 md:py-8 md:px-4">
+              <div className="flex w-full flex-col justify-around py-4 md:w-3/5 md:border-b-0 md:border-r md:border-neutral-800 md:py-8 md:px-4">
                 <div className="flex w-full flex-col justify-start border-b-2 border-neutral-800 py-8 px-4 md:border-b-0">
                   {/* <Link href="/404" className='h2 dark:text-zinc-100 mb-8'> Work</Link>
               <Link href="/404" className='h2 dark:text-zinc-100 leading-8'> About</Link> */}
                   <span className="animatedFIU fadeInUp text-4xl text-neutral-800 dark:text-zinc-100 md:text-5xl">
                     Hey, I&apos;m a
                   </span>
-                  <h1 className="outer animatedSID slideInDown h-24 overflow-hidden  font-serif text-4xl leading-[8rem] text-neutral-800 dark:text-zinc-50 md:h-32 md:text-[7rem]">
+                  <h1 className="outer animatedSID slideInDown h-24 overflow-hidden  font-serif text-4xl leading-[8rem] text-neutral-800 dark:text-zinc-50 md:h-32 md:text-[5.5rem]">
                     <span>
                       Maker: <br></br>
                       Product Designer: <br></br>
@@ -155,7 +155,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </div>
                   </a>
                   <a
-                    href="mailto:gitmelbco@gmail.com"
+                    href="mailto:gitmelgutierrez@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Email"
