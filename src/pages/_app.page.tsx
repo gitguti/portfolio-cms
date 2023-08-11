@@ -8,6 +8,7 @@ import './utils/globals.css';
 import '@contentful/live-preview/style.css';
 import { useRouter } from 'next/router';
 
+import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { Hotjar } from 'nextjs-hotjar';
 
 import { Layout } from '@src/components/templates/layout';
@@ -18,6 +19,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const { locale } = useRouter();
   return (
     <>
+      <GoogleAnalytics trackPageViews />
       <Hotjar id={'3590987'} sv={6} />
       <ContentfulLivePreviewProvider
         enableInspectorMode={pageProps.previewActive}

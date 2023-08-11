@@ -4347,7 +4347,7 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fsevents@~2.3.2":
+"fsevents@^2.3.2", "fsevents@~2.3.2":
   "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
   "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
   "version" "2.3.2"
@@ -5647,6 +5647,13 @@
     "@next/swc-win32-arm64-msvc" "13.4.1"
     "@next/swc-win32-ia32-msvc" "13.4.1"
     "@next/swc-win32-x64-msvc" "13.4.1"
+
+"nextjs-google-analytics@^2.3.3":
+  "integrity" "sha512-Y6sI6A7wt5dji8hYBnVkOh9LTyImSLFZXx3FpyQgVW7W4b4qEFHjH2u3fhDJsrRZeLlUGM8/RuHD/mhHc2Axfg=="
+  "resolved" "https://registry.npmjs.org/nextjs-google-analytics/-/nextjs-google-analytics-2.3.3.tgz"
+  "version" "2.3.3"
+  optionalDependencies:
+    "fsevents" "^2.3.2"
 
 "nextjs-hotjar@^1.2.0":
   "integrity" "sha512-T0vBmModSXxAgv9e22T5aFbE1fhwuuAnq17ok+ZwnjnUePGL/p760Abag6NUhLLsJLE0wR7yASoRauFsi0AL0Q=="
