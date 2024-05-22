@@ -17,7 +17,7 @@ export function initScrollAnimations() {
             pin: true,
             scrub: 1,
             end: () => `+=${(document.querySelector('.scrollx') as HTMLElement).offsetWidth}`,
-            markers: true,
+            markers: false,
           },
         });
       })
