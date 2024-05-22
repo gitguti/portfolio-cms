@@ -1,19 +1,28 @@
-import gsap from 'gsap';
-
 export function initScrollAnimations() {
-  const sections = gsap.utils.toArray('.scrollx section');
+  if (typeof window !== 'undefined') {
+    Promise.all([import('gsap'), import('gsap/ScrollTrigger')])
+      .then(([gsapModule, ScrollTriggerModule]) => {
+        const gsap = gsapModule.default;
+        const ScrollTrigger = ScrollTriggerModule.default;
 
-  const scrollTween = gsap.to(sections, {
-    xPercent: -100 * (sections.length - 1),
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.scrollx',
-      pin: true,
-      scrub: 1,
-      end: '+=3000',
-      markers: false,
-    },
-  });
+        gsap.registerPlugin(ScrollTrigger);
 
-  console.log(1 / (sections.length - 1));
+        const sections = gsap.utils.toArray<HTMLElement>('.scrollx section');
+
+        gsap.to(sections, {
+          xPercent: -100 * (sections.length - 1),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.scrollx',
+            pin: true,
+            scrub: 1,
+            end: () => `+=${(document.querySelector('.scrollx') as HTMLElement).offsetWidth}`,
+            markers: true,
+          },
+        });
+      })
+      .catch(error => {
+        console.error('Error importing gsap or ScrollTrigger:', error);
+      });
+  }
 }
