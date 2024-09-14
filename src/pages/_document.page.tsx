@@ -17,14 +17,14 @@ export default function Document() {
         <meta property="og:title" content="Git's blog" />
         <meta property="og:description" content="I ❤️ to build = design + develop" />
         <meta property="og:url" content="www.gitmelgutierrez.com" />
-        <meta property="og:image" content="/assets/svg/og.jpg" />
+        <meta property="og:image" content="https://ibb.co/fXj61gh" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="Your Site Name" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Git's blog" />
         <meta name="twitter:description" content="I ❤️ to build = design + develop" />
-        <meta name="twitter:image" content="/og.jpg" />
+        <meta name="twitter:image" content="https://ibb.co/fXj61gh" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       </Head>
       <body>

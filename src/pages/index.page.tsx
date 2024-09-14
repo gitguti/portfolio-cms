@@ -28,28 +28,28 @@ import { initScrollAnimations } from '@src/pages/utils/scrollAnimations';
 
 const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
-  const [isDesktop, setIsDesktop] = useState(false);
+  // const [isDesktop, setIsDesktop] = useState(false);
 
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
+  // useEffect(() => {
+  //   const mq = window.matchMedia('(min-width: 768px)');
 
-    const handleResize = () => {
-      setIsDesktop(mq.matches);
-    };
+  //   const handleResize = () => {
+  //     setIsDesktop(mq.matches);
+  //   };
 
-    handleResize();
-    mq.addListener(handleResize);
+  //   handleResize();
+  //   mq.addListener(handleResize);
 
-    return () => {
-      mq.removeListener(handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     mq.removeListener(handleResize);
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    if (isDesktop) {
-      initScrollAnimations();
-    }
-  }, [isDesktop]);
+  // useEffect(() => {
+  //   if (isDesktop) {
+  //     initScrollAnimations();
+  //   }
+  // }, [isDesktop]);
 
   const page = useContentfulLiveUpdates(props.page);
   const posts = useContentfulLiveUpdates(props.posts);
@@ -59,10 +59,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
-      <div className={`relative overflow-x-hidden ${isDesktop ? 'scrollx' : 'flex flex-col'}`}>
+      <div className="relative flex flex-col overflow-x-hidden">
         <Cursor />
-        <div className={`flex ${isDesktop ? 'w-[300vw] flex-row' : 'w-full flex-col'}`}>
-          <section className="h-screen w-screen">
+        <div className="relative flex w-full flex-col">
+          <section className="relative h-screen w-screen">
             <div className="flex h-full flex-col justify-center px-2 md:flex-row md:px-8">
               <div className="flex w-full flex-col justify-around py-4 md:w-3/5 md:border-b-0 md:border-r md:border-neutral-800 md:py-8 md:px-4">
                 <div className="flex w-full flex-col justify-start border-b-2 border-neutral-800 py-8 px-4 md:border-b-0">
@@ -181,7 +181,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               </div>
             </div>
           </section>
-          <section className={`w-screen ${isDesktop ? 'h-screen' : 'h-auto'}`}>
+          <section className="h-auto w-screen">
             {' '}
             {/* Asegúrate de que tenga w-full */}
             <Container className="my-8 md:mb-10 lg:mb-16">
