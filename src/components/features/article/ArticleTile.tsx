@@ -32,7 +32,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
             />
           </div>
         )}
-        <div className="flex-1py-3 flex justify-between px-4 md:px-5 md:py-4 lg:px-7 lg:py-5">
+        <div className="flex flex-1 justify-between py-3 px-4 md:px-5 md:py-4 lg:px-7 lg:py-5">
           {title && (
             <p
               className="h3 text-neutral-800 dark:text-zinc-50"

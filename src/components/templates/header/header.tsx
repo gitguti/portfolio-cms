@@ -18,7 +18,7 @@ export const Header = () => {
               gitmel gutierrez
             </h4>
           </Link>
-          <LanguageSelector />
+          {/* <LanguageSelector /> */}
         </Container>
       </nav>
     </header>
