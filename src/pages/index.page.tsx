@@ -78,9 +78,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     </span>
                   </h1>
                   <p className="animatedFIL fadeInUp text-2xl font-light text-neutral-700 dark:text-zinc-50 ">
-                    <span className="font-serif">[sounds builder] </span>A passionate about building
-                    through design and code. My goal is to create products that solve user needs
-                    with a delightful experience
+                    <span className="font-serif">[sounds builder] </span>I design moments that
+                    matter. From digital tools to everyday interactions, I craft experiences that
+                    connect people, solve problems, and transform the ordinary into the
+                    extraordinary.
                   </p>
                 </div>
                 <div className="relative hidden pt-8 md:flex md:flex-col md:border-t md:border-neutral-800">
@@ -188,7 +189,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">
                 {t('landingPage.latestArticles')}
               </h2>
-              <ArticleTileGrid className="md:grid-cols-2 lg:grid-cols-3" articles={posts} />
+              <ArticleTileGrid className="md:grid-cols-2 lg:grid-cols-2" articles={posts} />
             </Container>
           </section>
           <section className="flex h-screen w-screen flex-col items-center justify-center">
