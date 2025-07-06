@@ -10,10 +10,7 @@ interface ArticleTileGridProps extends HTMLProps<HTMLDivElement> {
 
 export const ArticleTileGrid = ({ articles, className, ...props }: ArticleTileGridProps) => {
   return articles && articles.length > 0 ? (
-    <div
-      className={twMerge('grid grid-cols-1 gap-y-4 gap-x-4 md:grid-cols-3', className)}
-      {...props}
-    >
+    <div className={twMerge('mb-24 grid grid-cols-1 gap-y-8 gap-x-4', className)} {...props}>
       {articles.map((article, index) => {
         return article ? <ArticleTile key={index} article={article} /> : null;
       })}

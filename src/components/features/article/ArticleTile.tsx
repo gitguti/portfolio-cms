@@ -1,9 +1,10 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import Link from 'next/link';
-import { HTMLProps } from 'react';
+import gsap from 'gsap';
+import { useRouter } from 'next/router';
+import { HTMLProps, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-
-import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
+import Link from 'next/link';
+// import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
 import { CtfImage } from '@src/components/features/contentful';
 import { FormatDate } from '@src/components/shared/format-date';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
@@ -15,37 +16,49 @@ interface ArticleTileProps extends HTMLProps<HTMLDivElement> {
 export const ArticleTile = ({ article, className }: ArticleTileProps) => {
   const { title, publishedDate } = article;
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
+  const router = useRouter();
+  const tileRef = useRef<HTMLDivElement>(null);
+
+  // Animación hover
+  const handleMouseEnter = () => {
+    gsap.to(tileRef.current, { scale: 1.02, duration: 0.3, zIndex: 2 });
+  };
+  const handleMouseLeave = () => {
+    gsap.to(tileRef.current, { scale: 1, duration: 0.3, zIndex: 1 });
+  };
 
   return (
     <Link className="flex flex-col" href={`/${article.slug}`}>
       <div
+        ref={tileRef}
         className={twMerge(
-          'flex flex-1 flex-col overflow-hidden border border-neutral-300 bg-zinc-100 shadow-lg transition ease-out hover:bg-zinc-50 hover:ease-in-out dark:border-neutral-800 dark:bg-neutral-900 hover:dark:bg-neutral-800',
+          'mx-auto flex w-11/12 flex-1 cursor-pointer flex-col overflow-hidden  transition-all md:w-[40%]',
           className,
         )}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {article.featuredImage && (
           <div {...inspectorProps({ fieldId: 'featuredImage' })}>
             <CtfImage
-              nextImageProps={{ className: 'object-cover aspect-[16/10] w-full' }}
+              nextImageProps={{ className: 'object-cover aspect-[16/10] w-full rounded' }}
               {...article.featuredImage}
             />
           </div>
         )}
-        <div className="flex flex-1 justify-between py-3 px-4 md:px-5 md:py-4 lg:px-7 lg:py-5">
+        <div className="mt-4 flex flex-col text-center text-2xl">
           {title && (
             <p
-              className="h3 text-neutral-800 dark:text-zinc-50"
+              className="font-serif text-neutral-800 dark:text-zinc-50"
               {...inspectorProps({ fieldId: 'title' })}
             >
               {title}
             </p>
           )}
-
-          <div className="flex items-center">
+          <div className="flex flex-col text-center">
             {/* <ArticleAuthor article={article} /> */}
             <div
-              className={twMerge('ml-auto pl-2 text-xs text-neutral-600 dark:text-zinc-200')}
+              className={twMerge('text-sm text-neutral-600 dark:text-zinc-200')}
               {...inspectorProps({ fieldId: 'publishedDate' })}
             >
               <FormatDate date={publishedDate} />
