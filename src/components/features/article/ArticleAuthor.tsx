@@ -9,14 +9,17 @@ interface ArticleAuthorProps {
 
 export const ArticleAuthor = ({ article }: ArticleAuthorProps) => {
   const { author } = article;
-  const inspectorProps = useContentfulInspectorMode({ entryId: author?.sys.id });
+  const inspectorProps = useContentfulInspectorMode({
+    entryId: author?.__typename === 'ComponentAuthor' ? author.sys.id : undefined,
+  });
 
   return (
     <div className="flex items-center">
       <div
         className="mr-2 overflow-hidden rounded-full border border-blue500"
-        {...inspectorProps({ fieldId: 'avatar' })}>
-        {author?.avatar && (
+        {...inspectorProps({ fieldId: 'avatar' })}
+      >
+        {author?.__typename === 'ComponentAuthor' && author.avatar && (
           <CtfImage
             nextImageProps={{
               width: 28,
@@ -29,7 +32,7 @@ export const ArticleAuthor = ({ article }: ArticleAuthorProps) => {
         )}
       </div>
       <span className="text-xs leading-none text-gray600" {...inspectorProps({ fieldId: 'name' })}>
-        {author?.name}
+        {author?.__typename === 'ComponentAuthor' && author.name}
       </span>
     </div>
   );
