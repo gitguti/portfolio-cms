@@ -9,7 +9,7 @@ export const formatDateFunc = ({ date, locale }: FormatDateProps) => {
   if (!locale || !date) return null;
 
   return new Intl.DateTimeFormat(locale, {
-    dateStyle: 'long',
+    dateStyle: 'medium',
   }).format(new Date(date));
 };
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react'; // Make sure to import React
 import gsap from 'gsap';
+import React, { useEffect, useRef } from 'react'; // Make sure to import React
 
 export const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null); // Specify the type of ref
