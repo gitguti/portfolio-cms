@@ -2,9 +2,9 @@ import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import { useTranslation } from 'next-i18next';
 import { twMerge } from 'tailwind-merge';
 
-import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
-import { ArticleLabel } from '@src/components/features/article/ArticleLabel';
-import { CtfImage } from '@src/components/features/contentful';
+// import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
+// import { ArticleLabel } from '@src/components/features/article/ArticleLabel';
+// import { CtfImage } from '@src/components/features/contentful';
 import { FormatDate } from '@src/components/shared/format-date';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
@@ -18,18 +18,13 @@ export const ArticleHero = ({
   isFeatured,
   isReversedLayout = false,
 }: ArticleHeroProps) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
 
   const { title, shortDescription, publishedDate } = article;
 
   return (
-    <div
-      className={twMerge(
-        `flex flex-col overflow-hidden`,
-        isReversedLayout ? 'lg:flex-row-reverse' : 'lg:flex-row',
-      )}
-    >
+    <div className={twMerge(`flex max-w-4xl flex-col overflow-hidden`)}>
       {/* <div className="flex-1 basis-1/2" {...inspectorProps({ fieldId: 'featuredImage' })}>
         {article.featuredImage && (
           <CtfImage
@@ -39,7 +34,7 @@ export const ArticleHero = ({
         )}
       </div> */}
 
-      <div className="relative flex flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
+      <div className="relative flex max-w-3xl flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
         <div className="mb-2 flex flex-wrap items-center">
           {/* <ArticleAuthor article={article} /> */}
           {/* {isFeatured && (
@@ -63,14 +58,16 @@ export const ArticleHero = ({
           </div>
         </div>
         <h1
-          className={twMerge('mb-4 font-medium text-neutral-800 dark:text-zinc-100')}
+          className={twMerge(
+            'mb-6 font-serif text-5xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl',
+          )}
           {...inspectorProps({ fieldId: 'title' })}
         >
           {title}
         </h1>
         {shortDescription && (
           <p
-            className="mt-2 text-neutral-700 dark:text-zinc-400"
+            className="text-xl italic text-zinc-500 dark:text-zinc-400 md:text-2xl"
             {...inspectorProps({ fieldId: 'shortDescription' })}
           >
             {shortDescription}
