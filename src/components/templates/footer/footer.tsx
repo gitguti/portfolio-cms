@@ -7,8 +7,8 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="fixed bottom-0 z-10 w-full py-2 px-2 md:px-1 bg-gray-50 dark:bg-neutral-950">
-      <Container className="flex items-center justify-end">
+    <footer className="dark:bg-neutral-950 fixed bottom-0 z-10 w-full bg-gray-50 py-2 px-2 md:px-1">
+      <Container className="flex items-center justify-center">
         <div className=" text-xs text-neutral-800 dark:text-neutral-500">
           © Git / Made with ❤️ in Next / 2025
         </div>

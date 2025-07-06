@@ -30,6 +30,127 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const postsRef = useRef<HTMLDivElement>(null);
   const questionTextRef = useRef<HTMLHeadingElement>(null);
   const questionIntroRef = useRef<HTMLParagraphElement>(null);
+  // Animated blob refs
+  const shape1Ref = useRef<HTMLDivElement>(null);
+  const shape2Ref = useRef<HTMLDivElement>(null);
+  const shape3Ref = useRef<HTMLDivElement>(null);
+  // GSAP Animated Blobs
+  useEffect(() => {
+    if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) return;
+    // Shape 1
+    gsap.to(shape1Ref.current, {
+      keyframes: [
+        {
+          borderRadius: '50% 70%',
+          width: '160px',
+          height: '200px',
+          filter: 'blur(60px) saturate(90%)',
+          opacity: 0.5,
+          scale: 1,
+          duration: 0,
+        },
+        {
+          borderRadius: '50%',
+          width: '200px',
+          height: '160px',
+          opacity: 0.6,
+          scale: 1.03,
+          duration: 1.5,
+        },
+        {
+          borderRadius: '70% 50%',
+          width: '240px',
+          height: '120px',
+          opacity: 0.5,
+          scale: 1,
+          duration: 1.5,
+        },
+      ],
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+    });
+
+    // Shape 2
+    gsap.to(shape2Ref.current, {
+      keyframes: [
+        {
+          borderRadius: '40% 60%',
+          width: '140px',
+          height: '240px',
+          filter: 'blur(80px) saturate(100%)',
+          opacity: 0.3,
+          scale: 1,
+          duration: 0,
+        },
+        {
+          borderRadius: '50%',
+          width: '180px',
+          height: '180px',
+          opacity: 0.4,
+          scale: 1.01,
+          duration: 1.5,
+        },
+        {
+          borderRadius: '60% 40%',
+          width: '160px',
+          height: '120px',
+          opacity: 0.3,
+          scale: 1,
+          duration: 1.5,
+        },
+      ],
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+    });
+
+    // Shape 3
+    gsap.to(shape3Ref.current, {
+      keyframes: [
+        {
+          borderRadius: '60% 50%',
+          width: '120px',
+          height: '180px',
+          filter: 'blur(100px) saturate(150%)',
+          opacity: 0.2,
+          scale: 1,
+          duration: 0,
+        },
+        {
+          borderRadius: '50%',
+          width: '150px',
+          height: '140px',
+          opacity: 0.25,
+          scale: 1.02,
+          duration: 1.5,
+        },
+        {
+          borderRadius: '50% 60%',
+          width: '180px',
+          height: '100px',
+          opacity: 0.2,
+          scale: 1,
+          duration: 1.5,
+        },
+      ],
+      repeat: -1,
+      yoyo: true,
+      ease: 'power1.inOut',
+    });
+  }, []);
+
+  // Mobile detection
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // useRevealer(); // Initialize the revealer effect
 
@@ -49,103 +170,104 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       )
     : posts;
 
-  // Enhanced GSAP Animation Logic - Completely Independent
+  // Replace the problematic useEffect with this improved version
   useEffect(() => {
-    if (!selectedTag) {
-      if (hasBeenFiltered) {
-        // DESELECTION - Smooth return to original state
-        gsap.killTweensOf([questionRef.current, pillsRef.current, postsRef.current]);
+    // Kill any existing animations to prevent conflicts
+    gsap.killTweensOf([questionRef.current, pillsRef.current, postsRef.current]);
 
+    if (!selectedTag) {
+      // DESELECTION - Return to original state
+      if (hasBeenFiltered) {
         // Animate posts out first
         gsap.to(postsRef.current, {
-          y: 100,
+          y: 50,
           opacity: 0,
           duration: 0.4,
           ease: 'power2.in',
           onComplete: () => {
             // Then animate question and pills back to center
             gsap.to([questionRef.current, pillsRef.current], {
-              y: 250,
+              y: 200,
               duration: 1.2,
               ease: 'power3.inOut',
+              onComplete: () => {
+                // Reset the flag after animation completes
+                setHasBeenFiltered(false);
+              },
             });
           },
         });
       } else {
-        // INITIAL STATE - Complete reset to initial state
-        gsap.killTweensOf([questionRef.current, pillsRef.current, postsRef.current]);
-        gsap.set([questionRef.current, pillsRef.current], { y: 250, x: 0 });
-        gsap.set(postsRef.current, { x: 0, y: 200, opacity: 0 });
+        // INITIAL STATE - Ensure everything is in initial position
+        gsap.set([questionRef.current, pillsRef.current], { y: 200, x: 0 });
+        gsap.set(postsRef.current, { x: 0, y: 250, opacity: 0 });
       }
-
-      // Reset the flag after animation
-      setTimeout(() => setHasBeenFiltered(false), hasBeenFiltered ? 800 : 0);
       return;
     }
 
-    // Kill any existing animations to prevent conflicts
-    gsap.killTweensOf([questionRef.current, pillsRef.current, postsRef.current]);
-
     if (!hasBeenFiltered) {
       // FIRST TIME - Pure vertical animation
-      // Question and pills animation
       gsap.to([questionRef.current, pillsRef.current], {
-        y: 25,
-        x: 0, // Explicitly keep horizontal position
+        y: 50,
+        x: 0,
         duration: 1.8,
         ease: 'power3.out',
       });
 
-      // Posts animation - completely vertical
       gsap.fromTo(
         postsRef.current,
         {
           x: 0,
-          y: 200,
+          y: 250,
           opacity: 0,
         },
         {
-          x: 0, // No horizontal movement at all
+          x: 0,
           y: 0,
           opacity: 1,
           duration: 1.5,
-          ease: 'ease.out',
+          ease: 'power2.out',
           delay: 0.5,
+          onComplete: () => {
+            // Set the flag after first animation completes
+            setHasBeenFiltered(true);
+          },
         },
       );
-
-      setHasBeenFiltered(true);
     } else {
       // SUBSEQUENT TIMES - Pure horizontal animation
-      // First slide out to the left
       gsap.to(postsRef.current, {
         x: -100,
-        y: 0, // Keep vertical position stable
+        y: 0,
         opacity: 0,
-        duration: 1.2,
-        ease: 'ease.out',
+        duration: 0.3,
+        ease: 'power2.out',
         onComplete: () => {
-          // Then slide in from the right
           gsap.fromTo(
             postsRef.current,
             {
               x: 100,
-              y: 0, // Keep vertical position stable
+              y: 0,
               opacity: 0,
             },
             {
               x: 0,
-              y: 0, // Keep vertical position stable
+              y: 0,
               opacity: 1,
-              duration: 0.5,
+              duration: 0.4,
               ease: 'power2.out',
             },
           );
         },
       });
     }
-  }, [selectedTag]);
+  }, [selectedTag]); // Remove hasBeenFiltered from dependency array
 
+  // Also, update the handlePillClick function to be more explicit:
+  const handlePillClick = (tagId: string) => {
+    const newSelectedTag = selectedTag === tagId ? null : tagId;
+    setSelectedTag(newSelectedTag);
+  };
   // Animate question text on mount
   useEffect(() => {
     if (questionTextRef.current) {
@@ -166,15 +288,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       gsap.fromTo(
         pillsRef.current,
         { opacity: 0, y: 400 },
-        { opacity: 1, y: 250, duration: 3, ease: 'ease', delay: 3 },
+        { opacity: 1, y: 200, duration: 3, ease: 'ease', delay: 3 },
       );
     }
   }, []);
-
-  // Handle pill click
-  const handlePillClick = (tagId: string) => {
-    setSelectedTag(selectedTag === tagId ? null : tagId);
-  };
 
   if (!posts) return null;
 
@@ -182,47 +299,102 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     <>
       {page?.seoFields && <SeoFields {...page.seoFields} />}
       {/* <div className='revealer'></div> */}
-      <div>
-        <div className="flex flex-col items-center justify-center pt-16 transition-all duration-500">
-          <div ref={questionRef} className="mb-8 space-y-6 text-center">
-            <p
-              ref={questionIntroRef}
-              className="mx-auto max-w-2xl text-lg font-light tracking-wide opacity-70"
+      <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        {/* Animated Blobs using GSAP */}
+        <div
+          ref={shape1Ref}
+          className={`absolute bg-blue-700/80 mix-blend-multiply dark:bg-blue-400/80 dark:mix-blend-screen ${
+            isMobile ? 'blob-mobile' : ''
+          }`}
+          style={{
+            width: 160,
+            height: 200,
+            left: '50%',
+            top: isMobile ? '30%' : '32%',
+            transform: 'translate(-60%, -50%)',
+            zIndex: 1,
+          }}
+        />
+        <div
+          ref={shape2Ref}
+          className={`absolute bg-purple-500/70 mix-blend-multiply dark:bg-purple-300/70 dark:mix-blend-screen ${
+            isMobile ? 'blob-mobile' : ''
+          }`}
+          style={{
+            width: 140,
+            height: 240,
+            left: '52%',
+            top: isMobile ? '30%' : '37%',
+            transform: 'translate(-60%, -50%)',
+            zIndex: 1,
+          }}
+        />
+        <div
+          ref={shape3Ref}
+          className={`absolute bg-green-400/40 mix-blend-multiply dark:bg-green-300/60 dark:mix-blend-screen ${
+            isMobile ? 'blob-mobile' : ''
+          }`}
+          style={{
+            width: 120,
+            height: 180,
+            left: '48%',
+            top: isMobile ? '10%' : '24%',
+            transform: 'translate(-60%, -50%)',
+            zIndex: 1,
+          }}
+        />
+
+        {/* Main Content */}
+        <div className="relative z-10 w-full">
+          <div
+            className={`flex flex-col items-center justify-center transition-all duration-500 ${
+              isMobile ? 'pt-2' : 'pt-10 lg:pt-16'
+            }`}
+          >
+            <div
+              ref={questionRef}
+              className={`mb-8 space-y-6 text-center ${isMobile ? 'mt-2' : ''}`}
             >
-              Design it&apos;s about how deeply you listen.
-            </p>
-            <h1
-              ref={questionTextRef}
-              className="mx-auto max-w-3xl font-serif text-3xl text-neutral-800 dark:text-zinc-100 lg:text-4xl"
-            >
-              What kind of stories do you want to hear?
-            </h1>
-          </div>
-          {/* Pill Buttons from real tags */}
-          <div ref={pillsRef} className="mb-16 flex flex-wrap justify-center gap-3">
-            {allTags.map(([id, name]) => (
-              <button
-                key={id}
-                className={`rounded-full border px-6 py-2 capitalize transition-all duration-200
-                  ${
-                    selectedTag === id
-                      ? 'bg-black text-white dark:bg-zinc-100 dark:font-semibold dark:text-black'
-                      : 'border-gray-300 text-black hover:bg-gray-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900'
-                  }
-                `}
-                onClick={() => handlePillClick(id)}
+              <p
+                ref={questionIntroRef}
+                className="mx-auto max-w-2xl text-lg font-light tracking-wide opacity-70"
               >
-                {name}
-              </button>
-            ))}
+                Design it&apos;s about how deeply you listen.
+              </p>
+              <h1
+                ref={questionTextRef}
+                className="mx-auto max-w-3xl font-serif text-3xl text-neutral-800 dark:text-zinc-100 lg:text-4xl"
+              >
+                What kind of stories do you want to hear?
+              </h1>
+            </div>
+            {/* Pill Buttons from real tags */}
+            <div ref={pillsRef} className="relative z-20 mb-16 flex flex-wrap justify-center gap-3">
+              {allTags.map(([id, name]) => (
+                <button
+                  key={id}
+                  className={`rounded-full border px-6 py-2 capitalize transition-all duration-200
+                    ${
+                      selectedTag === id
+                        ? 'bg-black text-white dark:bg-zinc-100 dark:font-semibold dark:text-black'
+                        : 'border-gray-300 text-black hover:bg-gray-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900'
+                    }
+                  `}
+                  onClick={() => handlePillClick(id)}
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* Render filtered posts or call to action */}
+          <div ref={postsRef} style={{ minHeight: 150 }}>
+            {selectedTag ? (
+              <ArticleTileGrid className="grid-cols-1 " articles={filteredPosts} />
+            ) : null}
           </div>
         </div>
-        {/* Render filtered posts or call to action */}
-        <div ref={postsRef} style={{ minHeight: 150 }}>
-          {selectedTag ? (
-            <ArticleTileGrid className="grid-cols-1 " articles={filteredPosts} />
-          ) : null}
-        </div>
+        {/* Responsive adjustments for blobs */}
       </div>
     </>
   );

@@ -10,7 +10,7 @@ export const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <header className="dark:bg-neutral-950 fixed top-0 z-10 w-full border border-dashed border-b-zinc-300 bg-gray-50 py-5 px-2 md:px-12">
+    <header className="dark:bg-neutral-950 fixed top-0 z-10 w-full bg-gray-50 py-5 px-2 md:px-12">
       <nav>
         <Container className="flex items-center justify-between">
           <Link href="/" title={t('common.homepage')}>
