@@ -221,6 +221,12 @@
     animation-fill-mode: both;
   }
 
+  
+  /* In your CSS file */
+.custom-blockquote p {
+  @apply text-3xl md:text-4xl font-serif italic text-zinc-800 dark:text-zinc-200 leading-relaxed md:leading-normal;
+}
+
 
 }
 
