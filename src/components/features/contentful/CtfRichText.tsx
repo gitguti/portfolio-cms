@@ -2,10 +2,31 @@ import React from 'react';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, Document } from '@contentful/rich-text-types';
 
-import { ArticleImage } from '@src/components/features/article';
-import { ComponentRichImage } from '@src/lib/__generated/sdk';
+import {
+  ArticleImage,
+  ArticleTextImageSideBySide,
+  ArticleImageGallery,
+  ArticleImageGalleryWithCaptions,
+  ArticleFullWidthImage,
+  ArticleImpactMetrics,
+} from '@src/components/features/article';
+import {
+  ComponentRichImage,
+  ComponentTextImageSideBySide,
+  ComponentImageGallery,
+  ComponentImageGalleryWithCaptions,
+  ComponentFullWidthImage,
+  ComponentImpactMetrics,
+} from '@src/lib/__generated/sdk';
 
-export type EmbeddedEntryType = ComponentRichImage | null;
+export type EmbeddedEntryType =
+  | ComponentRichImage
+  | ComponentTextImageSideBySide
+  | ComponentImageGallery
+  | ComponentImageGalleryWithCaptions
+  | ComponentFullWidthImage
+  | ComponentImpactMetrics
+  | null;
 
 export interface ContentfulRichTextInterface {
   json: Document;
@@ -22,6 +43,16 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
   switch (entry?.__typename) {
     case 'ComponentRichImage':
       return <ArticleImage image={entry} />;
+    case 'ComponentTextImageSideBySide':
+      return <ArticleTextImageSideBySide textImage={entry} />;
+    case 'ComponentImageGallery':
+      return <ArticleImageGallery gallery={entry} />;
+    case 'ComponentImageGalleryWithCaptions':
+      return <ArticleImageGalleryWithCaptions gallery={entry} />;
+    case 'ComponentFullWidthImage':
+      return <ArticleFullWidthImage fullWidthImage={entry} />;
+    case 'ComponentImpactMetrics':
+      return <ArticleImpactMetrics metrics={entry} />;
     default:
       return null;
   }
@@ -44,7 +75,7 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
       </blockquote>
     ),
     [BLOCKS.HEADING_2]: (node, children) => (
-      <h2 className="mt-16 font-serif text-3xl font-medium text-zinc-800 dark:text-zinc-200">
+      <h2 className="mb-8 font-serif text-3xl font-medium text-zinc-800 dark:text-zinc-200">
         {children}
       </h2>
     ),
@@ -97,6 +128,9 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
       </ol>
     ),
     [BLOCKS.LIST_ITEM]: (node, children) => <li className="ml-2">{children}</li>,
+    [BLOCKS.HR]: () => (
+      <hr className="my-12 border-0 border-t border-zinc-300 dark:border-zinc-700" />
+    ),
   },
 });
 

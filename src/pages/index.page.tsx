@@ -34,6 +34,8 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const shape1Ref = useRef<HTMLDivElement>(null);
   const shape2Ref = useRef<HTMLDivElement>(null);
   const shape3Ref = useRef<HTMLDivElement>(null);
+  // Study cases section ref
+  const studyCasesRef = useRef<HTMLElement>(null);
   // GSAP Animated Blobs
   useEffect(() => {
     if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) return;
@@ -156,144 +158,53 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   // Extract unique tags (id & name) from posts
   const tagMap = new Map<string, string>();
-  posts.forEach((post: any) => {
-    post.contentfulMetadata?.tags?.forEach((tag: any) => {
-      if (tag?.id && tag?.name) tagMap.set(tag.id, tag.name);
+  if (posts && Array.isArray(posts)) {
+    posts.forEach((post: any) => {
+      post.contentfulMetadata?.tags?.forEach((tag: any) => {
+        if (tag?.id && tag?.name) tagMap.set(tag.id, tag.name);
+      });
     });
-  });
+  }
   const allTags = Array.from(tagMap.entries()); // [ [id, name], ... ]
 
   // Filter posts by selected tag (if any)
-  const filteredPosts = selectedTag
-    ? posts.filter((post: any) =>
-        post.contentfulMetadata?.tags?.some((tag: any) => tag.id === selectedTag),
-      )
-    : posts;
-
-  // Replace the problematic useEffect with this improved version
-  useEffect(() => {
-    // Kill any existing animations to prevent conflicts
-    gsap.killTweensOf([questionRef.current, pillsRef.current, postsRef.current]);
-
-    if (!selectedTag) {
-      // DESELECTION - Return to original state
-      if (hasBeenFiltered) {
-        // Animate posts out first
-        gsap.to(postsRef.current, {
-          y: 50,
-          opacity: 0,
-          duration: 0.4,
-          ease: 'power2.in',
-          onComplete: () => {
-            // Then animate question and pills back to center
-            gsap.to([questionRef.current, pillsRef.current], {
-              y: 200,
-              duration: 1.2,
-              ease: 'power3.inOut',
-              onComplete: () => {
-                // Reset the flag after animation completes
-                setHasBeenFiltered(false);
-              },
-            });
-          },
-        });
-      } else {
-        // INITIAL STATE - Ensure everything is in initial position
-        gsap.set([questionRef.current, pillsRef.current], { y: 200, x: 0 });
-        gsap.set(postsRef.current, { x: 0, y: 250, opacity: 0 });
-      }
-      return;
-    }
-
-    if (!hasBeenFiltered) {
-      // FIRST TIME - Pure vertical animation
-      gsap.to([questionRef.current, pillsRef.current], {
-        y: 50,
-        x: 0,
-        duration: 1.8,
-        ease: 'power3.out',
-      });
-
-      gsap.fromTo(
-        postsRef.current,
-        {
-          x: 0,
-          y: 250,
-          opacity: 0,
-        },
-        {
-          x: 0,
-          y: 0,
-          opacity: 1,
-          duration: 1.5,
-          ease: 'power2.out',
-          delay: 0.5,
-          onComplete: () => {
-            // Set the flag after first animation completes
-            setHasBeenFiltered(true);
-          },
-        },
-      );
-    } else {
-      // SUBSEQUENT TIMES - Pure horizontal animation
-      gsap.to(postsRef.current, {
-        x: -100,
-        y: 0,
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.out',
-        onComplete: () => {
-          gsap.fromTo(
-            postsRef.current,
-            {
-              x: 100,
-              y: 0,
-              opacity: 0,
-            },
-            {
-              x: 0,
-              y: 0,
-              opacity: 1,
-              duration: 0.4,
-              ease: 'power2.out',
-            },
-          );
-        },
-      });
-    }
-  }, [selectedTag]); // Remove hasBeenFiltered from dependency array
-
-  // Also, update the handlePillClick function to be more explicit:
-  const handlePillClick = (tagId: string) => {
-    const newSelectedTag = selectedTag === tagId ? null : tagId;
-    setSelectedTag(newSelectedTag);
-  };
+  const filteredPosts =
+    posts && selectedTag
+      ? posts.filter((post: any) =>
+          post.contentfulMetadata?.tags?.some((tag: any) => tag.id === selectedTag),
+        )
+      : posts || [];
   // Animate question text on mount
   useEffect(() => {
     if (questionTextRef.current) {
       gsap.fromTo(
         questionTextRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1.3, ease: 'power2.in', delay: 2 },
+        { opacity: 0, y: 150 },
+        { opacity: 1, y: 130, duration: 1.3, ease: 'power2.in', delay: 2 },
       );
     }
     if (questionIntroRef.current) {
       gsap.fromTo(
         questionIntroRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 5, duration: 1, ease: 'power2.in', delay: 1 },
+        { opacity: 0, y: 170 },
+        { opacity: 1, y: 150, duration: 1, ease: 'power2.in', delay: 1 },
       );
     }
     if (pillsRef.current) {
       gsap.fromTo(
         pillsRef.current,
-        { opacity: 0, y: 400 },
-        { opacity: 1, y: 200, duration: 3, ease: 'ease', delay: 3 },
+        { opacity: 0, y: 190 },
+        { opacity: 1, y: 115, duration: 3, ease: 'ease', delay: 3 },
+      );
+    }
+    if (studyCasesRef.current) {
+      gsap.fromTo(
+        studyCasesRef.current,
+        { opacity: 0, y: 0 },
+        { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', delay: 5.5 },
       );
     }
   }, []);
-
-  if (!posts) return null;
 
   return (
     <>
@@ -310,7 +221,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             width: 160,
             height: 200,
             left: '50%',
-            top: isMobile ? '30%' : '32%',
+            top: isMobile ? '30%' : '10%',
             transform: 'translate(-60%, -50%)',
             zIndex: 1,
           }}
@@ -324,7 +235,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             width: 140,
             height: 240,
             left: '52%',
-            top: isMobile ? '30%' : '37%',
+            top: isMobile ? '30%' : '12%',
             transform: 'translate(-60%, -50%)',
             zIndex: 1,
           }}
@@ -338,7 +249,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             width: 120,
             height: 180,
             left: '48%',
-            top: isMobile ? '10%' : '24%',
+            top: isMobile ? '10%' : '10%',
             transform: 'translate(-60%, -50%)',
             zIndex: 1,
           }}
@@ -346,55 +257,47 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
         {/* Main Content */}
         <div className="relative z-10 w-full">
-          <div
-            className={`flex flex-col items-center justify-center transition-all duration-500 ${
-              isMobile ? 'pt-2' : 'pt-10 lg:pt-16'
-            }`}
-          >
+          {/* Hero Section */}
+          <section className="flex h-[70vh] flex-col items-center justify-center">
             <div
-              ref={questionRef}
-              className={`mb-8 space-y-6 text-center ${isMobile ? 'mt-2' : ''}`}
+              className={`flex flex-col items-center justify-center transition-all duration-500 ${
+                isMobile ? 'pt-2' : 'pt-10 lg:pt-16'
+              }`}
             >
-              <p
-                ref={questionIntroRef}
-                className="mx-auto max-w-2xl text-lg font-light tracking-wide opacity-70"
+              <div
+                ref={questionRef}
+                className={`mb-8 space-y-6 text-center ${isMobile ? 'mt-2' : ''}`}
               >
-                Design it&apos;s about how deeply you listen.
-              </p>
-              <h1
-                ref={questionTextRef}
-                className="mx-auto max-w-3xl font-serif text-3xl text-neutral-800 dark:text-zinc-100 lg:text-4xl"
-              >
-                What kind of stories do you want to hear?
-              </h1>
-            </div>
-            {/* Pill Buttons from real tags */}
-            <div ref={pillsRef} className="relative z-20 mb-16 flex flex-wrap justify-center gap-3">
-              {allTags.map(([id, name]) => (
-                <button
-                  key={id}
-                  className={`rounded-full border px-6 py-2 capitalize transition-all duration-200
-                    ${
-                      selectedTag === id
-                        ? 'bg-black text-white dark:bg-zinc-100 dark:font-semibold dark:text-black'
-                        : 'border-gray-300 text-black hover:bg-gray-100 dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900'
-                    }
-                  `}
-                  onClick={() => handlePillClick(id)}
+                <p
+                  ref={questionIntroRef}
+                  className="mx-auto max-w-2xl text-xl font-light tracking-wide opacity-80"
                 >
-                  {name}
-                </button>
-              ))}
+                  Hi, I&apos;m Git
+                </p>
+                <h1
+                  ref={questionTextRef}
+                  className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-neutral-800 dark:text-zinc-100 lg:text-4xl"
+                >
+                  Designer and builder making complex workflows simple, automated, and usable.
+                </h1>
+                <p
+                  className="mx-auto mt-6 max-w-2xl text-lg font-light leading-7 tracking-wide opacity-70"
+                  ref={pillsRef}
+                >
+                  I help technical teams and decision-makers adopt smarter processes — by
+                  integrating data, automation, and AI into everyday work.
+                </p>
+              </div>
             </div>
-          </div>
-          {/* Render filtered posts or call to action */}
-          <div ref={postsRef} style={{ minHeight: 150 }}>
-            {selectedTag ? (
-              <ArticleTileGrid className="grid-cols-1 " articles={filteredPosts} />
-            ) : null}
-          </div>
+          </section>
+
+          {/* Study Cases Section */}
+          <section ref={studyCasesRef} className="mx-auto max-w-screen-lg py-20">
+            <Container>
+              <ArticleTileGrid className="grid-cols-1 md:grid-cols-2" articles={filteredPosts} />
+            </Container>
+          </section>
         </div>
-        {/* Responsive adjustments for blobs */}
       </div>
     </>
   );

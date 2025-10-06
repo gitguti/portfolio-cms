@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
 
-import { ArticleContent, ArticleHero } from '@src/components/features/article';
+import { ArticleContent, ArticleHero, ArticleTileGrid } from '@src/components/features/article';
 import { SeoFields } from '@src/components/features/seo';
 import { Container } from '@src/components/shared/container';
 
@@ -16,7 +16,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
   const blogPost = useContentfulLiveUpdates(props.blogPost);
   const relatedPosts = blogPost?.relatedBlogPostsCollection?.items;
-  if (!blogPost || !relatedPosts) return null;
+  if (!blogPost) return null;
 
   return (
     <>
@@ -27,14 +27,12 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       <Container className="mt-8 max-w-4xl">
         <ArticleContent article={blogPost} />
       </Container>
-      {/* {relatedPosts && (
+      {relatedPosts && (
         <Container className="mt-8 max-w-5xl">
-          <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">
-            {t('article.relatedArticles')}
-          </h2>
+          <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">Next case</h2>
           <ArticleTileGrid className="md:grid-cols-2" articles={relatedPosts} />
         </Container>
-      )} */}
+      )}
     </>
   );
 };

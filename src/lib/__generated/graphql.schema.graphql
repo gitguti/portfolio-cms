@@ -98,8 +98,12 @@ input AssetFilter {
 
 type AssetLinkingCollections {
   componentAuthorCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentAuthorCollection
+  componentCaptionedImageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentCaptionedImageCollection
+  componentFullWidthImageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentFullWidthImageCollection
+  componentImageGalleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentImageGalleryCollection
   componentRichImageCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentRichImageCollection
   componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentSeoCollection
+  componentTextImageSideBySideCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ComponentTextImageSideBySideCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageBlogPostCollection
   urlLinkCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): UrlLinkCollection
@@ -179,6 +183,486 @@ enum ComponentAuthorOrder {
   internalName_DESC
   name_ASC
   name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage)
+"""
+type ComponentCaptionedImage implements Entry & _Node {
+  _id: ID!
+  caption(locale: String): ComponentCaptionedImageCaption
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentCaptionedImageLinkingCollections
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ComponentCaptionedImageCaption {
+  json: JSON!
+  links: ComponentCaptionedImageCaptionLinks!
+}
+
+type ComponentCaptionedImageCaptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ComponentCaptionedImageCaptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ComponentCaptionedImageCaptionLinks {
+  assets: ComponentCaptionedImageCaptionAssets!
+  entries: ComponentCaptionedImageCaptionEntries!
+  resources: ComponentCaptionedImageCaptionResources!
+}
+
+type ComponentCaptionedImageCaptionResources {
+  block: [ComponentCaptionedImageCaptionResourcesBlock!]!
+  hyperlink: [ComponentCaptionedImageCaptionResourcesHyperlink!]!
+  inline: [ComponentCaptionedImageCaptionResourcesInline!]!
+}
+
+type ComponentCaptionedImageCaptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentCaptionedImageCaptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentCaptionedImageCaptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentCaptionedImageCollection {
+  items: [ComponentCaptionedImage]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentCaptionedImageFilter {
+  AND: [ComponentCaptionedImageFilter]
+  OR: [ComponentCaptionedImageFilter]
+  caption_contains: String
+  caption_exists: Boolean
+  caption_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ComponentCaptionedImageLinkingCollections {
+  componentImageGalleryWithCaptionsCollection(limit: Int = 100, locale: String, order: [ComponentCaptionedImageLinkingCollectionsComponentImageGalleryWithCaptionsCollectionOrder], preview: Boolean, skip: Int = 0): ComponentImageGalleryWithCaptionsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentCaptionedImageLinkingCollectionsComponentImageGalleryWithCaptionsCollectionOrder {
+  columns_ASC
+  columns_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentCaptionedImageOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+"""
+ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage)
+"""
+type ComponentFullWidthImage implements Entry & _Node {
+  _id: ID!
+  caption(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  linkedFrom(allowedLocales: [String]): ComponentFullWidthImageLinkingCollections
+  maxWidth(locale: String): String
+  sys: Sys!
+}
+
+type ComponentFullWidthImageCollection {
+  items: [ComponentFullWidthImage]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentFullWidthImageFilter {
+  AND: [ComponentFullWidthImageFilter]
+  OR: [ComponentFullWidthImageFilter]
+  caption: String
+  caption_contains: String
+  caption_exists: Boolean
+  caption_in: [String]
+  caption_not: String
+  caption_not_contains: String
+  caption_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  maxWidth: String
+  maxWidth_contains: String
+  maxWidth_exists: Boolean
+  maxWidth_in: [String]
+  maxWidth_not: String
+  maxWidth_not_contains: String
+  maxWidth_not_in: [String]
+  sys: SysFilter
+}
+
+type ComponentFullWidthImageLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentFullWidthImageOrder {
+  maxWidth_ASC
+  maxWidth_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery)
+"""
+type ComponentImageGallery implements Entry & _Node {
+  _id: ID!
+  caption(locale: String): String
+  columns(locale: String): Int
+  contentfulMetadata: ContentfulMetadata!
+  imagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
+  linkedFrom(allowedLocales: [String]): ComponentImageGalleryLinkingCollections
+  sys: Sys!
+}
+
+type ComponentImageGalleryCollection {
+  items: [ComponentImageGallery]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentImageGalleryFilter {
+  AND: [ComponentImageGalleryFilter]
+  OR: [ComponentImageGalleryFilter]
+  caption: String
+  caption_contains: String
+  caption_exists: Boolean
+  caption_in: [String]
+  caption_not: String
+  caption_not_contains: String
+  caption_not_in: [String]
+  columns: Int
+  columns_exists: Boolean
+  columns_gt: Int
+  columns_gte: Int
+  columns_in: [Int]
+  columns_lt: Int
+  columns_lte: Int
+  columns_not: Int
+  columns_not_in: [Int]
+  contentfulMetadata: ContentfulMetadataFilter
+  imagesCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type ComponentImageGalleryLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentImageGalleryOrder {
+  caption_ASC
+  caption_DESC
+  columns_ASC
+  columns_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions)
+"""
+type ComponentImageGalleryWithCaptions implements Entry & _Node {
+  _id: ID!
+  columns(locale: String): Int
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  itemsCollection(limit: Int = 100, locale: String, order: [ComponentImageGalleryWithCaptionsItemsCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentCaptionedImageFilter): ComponentImageGalleryWithCaptionsItemsCollection
+  linkedFrom(allowedLocales: [String]): ComponentImageGalleryWithCaptionsLinkingCollections
+  sys: Sys!
+}
+
+type ComponentImageGalleryWithCaptionsCollection {
+  items: [ComponentImageGalleryWithCaptions]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentImageGalleryWithCaptionsFilter {
+  AND: [ComponentImageGalleryWithCaptionsFilter]
+  OR: [ComponentImageGalleryWithCaptionsFilter]
+  columns: Int
+  columns_exists: Boolean
+  columns_gt: Int
+  columns_gte: Int
+  columns_in: [Int]
+  columns_lt: Int
+  columns_lte: Int
+  columns_not: Int
+  columns_not_in: [Int]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  items: cfComponentCaptionedImageNestedFilter
+  itemsCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type ComponentImageGalleryWithCaptionsItemsCollection {
+  items: [ComponentCaptionedImage]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ComponentImageGalleryWithCaptionsItemsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ComponentImageGalleryWithCaptionsLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentImageGalleryWithCaptionsOrder {
+  columns_ASC
+  columns_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+ComponentImpactMetrics    (contenedor de métricas)    Name: Component - Impact Metrics   API Identifier: componentImpactMetrics    Fields:   1. Internal Name (Short text, required)   2. metrics (References, multiple, required)      - Validation: Accept only "Component -   Metric"      - Settings: Allow multiple values (min:   2, max: 8) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics)
+"""
+type ComponentImpactMetrics implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentImpactMetricsLinkingCollections
+  metricsCollection(limit: Int = 100, locale: String, order: [ComponentImpactMetricsMetricsCollectionOrder], preview: Boolean, skip: Int = 0, where: ComponentMetricFilter): ComponentImpactMetricsMetricsCollection
+  sys: Sys!
+}
+
+type ComponentImpactMetricsCollection {
+  items: [ComponentImpactMetrics]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentImpactMetricsFilter {
+  AND: [ComponentImpactMetricsFilter]
+  OR: [ComponentImpactMetricsFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  metrics: cfComponentMetricNestedFilter
+  metricsCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type ComponentImpactMetricsLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+type ComponentImpactMetricsMetricsCollection {
+  items: [ComponentMetric]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ComponentImpactMetricsMetricsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentImpactMetricsOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric)
+"""
+type ComponentMetric implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  label(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentMetricLinkingCollections
+  sys: Sys!
+  value(locale: String): String
+}
+
+type ComponentMetricCollection {
+  items: [ComponentMetric]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentMetricFilter {
+  AND: [ComponentMetricFilter]
+  OR: [ComponentMetricFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  label: String
+  label_contains: String
+  label_exists: Boolean
+  label_in: [String]
+  label_not: String
+  label_not_contains: String
+  label_not_in: [String]
+  sys: SysFilter
+  value: String
+  value_contains: String
+  value_exists: Boolean
+  value_in: [String]
+  value_not: String
+  value_not_contains: String
+  value_not_in: [String]
+}
+
+type ComponentMetricLinkingCollections {
+  componentImpactMetricsCollection(limit: Int = 100, locale: String, order: [ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder], preview: Boolean, skip: Int = 0): ComponentImpactMetricsCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentMetricOrder {
+  internalName_ASC
+  internalName_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -379,6 +863,111 @@ enum ComponentSeoOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+"""
+ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide)
+"""
+type ComponentTextImageSideBySide implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  image(locale: String, preview: Boolean): Asset
+  imagePosition(locale: String): String
+  imageSize(locale: String): String
+  linkedFrom(allowedLocales: [String]): ComponentTextImageSideBySideLinkingCollections
+  sys: Sys!
+  text(locale: String): ComponentTextImageSideBySideText
+}
+
+type ComponentTextImageSideBySideCollection {
+  items: [ComponentTextImageSideBySide]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ComponentTextImageSideBySideFilter {
+  AND: [ComponentTextImageSideBySideFilter]
+  OR: [ComponentTextImageSideBySideFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  imagePosition: String
+  imagePosition_contains: String
+  imagePosition_exists: Boolean
+  imagePosition_in: [String]
+  imagePosition_not: String
+  imagePosition_not_contains: String
+  imagePosition_not_in: [String]
+  imageSize: String
+  imageSize_contains: String
+  imageSize_exists: Boolean
+  imageSize_in: [String]
+  imageSize_not: String
+  imageSize_not_contains: String
+  imageSize_not_in: [String]
+  image_exists: Boolean
+  sys: SysFilter
+  text_contains: String
+  text_exists: Boolean
+  text_not_contains: String
+}
+
+type ComponentTextImageSideBySideLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ComponentTextImageSideBySideOrder {
+  imagePosition_ASC
+  imagePosition_DESC
+  imageSize_ASC
+  imageSize_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ComponentTextImageSideBySideText {
+  json: JSON!
+  links: ComponentTextImageSideBySideTextLinks!
+}
+
+type ComponentTextImageSideBySideTextAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ComponentTextImageSideBySideTextEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ComponentTextImageSideBySideTextLinks {
+  assets: ComponentTextImageSideBySideTextAssets!
+  entries: ComponentTextImageSideBySideTextEntries!
+  resources: ComponentTextImageSideBySideTextResources!
+}
+
+type ComponentTextImageSideBySideTextResources {
+  block: [ComponentTextImageSideBySideTextResourcesBlock!]!
+  hyperlink: [ComponentTextImageSideBySideTextResourcesHyperlink!]!
+  inline: [ComponentTextImageSideBySideTextResourcesInline!]!
+}
+
+type ComponentTextImageSideBySideTextResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentTextImageSideBySideTextResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ComponentTextImageSideBySideTextResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 type ContentfulMetadata {
@@ -925,10 +1514,24 @@ type Query {
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   componentAuthor(id: String!, locale: String, preview: Boolean): ComponentAuthor
   componentAuthorCollection(limit: Int = 100, locale: String, order: [ComponentAuthorOrder], preview: Boolean, skip: Int = 0, where: ComponentAuthorFilter): ComponentAuthorCollection
+  componentCaptionedImage(id: String!, locale: String, preview: Boolean): ComponentCaptionedImage
+  componentCaptionedImageCollection(limit: Int = 100, locale: String, order: [ComponentCaptionedImageOrder], preview: Boolean, skip: Int = 0, where: ComponentCaptionedImageFilter): ComponentCaptionedImageCollection
+  componentFullWidthImage(id: String!, locale: String, preview: Boolean): ComponentFullWidthImage
+  componentFullWidthImageCollection(limit: Int = 100, locale: String, order: [ComponentFullWidthImageOrder], preview: Boolean, skip: Int = 0, where: ComponentFullWidthImageFilter): ComponentFullWidthImageCollection
+  componentImageGallery(id: String!, locale: String, preview: Boolean): ComponentImageGallery
+  componentImageGalleryCollection(limit: Int = 100, locale: String, order: [ComponentImageGalleryOrder], preview: Boolean, skip: Int = 0, where: ComponentImageGalleryFilter): ComponentImageGalleryCollection
+  componentImageGalleryWithCaptions(id: String!, locale: String, preview: Boolean): ComponentImageGalleryWithCaptions
+  componentImageGalleryWithCaptionsCollection(limit: Int = 100, locale: String, order: [ComponentImageGalleryWithCaptionsOrder], preview: Boolean, skip: Int = 0, where: ComponentImageGalleryWithCaptionsFilter): ComponentImageGalleryWithCaptionsCollection
+  componentImpactMetrics(id: String!, locale: String, preview: Boolean): ComponentImpactMetrics
+  componentImpactMetricsCollection(limit: Int = 100, locale: String, order: [ComponentImpactMetricsOrder], preview: Boolean, skip: Int = 0, where: ComponentImpactMetricsFilter): ComponentImpactMetricsCollection
+  componentMetric(id: String!, locale: String, preview: Boolean): ComponentMetric
+  componentMetricCollection(limit: Int = 100, locale: String, order: [ComponentMetricOrder], preview: Boolean, skip: Int = 0, where: ComponentMetricFilter): ComponentMetricCollection
   componentRichImage(id: String!, locale: String, preview: Boolean): ComponentRichImage
   componentRichImageCollection(limit: Int = 100, locale: String, order: [ComponentRichImageOrder], preview: Boolean, skip: Int = 0, where: ComponentRichImageFilter): ComponentRichImageCollection
   componentSeo(id: String!, locale: String, preview: Boolean): ComponentSeo
   componentSeoCollection(limit: Int = 100, locale: String, order: [ComponentSeoOrder], preview: Boolean, skip: Int = 0, where: ComponentSeoFilter): ComponentSeoCollection
+  componentTextImageSideBySide(id: String!, locale: String, preview: Boolean): ComponentTextImageSideBySide
+  componentTextImageSideBySideCollection(limit: Int = 100, locale: String, order: [ComponentTextImageSideBySideOrder], preview: Boolean, skip: Int = 0, where: ComponentTextImageSideBySideFilter): ComponentTextImageSideBySideCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
   pageBlogPost(id: String!, locale: String, preview: Boolean): PageBlogPost
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [PageBlogPostOrder], preview: Boolean, skip: Int = 0, where: PageBlogPostFilter): PageBlogPostCollection
@@ -936,6 +1539,8 @@ type Query {
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageLandingOrder], preview: Boolean, skip: Int = 0, where: PageLandingFilter): PageLandingCollection
   projectDetails(id: String!, locale: String, preview: Boolean): ProjectDetails
   projectDetailsCollection(limit: Int = 100, locale: String, order: [ProjectDetailsOrder], preview: Boolean, skip: Int = 0, where: ProjectDetailsFilter): ProjectDetailsCollection
+  tldrSummary(id: String!, locale: String, preview: Boolean): TldrSummary
+  tldrSummaryCollection(limit: Int = 100, locale: String, order: [TldrSummaryOrder], preview: Boolean, skip: Int = 0, where: TldrSummaryFilter): TldrSummaryCollection
   urlLink(id: String!, locale: String, preview: Boolean): UrlLink
   urlLinkCollection(limit: Int = 100, locale: String, order: [UrlLinkOrder], preview: Boolean, skip: Int = 0, where: UrlLinkFilter): UrlLinkCollection
 }
@@ -1004,6 +1609,78 @@ Represents a taxonomy concept entity for finding and organizing content easily.
 """
 type TaxonomyConcept {
   id: String
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary)
+"""
+type TldrSummary implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  context(locale: String): String
+  goal(locale: String): String
+  impact(locale: String): [String]
+  linkedFrom(allowedLocales: [String]): TldrSummaryLinkingCollections
+  role(locale: String): String
+  sys: Sys!
+}
+
+type TldrSummaryCollection {
+  items: [TldrSummary]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input TldrSummaryFilter {
+  AND: [TldrSummaryFilter]
+  OR: [TldrSummaryFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  context: String
+  context_contains: String
+  context_exists: Boolean
+  context_in: [String]
+  context_not: String
+  context_not_contains: String
+  context_not_in: [String]
+  goal: String
+  goal_contains: String
+  goal_exists: Boolean
+  goal_in: [String]
+  goal_not: String
+  goal_not_contains: String
+  goal_not_in: [String]
+  impact_contains_all: [String]
+  impact_contains_none: [String]
+  impact_contains_some: [String]
+  impact_exists: Boolean
+  role: String
+  role_contains: String
+  role_exists: Boolean
+  role_in: [String]
+  role_not: String
+  role_not_contains: String
+  role_not_in: [String]
+  sys: SysFilter
+}
+
+type TldrSummaryLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum TldrSummaryOrder {
+  goal_ASC
+  goal_DESC
+  role_ASC
+  role_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 """
@@ -1089,6 +1766,59 @@ enum UrlLinkOrder {
 
 interface _Node {
   _id: ID!
+}
+
+input cfComponentCaptionedImageNestedFilter {
+  AND: [cfComponentCaptionedImageNestedFilter]
+  OR: [cfComponentCaptionedImageNestedFilter]
+  caption_contains: String
+  caption_exists: Boolean
+  caption_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  image_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+input cfComponentMetricNestedFilter {
+  AND: [cfComponentMetricNestedFilter]
+  OR: [cfComponentMetricNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  label: String
+  label_contains: String
+  label_exists: Boolean
+  label_in: [String]
+  label_not: String
+  label_not_contains: String
+  label_not_in: [String]
+  sys: SysFilter
+  value: String
+  value_contains: String
+  value_exists: Boolean
+  value_in: [String]
+  value_not: String
+  value_not_contains: String
+  value_not_in: [String]
 }
 
 input cfComponentSeoNestedFilter {

@@ -5,3 +5,8 @@ export * from './ArticleImage';
 export * from './ArticleLabel';
 export * from './ArticleTile';
 export * from './ArticleTileGrid';
+export * from './ArticleTextImageSideBySide';
+export * from './ArticleImageGallery';
+export * from './ArticleImageGalleryWithCaptions';
+export * from './ArticleFullWidthImage';
+export * from './ArticleImpactMetrics';

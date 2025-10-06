@@ -24,7 +24,7 @@ export const ArticleHero = ({
   const { title, shortDescription, publishedDate } = article;
 
   return (
-    <div className={twMerge(`flex max-w-4xl flex-col overflow-hidden`)}>
+    <div className={twMerge(`flex max-w-6xl flex-col overflow-hidden`)}>
       {/* <div className="flex-1 basis-1/2" {...inspectorProps({ fieldId: 'featuredImage' })}>
         {article.featuredImage && (
           <CtfImage
@@ -34,7 +34,7 @@ export const ArticleHero = ({
         )}
       </div> */}
 
-      <div className="relative flex max-w-3xl flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
+      <div className="relative flex max-w-6xl flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
         <div className="mb-2 flex flex-wrap items-center">
           {/* <ArticleAuthor article={article} /> */}
           {/* {isFeatured && (
@@ -54,9 +54,26 @@ export const ArticleHero = ({
             )}
             {...inspectorProps({ fieldId: 'publishedDate' })}
           >
-            <FormatDate date={publishedDate} />
+            {/* <FormatDate date={publishedDate} /> */}
           </div>
         </div>
+
+        {/* Tags Pills */}
+        {article.contentfulMetadata?.tags && article.contentfulMetadata.tags.length > 0 && (
+          <div className="mb-4 flex flex-wrap gap-2">
+            {article.contentfulMetadata.tags.map(
+              (tag: any) =>
+                tag?.name && (
+                  <span
+                    key={tag.id}
+                    className="rounded-full border border-gray-600 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
+                  >
+                    {tag.name}
+                  </span>
+                ),
+            )}
+          </div>
+        )}
         <h1
           className={twMerge(
             'mb-6 font-serif text-5xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl',
@@ -65,6 +82,7 @@ export const ArticleHero = ({
         >
           {title}
         </h1>
+
         {shortDescription && (
           <p
             className="text-xl italic text-zinc-500 dark:text-zinc-400 md:text-2xl"

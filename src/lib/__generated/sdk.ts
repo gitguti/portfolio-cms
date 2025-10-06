@@ -171,8 +171,12 @@ export type AssetFilter = {
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
   componentAuthorCollection?: Maybe<ComponentAuthorCollection>;
+  componentCaptionedImageCollection?: Maybe<ComponentCaptionedImageCollection>;
+  componentFullWidthImageCollection?: Maybe<ComponentFullWidthImageCollection>;
+  componentImageGalleryCollection?: Maybe<ComponentImageGalleryCollection>;
   componentRichImageCollection?: Maybe<ComponentRichImageCollection>;
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
+  componentTextImageSideBySideCollection?: Maybe<ComponentTextImageSideBySideCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   urlLinkCollection?: Maybe<UrlLinkCollection>;
@@ -180,6 +184,30 @@ export type AssetLinkingCollections = {
 
 
 export type AssetLinkingCollectionsComponentAuthorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsComponentCaptionedImageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsComponentFullWidthImageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsComponentImageGalleryCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -196,6 +224,14 @@ export type AssetLinkingCollectionsComponentRichImageCollectionArgs = {
 
 
 export type AssetLinkingCollectionsComponentSeoCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type AssetLinkingCollectionsComponentTextImageSideBySideCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -334,6 +370,727 @@ export enum ComponentAuthorOrder {
   InternalNameDesc = 'internalName_DESC',
   NameAsc = 'name_ASC',
   NameDesc = 'name_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImage = Entry & _Node & {
+  __typename?: 'ComponentCaptionedImage';
+  _id: Scalars['ID'];
+  caption?: Maybe<ComponentCaptionedImageCaption>;
+  contentfulMetadata: ContentfulMetadata;
+  image?: Maybe<Asset>;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentCaptionedImageLinkingCollections>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']>;
+};
+
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImageCaptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImageImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImageInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImageLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** Component - Captioned Image   API Identifier: componentCaptionedImage    Fields:   1. Internal Name (Short text, required)   2. title (Short text, optional)      - Help text: "Optional heading for the image"   3. caption (Long text, required)      - Help text: "Description shown below the image"   4. image (Media, required)      - Validation: Accept only images [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentCaptionedImage) */
+export type ComponentCaptionedImageTitleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentCaptionedImageCaption = {
+  __typename?: 'ComponentCaptionedImageCaption';
+  json: Scalars['JSON'];
+  links: ComponentCaptionedImageCaptionLinks;
+};
+
+export type ComponentCaptionedImageCaptionAssets = {
+  __typename?: 'ComponentCaptionedImageCaptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type ComponentCaptionedImageCaptionEntries = {
+  __typename?: 'ComponentCaptionedImageCaptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type ComponentCaptionedImageCaptionLinks = {
+  __typename?: 'ComponentCaptionedImageCaptionLinks';
+  assets: ComponentCaptionedImageCaptionAssets;
+  entries: ComponentCaptionedImageCaptionEntries;
+  resources: ComponentCaptionedImageCaptionResources;
+};
+
+export type ComponentCaptionedImageCaptionResources = {
+  __typename?: 'ComponentCaptionedImageCaptionResources';
+  block: Array<ComponentCaptionedImageCaptionResourcesBlock>;
+  hyperlink: Array<ComponentCaptionedImageCaptionResourcesHyperlink>;
+  inline: Array<ComponentCaptionedImageCaptionResourcesInline>;
+};
+
+export type ComponentCaptionedImageCaptionResourcesBlock = ResourceLink & {
+  __typename?: 'ComponentCaptionedImageCaptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type ComponentCaptionedImageCaptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'ComponentCaptionedImageCaptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type ComponentCaptionedImageCaptionResourcesInline = ResourceLink & {
+  __typename?: 'ComponentCaptionedImageCaptionResourcesInline';
+  sys: ResourceSys;
+};
+
+export type ComponentCaptionedImageCollection = {
+  __typename?: 'ComponentCaptionedImageCollection';
+  items: Array<Maybe<ComponentCaptionedImage>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentCaptionedImageFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentCaptionedImageFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentCaptionedImageFilter>>>;
+  caption_contains?: InputMaybe<Scalars['String']>;
+  caption_exists?: InputMaybe<Scalars['Boolean']>;
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  image_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentCaptionedImageLinkingCollections = {
+  __typename?: 'ComponentCaptionedImageLinkingCollections';
+  componentImageGalleryWithCaptionsCollection?: Maybe<ComponentImageGalleryWithCaptionsCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentCaptionedImageLinkingCollectionsComponentImageGalleryWithCaptionsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentCaptionedImageLinkingCollectionsComponentImageGalleryWithCaptionsCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentCaptionedImageLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentCaptionedImageLinkingCollectionsComponentImageGalleryWithCaptionsCollectionOrder {
+  ColumnsAsc = 'columns_ASC',
+  ColumnsDesc = 'columns_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentCaptionedImageOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+/** ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
+export type ComponentFullWidthImage = Entry & _Node & {
+  __typename?: 'ComponentFullWidthImage';
+  _id: Scalars['ID'];
+  caption?: Maybe<Scalars['String']>;
+  contentfulMetadata: ContentfulMetadata;
+  image?: Maybe<Asset>;
+  linkedFrom?: Maybe<ComponentFullWidthImageLinkingCollections>;
+  maxWidth?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
+export type ComponentFullWidthImageCaptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
+export type ComponentFullWidthImageImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
+export type ComponentFullWidthImageLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** ComponentFullWidthImage     - image: Media     - caption: Long text     - maxWidth: Short text (default/narrow/wide) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
+export type ComponentFullWidthImageMaxWidthArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentFullWidthImageCollection = {
+  __typename?: 'ComponentFullWidthImageCollection';
+  items: Array<Maybe<ComponentFullWidthImage>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentFullWidthImageFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentFullWidthImageFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentFullWidthImageFilter>>>;
+  caption?: InputMaybe<Scalars['String']>;
+  caption_contains?: InputMaybe<Scalars['String']>;
+  caption_exists?: InputMaybe<Scalars['Boolean']>;
+  caption_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  caption_not?: InputMaybe<Scalars['String']>;
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  caption_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  image_exists?: InputMaybe<Scalars['Boolean']>;
+  maxWidth?: InputMaybe<Scalars['String']>;
+  maxWidth_contains?: InputMaybe<Scalars['String']>;
+  maxWidth_exists?: InputMaybe<Scalars['Boolean']>;
+  maxWidth_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  maxWidth_not?: InputMaybe<Scalars['String']>;
+  maxWidth_not_contains?: InputMaybe<Scalars['String']>;
+  maxWidth_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentFullWidthImageLinkingCollections = {
+  __typename?: 'ComponentFullWidthImageLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentFullWidthImageLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentFullWidthImageOrder {
+  MaxWidthAsc = 'maxWidth_ASC',
+  MaxWidthDesc = 'maxWidth_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery) */
+export type ComponentImageGallery = Entry & _Node & {
+  __typename?: 'ComponentImageGallery';
+  _id: Scalars['ID'];
+  caption?: Maybe<Scalars['String']>;
+  columns?: Maybe<Scalars['Int']>;
+  contentfulMetadata: ContentfulMetadata;
+  imagesCollection?: Maybe<AssetCollection>;
+  linkedFrom?: Maybe<ComponentImageGalleryLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery) */
+export type ComponentImageGalleryCaptionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery) */
+export type ComponentImageGalleryColumnsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery) */
+export type ComponentImageGalleryImagesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** ComponentImageGallery     - images: Media (multiple)     - columns: Integer (2 o 3)     - caption: Long text [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGallery) */
+export type ComponentImageGalleryLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentImageGalleryCollection = {
+  __typename?: 'ComponentImageGalleryCollection';
+  items: Array<Maybe<ComponentImageGallery>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentImageGalleryFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentImageGalleryFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentImageGalleryFilter>>>;
+  caption?: InputMaybe<Scalars['String']>;
+  caption_contains?: InputMaybe<Scalars['String']>;
+  caption_exists?: InputMaybe<Scalars['Boolean']>;
+  caption_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  caption_not?: InputMaybe<Scalars['String']>;
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  caption_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  columns?: InputMaybe<Scalars['Int']>;
+  columns_exists?: InputMaybe<Scalars['Boolean']>;
+  columns_gt?: InputMaybe<Scalars['Int']>;
+  columns_gte?: InputMaybe<Scalars['Int']>;
+  columns_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  columns_lt?: InputMaybe<Scalars['Int']>;
+  columns_lte?: InputMaybe<Scalars['Int']>;
+  columns_not?: InputMaybe<Scalars['Int']>;
+  columns_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  imagesCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentImageGalleryLinkingCollections = {
+  __typename?: 'ComponentImageGalleryLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentImageGalleryLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentImageGalleryOrder {
+  CaptionAsc = 'caption_ASC',
+  CaptionDesc = 'caption_DESC',
+  ColumnsAsc = 'columns_ASC',
+  ColumnsDesc = 'columns_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions) */
+export type ComponentImageGalleryWithCaptions = Entry & _Node & {
+  __typename?: 'ComponentImageGalleryWithCaptions';
+  _id: Scalars['ID'];
+  columns?: Maybe<Scalars['Int']>;
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']>;
+  itemsCollection?: Maybe<ComponentImageGalleryWithCaptionsItemsCollection>;
+  linkedFrom?: Maybe<ComponentImageGalleryWithCaptionsLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions) */
+export type ComponentImageGalleryWithCaptionsColumnsArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions) */
+export type ComponentImageGalleryWithCaptionsInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions) */
+export type ComponentImageGalleryWithCaptionsItemsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentImageGalleryWithCaptionsItemsCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentCaptionedImageFilter>;
+};
+
+
+/** Component - Image Gallery With Captions   API Identifier: componentImageGalleryWithCaptions    Fields:   1. Internal Name (Short text, required)   2. columns (Integer, required)      - Default: 3      - Validation: Accept only 2 or 3   3. items (References, multiple, required)      - Validation: Accept only "Component - Captioned Image"      - Settings: Allow multiple values [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImageGalleryWithCaptions) */
+export type ComponentImageGalleryWithCaptionsLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentImageGalleryWithCaptionsCollection = {
+  __typename?: 'ComponentImageGalleryWithCaptionsCollection';
+  items: Array<Maybe<ComponentImageGalleryWithCaptions>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentImageGalleryWithCaptionsFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentImageGalleryWithCaptionsFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentImageGalleryWithCaptionsFilter>>>;
+  columns?: InputMaybe<Scalars['Int']>;
+  columns_exists?: InputMaybe<Scalars['Boolean']>;
+  columns_gt?: InputMaybe<Scalars['Int']>;
+  columns_gte?: InputMaybe<Scalars['Int']>;
+  columns_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  columns_lt?: InputMaybe<Scalars['Int']>;
+  columns_lte?: InputMaybe<Scalars['Int']>;
+  columns_not?: InputMaybe<Scalars['Int']>;
+  columns_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  items?: InputMaybe<CfComponentCaptionedImageNestedFilter>;
+  itemsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentImageGalleryWithCaptionsItemsCollection = {
+  __typename?: 'ComponentImageGalleryWithCaptionsItemsCollection';
+  items: Array<Maybe<ComponentCaptionedImage>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export enum ComponentImageGalleryWithCaptionsItemsCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type ComponentImageGalleryWithCaptionsLinkingCollections = {
+  __typename?: 'ComponentImageGalleryWithCaptionsLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentImageGalleryWithCaptionsLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentImageGalleryWithCaptionsOrder {
+  ColumnsAsc = 'columns_ASC',
+  ColumnsDesc = 'columns_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** ComponentImpactMetrics    (contenedor de métricas)    Name: Component - Impact Metrics   API Identifier: componentImpactMetrics    Fields:   1. Internal Name (Short text, required)   2. metrics (References, multiple, required)      - Validation: Accept only "Component -   Metric"      - Settings: Allow multiple values (min:   2, max: 8) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
+export type ComponentImpactMetrics = Entry & _Node & {
+  __typename?: 'ComponentImpactMetrics';
+  _id: Scalars['ID'];
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentImpactMetricsLinkingCollections>;
+  metricsCollection?: Maybe<ComponentImpactMetricsMetricsCollection>;
+  sys: Sys;
+};
+
+
+/** ComponentImpactMetrics    (contenedor de métricas)    Name: Component - Impact Metrics   API Identifier: componentImpactMetrics    Fields:   1. Internal Name (Short text, required)   2. metrics (References, multiple, required)      - Validation: Accept only "Component -   Metric"      - Settings: Allow multiple values (min:   2, max: 8) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
+export type ComponentImpactMetricsInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentImpactMetrics    (contenedor de métricas)    Name: Component - Impact Metrics   API Identifier: componentImpactMetrics    Fields:   1. Internal Name (Short text, required)   2. metrics (References, multiple, required)      - Validation: Accept only "Component -   Metric"      - Settings: Allow multiple values (min:   2, max: 8) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
+export type ComponentImpactMetricsLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** ComponentImpactMetrics    (contenedor de métricas)    Name: Component - Impact Metrics   API Identifier: componentImpactMetrics    Fields:   1. Internal Name (Short text, required)   2. metrics (References, multiple, required)      - Validation: Accept only "Component -   Metric"      - Settings: Allow multiple values (min:   2, max: 8) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
+export type ComponentImpactMetricsMetricsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentImpactMetricsMetricsCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentMetricFilter>;
+};
+
+export type ComponentImpactMetricsCollection = {
+  __typename?: 'ComponentImpactMetricsCollection';
+  items: Array<Maybe<ComponentImpactMetrics>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentImpactMetricsFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentImpactMetricsFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentImpactMetricsFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  metrics?: InputMaybe<CfComponentMetricNestedFilter>;
+  metricsCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ComponentImpactMetricsLinkingCollections = {
+  __typename?: 'ComponentImpactMetricsLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentImpactMetricsLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type ComponentImpactMetricsMetricsCollection = {
+  __typename?: 'ComponentImpactMetricsMetricsCollection';
+  items: Array<Maybe<ComponentMetric>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export enum ComponentImpactMetricsMetricsCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentImpactMetricsOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric) */
+export type ComponentMetric = Entry & _Node & {
+  __typename?: 'ComponentMetric';
+  _id: Scalars['ID'];
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']>;
+  label?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentMetricLinkingCollections>;
+  sys: Sys;
+  value?: Maybe<Scalars['String']>;
+};
+
+
+/** ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric) */
+export type ComponentMetricInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric) */
+export type ComponentMetricLabelArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric) */
+export type ComponentMetricLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** ComponentMetric (métrica    individual)    Name: Component - Metric   API Identifier: componentMetric    Fields:   1. Internal Name (Short text, required)   2. value (Short text, required)      - Help text: "The metric value (e.g.,   '200+', '2w → h', '0')"      - Validation: Max 20 characters   3. label (Short text, required)      - Help text: "Description of the metric   (e.g., 'Active users month 1')"      - Validation: Max 100 characters [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentMetric) */
+export type ComponentMetricValueArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentMetricCollection = {
+  __typename?: 'ComponentMetricCollection';
+  items: Array<Maybe<ComponentMetric>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentMetricFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentMetricFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentMetricFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  label?: InputMaybe<Scalars['String']>;
+  label_contains?: InputMaybe<Scalars['String']>;
+  label_exists?: InputMaybe<Scalars['Boolean']>;
+  label_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  label_not?: InputMaybe<Scalars['String']>;
+  label_not_contains?: InputMaybe<Scalars['String']>;
+  label_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  value?: InputMaybe<Scalars['String']>;
+  value_contains?: InputMaybe<Scalars['String']>;
+  value_exists?: InputMaybe<Scalars['Boolean']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  value_not?: InputMaybe<Scalars['String']>;
+  value_not_contains?: InputMaybe<Scalars['String']>;
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type ComponentMetricLinkingCollections = {
+  __typename?: 'ComponentMetricLinkingCollections';
+  componentImpactMetricsCollection?: Maybe<ComponentImpactMetricsCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type ComponentMetricLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentMetricOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -653,6 +1410,159 @@ export enum ComponentSeoOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySide = Entry & _Node & {
+  __typename?: 'ComponentTextImageSideBySide';
+  _id: Scalars['ID'];
+  contentfulMetadata: ContentfulMetadata;
+  image?: Maybe<Asset>;
+  imagePosition?: Maybe<Scalars['String']>;
+  imageSize?: Maybe<Scalars['String']>;
+  linkedFrom?: Maybe<ComponentTextImageSideBySideLinkingCollections>;
+  sys: Sys;
+  text?: Maybe<ComponentTextImageSideBySideText>;
+};
+
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideImageArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideImagePositionArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideImageSizeArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** ComponentTextImageSideBySide     - text: Rich Text     - image: Media     - imagePosition: Short text (left/right)     - imageSize: Short text (small/medium/large) [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideTextArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentTextImageSideBySideCollection = {
+  __typename?: 'ComponentTextImageSideBySideCollection';
+  items: Array<Maybe<ComponentTextImageSideBySide>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type ComponentTextImageSideBySideFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentTextImageSideBySideFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentTextImageSideBySideFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  imagePosition?: InputMaybe<Scalars['String']>;
+  imagePosition_contains?: InputMaybe<Scalars['String']>;
+  imagePosition_exists?: InputMaybe<Scalars['Boolean']>;
+  imagePosition_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  imagePosition_not?: InputMaybe<Scalars['String']>;
+  imagePosition_not_contains?: InputMaybe<Scalars['String']>;
+  imagePosition_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  imageSize?: InputMaybe<Scalars['String']>;
+  imageSize_contains?: InputMaybe<Scalars['String']>;
+  imageSize_exists?: InputMaybe<Scalars['Boolean']>;
+  imageSize_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  imageSize_not?: InputMaybe<Scalars['String']>;
+  imageSize_not_contains?: InputMaybe<Scalars['String']>;
+  imageSize_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  image_exists?: InputMaybe<Scalars['Boolean']>;
+  sys?: InputMaybe<SysFilter>;
+  text_contains?: InputMaybe<Scalars['String']>;
+  text_exists?: InputMaybe<Scalars['Boolean']>;
+  text_not_contains?: InputMaybe<Scalars['String']>;
+};
+
+export type ComponentTextImageSideBySideLinkingCollections = {
+  __typename?: 'ComponentTextImageSideBySideLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ComponentTextImageSideBySideLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum ComponentTextImageSideBySideOrder {
+  ImagePositionAsc = 'imagePosition_ASC',
+  ImagePositionDesc = 'imagePosition_DESC',
+  ImageSizeAsc = 'imageSize_ASC',
+  ImageSizeDesc = 'imageSize_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type ComponentTextImageSideBySideText = {
+  __typename?: 'ComponentTextImageSideBySideText';
+  json: Scalars['JSON'];
+  links: ComponentTextImageSideBySideTextLinks;
+};
+
+export type ComponentTextImageSideBySideTextAssets = {
+  __typename?: 'ComponentTextImageSideBySideTextAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type ComponentTextImageSideBySideTextEntries = {
+  __typename?: 'ComponentTextImageSideBySideTextEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type ComponentTextImageSideBySideTextLinks = {
+  __typename?: 'ComponentTextImageSideBySideTextLinks';
+  assets: ComponentTextImageSideBySideTextAssets;
+  entries: ComponentTextImageSideBySideTextEntries;
+  resources: ComponentTextImageSideBySideTextResources;
+};
+
+export type ComponentTextImageSideBySideTextResources = {
+  __typename?: 'ComponentTextImageSideBySideTextResources';
+  block: Array<ComponentTextImageSideBySideTextResourcesBlock>;
+  hyperlink: Array<ComponentTextImageSideBySideTextResourcesHyperlink>;
+  inline: Array<ComponentTextImageSideBySideTextResourcesInline>;
+};
+
+export type ComponentTextImageSideBySideTextResourcesBlock = ResourceLink & {
+  __typename?: 'ComponentTextImageSideBySideTextResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type ComponentTextImageSideBySideTextResourcesHyperlink = ResourceLink & {
+  __typename?: 'ComponentTextImageSideBySideTextResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type ComponentTextImageSideBySideTextResourcesInline = ResourceLink & {
+  __typename?: 'ComponentTextImageSideBySideTextResourcesInline';
+  sys: ResourceSys;
+};
 
 export type ContentfulMetadata = {
   __typename?: 'ContentfulMetadata';
@@ -1314,10 +2224,24 @@ export type Query = {
   assetCollection?: Maybe<AssetCollection>;
   componentAuthor?: Maybe<ComponentAuthor>;
   componentAuthorCollection?: Maybe<ComponentAuthorCollection>;
+  componentCaptionedImage?: Maybe<ComponentCaptionedImage>;
+  componentCaptionedImageCollection?: Maybe<ComponentCaptionedImageCollection>;
+  componentFullWidthImage?: Maybe<ComponentFullWidthImage>;
+  componentFullWidthImageCollection?: Maybe<ComponentFullWidthImageCollection>;
+  componentImageGallery?: Maybe<ComponentImageGallery>;
+  componentImageGalleryCollection?: Maybe<ComponentImageGalleryCollection>;
+  componentImageGalleryWithCaptions?: Maybe<ComponentImageGalleryWithCaptions>;
+  componentImageGalleryWithCaptionsCollection?: Maybe<ComponentImageGalleryWithCaptionsCollection>;
+  componentImpactMetrics?: Maybe<ComponentImpactMetrics>;
+  componentImpactMetricsCollection?: Maybe<ComponentImpactMetricsCollection>;
+  componentMetric?: Maybe<ComponentMetric>;
+  componentMetricCollection?: Maybe<ComponentMetricCollection>;
   componentRichImage?: Maybe<ComponentRichImage>;
   componentRichImageCollection?: Maybe<ComponentRichImageCollection>;
   componentSeo?: Maybe<ComponentSeo>;
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
+  componentTextImageSideBySide?: Maybe<ComponentTextImageSideBySide>;
+  componentTextImageSideBySideCollection?: Maybe<ComponentTextImageSideBySideCollection>;
   entryCollection?: Maybe<EntryCollection>;
   pageBlogPost?: Maybe<PageBlogPost>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
@@ -1325,6 +2249,8 @@ export type Query = {
   pageLandingCollection?: Maybe<PageLandingCollection>;
   projectDetails?: Maybe<ProjectDetails>;
   projectDetailsCollection?: Maybe<ProjectDetailsCollection>;
+  tldrSummary?: Maybe<TldrSummary>;
+  tldrSummaryCollection?: Maybe<TldrSummaryCollection>;
   urlLink?: Maybe<UrlLink>;
   urlLinkCollection?: Maybe<UrlLinkCollection>;
 };
@@ -1378,6 +2304,108 @@ export type QueryComponentAuthorCollectionArgs = {
 };
 
 
+export type QueryComponentCaptionedImageArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentCaptionedImageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentCaptionedImageOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentCaptionedImageFilter>;
+};
+
+
+export type QueryComponentFullWidthImageArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentFullWidthImageCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentFullWidthImageOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentFullWidthImageFilter>;
+};
+
+
+export type QueryComponentImageGalleryArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentImageGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentImageGalleryOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentImageGalleryFilter>;
+};
+
+
+export type QueryComponentImageGalleryWithCaptionsArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentImageGalleryWithCaptionsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentImageGalleryWithCaptionsOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentImageGalleryWithCaptionsFilter>;
+};
+
+
+export type QueryComponentImpactMetricsArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentImpactMetricsCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentImpactMetricsOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentImpactMetricsFilter>;
+};
+
+
+export type QueryComponentMetricArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentMetricCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentMetricOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentMetricFilter>;
+};
+
+
 export type QueryComponentRichImageArgs = {
   id: Scalars['String'];
   locale?: InputMaybe<Scalars['String']>;
@@ -1409,6 +2437,23 @@ export type QueryComponentSeoCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ComponentSeoFilter>;
+};
+
+
+export type QueryComponentTextImageSideBySideArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryComponentTextImageSideBySideCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentTextImageSideBySideOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ComponentTextImageSideBySideFilter>;
 };
 
 
@@ -1470,6 +2515,23 @@ export type QueryProjectDetailsCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']>;
   skip?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<ProjectDetailsFilter>;
+};
+
+
+export type QueryTldrSummaryArgs = {
+  id: Scalars['String'];
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+};
+
+
+export type QueryTldrSummaryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  order?: InputMaybe<Array<InputMaybe<TldrSummaryOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TldrSummaryFilter>;
 };
 
 
@@ -1556,6 +2618,117 @@ export type TaxonomyConcept = {
   __typename?: 'TaxonomyConcept';
   id?: Maybe<Scalars['String']>;
 };
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummary = Entry & _Node & {
+  __typename?: 'TldrSummary';
+  _id: Scalars['ID'];
+  contentfulMetadata: ContentfulMetadata;
+  context?: Maybe<Scalars['String']>;
+  goal?: Maybe<Scalars['String']>;
+  impact?: Maybe<Array<Maybe<Scalars['String']>>>;
+  linkedFrom?: Maybe<TldrSummaryLinkingCollections>;
+  role?: Maybe<Scalars['String']>;
+  sys: Sys;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummaryContextArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummaryGoalArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummaryImpactArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummaryLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/tldrSummary) */
+export type TldrSummaryRoleArgs = {
+  locale?: InputMaybe<Scalars['String']>;
+};
+
+export type TldrSummaryCollection = {
+  __typename?: 'TldrSummaryCollection';
+  items: Array<Maybe<TldrSummary>>;
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+  total: Scalars['Int'];
+};
+
+export type TldrSummaryFilter = {
+  AND?: InputMaybe<Array<InputMaybe<TldrSummaryFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<TldrSummaryFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  context?: InputMaybe<Scalars['String']>;
+  context_contains?: InputMaybe<Scalars['String']>;
+  context_exists?: InputMaybe<Scalars['Boolean']>;
+  context_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  context_not?: InputMaybe<Scalars['String']>;
+  context_not_contains?: InputMaybe<Scalars['String']>;
+  context_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  goal?: InputMaybe<Scalars['String']>;
+  goal_contains?: InputMaybe<Scalars['String']>;
+  goal_exists?: InputMaybe<Scalars['Boolean']>;
+  goal_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  goal_not?: InputMaybe<Scalars['String']>;
+  goal_not_contains?: InputMaybe<Scalars['String']>;
+  goal_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  impact_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  impact_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  impact_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  impact_exists?: InputMaybe<Scalars['Boolean']>;
+  role?: InputMaybe<Scalars['String']>;
+  role_contains?: InputMaybe<Scalars['String']>;
+  role_exists?: InputMaybe<Scalars['Boolean']>;
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  role_not?: InputMaybe<Scalars['String']>;
+  role_not_contains?: InputMaybe<Scalars['String']>;
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type TldrSummaryLinkingCollections = {
+  __typename?: 'TldrSummaryLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type TldrSummaryLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export enum TldrSummaryOrder {
+  GoalAsc = 'goal_ASC',
+  GoalDesc = 'goal_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
 
 /** To link to another website demo [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/url-link) */
 export type UrlLink = Entry & _Node & {
@@ -1688,6 +2861,59 @@ export type _Node = {
   _id: Scalars['ID'];
 };
 
+export type CfComponentCaptionedImageNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentCaptionedImageNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentCaptionedImageNestedFilter>>>;
+  caption_contains?: InputMaybe<Scalars['String']>;
+  caption_exists?: InputMaybe<Scalars['Boolean']>;
+  caption_not_contains?: InputMaybe<Scalars['String']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  image_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']>;
+  title_contains?: InputMaybe<Scalars['String']>;
+  title_exists?: InputMaybe<Scalars['Boolean']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  title_not?: InputMaybe<Scalars['String']>;
+  title_not_contains?: InputMaybe<Scalars['String']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
+export type CfComponentMetricNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentMetricNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentMetricNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']>;
+  internalName_contains?: InputMaybe<Scalars['String']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  internalName_not?: InputMaybe<Scalars['String']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  label?: InputMaybe<Scalars['String']>;
+  label_contains?: InputMaybe<Scalars['String']>;
+  label_exists?: InputMaybe<Scalars['Boolean']>;
+  label_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  label_not?: InputMaybe<Scalars['String']>;
+  label_not_contains?: InputMaybe<Scalars['String']>;
+  label_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  sys?: InputMaybe<SysFilter>;
+  value?: InputMaybe<Scalars['String']>;
+  value_contains?: InputMaybe<Scalars['String']>;
+  value_exists?: InputMaybe<Scalars['Boolean']>;
+  value_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  value_not?: InputMaybe<Scalars['String']>;
+  value_not_contains?: InputMaybe<Scalars['String']>;
+  value_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+};
+
 export type CfComponentSeoNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfComponentSeoNestedFilter>>>;
@@ -1791,10 +3017,30 @@ export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, 
 export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?: (
     { __typename?: 'ComponentAuthor' }
     & AuthorFieldsFragment
-  ) | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'UrlLink' } | null, featuredImage?: (
+  ) | { __typename?: 'ComponentCaptionedImage' } | { __typename?: 'ComponentFullWidthImage' } | { __typename?: 'ComponentImageGallery' } | { __typename?: 'ComponentImageGalleryWithCaptions' } | { __typename?: 'ComponentImpactMetrics' } | { __typename?: 'ComponentMetric' } | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | { __typename?: 'ComponentTextImageSideBySide' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'TldrSummary' } | { __typename?: 'UrlLink' } | null, featuredImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null };
+
+export type ComponentTextImageSideBySideFragment = { __typename: 'ComponentTextImageSideBySide', imagePosition?: string | null, sys: { __typename?: 'Sys', id: string }, text?: { __typename?: 'ComponentTextImageSideBySideText', json: any } | null, image?: { __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null };
+
+export type ComponentImageGalleryFragment = { __typename: 'ComponentImageGallery', columns?: number | null, caption?: string | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null> } | null };
+
+export type ComponentFullWidthImageFragment = { __typename: 'ComponentFullWidthImage', caption?: string | null, maxWidth?: string | null, sys: { __typename?: 'Sys', id: string }, image?: { __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null };
+
+export type ComponentCaptionedImageFragment = { __typename: 'ComponentCaptionedImage', title?: string | null, sys: { __typename?: 'Sys', id: string }, caption?: { __typename?: 'ComponentCaptionedImageCaption', json: any } | null, image?: { __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null };
+
+export type ComponentImageGalleryWithCaptionsFragment = { __typename: 'ComponentImageGalleryWithCaptions', columns?: number | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'ComponentImageGalleryWithCaptionsItemsCollection', items: Array<(
+      { __typename?: 'ComponentCaptionedImage' }
+      & ComponentCaptionedImageFragment
+    ) | null> } | null };
+
+export type ComponentMetricFragment = { __typename: 'ComponentMetric', value?: string | null, label?: string | null, sys: { __typename?: 'Sys', id: string } };
+
+export type ComponentImpactMetricsFragment = { __typename: 'ComponentImpactMetrics', sys: { __typename?: 'Sys', id: string }, metricsCollection?: { __typename?: 'ComponentImpactMetricsMetricsCollection', items: Array<(
+      { __typename?: 'ComponentMetric' }
+      & ComponentMetricFragment
+    ) | null> } | null };
 
 export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalName?: string | null, slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
@@ -1802,13 +3048,28 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
   ) | null, author?: (
     { __typename?: 'ComponentAuthor' }
     & AuthorFieldsFragment
-  ) | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'UrlLink' } | null, featuredImage?: (
+  ) | { __typename?: 'ComponentCaptionedImage' } | { __typename?: 'ComponentFullWidthImage' } | { __typename?: 'ComponentImageGallery' } | { __typename?: 'ComponentImageGalleryWithCaptions' } | { __typename?: 'ComponentImpactMetrics' } | { __typename?: 'ComponentMetric' } | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | { __typename?: 'ComponentTextImageSideBySide' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'TldrSummary' } | { __typename?: 'UrlLink' } | null, featuredImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
-  ) | null, content?: { __typename?: 'PageBlogPostContent', json: any, links: { __typename?: 'PageBlogPostContentLinks', entries: { __typename?: 'PageBlogPostContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | (
+  ) | null, content?: { __typename?: 'PageBlogPostContent', json: any, links: { __typename?: 'PageBlogPostContentLinks', entries: { __typename?: 'PageBlogPostContentEntries', block: Array<{ __typename?: 'ComponentAuthor' } | { __typename?: 'ComponentCaptionedImage' } | (
+          { __typename?: 'ComponentFullWidthImage' }
+          & ComponentFullWidthImageFragment
+        ) | (
+          { __typename?: 'ComponentImageGallery' }
+          & ComponentImageGalleryFragment
+        ) | (
+          { __typename?: 'ComponentImageGalleryWithCaptions' }
+          & ComponentImageGalleryWithCaptionsFragment
+        ) | (
+          { __typename?: 'ComponentImpactMetrics' }
+          & ComponentImpactMetricsFragment
+        ) | { __typename?: 'ComponentMetric' } | (
           { __typename?: 'ComponentRichImage' }
           & RichImageFieldsFragment
-        ) | { __typename?: 'ComponentSeo' } | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'UrlLink' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
+        ) | { __typename?: 'ComponentSeo' } | (
+          { __typename?: 'ComponentTextImageSideBySide' }
+          & ComponentTextImageSideBySideFragment
+        ) | { __typename?: 'PageBlogPost' } | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'TldrSummary' } | { __typename?: 'UrlLink' } | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
       { __typename?: 'PageBlogPost' }
       & ReferencePageBlogPostFieldsFragment
     ) | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } };
@@ -1842,10 +3103,10 @@ export type PageBlogPostCollectionQuery = { __typename?: 'Query', pageBlogPostCo
 export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
-  ) | null, featuredBlogPost?: { __typename?: 'ComponentAuthor' } | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | (
+  ) | null, featuredBlogPost?: { __typename?: 'ComponentAuthor' } | { __typename?: 'ComponentCaptionedImage' } | { __typename?: 'ComponentFullWidthImage' } | { __typename?: 'ComponentImageGallery' } | { __typename?: 'ComponentImageGalleryWithCaptions' } | { __typename?: 'ComponentImpactMetrics' } | { __typename?: 'ComponentMetric' } | { __typename?: 'ComponentRichImage' } | { __typename?: 'ComponentSeo' } | { __typename?: 'ComponentTextImageSideBySide' } | (
     { __typename?: 'PageBlogPost' }
     & ReferencePageBlogPostFieldsFragment
-  ) | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'UrlLink' } | null };
+  ) | { __typename?: 'PageLanding' } | { __typename?: 'ProjectDetails' } | { __typename?: 'TldrSummary' } | { __typename?: 'UrlLink' } | null };
 
 export type PageLandingQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']>;
@@ -1946,6 +3207,113 @@ export const RichImageFieldsFragmentDoc = gql`
   fullWidth
 }
     `;
+export const ComponentTextImageSideBySideFragmentDoc = gql`
+    fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide {
+  sys {
+    id
+  }
+  __typename
+  imagePosition
+  text {
+    json
+  }
+  image {
+    url
+    title
+    width
+    height
+  }
+}
+    `;
+export const ComponentImageGalleryFragmentDoc = gql`
+    fragment ComponentImageGallery on ComponentImageGallery {
+  sys {
+    id
+  }
+  __typename
+  columns
+  caption
+  imagesCollection(limit: 6) {
+    items {
+      url
+      title
+      width
+      height
+    }
+  }
+}
+    `;
+export const ComponentCaptionedImageFragmentDoc = gql`
+    fragment ComponentCaptionedImage on ComponentCaptionedImage {
+  sys {
+    id
+  }
+  __typename
+  title
+  caption {
+    json
+  }
+  image {
+    url
+    title
+    width
+    height
+  }
+}
+    `;
+export const ComponentImageGalleryWithCaptionsFragmentDoc = gql`
+    fragment ComponentImageGalleryWithCaptions on ComponentImageGalleryWithCaptions {
+  sys {
+    id
+  }
+  __typename
+  columns
+  itemsCollection(limit: 6) {
+    items {
+      ...ComponentCaptionedImage
+    }
+  }
+}
+    `;
+export const ComponentFullWidthImageFragmentDoc = gql`
+    fragment ComponentFullWidthImage on ComponentFullWidthImage {
+  sys {
+    id
+  }
+  __typename
+  caption
+  maxWidth
+  image {
+    url
+    title
+    width
+    height
+  }
+}
+    `;
+export const ComponentMetricFragmentDoc = gql`
+    fragment ComponentMetric on ComponentMetric {
+  sys {
+    id
+  }
+  __typename
+  value
+  label
+}
+    `;
+export const ComponentImpactMetricsFragmentDoc = gql`
+    fragment ComponentImpactMetrics on ComponentImpactMetrics {
+  sys {
+    id
+  }
+  __typename
+  metricsCollection(limit: 8) {
+    items {
+      ...ComponentMetric
+    }
+  }
+}
+    `;
 export const ReferencePageBlogPostFieldsFragmentDoc = gql`
     fragment ReferencePageBlogPostFields on PageBlogPost {
   __typename
@@ -1992,6 +3360,11 @@ export const PageBlogPostFieldsFragmentDoc = gql`
       entries {
         block {
           ...RichImageFields
+          ...ComponentTextImageSideBySide
+          ...ComponentImageGallery
+          ...ComponentImageGalleryWithCaptions
+          ...ComponentFullWidthImage
+          ...ComponentImpactMetrics
         }
       }
     }
@@ -2062,6 +3435,13 @@ ${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${AuthorFieldsFragmentDoc}
 ${RichImageFieldsFragmentDoc}
+${ComponentTextImageSideBySideFragmentDoc}
+${ComponentImageGalleryFragmentDoc}
+${ComponentImageGalleryWithCaptionsFragmentDoc}
+${ComponentCaptionedImageFragmentDoc}
+${ComponentFullWidthImageFragmentDoc}
+${ComponentImpactMetricsFragmentDoc}
+${ComponentMetricFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}`;
 export const PageBlogPostCollectionDocument = gql`
     query pageBlogPostCollection($locale: String, $preview: Boolean, $limit: Int, $order: [PageBlogPostOrder], $where: PageBlogPostFilter) {
@@ -2082,6 +3462,13 @@ ${SeoFieldsFragmentDoc}
 ${ImageFieldsFragmentDoc}
 ${AuthorFieldsFragmentDoc}
 ${RichImageFieldsFragmentDoc}
+${ComponentTextImageSideBySideFragmentDoc}
+${ComponentImageGalleryFragmentDoc}
+${ComponentImageGalleryWithCaptionsFragmentDoc}
+${ComponentCaptionedImageFragmentDoc}
+${ComponentFullWidthImageFragmentDoc}
+${ComponentImpactMetricsFragmentDoc}
+${ComponentMetricFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}`;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {

@@ -16,6 +16,91 @@ fragment ReferencePageBlogPostFields on PageBlogPost {
   }
 }
 
+fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide
+   {
+    sys { id }
+    __typename
+    imagePosition
+    text { json }
+    image {
+      url
+      title
+      width
+      height
+    }
+  }
+
+  fragment ComponentImageGallery on ComponentImageGallery {
+    sys { id }
+    __typename
+    columns
+    caption
+    imagesCollection(limit: 6) {
+      items {
+        url
+        title
+        width
+        height
+      }
+    }
+  }
+
+  fragment ComponentFullWidthImage on ComponentFullWidthImage {
+    sys { id }
+    __typename
+    caption
+    maxWidth
+    image {
+      url
+      title
+      width
+      height
+    }
+  }
+
+  fragment ComponentCaptionedImage on ComponentCaptionedImage {
+    sys { id }
+    __typename
+    title
+    caption {
+      json
+    }
+    image {
+      url
+      title
+      width
+      height
+    }
+  }
+
+  fragment ComponentImageGalleryWithCaptions on ComponentImageGalleryWithCaptions {
+    sys { id }
+    __typename
+    columns
+    itemsCollection(limit: 6) {
+      items {
+        ...ComponentCaptionedImage
+      }
+    }
+  }
+
+  fragment ComponentMetric on ComponentMetric {
+    sys { id }
+    __typename
+    value
+    label
+  }
+
+  fragment ComponentImpactMetrics on ComponentImpactMetrics {
+    sys { id }
+    __typename
+    metricsCollection(limit: 8) {
+      items {
+        ...ComponentMetric
+      }
+    }
+  }
+
 fragment PageBlogPostFields on PageBlogPost {
   __typename
   sys {
@@ -42,6 +127,11 @@ fragment PageBlogPostFields on PageBlogPost {
       entries {
         block {
           ...RichImageFields
+          ...ComponentTextImageSideBySide
+          ...ComponentImageGallery
+          ...ComponentImageGalleryWithCaptions
+          ...ComponentFullWidthImage
+          ...ComponentImpactMetrics
         }
       }
     }
