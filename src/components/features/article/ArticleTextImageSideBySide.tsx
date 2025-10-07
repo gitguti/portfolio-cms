@@ -21,12 +21,12 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
       {...inspectorProps({ fieldId: 'text' })}
     >
       {/* Texto */}
-      <div className={`order-2 md:order-none ${isImageLeft ? 'md:col-start-2' : ''}`}>
+      <div className={`order-1 md:order-none ${isImageLeft ? 'md:col-start-2' : ''}`}>
         <CtfRichText json={textImage.text.json} links={textImage.text.links} />
       </div>
 
       {/* Imagen */}
-      <div className={`order-1 md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
+      <div className={`order-2 md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
         <CtfImage
           nextImageProps={{
             className: 'rounded-lg w-full h-auto object-contain',
