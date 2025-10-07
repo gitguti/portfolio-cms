@@ -15,18 +15,18 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
 
   return (
     <div
-      className={`my-16 grid grid-cols-1 gap-8 md:grid-cols-2 md:items-start ${
+      className={`my-16 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-start md:gap-12 ${
         isImageLeft ? 'md:grid-flow-col-dense' : ''
       }`}
       {...inspectorProps({ fieldId: 'text' })}
     >
       {/* Texto */}
-      <div className={`${isImageLeft ? 'md:col-start-2' : ''}`}>
+      <div className={`order-2 md:order-none ${isImageLeft ? 'md:col-start-2' : ''}`}>
         <CtfRichText json={textImage.text.json} links={textImage.text.links} />
       </div>
 
       {/* Imagen */}
-      <div className={`${isImageLeft ? 'md:col-start-1' : ''}`}>
+      <div className={`order-1 md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
         <CtfImage
           nextImageProps={{
             className: 'rounded-lg w-full h-auto object-contain',

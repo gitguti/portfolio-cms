@@ -13,8 +13,8 @@ export const ArticleImageGalleryWithCaptions = ({
   const inspectorProps = useContentfulInspectorMode({ entryId: gallery.sys.id });
   const columns = gallery.columns || 3;
   const gridCols = {
-    2: 'md:grid-cols-2 h-64',
-    3: 'md:grid-cols-3 h-48',
+    2: 'md:grid-cols-2',
+    3: 'md:grid-cols-3',
   }[columns];
 
   const items = gallery.itemsCollection?.items?.filter(Boolean) || [];
