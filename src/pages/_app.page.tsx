@@ -1,6 +1,8 @@
 import { ContentfulLivePreviewProvider } from '@contentful/live-preview/react';
 // eslint-disable-next-line import/no-unresolved
 import { Analytics } from '@vercel/analytics/react';
+// eslint-disable-next-line import/no-unresolved
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import { Urbanist } from 'next/font/google';
@@ -35,6 +37,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         </>
       </ContentfulLivePreviewProvider>
       <Analytics />
+      <SpeedInsights />
     </>
   );
 };
