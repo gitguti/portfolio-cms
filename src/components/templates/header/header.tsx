@@ -10,15 +10,23 @@ export const Header = () => {
   const { t } = useTranslation();
 
   return (
-    <header className=" fixed top-0 z-10 w-full py-5 px-2 md:px-12">
+    <header className=" fixed top-0 z-50 w-full px-2 py-5 md:px-12">
       <nav>
         <Container className="flex items-center justify-between">
-          <Link href="/" title={t('common.homepage')}>
-            {/* <BlogLogo /> */}
-            <h4 className="text-xl font-light text-neutral-800 dark:text-zinc-50 md:text-sm">
-              git
-            </h4>
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/" title={t('common.homepage')}>
+              {/* <BlogLogo /> */}
+              <h4 className="text-xl font-light text-neutral-800 md:text-sm dark:text-zinc-50">
+                git
+              </h4>
+            </Link>
+            <Link
+              href="/blog"
+              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
+            >
+              Blog
+            </Link>
+          </div>
           {/* <LanguageSelector /> */}
 
           <div className="flex h-fit gap-4">
@@ -28,7 +36,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="GitHub"
             >
-              <div className="dark:bg-neutral-950 flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
                 <TbBrandGithubFilled className="h-4 w-4" color="white" />
               </div>
             </a>
@@ -38,7 +46,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
-              <div className="dark:bg-neutral-950 flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
                 <FaLinkedinIn className="h-4 w-4" fill="white" />
               </div>
             </a>
@@ -48,7 +56,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="Dribbble"
             >
-              <div className="dark:bg-neutral-950 flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
                 <FaTwitter className="h-4 w-4" fill="white" />
               </div>
             </a>
@@ -58,7 +66,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="Dribbble"
             >
-              <div className="dark:bg-neutral-950 flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
                 <TbBrandDribbbleFilled className="h-4 w-4 " color="white" />
               </div>
             </a>
@@ -68,7 +76,7 @@ export const Header = () => {
               rel="noopener noreferrer"
               aria-label="Email"
             >
-              <div className="dark:bg-neutral-950 flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in">
+              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
                 <MdEmail className="h-4 w-4" fill="white" />
               </div>
             </a>

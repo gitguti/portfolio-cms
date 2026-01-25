@@ -67,17 +67,19 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
           {/* Tags Pills */}
           {article.contentfulMetadata?.tags && article.contentfulMetadata.tags.length > 0 && (
             <div className="mt-3 flex flex-wrap gap-2">
-              {article.contentfulMetadata.tags.map(
-                (tag: any) =>
-                  tag?.name && (
-                    <span
-                      key={tag.id}
-                      className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
-                    >
-                      {tag.name}
-                    </span>
-                  ),
-              )}
+              {article.contentfulMetadata.tags
+                .filter((tag: any) => tag?.id !== 'caseStudy' && tag?.id !== 'blogArticle')
+                .map(
+                  (tag: any) =>
+                    tag?.name && (
+                      <span
+                        key={tag.id}
+                        className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
+                      >
+                        {tag.name}
+                      </span>
+                    ),
+                )}
             </div>
           )}
         </div>

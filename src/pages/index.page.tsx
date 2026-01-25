@@ -276,7 +276,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                 </p>
                 <h1
                   ref={questionTextRef}
-                  className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-neutral-800 dark:text-zinc-100 lg:text-4xl"
+                  className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-neutral-800 lg:text-4xl dark:text-zinc-100"
                 >
                   Designer and builder making complex workflows simple, automated, and usable.
                 </h1>
@@ -319,6 +319,11 @@ export const getStaticProps: GetStaticProps = async ({ locale, draftMode: previe
           page?.featuredBlogPost && 'slug' in page.featuredBlogPost
             ? (page.featuredBlogPost as { slug: string }).slug
             : undefined,
+        contentfulMetadata: {
+          tags: {
+            id_contains_none: ['blogArticle'],
+          },
+        },
       },
       preview,
     });
