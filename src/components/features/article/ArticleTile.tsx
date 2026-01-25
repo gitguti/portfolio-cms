@@ -32,7 +32,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
       <div
         ref={tileRef}
         className={twMerge(
-          'mx-auto flex w-11/12 flex-1 cursor-pointer flex-col overflow-hidden  transition-all',
+          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden  transition-all',
           className,
         )}
         onMouseEnter={handleMouseEnter}

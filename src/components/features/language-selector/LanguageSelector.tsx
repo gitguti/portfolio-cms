@@ -16,7 +16,7 @@ export const LanguageSelector = () => {
   return locales && locales.length > 1 ? (
     <>
       <div className="hidden md:block">
-        {/* <LanguageSelectorDesktop displayName={displayName} localeName={localeName} /> */}
+        <LanguageSelectorDesktop displayName={displayName} localeName={localeName} />
       </div>
 
       <div className="block md:hidden">

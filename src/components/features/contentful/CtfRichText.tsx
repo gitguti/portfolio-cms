@@ -1,6 +1,6 @@
 import React from 'react';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, Document } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, Document } from '@contentful/rich-text-types';
 
 import {
   ArticleImage,
@@ -70,22 +70,22 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
       return <EmbeddedEntry {...entry} />;
     },
     [BLOCKS.QUOTE]: (node, children) => (
-      <blockquote className="custom-blockquote relative py-8 font-serif text-2xl italic leading-relaxed text-zinc-800 dark:text-zinc-200 md:text-5xl ">
+      <blockquote className="custom-blockquote relative py-8 font-serif text-2xl italic leading-relaxed text-zinc-800 md:text-5xl dark:text-zinc-200 ">
         {children}
       </blockquote>
     ),
     [BLOCKS.HEADING_2]: (node, children) => (
-      <h2 className="mb-8 font-serif text-3xl font-medium text-zinc-800 dark:text-zinc-200">
+      <h2 className="mt-16 font-serif text-3xl font-medium text-zinc-800 dark:text-zinc-200">
         {children}
       </h2>
     ),
     [BLOCKS.HEADING_3]: (node, children) => (
-      <h3 className="mt-8 mb-4 font-serif text-2xl font-medium text-zinc-700 dark:text-zinc-300">
+      <h3 className="mb-4 mt-8 font-serif text-2xl font-medium text-zinc-700 dark:text-zinc-300">
         {children}
       </h3>
     ),
     [BLOCKS.PARAGRAPH]: (node, children) => (
-      <p className="mt-5 text-xl leading-8 text-zinc-700 dark:text-zinc-300">{children}</p>
+      <p className="mb-5 mt-2 text-xl leading-8 text-zinc-700 dark:text-zinc-300">{children}</p>
     ),
     [BLOCKS.TABLE]: (node, children) => {
       const rows = Array.isArray(children) ? children : [children];
@@ -130,6 +130,16 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
     [BLOCKS.LIST_ITEM]: (node, children) => <li className="ml-2">{children}</li>,
     [BLOCKS.HR]: () => (
       <hr className="my-12 border-0 border-t border-zinc-300 dark:border-zinc-700" />
+    ),
+    [INLINES.HYPERLINK]: (node, children) => (
+      <a
+        href={node.data.uri}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-blue-600 underline decoration-blue-600/30 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700/50 dark:text-blue-400 dark:decoration-blue-400/30 dark:hover:text-blue-300 dark:hover:decoration-blue-300/50"
+      >
+        {children}
+      </a>
     ),
   },
 });

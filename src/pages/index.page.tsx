@@ -25,17 +25,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const posts = useContentfulLiveUpdates(props.posts);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [hasBeenFiltered, setHasBeenFiltered] = useState(false); // Track if we've ever filtered
-  const questionRef = useRef<HTMLDivElement>(null);
-  const pillsRef = useRef<HTMLDivElement>(null);
-  const postsRef = useRef<HTMLDivElement>(null);
-  const questionTextRef = useRef<HTMLHeadingElement>(null);
-  const questionIntroRef = useRef<HTMLParagraphElement>(null);
   // Animated blob refs
   const shape1Ref = useRef<HTMLDivElement>(null);
   const shape2Ref = useRef<HTMLDivElement>(null);
   const shape3Ref = useRef<HTMLDivElement>(null);
-  // Study cases section ref
-  const studyCasesRef = useRef<HTMLElement>(null);
   // GSAP Animated Blobs
   useEffect(() => {
     if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) return;
@@ -174,44 +167,13 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           post.contentfulMetadata?.tags?.some((tag: any) => tag.id === selectedTag),
         )
       : posts || [];
-  // Animate question text on mount
-  useEffect(() => {
-    if (questionTextRef.current) {
-      gsap.fromTo(
-        questionTextRef.current,
-        { opacity: 0, y: 150 },
-        { opacity: 1, y: 130, duration: 1.3, ease: 'power2.in', delay: 2 },
-      );
-    }
-    if (questionIntroRef.current) {
-      gsap.fromTo(
-        questionIntroRef.current,
-        { opacity: 0, y: 170 },
-        { opacity: 1, y: 150, duration: 1, ease: 'power2.in', delay: 1 },
-      );
-    }
-    if (pillsRef.current) {
-      gsap.fromTo(
-        pillsRef.current,
-        { opacity: 0, y: 190 },
-        { opacity: 1, y: 115, duration: 3, ease: 'ease', delay: 3 },
-      );
-    }
-    if (studyCasesRef.current) {
-      gsap.fromTo(
-        studyCasesRef.current,
-        { opacity: 0, y: 0 },
-        { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out', delay: 5.5 },
-      );
-    }
-  }, []);
 
   return (
     <>
       {page?.seoFields && <SeoFields {...page.seoFields} />}
-      {/* <div className='revealer'></div> */}
-      <div className="relative flex min-h-screen items-center justify-center overflow-hidden">
-        {/* Animated Blobs using GSAP */}
+
+      {/* Animated Blobs Background - Fixed */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
         <div
           ref={shape1Ref}
           className={`absolute bg-blue-700/80 mix-blend-multiply dark:bg-blue-400/80 dark:mix-blend-screen ${
@@ -223,7 +185,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             left: '50%',
             top: isMobile ? '30%' : '10%',
             transform: 'translate(-60%, -50%)',
-            zIndex: 1,
           }}
         />
         <div
@@ -237,7 +198,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             left: '52%',
             top: isMobile ? '30%' : '12%',
             transform: 'translate(-60%, -50%)',
-            zIndex: 1,
           }}
         />
         <div
@@ -251,53 +211,40 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             left: '48%',
             top: isMobile ? '10%' : '10%',
             transform: 'translate(-60%, -50%)',
-            zIndex: 1,
           }}
         />
+      </div>
 
-        {/* Main Content */}
-        <div className="relative z-10 w-full">
-          {/* Hero Section */}
-          <section className="flex h-[70vh] flex-col items-center justify-center">
-            <div
-              className={`flex flex-col items-center justify-center transition-all duration-500 ${
-                isMobile ? 'pt-2' : 'pt-10 lg:pt-16'
-              }`}
-            >
-              <div
-                ref={questionRef}
-                className={`mb-8 space-y-6 text-center ${isMobile ? 'mt-2' : ''}`}
-              >
-                <p
-                  ref={questionIntroRef}
-                  className="mx-auto max-w-2xl text-xl font-light tracking-wide opacity-80"
-                >
-                  Hi, I&apos;m Git
-                </p>
-                <h1
-                  ref={questionTextRef}
-                  className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-neutral-800 lg:text-4xl dark:text-zinc-100"
-                >
-                  Designer and builder making complex workflows simple, automated, and usable.
-                </h1>
-                <p
-                  className="mx-auto mt-6 max-w-2xl text-lg font-light leading-7 tracking-wide opacity-70"
-                  ref={pillsRef}
-                >
-                  I help technical teams and decision-makers adopt smarter processes — by
-                  integrating data, automation, and AI into everyday work.
-                </p>
-              </div>
-            </div>
-          </section>
+      {/* Main Content */}
+      <div className="flex min-h-screen flex-col">
+        {/* Hero Section */}
+        <section className="flex flex-1 flex-col items-center  pt-48">
+          <div className="space-y-6 ">
+            <p className="text-xl font-light tracking-wide opacity-80">Hi, I&apos;m Git</p>
+            <h1 className="max-w-3xl font-serif text-3xl leading-tight text-neutral-800 lg:text-4xl dark:text-zinc-100">
+              Designer and builder making complex workflows simple, automated, and usable.
+            </h1>
+            <p className=" mt-6 max-w-2xl text-lg font-light leading-7 tracking-wide opacity-70">
+              I help technical teams and decision-makers adopt smarter processes — by integrating
+              data, automation, and AI into everyday work.
+            </p>
+          </div>
+        </section>
 
-          {/* Study Cases Section */}
-          <section ref={studyCasesRef} className="mx-auto max-w-screen-lg py-20">
-            <Container>
-              <ArticleTileGrid className="grid-cols-1 md:grid-cols-2" articles={filteredPosts} />
-            </Container>
-          </section>
-        </div>
+        {/* Study Cases Section */}
+        <section className="mx-auto w-full max-w-3xl pb-20 pt-24">
+          <div className="mb-4 ">
+            <h2 className="font-serif text-2xl font-medium text-neutral-800 lg:text-3xl dark:text-zinc-100">
+              Selected Work
+            </h2>
+          </div>
+          <Container>
+            <ArticleTileGrid
+              className="grid-cols-1 gap-16 md:grid-cols-1"
+              articles={filteredPosts}
+            />
+          </Container>
+        </section>
       </div>
     </>
   );
