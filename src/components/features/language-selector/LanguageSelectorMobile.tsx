@@ -1,4 +1,4 @@
-import { LanguageIcon, CloseIcon } from '@contentful/f36-icons';
+import { XIcon } from '@contentful/f36-icons';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -34,7 +34,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
         aria-expanded={showDrawer}
         aria-controls="locale-drawer"
       >
-        <AiOutlineMenu className="text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-sm" />
+        <AiOutlineMenu className="text-2xl font-light text-neutral-800 md:text-sm dark:text-zinc-50" />
       </button>
 
       <Portal>
@@ -43,7 +43,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
             role="presentation"
             tabIndex={-1}
             className={twMerge(
-              'fixed top-0 left-0 h-full w-full bg-colorBlack/[0.4] transition-opacity duration-150',
+              'fixed left-0 top-0 h-full w-full bg-colorBlack/[0.4] transition-opacity duration-150',
               showDrawer ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
             )}
             onClick={() => setShowDrawer(false)}
@@ -53,7 +53,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
             aria-modal="true"
             aria-hidden={!showDrawer}
             className={twMerge(
-              `fixed top-0 right-0 z-40 h-full w-[100vw] bg-black py-8 px-5 duration-300 ease-in-out`,
+              `fixed right-0 top-0 z-40 h-full w-[100vw] bg-black px-5 py-8 duration-300 ease-in-out`,
               showDrawer ? 'translate-x-0' : 'translate-x-full',
             )}
           >
@@ -61,7 +61,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
               {/* <h2 className="text-xl font-semibold  text-zinc-200 dark:text-neutral-800 md:text-sm">{t('common.regionalSettings')}</h2> */}
 
               <button className="ml-auto pl-2" onClick={() => setShowDrawer(false)}>
-                <CloseIcon className="text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-sm" />
+                <XIcon className="text-2xl font-light text-neutral-800 md:text-sm dark:text-zinc-50" />
               </button>
             </div>
             {/*

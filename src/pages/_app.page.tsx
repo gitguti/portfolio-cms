@@ -5,7 +5,6 @@ import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
 import { Urbanist } from 'next/font/google';
 import './utils/globals.css';
-import '@contentful/live-preview/style.css';
 import { useRouter } from 'next/router';
 
 import { GoogleAnalytics } from 'nextjs-google-analytics';

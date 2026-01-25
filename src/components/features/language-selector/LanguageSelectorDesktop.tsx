@@ -1,4 +1,4 @@
-import { LanguageIcon, ChevronDownTrimmedIcon, ChevronUpTrimmedIcon } from '@contentful/f36-icons';
+import { GlobeIcon, CaretDownIcon, CaretUpIcon } from '@contentful/f36-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { KeyboardEvent, useEffect, useRef, useState } from 'react';
@@ -90,12 +90,12 @@ export const LanguageSelectorDesktop = ({ localeName, displayName }) => {
         className="flex items-center font-normal uppercase"
         onClick={() => setIsOpen(currentState => !currentState)}
       >
-        <LanguageIcon width="18px" height="18px" variant="secondary" className="mr-1 ml-1" />
+        <GlobeIcon width="18px" height="18px" variant="secondary" className="ml-1 mr-1" />
         {localeName(router.locale)}
         {isOpen ? (
-          <ChevronUpTrimmedIcon variant="secondary" className="pl-1" />
+          <CaretUpIcon variant="secondary" className="pl-1" />
         ) : (
-          <ChevronDownTrimmedIcon variant="secondary" className="pl-1" />
+          <CaretDownIcon variant="secondary" className="pl-1" />
         )}
       </button>
       <FocusLock disabled={!isOpen} returnFocus={true}>
