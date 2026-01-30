@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { HiHome, HiBookOpen, HiViewGrid, HiSparkles, HiSun, HiMoon } from 'react-icons/hi';
+import { HiHome, HiBookOpen, HiViewGrid, HiSparkles, HiSun, HiMoon, HiUser } from 'react-icons/hi';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: HiHome, iconOnly: true },
   { href: '/blog', label: 'Blog', icon: HiBookOpen, iconOnly: false },
   { href: '/craft', label: 'Craft', icon: HiViewGrid, iconOnly: false },
   { href: '/vibes', label: 'Vibes', icon: HiSparkles, iconOnly: false },
+  { href: '/about', label: 'About', icon: HiUser, iconOnly: false },
 ];
 
 export const Header = () => {
