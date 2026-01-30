@@ -32,6 +32,12 @@ export const Header = () => {
             >
               Craft
             </Link>
+            <Link
+              href="/vibes"
+              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
+            >
+              Vibes
+            </Link>
           </div>
           {/* <LanguageSelector /> */}
 
