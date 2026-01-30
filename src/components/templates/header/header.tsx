@@ -26,6 +26,12 @@ export const Header = () => {
             >
               Blog
             </Link>
+            <Link
+              href="/craft"
+              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
+            >
+              Craft
+            </Link>
           </div>
           {/* <LanguageSelector /> */}
 
