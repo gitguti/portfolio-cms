@@ -107,6 +107,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
             width={1200}
             height={800}
             quality={90}
+            unoptimized={project.source === 'dribbble'}
             className="h-auto max-h-[60vh] w-full rounded-lg object-contain"
           />
         );
