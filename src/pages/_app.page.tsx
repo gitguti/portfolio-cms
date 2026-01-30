@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { appWithTranslation } from 'next-i18next';
 import type { AppProps } from 'next/app';
+import { ThemeProvider } from 'next-themes';
 import { Urbanist } from 'next/font/google';
 import './utils/globals.css';
 import { useRouter } from 'next/router';
@@ -22,20 +23,22 @@ const App = ({ Component, pageProps }: AppProps) => {
     <>
       <GoogleAnalytics trackPageViews />
       <Hotjar id={'3590987'} sv={6} />
-      <ContentfulLivePreviewProvider
-        enableInspectorMode={pageProps.previewActive}
-        enableLiveUpdates={pageProps.previewActive}
-        locale={locale || 'en-US'}
-      >
-        <>
-          <main className={`${urbanist.variable} font-sans`}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </main>
-          <div id="portal" className={`${urbanist.variable} font-sans`} />
-        </>
-      </ContentfulLivePreviewProvider>
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ContentfulLivePreviewProvider
+          enableInspectorMode={pageProps.previewActive}
+          enableLiveUpdates={pageProps.previewActive}
+          locale={locale || 'en-US'}
+        >
+          <>
+            <main className={`${urbanist.variable} font-sans`}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </main>
+            <div id="portal" className={`${urbanist.variable} font-sans`} />
+          </>
+        </ContentfulLivePreviewProvider>
+      </ThemeProvider>
       <Analytics />
       <SpeedInsights />
     </>

@@ -1,99 +1,66 @@
-import { useTranslation } from 'next-i18next';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { FaLinkedinIn, FaTwitter } from 'react-icons/fa';
-import { TbBrandGithubFilled, TbBrandDribbbleFilled } from 'react-icons/tb';
-import { MdEmail } from 'react-icons/md';
-// import { LanguageSelector } from '@src/components/features/language-selector';
-import { Container } from '@src/components/shared/container';
+import { useTheme } from 'next-themes';
+import { HiHome, HiBookOpen, HiViewGrid, HiSparkles, HiSun, HiMoon } from 'react-icons/hi';
+
+const navLinks = [
+  { href: '/', label: 'Home', icon: HiHome, iconOnly: true },
+  { href: '/blog', label: 'Blog', icon: HiBookOpen, iconOnly: false },
+  { href: '/craft', label: 'Craft', icon: HiViewGrid, iconOnly: false },
+  { href: '/vibes', label: 'Vibes', icon: HiSparkles, iconOnly: false },
+];
 
 export const Header = () => {
-  const { t } = useTranslation();
+  const router = useRouter();
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isActive = (href: string) => {
+    if (href === '/') return router.pathname === '/';
+    return router.pathname.startsWith(href);
+  };
 
   return (
-    <header className=" fixed top-0 z-50 w-full px-2 py-5 md:px-12">
-      <nav>
-        <Container className="flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <Link href="/" title={t('common.homepage')}>
-              {/* <BlogLogo /> */}
-              <h4 className="text-xl font-light text-neutral-800 md:text-sm dark:text-zinc-50">
-                git
-              </h4>
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/craft"
-              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
-            >
-              Craft
-            </Link>
-            <Link
-              href="/vibes"
-              className="text-sm font-light text-neutral-600 transition-colors hover:text-neutral-800 dark:text-zinc-400 dark:hover:text-zinc-50"
-            >
-              Vibes
-            </Link>
-          </div>
-          {/* <LanguageSelector /> */}
+    <header className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:bottom-auto md:top-6">
+      <nav className="flex items-center gap-1 rounded-full border border-white/20 bg-white/70 px-2 py-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-black/60">
+        {navLinks.map(link => {
+          const Icon = link.icon;
+          const active = isActive(link.href);
 
-          <div className="flex h-fit gap-4">
-            <a
-              href="http://github.com/gitguti"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
+                active
+                  ? 'bg-neutral-800 text-white dark:bg-neutral-700 dark:text-white'
+                  : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-50'
+              } ${link.iconOnly ? 'px-2.5' : ''}`}
             >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
-                <TbBrandGithubFilled className="h-4 w-4" color="white" />
-              </div>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/gitguti/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
-                <FaLinkedinIn className="h-4 w-4" fill="white" />
-              </div>
-            </a>
-            <a
-              href="https://twitter.com/whynotgit"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Dribbble"
-            >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
-                <FaTwitter className="h-4 w-4" fill="white" />
-              </div>
-            </a>
-            <a
-              href="https://dribbble.com/gitguti"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Dribbble"
-            >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
-                <TbBrandDribbbleFilled className="h-4 w-4 " color="white" />
-              </div>
-            </a>
-            <a
-              href="mailto:gitmelgutierrez@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Email"
-            >
-              <div className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-neutral-800 bg-neutral-800 transition duration-500 ease-in hover:-translate-y-3 hover:ease-in dark:bg-neutral-950">
-                <MdEmail className="h-4 w-4" fill="white" />
-              </div>
-            </a>
-          </div>
-        </Container>
+              <Icon className="h-4 w-4" />
+              {!link.iconOnly && <span className="hidden sm:inline">{link.label}</span>}
+            </Link>
+          );
+        })}
+
+        {/* Divider */}
+        <div className="mx-1 h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
+
+        {/* Theme toggle */}
+        {mounted && (
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="flex items-center justify-center rounded-full px-2.5 py-2 text-neutral-600 transition-all hover:bg-neutral-100 hover:text-neutral-800 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-50"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <HiSun className="h-4 w-4" /> : <HiMoon className="h-4 w-4" />}
+          </button>
+        )}
       </nav>
     </header>
   );
