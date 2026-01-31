@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   const { locale } = useRouter();
   return (
     <>
-      <GoogleAnalytics trackPageViews />
+      <GoogleAnalytics gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} trackPageViews />
       <Hotjar id={'3590987'} sv={6} />
       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
         <ContentfulLivePreviewProvider
