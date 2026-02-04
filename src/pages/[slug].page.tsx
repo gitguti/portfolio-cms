@@ -21,10 +21,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       {blogPost.seoFields && <SeoFields {...blogPost.seoFields} />}
-      <Container className="mt-8 max-w-4xl">
+      <Container className="mt-8 max-w-3xl">
         <ArticleHero article={blogPost} isFeatured={props.isFeatured} isReversedLayout={true} />
       </Container>
-      <Container className="mt-8 max-w-4xl">
+      <Container className="mt-8 max-w-3xl">
         <ArticleContent article={blogPost} />
       </Container>
       {relatedPosts && (

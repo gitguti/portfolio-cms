@@ -9,10 +9,10 @@ interface LayoutPropsInterface {
 
 export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header />
-      {children}
+      <div className="flex-grow">{children}</div>
       <Footer />
-    </>
+    </div>
   );
 };

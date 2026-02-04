@@ -29,10 +29,10 @@ export const ArticleImage = ({ image }: ArticleImageProps) => {
             className: twMerge(
               'mt-12 mb-8 rounded-lg',
               isBlogContext
-                ? 'w-full max-w-lg'
+                ? 'w-full max-w-md'
                 : image.fullWidth
                 ? 'md:w-screen md:max-w-[calc(100vw-40px)] md:shrink-0'
-                : '',
+                : 'w-full max-w-md',
             ),
           }}
           {...image.image}

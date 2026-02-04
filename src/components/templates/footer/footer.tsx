@@ -55,7 +55,7 @@ export const Footer = () => {
           ))}
         </div>
         <div className="text-xs text-neutral-800 dark:text-neutral-500">
-          © Git / Made with ❤️ in Next / 2025
+          © Git / Made with ❤️ in Next / 2026
         </div>
       </Container>
     </footer>

@@ -12,7 +12,7 @@ export const ArticleFullWidthImage = ({ fullWidthImage }: ArticleFullWidthImageP
 
   const widthClasses = {
     narrow: 'max-w-3xl',
-    default: 'max-w-4xl',
+    default: 'max-w-3xl',
     wide: 'max-w-6xl',
     full: 'max-w-none',
   }[maxWidth];
@@ -20,7 +20,7 @@ export const ArticleFullWidthImage = ({ fullWidthImage }: ArticleFullWidthImageP
   if (!fullWidthImage.image) return null;
 
   return (
-    <div className={`my-16 mx-auto ${widthClasses}`} {...inspectorProps({ fieldId: 'image' })}>
+    <div className={`mx-auto my-16 ${widthClasses}`} {...inspectorProps({ fieldId: 'image' })}>
       <CtfImage
         nextImageProps={{
           className: 'w-full rounded-lg object-cover',

@@ -120,7 +120,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div
         ref={backdropRef}
-        className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm md:p-8 dark:bg-black/90"
+        className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm dark:bg-black/90 md:p-8"
         onClick={e => {
           if (e.target === e.currentTarget) animateClose();
         }}
@@ -128,7 +128,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
         {/* Content */}
         <div
           ref={contentRef}
-          className="relative max-h-[90vh] w-full overflow-y-auto rounded-2xl bg-white p-6 md:max-w-4xl md:p-8 dark:bg-zinc-900"
+          className="relative max-h-[90vh] w-full overflow-y-auto rounded-2xl bg-white p-6 dark:bg-zinc-900 md:max-w-3xl md:p-8"
         >
           {/* Close button */}
           <button
@@ -144,7 +144,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
 
           {/* Details */}
           <div className="space-y-4">
-            <h2 className="font-serif text-2xl font-light text-neutral-800 md:text-3xl dark:text-zinc-50">
+            <h2 className="font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
               {project.title}
             </h2>
 

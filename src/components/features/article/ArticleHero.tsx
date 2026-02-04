@@ -34,7 +34,7 @@ export const ArticleHero = ({
         )}
       </div> */}
 
-      <div className="relative flex max-w-6xl flex-1 basis-1/2 flex-col justify-center pt-12 pb-6">
+      <div className="relative flex max-w-6xl flex-1 basis-1/2 flex-col justify-center pb-6 pt-12">
         <div className="mb-2 flex flex-wrap items-center">
           {/* <ArticleAuthor article={article} /> */}
           {/* {isFeatured && (
@@ -59,7 +59,7 @@ export const ArticleHero = ({
         </div>
 
         {/* Tags Pills */}
-        {article.contentfulMetadata?.tags && article.contentfulMetadata.tags.length > 0 && (
+        {/* {article.contentfulMetadata?.tags && article.contentfulMetadata.tags.length > 0 && (
           <div className="mb-4 flex flex-wrap gap-2">
             {article.contentfulMetadata.tags.map(
               (tag: any) =>
@@ -73,7 +73,7 @@ export const ArticleHero = ({
                 ),
             )}
           </div>
-        )}
+        )} */}
         <h1
           className={twMerge(
             'mb-6 font-serif text-5xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl',
