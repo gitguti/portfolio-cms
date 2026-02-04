@@ -3,16 +3,24 @@ import { useEffect, useRef } from 'react';
 import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 import gsap from 'gsap';
+import { HiArrowRight } from 'react-icons/hi';
 
 import { getServerSideTranslations } from '../utils/get-serverside-translations';
 
-import { AboutHero, NowSection, aboutContent, beliefs } from '@src/components/features/about';
+import {
+  AboutHero,
+  NowSection,
+  aboutContent,
+  beliefs,
+  contactConfig,
+} from '@src/components/features/about';
 import { Container } from '@src/components/shared/container';
 
 const AboutPage = () => {
   const { t } = useTranslation();
   const aboutSectionRef = useRef<HTMLElement>(null);
   const beliefsSectionRef = useRef<HTMLElement>(null);
+  const contactSectionRef = useRef<HTMLElement>(null);
 
   // GSAP animation for about paragraphs
   useEffect(() => {
@@ -49,6 +57,26 @@ const AboutPage = () => {
         opacity: 1,
         duration: 0.5,
         stagger: 0.1,
+        ease: 'power2.out',
+      },
+    );
+  }, []);
+
+  // GSAP animation for contact section
+  useEffect(() => {
+    if (!contactSectionRef.current) return;
+
+    const items = contactSectionRef.current.querySelectorAll('.contact-item');
+    if (!items.length) return;
+
+    gsap.fromTo(
+      items,
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.15,
         ease: 'power2.out',
       },
     );

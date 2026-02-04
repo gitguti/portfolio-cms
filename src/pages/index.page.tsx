@@ -7,6 +7,8 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState, useEffect, useRef, use } from 'react';
+import { HiArrowRight } from 'react-icons/hi';
+import { contactConfig } from '@src/components/features/about/about-data';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
 
@@ -221,20 +223,31 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <section className="flex flex-1 flex-col items-center  pt-48">
           <div className="space-y-6 ">
             <p className="text-xl font-light tracking-wide opacity-80">Hi, I&apos;m Git</p>
-            <h1 className="max-w-3xl font-serif text-3xl leading-tight text-neutral-800 lg:text-4xl dark:text-zinc-100">
+            <h1 className="max-w-3xl font-serif text-3xl leading-tight text-neutral-800 dark:text-zinc-100 lg:text-4xl">
               Designer and builder making complex workflows simple, automated, and usable.
             </h1>
             <p className=" mt-6 max-w-2xl text-lg font-light leading-7 tracking-wide opacity-70">
               I help technical teams and decision-makers adopt smarter processes — by integrating
               data, automation, and AI into everyday work.
             </p>
+
+            {/* Contact CTA */}
+            <div className="mt-8">
+              <a
+                href={contactConfig.url}
+                className="inline-flex items-center gap-2 rounded-full bg-neutral-800 px-6 py-3 text-base font-light text-white transition-all hover:gap-3 hover:bg-neutral-700 dark:bg-neutral-700 dark:hover:bg-neutral-600"
+              >
+                <span>{contactConfig.cta.home}</span>
+                <HiArrowRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </section>
 
         {/* Study Cases Section */}
         <section className="mx-auto w-full max-w-3xl pb-20 pt-24">
           <div className="mb-4 ">
-            <h2 className="font-serif text-2xl font-medium text-neutral-800 lg:text-3xl dark:text-zinc-100">
+            <h2 className="font-serif text-2xl font-medium text-neutral-800 dark:text-zinc-100 lg:text-3xl">
               Selected Work
             </h2>
           </div>

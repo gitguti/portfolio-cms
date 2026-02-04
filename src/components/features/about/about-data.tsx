@@ -26,6 +26,16 @@ export const socialLinks = [
   },
 ];
 
+// Contact Configuration
+export const contactConfig = {
+  url: 'mailto:gitmelgutierrez@gmail.com',
+  cta: {
+    home: 'Say hello',
+    about: 'Send me an email',
+    nav: 'Contact',
+  },
+};
+
 // Hero Data
 export const heroData = {
   name: 'git',

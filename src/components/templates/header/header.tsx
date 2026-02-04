@@ -2,7 +2,17 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { HiHome, HiBookOpen, HiViewGrid, HiSparkles, HiSun, HiMoon, HiUser } from 'react-icons/hi';
+import {
+  HiHome,
+  HiBookOpen,
+  HiViewGrid,
+  HiSparkles,
+  HiSun,
+  HiMoon,
+  HiUser,
+  HiMail,
+} from 'react-icons/hi';
+import { contactConfig } from '@src/components/features/about/about-data';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: HiHome, iconOnly: true },
@@ -10,6 +20,7 @@ const navLinks = [
   { href: '/craft', label: 'Craft', icon: HiViewGrid, iconOnly: false },
   { href: '/vibes', label: 'Vibes', icon: HiSparkles, iconOnly: false },
   { href: '/about', label: 'About', icon: HiUser, iconOnly: false },
+  { href: contactConfig.url, label: contactConfig.cta.nav, icon: HiMail, iconOnly: false },
 ];
 
 export const Header = () => {
