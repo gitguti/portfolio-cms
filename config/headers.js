@@ -29,12 +29,41 @@ const securityHeaders = [
   },
 ];
 
+const cacheHeaders = [
+  {
+    key: 'Cache-Control',
+    value: 'public, max-age=31536000, immutable',
+  },
+];
+
+const cdnCacheHeaders = [
+  {
+    key: 'Cache-Control',
+    value: 'public, s-maxage=300, stale-while-revalidate=600',
+  },
+];
+
 module.exports = async () => {
   return [
     {
-      // Apply these headers to all routes in your application.
+      // Apply security headers to all routes
       source: '/:path*',
       headers: securityHeaders,
+    },
+    {
+      // Cache static assets aggressively
+      source: '/favicons/:path*',
+      headers: cacheHeaders,
+    },
+    {
+      // Cache public assets
+      source: '/assets/:path*',
+      headers: cacheHeaders,
+    },
+    {
+      // Cache pages with stale-while-revalidate
+      source: '/((?!api|_next/static|_next/image|favicons|assets).*)',
+      headers: cdnCacheHeaders,
     },
   ];
 };

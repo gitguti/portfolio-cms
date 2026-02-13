@@ -4,10 +4,17 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        {/* Preconnect to external domains for faster resource loading */}
+        <link rel="preconnect" href="https://images.ctfassets.net" />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link rel="dns-prefetch" href="https://images.ctfassets.net" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+        {/* Favicon links */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
+        <link rel="manifest" href="/favicons/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-TileColor" content="#ffffff" />
@@ -33,7 +40,6 @@ export default function Document() {
           content="Product Designer & Builder — 0-to-1 data & AI products"
         />
         <meta name="twitter:image" content="https://www.gitmelgutierrez.com/opengraph.jpg" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
       </Head>
       <body>
         <Main />

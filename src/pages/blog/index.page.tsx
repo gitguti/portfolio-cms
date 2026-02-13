@@ -1,9 +1,9 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 import { NextSeo } from 'next-seo';
 
 import { getServerSideTranslations } from '../utils/get-serverside-translations';
+import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 
 import { BlogArticleList } from '@src/components/features/blog';
 import { Container } from '@src/components/shared/container';
@@ -13,7 +13,7 @@ import { revalidateDuration } from '@src/pages/utils/constants';
 
 const BlogPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
-  const articles = useContentfulLiveUpdates(props.articles);
+  const articles = useConditionalLiveUpdates(props.articles, props.previewActive);
 
   return (
     <>

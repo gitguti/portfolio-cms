@@ -1,9 +1,9 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import gsap from 'gsap';
 import Image from 'next/image';
 // import {useRevealer} from "../hooks/useRevealer";
 
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import { useState, useEffect, useRef, use } from 'react';
@@ -23,8 +23,8 @@ import { initScrollAnimations } from '@src/pages/utils/scrollAnimations';
 
 const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
-  const page = useContentfulLiveUpdates(props.page);
-  const posts = useContentfulLiveUpdates(props.posts);
+  const page = useConditionalLiveUpdates(props.page, props.previewActive);
+  const posts = useConditionalLiveUpdates(props.posts, props.previewActive);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [hasBeenFiltered, setHasBeenFiltered] = useState(false); // Track if we've ever filtered
   // Animated blob refs

@@ -1,8 +1,8 @@
-import { useContentfulLiveUpdates } from '@contentful/live-preview/react';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
+import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 
 import { ArticleContent, ArticleHero, ArticleTileGrid } from '@src/components/features/article';
 import { SeoFields } from '@src/components/features/seo';
@@ -14,7 +14,7 @@ import { revalidateDuration } from '@src/pages/utils/constants';
 const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { t } = useTranslation();
 
-  const blogPost = useContentfulLiveUpdates(props.blogPost);
+  const blogPost = useConditionalLiveUpdates(props.blogPost, props.previewActive);
   const relatedPosts = blogPost?.relatedBlogPostsCollection?.items;
   if (!blogPost) return null;
 
