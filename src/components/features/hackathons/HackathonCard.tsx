@@ -107,7 +107,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
   return (
     <div
       className={twMerge(
-        'flex flex-col rounded-xl border border-neutral-200 bg-white px-4 py-4 dark:border-zinc-700 dark:bg-zinc-900',
+        'flex flex-col rounded-xl border border-neutral-200 bg-white px-3 py-3 dark:border-zinc-700 dark:bg-zinc-900 sm:px-4 sm:py-4',
         className,
       )}
       role="button"
@@ -139,7 +139,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
       </div>
 
       {/* Card Content - Below Image */}
-      <div className="mt-4 flex flex-col gap-3">
+      <div className="mt-3 flex flex-col gap-2 sm:mt-4 sm:gap-3">
         {/* Event Info */}
         {eventName && (
           <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
         {/* Title and Description */}
         {name && (
           <h3
-            className="font-serif text-lg font-semibold capitalize text-neutral-800 dark:text-zinc-50"
+            className="font-serif text-base font-semibold capitalize text-neutral-800 dark:text-zinc-50 sm:text-lg"
             {...inspectorProps({ fieldId: 'name' })}
           >
             {name}
@@ -172,7 +172,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
 
         {oneLiner && (
           <p
-            className="text-sm text-neutral-600 dark:text-zinc-300"
+            className="text-xs text-neutral-600 dark:text-zinc-300 sm:text-sm"
             {...inspectorProps({ fieldId: 'oneLiner' })}
           >
             {oneLiner}

@@ -143,7 +143,7 @@ export const HackathonsMarquee = ({
         {/* Render items twice for seamless loop */}
         {[...hackathons, ...hackathons].map((hackathon, i) =>
           hackathon ? (
-            <div key={`${hackathon.sys.id}-${i}`} className="w-80 flex-shrink-0">
+            <div key={`${hackathon.sys.id}-${i}`} className="w-64 flex-shrink-0 sm:w-72 md:w-80">
               <HackathonCard hackathon={hackathon} />
             </div>
           ) : null,

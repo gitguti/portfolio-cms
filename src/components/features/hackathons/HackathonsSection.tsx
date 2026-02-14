@@ -80,15 +80,8 @@ export const HackathonsSection = ({
         {subtitle && <p className="mt-2 text-sm text-neutral-600 dark:text-zinc-300">{subtitle}</p>}
       </div>
       {/* Desktop: Marquee */}
-      <div className="-mx-4 hidden overflow-hidden px-4 md:block">
+      <div className="overflow-hidden">
         <HackathonsMarquee hackathons={hackathons} />
-      </div>
-
-      {/* Mobile: Grid */}
-      <div className="block md:hidden">
-        <Container>
-          <HackathonsGrid hackathons={hackathons} />
-        </Container>
       </div>
     </section>
   );
