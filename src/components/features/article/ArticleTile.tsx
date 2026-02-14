@@ -1,25 +1,21 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import gsap from 'gsap';
-import { useRouter } from 'next/router';
 import { HTMLProps, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Link from 'next/link';
-// import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
 import { CtfImage } from '@src/components/features/contentful';
-import { FormatDate } from '@src/components/shared/format-date';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface ArticleTileProps extends HTMLProps<HTMLDivElement> {
   article: PageBlogPostFieldsFragment;
+  layout?: 'vertical' | 'horizontal';
 }
 
-export const ArticleTile = ({ article, className }: ArticleTileProps) => {
-  const { title, publishedDate, shortDescription } = article;
+export const ArticleTile = ({ article, className, layout = 'vertical' }: ArticleTileProps) => {
+  const { title, shortDescription } = article;
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
-  const router = useRouter();
   const tileRef = useRef<HTMLDivElement>(null);
 
-  // Animación hover
   const handleMouseEnter = () => {
     gsap.to(tileRef.current, { scale: 1.02, duration: 0.3, zIndex: 2 });
   };
@@ -27,37 +23,56 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
     gsap.to(tileRef.current, { scale: 1, duration: 0.3, zIndex: 1 });
   };
 
+  const isHorizontal = layout === 'horizontal';
+
   return (
-    <Link className="flex flex-col" href={`/${article.slug}`}>
+    <Link className="flex" href={`/${article.slug}`}>
       <div
         ref={tileRef}
         className={twMerge(
-          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden  transition-all',
+          'flex w-full flex-1 cursor-pointer overflow-hidden transition-all',
+          isHorizontal ? 'flex-col gap-6 md:flex-row md:items-start' : 'flex-col',
           className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {article.featuredImage && (
-          <div {...inspectorProps({ fieldId: 'featuredImage' })}>
+          <div
+            className={isHorizontal ? 'w-full flex-shrink-0 md:w-1/2' : ''}
+            {...inspectorProps({ fieldId: 'featuredImage' })}
+          >
             <CtfImage
-              nextImageProps={{ className: 'object-cover aspect-[16/10] w-full rounded' }}
+              nextImageProps={{
+                className: twMerge(
+                  'object-cover w-full rounded-lg',
+                  isHorizontal ? 'aspect-[4/3]' : 'aspect-[16/10]',
+                ),
+              }}
               {...article.featuredImage}
             />
           </div>
         )}
-        <div className="mt-4 flex flex-col text-2xl">
+        <div
+          className={twMerge('flex flex-col', isHorizontal ? 'gap-3 py-2 md:w-1/2' : 'mt-4 gap-1')}
+        >
           {title && (
-            <p
-              className="font-serif text-neutral-800 dark:text-zinc-50"
+            <h3
+              className={twMerge(
+                'font-serif text-neutral-800 dark:text-zinc-50',
+                isHorizontal ? 'text-xl font-medium leading-snug md:text-2xl' : 'text-2xl',
+              )}
               {...inspectorProps({ fieldId: 'title' })}
             >
               {title}
-            </p>
+            </h3>
           )}
           {shortDescription && (
             <p
-              className="text-sm text-neutral-600 dark:text-zinc-200"
+              className={twMerge(
+                'text-neutral-600 dark:text-zinc-300',
+                isHorizontal ? 'text-sm leading-relaxed md:text-base' : 'text-sm',
+              )}
               {...inspectorProps({ fieldId: 'shortDescription' })}
             >
               {shortDescription}
@@ -66,7 +81,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
 
           {/* Tags Pills */}
           {article.contentfulMetadata?.tags && article.contentfulMetadata.tags.length > 0 && (
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className={twMerge('flex flex-wrap gap-2', isHorizontal ? 'mt-2' : 'mt-3')}>
               {article.contentfulMetadata.tags
                 .filter((tag: any) => tag?.id !== 'caseStudy' && tag?.id !== 'blogArticle')
                 .map(

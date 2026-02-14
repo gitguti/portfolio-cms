@@ -114,7 +114,9 @@ type AssetLinkingCollections {
   componentSeoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentSeoCollection
   componentTextImageSideBySideCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentTextImageSideBySideCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  hackathonCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): HackathonCollection
   pageBlogPostCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): PageBlogPostCollection
+  teamMemberCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): TeamMemberCollection
   urlLinkCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): UrlLinkCollection
 }
 
@@ -1062,6 +1064,229 @@ enum EntryOrder {
   sys_publishedVersion_DESC
 }
 
+"""
+[See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon)
+"""
+type Hackathon implements Entry & _Node {
+  _id: ID!
+  codeUrl(locale: String, useFallbackLocale: Boolean): String
+  contentfulMetadata: ContentfulMetadata!
+  coverImage(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  demoUrl(locale: String, useFallbackLocale: Boolean): String
+  demoVideoUrl(locale: String, useFallbackLocale: Boolean): String
+  description(locale: String, useFallbackLocale: Boolean): HackathonDescription
+  eventDate(locale: String, useFallbackLocale: Boolean): DateTime
+  eventName(locale: String, useFallbackLocale: Boolean): String
+  galleryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): AssetCollection
+  internalName(locale: String, useFallbackLocale: Boolean): String
+  linkedFrom(allowedLocales: [String]): HackathonLinkingCollections
+  myRole(locale: String, useFallbackLocale: Boolean): String
+  name(locale: String, useFallbackLocale: Boolean): String
+  oneLiner(locale: String, useFallbackLocale: Boolean): String
+  outcome(locale: String, useFallbackLocale: Boolean): String
+  showcaseUrl(locale: String, useFallbackLocale: Boolean): String
+  slug(locale: String, useFallbackLocale: Boolean): String
+  sys: Sys!
+  tags(locale: String, useFallbackLocale: Boolean): [String]
+  teamMembersCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): HackathonTeamMembersCollection
+}
+
+type HackathonCollection {
+  items: [Hackathon]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type HackathonDescription {
+  json: JSON!
+  links: HackathonDescriptionLinks!
+}
+
+type HackathonDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type HackathonDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type HackathonDescriptionLinks {
+  assets: HackathonDescriptionAssets!
+  entries: HackathonDescriptionEntries!
+  resources: HackathonDescriptionResources!
+}
+
+type HackathonDescriptionResources {
+  block: [HackathonDescriptionResourcesBlock!]!
+  hyperlink: [HackathonDescriptionResourcesHyperlink!]!
+  inline: [HackathonDescriptionResourcesInline!]!
+}
+
+type HackathonDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type HackathonDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type HackathonDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+input HackathonFilter {
+  AND: [HackathonFilter]
+  OR: [HackathonFilter]
+  codeUrl: String
+  codeUrl_contains: String
+  codeUrl_exists: Boolean
+  codeUrl_in: [String]
+  codeUrl_not: String
+  codeUrl_not_contains: String
+  codeUrl_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  coverImage_exists: Boolean
+  demoUrl: String
+  demoUrl_contains: String
+  demoUrl_exists: Boolean
+  demoUrl_in: [String]
+  demoUrl_not: String
+  demoUrl_not_contains: String
+  demoUrl_not_in: [String]
+  demoVideoUrl: String
+  demoVideoUrl_contains: String
+  demoVideoUrl_exists: Boolean
+  demoVideoUrl_in: [String]
+  demoVideoUrl_not: String
+  demoVideoUrl_not_contains: String
+  demoVideoUrl_not_in: [String]
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  eventDate: DateTime
+  eventDate_exists: Boolean
+  eventDate_gt: DateTime
+  eventDate_gte: DateTime
+  eventDate_in: [DateTime]
+  eventDate_lt: DateTime
+  eventDate_lte: DateTime
+  eventDate_not: DateTime
+  eventDate_not_in: [DateTime]
+  eventName: String
+  eventName_contains: String
+  eventName_exists: Boolean
+  eventName_in: [String]
+  eventName_not: String
+  eventName_not_contains: String
+  eventName_not_in: [String]
+  galleryCollection_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  myRole: String
+  myRole_contains: String
+  myRole_exists: Boolean
+  myRole_in: [String]
+  myRole_not: String
+  myRole_not_contains: String
+  myRole_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  oneLiner: String
+  oneLiner_contains: String
+  oneLiner_exists: Boolean
+  oneLiner_in: [String]
+  oneLiner_not: String
+  oneLiner_not_contains: String
+  oneLiner_not_in: [String]
+  outcome: String
+  outcome_contains: String
+  outcome_exists: Boolean
+  outcome_in: [String]
+  outcome_not: String
+  outcome_not_contains: String
+  outcome_not_in: [String]
+  showcaseUrl: String
+  showcaseUrl_contains: String
+  showcaseUrl_exists: Boolean
+  showcaseUrl_in: [String]
+  showcaseUrl_not: String
+  showcaseUrl_not_contains: String
+  showcaseUrl_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+  tags_contains_all: [String]
+  tags_contains_none: [String]
+  tags_contains_some: [String]
+  tags_exists: Boolean
+  teamMembersCollection_exists: Boolean
+}
+
+type HackathonLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+}
+
+enum HackathonOrder {
+  codeUrl_ASC
+  codeUrl_DESC
+  demoUrl_ASC
+  demoUrl_DESC
+  demoVideoUrl_ASC
+  demoVideoUrl_DESC
+  eventDate_ASC
+  eventDate_DESC
+  eventName_ASC
+  eventName_DESC
+  internalName_ASC
+  internalName_DESC
+  myRole_ASC
+  myRole_DESC
+  name_ASC
+  name_DESC
+  oneLiner_ASC
+  oneLiner_DESC
+  outcome_ASC
+  outcome_DESC
+  showcaseUrl_ASC
+  showcaseUrl_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type HackathonTeamMembersCollection {
+  items: [Entry]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
 scalar HexColor
 
@@ -1542,12 +1767,16 @@ type Query {
   componentTextImageSideBySide(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentTextImageSideBySide
   componentTextImageSideBySideCollection(limit: Int = 100, locale: String, order: [ComponentTextImageSideBySideOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentTextImageSideBySideFilter): ComponentTextImageSideBySideCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: EntryFilter): EntryCollection
+  hackathon(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): Hackathon
+  hackathonCollection(limit: Int = 100, locale: String, order: [HackathonOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: HackathonFilter): HackathonCollection
   pageBlogPost(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageBlogPost
   pageBlogPostCollection(limit: Int = 100, locale: String, order: [PageBlogPostOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageBlogPostFilter): PageBlogPostCollection
   pageLanding(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): PageLanding
   pageLandingCollection(limit: Int = 100, locale: String, order: [PageLandingOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: PageLandingFilter): PageLandingCollection
   projectDetails(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ProjectDetails
   projectDetailsCollection(limit: Int = 100, locale: String, order: [ProjectDetailsOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ProjectDetailsFilter): ProjectDetailsCollection
+  teamMember(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): TeamMember
+  teamMemberCollection(limit: Int = 100, locale: String, order: [TeamMemberOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TeamMemberFilter): TeamMemberCollection
   tldrSummary(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): TldrSummary
   tldrSummaryCollection(limit: Int = 100, locale: String, order: [TldrSummaryOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: TldrSummaryFilter): TldrSummaryCollection
   urlLink(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): UrlLink
@@ -1618,6 +1847,87 @@ Represents a taxonomy concept entity for finding and organizing content easily.
 """
 type TaxonomyConcept {
   id: String
+}
+
+"""
+[See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember)
+"""
+type TeamMember implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  linkedFrom(allowedLocales: [String]): TeamMemberLinkingCollections
+  linkedinUrl(locale: String, useFallbackLocale: Boolean): String
+  name(locale: String, useFallbackLocale: Boolean): String
+  photo(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
+  role(locale: String, useFallbackLocale: Boolean): String
+  sys: Sys!
+  twitterUrl(locale: String, useFallbackLocale: Boolean): String
+}
+
+type TeamMemberCollection {
+  items: [TeamMember]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input TeamMemberFilter {
+  AND: [TeamMemberFilter]
+  OR: [TeamMemberFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  linkedinUrl: String
+  linkedinUrl_contains: String
+  linkedinUrl_exists: Boolean
+  linkedinUrl_in: [String]
+  linkedinUrl_not: String
+  linkedinUrl_not_contains: String
+  linkedinUrl_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  photo_exists: Boolean
+  role: String
+  role_contains: String
+  role_exists: Boolean
+  role_in: [String]
+  role_not: String
+  role_not_contains: String
+  role_not_in: [String]
+  sys: SysFilter
+  twitterUrl: String
+  twitterUrl_contains: String
+  twitterUrl_exists: Boolean
+  twitterUrl_in: [String]
+  twitterUrl_not: String
+  twitterUrl_not_contains: String
+  twitterUrl_not_in: [String]
+}
+
+type TeamMemberLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+}
+
+enum TeamMemberOrder {
+  linkedinUrl_ASC
+  linkedinUrl_DESC
+  name_ASC
+  name_DESC
+  role_ASC
+  role_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  twitterUrl_ASC
+  twitterUrl_DESC
 }
 
 input TimelineFilterInput {
