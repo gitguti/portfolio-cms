@@ -1,0 +1,13 @@
+query hackathonCollection(
+  $locale: String
+  $preview: Boolean
+  $limit: Int
+  $order: [HackathonOrder]
+  $where: HackathonFilter
+) {
+  hackathonCollection(limit: $limit, locale: $locale, preview: $preview, order: $order, where: $where) {
+    items {
+      ...HackathonFields
+    }
+  }
+}

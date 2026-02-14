@@ -1,0 +1,56 @@
+fragment TeamMemberFields on TeamMember {
+  __typename
+  sys {
+    id
+  }
+  name
+  role
+  linkedinUrl
+  twitterUrl
+  photo {
+    ...ImageFields
+  }
+}
+
+fragment HackathonFields on Hackathon {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  name
+  slug
+  oneLiner
+  eventName
+  eventDate
+  myRole
+  outcome
+  description {
+    json
+  }
+  coverImage {
+    ...ImageFields
+  }
+  demoVideoUrl
+  galleryCollection(limit: 12) {
+    items {
+      ...ImageFields
+    }
+  }
+  tags
+  showcaseUrl
+  demoUrl
+  codeUrl
+  teamMembersCollection(limit: 10) {
+    items {
+      ...TeamMemberFields
+    }
+  }
+  contentfulMetadata {
+    tags {
+      id
+      name
+    }
+  }
+}
