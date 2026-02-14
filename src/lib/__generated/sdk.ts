@@ -188,7 +188,9 @@ export type AssetLinkingCollections = {
   componentSeoCollection?: Maybe<ComponentSeoCollection>;
   componentTextImageSideBySideCollection?: Maybe<ComponentTextImageSideBySideCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  hackathonCollection?: Maybe<HackathonCollection>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
+  teamMemberCollection?: Maybe<TeamMemberCollection>;
   urlLinkCollection?: Maybe<UrlLinkCollection>;
 };
 
@@ -265,7 +267,25 @@ export type AssetLinkingCollectionsEntryCollectionArgs = {
 };
 
 
+export type AssetLinkingCollectionsHackathonCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type AssetLinkingCollectionsPageBlogPostCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type AssetLinkingCollectionsTeamMemberCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1707,6 +1727,380 @@ export enum EntryOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type Hackathon = Entry & _Node & {
+  __typename?: 'Hackathon';
+  _id: Scalars['ID']['output'];
+  codeUrl?: Maybe<Scalars['String']['output']>;
+  contentfulMetadata: ContentfulMetadata;
+  coverImage?: Maybe<Asset>;
+  demoUrl?: Maybe<Scalars['String']['output']>;
+  demoVideoUrl?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<HackathonDescription>;
+  eventDate?: Maybe<Scalars['DateTime']['output']>;
+  eventName?: Maybe<Scalars['String']['output']>;
+  galleryCollection?: Maybe<AssetCollection>;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<HackathonLinkingCollections>;
+  myRole?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  oneLiner?: Maybe<Scalars['String']['output']>;
+  outcome?: Maybe<Scalars['String']['output']>;
+  showcaseUrl?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  sys: Sys;
+  tags?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  teamMembersCollection?: Maybe<HackathonTeamMembersCollection>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonCodeUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonCoverImageArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonDemoUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonDemoVideoUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonDescriptionArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonEventDateArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonEventNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonGalleryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonMyRoleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonOneLinerArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonOutcomeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonShowcaseUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonSlugArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonTagsArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/hackathon) */
+export type HackathonTeamMembersCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type HackathonCollection = {
+  __typename?: 'HackathonCollection';
+  items: Array<Maybe<Hackathon>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type HackathonDescription = {
+  __typename?: 'HackathonDescription';
+  json: Scalars['JSON']['output'];
+  links: HackathonDescriptionLinks;
+};
+
+export type HackathonDescriptionAssets = {
+  __typename?: 'HackathonDescriptionAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type HackathonDescriptionEntries = {
+  __typename?: 'HackathonDescriptionEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type HackathonDescriptionLinks = {
+  __typename?: 'HackathonDescriptionLinks';
+  assets: HackathonDescriptionAssets;
+  entries: HackathonDescriptionEntries;
+  resources: HackathonDescriptionResources;
+};
+
+export type HackathonDescriptionResources = {
+  __typename?: 'HackathonDescriptionResources';
+  block: Array<HackathonDescriptionResourcesBlock>;
+  hyperlink: Array<HackathonDescriptionResourcesHyperlink>;
+  inline: Array<HackathonDescriptionResourcesInline>;
+};
+
+export type HackathonDescriptionResourcesBlock = ResourceLink & {
+  __typename?: 'HackathonDescriptionResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type HackathonDescriptionResourcesHyperlink = ResourceLink & {
+  __typename?: 'HackathonDescriptionResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type HackathonDescriptionResourcesInline = ResourceLink & {
+  __typename?: 'HackathonDescriptionResourcesInline';
+  sys: ResourceSys;
+};
+
+export type HackathonFilter = {
+  AND?: InputMaybe<Array<InputMaybe<HackathonFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<HackathonFilter>>>;
+  codeUrl?: InputMaybe<Scalars['String']['input']>;
+  codeUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  codeUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  codeUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  codeUrl_not?: InputMaybe<Scalars['String']['input']>;
+  codeUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  codeUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  coverImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  demoUrl?: InputMaybe<Scalars['String']['input']>;
+  demoUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  demoUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  demoUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  demoUrl_not?: InputMaybe<Scalars['String']['input']>;
+  demoUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  demoUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  demoVideoUrl?: InputMaybe<Scalars['String']['input']>;
+  demoVideoUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  demoVideoUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  demoVideoUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  demoVideoUrl_not?: InputMaybe<Scalars['String']['input']>;
+  demoVideoUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  demoVideoUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  description_contains?: InputMaybe<Scalars['String']['input']>;
+  description_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  description_not_contains?: InputMaybe<Scalars['String']['input']>;
+  eventDate?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  eventDate_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  eventDate_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_not?: InputMaybe<Scalars['DateTime']['input']>;
+  eventDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  eventName?: InputMaybe<Scalars['String']['input']>;
+  eventName_contains?: InputMaybe<Scalars['String']['input']>;
+  eventName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  eventName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  eventName_not?: InputMaybe<Scalars['String']['input']>;
+  eventName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  eventName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  galleryCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  myRole?: InputMaybe<Scalars['String']['input']>;
+  myRole_contains?: InputMaybe<Scalars['String']['input']>;
+  myRole_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  myRole_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  myRole_not?: InputMaybe<Scalars['String']['input']>;
+  myRole_not_contains?: InputMaybe<Scalars['String']['input']>;
+  myRole_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  name_contains?: InputMaybe<Scalars['String']['input']>;
+  name_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name_not?: InputMaybe<Scalars['String']['input']>;
+  name_not_contains?: InputMaybe<Scalars['String']['input']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  oneLiner?: InputMaybe<Scalars['String']['input']>;
+  oneLiner_contains?: InputMaybe<Scalars['String']['input']>;
+  oneLiner_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  oneLiner_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  oneLiner_not?: InputMaybe<Scalars['String']['input']>;
+  oneLiner_not_contains?: InputMaybe<Scalars['String']['input']>;
+  oneLiner_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  outcome?: InputMaybe<Scalars['String']['input']>;
+  outcome_contains?: InputMaybe<Scalars['String']['input']>;
+  outcome_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  outcome_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  outcome_not?: InputMaybe<Scalars['String']['input']>;
+  outcome_not_contains?: InputMaybe<Scalars['String']['input']>;
+  outcome_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  showcaseUrl?: InputMaybe<Scalars['String']['input']>;
+  showcaseUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  showcaseUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  showcaseUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  showcaseUrl_not?: InputMaybe<Scalars['String']['input']>;
+  showcaseUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  showcaseUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  tags_contains_all?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tags_contains_none?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tags_contains_some?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  tags_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  teamMembersCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type HackathonLinkingCollections = {
+  __typename?: 'HackathonLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type HackathonLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum HackathonOrder {
+  CodeUrlAsc = 'codeUrl_ASC',
+  CodeUrlDesc = 'codeUrl_DESC',
+  DemoUrlAsc = 'demoUrl_ASC',
+  DemoUrlDesc = 'demoUrl_DESC',
+  DemoVideoUrlAsc = 'demoVideoUrl_ASC',
+  DemoVideoUrlDesc = 'demoVideoUrl_DESC',
+  EventDateAsc = 'eventDate_ASC',
+  EventDateDesc = 'eventDate_DESC',
+  EventNameAsc = 'eventName_ASC',
+  EventNameDesc = 'eventName_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  MyRoleAsc = 'myRole_ASC',
+  MyRoleDesc = 'myRole_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  OneLinerAsc = 'oneLiner_ASC',
+  OneLinerDesc = 'oneLiner_DESC',
+  OutcomeAsc = 'outcome_ASC',
+  OutcomeDesc = 'outcome_DESC',
+  ShowcaseUrlAsc = 'showcaseUrl_ASC',
+  ShowcaseUrlDesc = 'showcaseUrl_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type HackathonTeamMembersCollection = {
+  __typename?: 'HackathonTeamMembersCollection';
+  items: Array<Maybe<Entry>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
 export enum ImageFormat {
   /** AVIF image format. */
   Avif = 'AVIF',
@@ -2333,12 +2727,16 @@ export type Query = {
   componentTextImageSideBySide?: Maybe<ComponentTextImageSideBySide>;
   componentTextImageSideBySideCollection?: Maybe<ComponentTextImageSideBySideCollection>;
   entryCollection?: Maybe<EntryCollection>;
+  hackathon?: Maybe<Hackathon>;
+  hackathonCollection?: Maybe<HackathonCollection>;
   pageBlogPost?: Maybe<PageBlogPost>;
   pageBlogPostCollection?: Maybe<PageBlogPostCollection>;
   pageLanding?: Maybe<PageLanding>;
   pageLandingCollection?: Maybe<PageLandingCollection>;
   projectDetails?: Maybe<ProjectDetails>;
   projectDetailsCollection?: Maybe<ProjectDetailsCollection>;
+  teamMember?: Maybe<TeamMember>;
+  teamMemberCollection?: Maybe<TeamMemberCollection>;
   tldrSummary?: Maybe<TldrSummary>;
   tldrSummaryCollection?: Maybe<TldrSummaryCollection>;
   urlLink?: Maybe<UrlLink>;
@@ -2582,6 +2980,25 @@ export type QueryEntryCollectionArgs = {
 };
 
 
+export type QueryHackathonArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryHackathonCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<HackathonOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<HackathonFilter>;
+};
+
+
 export type QueryPageBlogPostArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -2636,6 +3053,25 @@ export type QueryProjectDetailsCollectionArgs = {
   skip?: InputMaybe<Scalars['Int']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ProjectDetailsFilter>;
+};
+
+
+export type QueryTeamMemberArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryTeamMemberCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<TeamMemberOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<TeamMemberFilter>;
 };
 
 
@@ -2743,6 +3179,139 @@ export type TaxonomyConcept = {
   __typename?: 'TaxonomyConcept';
   id?: Maybe<Scalars['String']['output']>;
 };
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMember = Entry & _Node & {
+  __typename?: 'TeamMember';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  linkedFrom?: Maybe<TeamMemberLinkingCollections>;
+  linkedinUrl?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  photo?: Maybe<Asset>;
+  role?: Maybe<Scalars['String']['output']>;
+  sys: Sys;
+  twitterUrl?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberLinkedinUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberPhotoArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberRoleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/teamMember) */
+export type TeamMemberTwitterUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type TeamMemberCollection = {
+  __typename?: 'TeamMemberCollection';
+  items: Array<Maybe<TeamMember>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type TeamMemberFilter = {
+  AND?: InputMaybe<Array<InputMaybe<TeamMemberFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<TeamMemberFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  linkedinUrl?: InputMaybe<Scalars['String']['input']>;
+  linkedinUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  linkedinUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  linkedinUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  linkedinUrl_not?: InputMaybe<Scalars['String']['input']>;
+  linkedinUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  linkedinUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  name_contains?: InputMaybe<Scalars['String']['input']>;
+  name_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  name_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  name_not?: InputMaybe<Scalars['String']['input']>;
+  name_not_contains?: InputMaybe<Scalars['String']['input']>;
+  name_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  photo_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  role?: InputMaybe<Scalars['String']['input']>;
+  role_contains?: InputMaybe<Scalars['String']['input']>;
+  role_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  role_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  role_not?: InputMaybe<Scalars['String']['input']>;
+  role_not_contains?: InputMaybe<Scalars['String']['input']>;
+  role_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  twitterUrl?: InputMaybe<Scalars['String']['input']>;
+  twitterUrl_contains?: InputMaybe<Scalars['String']['input']>;
+  twitterUrl_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  twitterUrl_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  twitterUrl_not?: InputMaybe<Scalars['String']['input']>;
+  twitterUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
+  twitterUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type TeamMemberLinkingCollections = {
+  __typename?: 'TeamMemberLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type TeamMemberLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum TeamMemberOrder {
+  LinkedinUrlAsc = 'linkedinUrl_ASC',
+  LinkedinUrlDesc = 'linkedinUrl_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TwitterUrlAsc = 'twitterUrl_ASC',
+  TwitterUrlDesc = 'twitterUrl_DESC'
+}
 
 export type TimelineFilterInput = {
   /** Preview content starting from a given release date */
@@ -3155,6 +3724,54 @@ export type AuthorFieldsFragment = { __typename: 'ComponentAuthor', name?: strin
     & ImageFieldsFragment
   ) | null };
 
+export type HackathonCollectionQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  order?: InputMaybe<Array<InputMaybe<HackathonOrder>> | InputMaybe<HackathonOrder>>;
+  where?: InputMaybe<HackathonFilter>;
+}>;
+
+
+export type HackathonCollectionQuery = { __typename?: 'Query', hackathonCollection?: { __typename?: 'HackathonCollection', items: Array<(
+      { __typename?: 'Hackathon' }
+      & HackathonFieldsFragment
+    ) | null> } | null };
+
+export type TeamMemberFieldsFragment = { __typename: 'TeamMember', name?: string | null, role?: string | null, linkedinUrl?: string | null, twitterUrl?: string | null, sys: { __typename?: 'Sys', id: string }, photo?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null };
+
+export type HackathonFieldsFragment = { __typename: 'Hackathon', internalName?: string | null, name?: string | null, slug?: string | null, oneLiner?: string | null, eventName?: string | null, eventDate?: any | null, myRole?: string | null, outcome?: string | null, demoVideoUrl?: string | null, tags?: Array<string | null> | null, showcaseUrl?: string | null, demoUrl?: string | null, codeUrl?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, description?: { __typename?: 'HackathonDescription', json: any } | null, coverImage?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null, galleryCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
+    ) | null> } | null, teamMembersCollection?: { __typename?: 'HackathonTeamMembersCollection', items: Array<
+      | { __typename?: 'ComponentAuthor' }
+      | { __typename?: 'ComponentCaptionedImage' }
+      | { __typename?: 'ComponentFullWidthImage' }
+      | { __typename?: 'ComponentImageGallery' }
+      | { __typename?: 'ComponentImageGalleryWithCaptions' }
+      | { __typename?: 'ComponentImpactMetrics' }
+      | { __typename?: 'ComponentMetric' }
+      | { __typename?: 'ComponentRichImage' }
+      | { __typename?: 'ComponentSeo' }
+      | { __typename?: 'ComponentTextImageSideBySide' }
+      | { __typename?: 'Hackathon' }
+      | { __typename?: 'PageBlogPost' }
+      | { __typename?: 'PageLanding' }
+      | { __typename?: 'ProjectDetails' }
+      | (
+        { __typename?: 'TeamMember' }
+        & TeamMemberFieldsFragment
+      )
+      | { __typename?: 'TldrSummary' }
+      | { __typename?: 'UrlLink' }
+     | null> } | null, contentfulMetadata: { __typename?: 'ContentfulMetadata', tags: Array<{ __typename?: 'ContentfulTag', id?: string | null, name?: string | null } | null> } };
+
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, author?:
@@ -3171,9 +3788,11 @@ export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', 
     | { __typename?: 'ComponentRichImage' }
     | { __typename?: 'ComponentSeo' }
     | { __typename?: 'ComponentTextImageSideBySide' }
+    | { __typename?: 'Hackathon' }
     | { __typename?: 'PageBlogPost' }
     | { __typename?: 'PageLanding' }
     | { __typename?: 'ProjectDetails' }
+    | { __typename?: 'TeamMember' }
     | { __typename?: 'TldrSummary' }
     | { __typename?: 'UrlLink' }
    | null, featuredImage?: (
@@ -3218,9 +3837,11 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
     | { __typename?: 'ComponentRichImage' }
     | { __typename?: 'ComponentSeo' }
     | { __typename?: 'ComponentTextImageSideBySide' }
+    | { __typename?: 'Hackathon' }
     | { __typename?: 'PageBlogPost' }
     | { __typename?: 'PageLanding' }
     | { __typename?: 'ProjectDetails' }
+    | { __typename?: 'TeamMember' }
     | { __typename?: 'TldrSummary' }
     | { __typename?: 'UrlLink' }
    | null, featuredImage?: (
@@ -3255,9 +3876,11 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
             { __typename?: 'ComponentTextImageSideBySide' }
             & ComponentTextImageSideBySideFragment
           )
+          | { __typename?: 'Hackathon' }
           | { __typename?: 'PageBlogPost' }
           | { __typename?: 'PageLanding' }
           | { __typename?: 'ProjectDetails' }
+          | { __typename?: 'TeamMember' }
           | { __typename?: 'TldrSummary' }
           | { __typename?: 'UrlLink' }
          | null> } } } | null, relatedBlogPostsCollection?: { __typename?: 'PageBlogPostRelatedBlogPostsCollection', items: Array<(
@@ -3305,12 +3928,14 @@ export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalNam
     | { __typename?: 'ComponentRichImage' }
     | { __typename?: 'ComponentSeo' }
     | { __typename?: 'ComponentTextImageSideBySide' }
+    | { __typename?: 'Hackathon' }
     | (
       { __typename?: 'PageBlogPost' }
       & ReferencePageBlogPostFieldsFragment
     )
     | { __typename?: 'PageLanding' }
     | { __typename?: 'ProjectDetails' }
+    | { __typename?: 'TeamMember' }
     | { __typename?: 'TldrSummary' }
     | { __typename?: 'UrlLink' }
    | null };
@@ -3371,6 +3996,65 @@ export const ImageFieldsFragmentDoc = gql`
   height
   url
   contentType
+}
+    `;
+export const TeamMemberFieldsFragmentDoc = gql`
+    fragment TeamMemberFields on TeamMember {
+  __typename
+  sys {
+    id
+  }
+  name
+  role
+  linkedinUrl
+  twitterUrl
+  photo {
+    ...ImageFields
+  }
+}
+    `;
+export const HackathonFieldsFragmentDoc = gql`
+    fragment HackathonFields on Hackathon {
+  __typename
+  sys {
+    id
+    spaceId
+  }
+  internalName
+  name
+  slug
+  oneLiner
+  eventName
+  eventDate
+  myRole
+  outcome
+  description {
+    json
+  }
+  coverImage {
+    ...ImageFields
+  }
+  demoVideoUrl
+  galleryCollection(limit: 12) {
+    items {
+      ...ImageFields
+    }
+  }
+  tags
+  showcaseUrl
+  demoUrl
+  codeUrl
+  teamMembersCollection(limit: 10) {
+    items {
+      ...TeamMemberFields
+    }
+  }
+  contentfulMetadata {
+    tags {
+      id
+      name
+    }
+  }
 }
     `;
 export const SeoFieldsFragmentDoc = gql`
@@ -3624,6 +4308,23 @@ export const SitemapPagesFieldsFragmentDoc = gql`
   }
 }
     `;
+export const HackathonCollectionDocument = gql`
+    query hackathonCollection($locale: String, $preview: Boolean, $limit: Int, $order: [HackathonOrder], $where: HackathonFilter) {
+  hackathonCollection(
+    limit: $limit
+    locale: $locale
+    preview: $preview
+    order: $order
+    where: $where
+  ) {
+    items {
+      ...HackathonFields
+    }
+  }
+}
+    ${HackathonFieldsFragmentDoc}
+${ImageFieldsFragmentDoc}
+${TeamMemberFieldsFragmentDoc}`;
 export const PageBlogPostDocument = gql`
     query pageBlogPost($slug: String!, $locale: String, $preview: Boolean) {
   pageBlogPostCollection(
@@ -3716,6 +4417,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    hackathonCollection(variables?: HackathonCollectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<HackathonCollectionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<HackathonCollectionQuery>({ document: HackathonCollectionDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'hackathonCollection', 'query', variables);
+    },
     pageBlogPost(variables: PageBlogPostQueryVariables, requestHeaders?: GraphQLClientRequestHeaders, signal?: RequestInit['signal']): Promise<PageBlogPostQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PageBlogPostQuery>({ document: PageBlogPostDocument, variables, requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders }, signal }), 'pageBlogPost', 'query', variables);
     },
