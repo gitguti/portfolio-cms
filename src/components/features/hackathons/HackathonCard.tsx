@@ -5,7 +5,6 @@ import { twMerge } from 'tailwind-merge';
 import { HiCode, HiExternalLink, HiEye } from 'react-icons/hi';
 import { CtfImage } from '@src/components/features/contentful';
 import { FormatDate } from '@src/components/shared/format-date';
-import { TeamAvatarStack } from './TeamAvatarStack';
 
 // Temporary type - will be replaced by generated HackathonFieldsFragment once Contentful is set up
 type HackathonFieldsFragment = {
@@ -75,26 +74,16 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
     showcaseUrl,
     demoUrl,
     codeUrl,
-    teamMembersCollection,
   } = hackathon;
   const inspectorProps = useContentfulInspectorMode({ entryId: hackathon.sys.id });
   const cardRef = useRef<HTMLDivElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
 
-  // GSAP hover animation
   const handleMouseEnter = () => {
     gsap.to(cardRef.current, { scale: 1.02, duration: 0.3 });
-    gsap.to(overlayRef.current, { zIndex: 20, duration: 0.4 });
   };
   const handleMouseLeave = () => {
     gsap.to(cardRef.current, { scale: 1, duration: 0.3 });
-    gsap.to(overlayRef.current, { zIndex: 0, duration: 0.4 });
   };
-
-  // Filter system tags
-  const displayTags = hackathon.contentfulMetadata?.tags
-    ?.filter(tag => tag?.id !== 'caseStudy' && tag?.id !== 'blogArticle')
-    .filter(tag => tag?.name);
 
   const handleLinkClick = (url: string | null | undefined, e: React.MouseEvent) => {
     e.preventDefault();
@@ -106,28 +95,19 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
 
   return (
     <div
+      ref={cardRef}
       className={twMerge(
         'flex flex-col rounded-xl border border-neutral-200 bg-white px-3 py-3 dark:border-zinc-700 dark:bg-zinc-900 sm:px-4 sm:py-4',
         className,
       )}
-      role="button"
-      tabIndex={0}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Cover Image */}
-      <div
-        ref={cardRef}
-        className="relative aspect-[4/3] cursor-pointer overflow-hidden rounded-xl"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        {/* Placeholder background with title (visible initially, z-10) */}
-        <div className="flex items-center justify-center p-4"></div>
-
-        {/* Cover Image (hidden initially, reveals on hover via z-index) */}
+      {/* Header: thumbnail + metadata */}
+      <div className="flex items-center gap-3">
         {coverImage && (
           <div
-            ref={overlayRef}
-            className="absolute inset-0 z-0"
+            className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-full"
             {...inspectorProps({ fieldId: 'coverImage' })}
           >
             <CtfImage
@@ -136,131 +116,98 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
             />
           </div>
         )}
-      </div>
-
-      {/* Card Content - Below Image */}
-      <div className="mt-3 flex flex-col gap-2 sm:mt-4 sm:gap-3">
-        {/* Event Info */}
-        {eventName && (
-          <div className="flex items-center gap-2">
-            <span
-              className="text-xs font-medium text-neutral-600 dark:text-zinc-400"
-              {...inspectorProps({ fieldId: 'eventName' })}
+        <div className="flex min-w-0 flex-col">
+          {name && (
+            <h3
+              className="truncate font-serif text-base font-semibold capitalize text-neutral-800 dark:text-zinc-50"
+              {...inspectorProps({ fieldId: 'name' })}
             >
-              {eventName}
+              {name}
+            </h3>
+          )}
+          {eventName && (
+            <span className="text-xs text-neutral-600 dark:text-zinc-400">
+              <span {...inspectorProps({ fieldId: 'eventName' })}>{eventName}</span>
+              {eventDate && (
+                <>
+                  <span className="text-neutral-400 dark:text-zinc-600"> · </span>
+                  <span className="text-neutral-500 dark:text-zinc-500">
+                    <FormatDate date={new Date(eventDate)} />
+                  </span>
+                </>
+              )}
             </span>
-            {eventDate && (
-              <>
-                <span className="text-neutral-400 dark:text-zinc-600">·</span>
-                <span className="text-xs text-neutral-500 dark:text-zinc-500">
-                  <FormatDate date={new Date(eventDate)} />
-                </span>
-              </>
-            )}
-          </div>
-        )}
-
-        {/* Title and Description */}
-        {name && (
-          <h3
-            className="font-serif text-base font-semibold capitalize text-neutral-800 dark:text-zinc-50 sm:text-lg"
-            {...inspectorProps({ fieldId: 'name' })}
-          >
-            {name}
-          </h3>
-        )}
-
-        {oneLiner && (
-          <p
-            className="text-xs text-neutral-600 dark:text-zinc-300 sm:text-sm"
-            {...inspectorProps({ fieldId: 'oneLiner' })}
-          >
-            {oneLiner}
-          </p>
-        )}
-
-        {/* Action Buttons */}
-        <div className="flex flex-wrap gap-2">
-          {showcaseUrl && (
-            <button
-              onClick={e => handleLinkClick(showcaseUrl, e)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="View showcase"
-            >
-              <HiEye className="h-3.5 w-3.5" />
-              <span>Showcase</span>
-            </button>
           )}
-          {demoUrl && (
-            <button
-              onClick={e => handleLinkClick(demoUrl, e)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="View demo"
+          {myRole && (
+            <span
+              className="text-xs text-neutral-500 dark:text-zinc-400"
+              {...inspectorProps({ fieldId: 'myRole' })}
             >
-              <HiExternalLink className="h-3.5 w-3.5" />
-              <span>Demo</span>
-            </button>
-          )}
-          {codeUrl && (
-            <button
-              onClick={e => handleLinkClick(codeUrl, e)}
-              className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
-              aria-label="View code"
-            >
-              <HiCode className="h-3.5 w-3.5" />
-              <span>Code</span>
-            </button>
+              {myRole}
+            </span>
           )}
         </div>
+      </div>
 
-        {/* My Role */}
-        {myRole && (
-          <p
-            className="text-xs text-neutral-500 dark:text-zinc-400"
-            {...inspectorProps({ fieldId: 'myRole' })}
-          >
-            Role: {myRole}
-          </p>
-        )}
-
-        {/* Outcome Badge */}
-        {outcome && (
-          <div>
-            <span
-              className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400"
-              {...inspectorProps({ fieldId: 'outcome' })}
+      {/* Body: description, links, outcome */}
+      {(oneLiner || showcaseUrl || demoUrl || codeUrl || outcome) && (
+        <div className="mt-3 flex flex-col gap-2">
+          {oneLiner && (
+            <p
+              className="text-xs text-neutral-600 dark:text-zinc-300 sm:text-sm"
+              {...inspectorProps({ fieldId: 'oneLiner' })}
             >
-              {outcome}
-            </span>
-          </div>
-        )}
+              {oneLiner}
+            </p>
+          )}
 
-        {/* Team Avatars */}
-        {teamMembersCollection &&
-          teamMembersCollection.items &&
-          teamMembersCollection.items.length > 0 && (
-            <div>
-              <TeamAvatarStack members={teamMembersCollection.items} maxVisible={3} />
+          {(showcaseUrl || demoUrl || codeUrl) && (
+            <div className="flex flex-wrap gap-2">
+              {showcaseUrl && (
+                <button
+                  onClick={e => handleLinkClick(showcaseUrl, e)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  aria-label="View showcase"
+                >
+                  <HiEye className="h-3.5 w-3.5" />
+                  <span>Showcase</span>
+                </button>
+              )}
+              {demoUrl && (
+                <button
+                  onClick={e => handleLinkClick(demoUrl, e)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  aria-label="View demo"
+                >
+                  <HiExternalLink className="h-3.5 w-3.5" />
+                  <span>Demo</span>
+                </button>
+              )}
+              {codeUrl && (
+                <button
+                  onClick={e => handleLinkClick(codeUrl, e)}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  aria-label="View code"
+                >
+                  <HiCode className="h-3.5 w-3.5" />
+                  <span>Code</span>
+                </button>
+              )}
             </div>
           )}
 
-        {/* Tags */}
-        {displayTags && displayTags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {displayTags.map(
-              tag =>
-                tag?.name && (
-                  <span
-                    key={tag.id}
-                    className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
-                  >
-                    {tag.name}
-                  </span>
-                ),
-            )}
-          </div>
-        )}
-      </div>
+          {outcome && (
+            <div>
+              <span
+                className="inline-block rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                {...inspectorProps({ fieldId: 'outcome' })}
+              >
+                {outcome}
+              </span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
