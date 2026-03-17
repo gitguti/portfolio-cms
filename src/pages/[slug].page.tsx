@@ -28,7 +28,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         <ArticleContent article={blogPost} />
       </Container>
       {relatedPosts && (
-        <Container className="mt-8 max-w-5xl">
+        <Container className="mt-8 max-w-3xl">
           <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">Next case</h2>
           <ArticleTileGrid className="md:grid-cols-2" articles={relatedPosts} />
         </Container>
