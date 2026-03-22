@@ -23,7 +23,6 @@ const navLinks = [
 ];
 
 const FILL_SPEED = 900;
-const TOAST_DURATION = 2800;
 
 export const Header = () => {
   const router = useRouter();
@@ -52,62 +51,19 @@ export const Header = () => {
     return router.pathname.startsWith(href);
   };
 
-  const spawnParticles = useCallback(() => {
-    if (!aboutBtnRef.current) return;
-    const rect = aboutBtnRef.current.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const colors = ['#ffffff', '#d4d4d4', '#a3a3a3', '#e8e4dc'];
-
-    for (let i = 0; i < 10; i++) {
-      const p = document.createElement('div');
-      p.style.cssText = `position:fixed;pointer-events:none;z-index:9999;border-radius:50%;`;
-      const angle = Math.random() * 360;
-      const dist = 20 + Math.random() * 32;
-      const size = 2 + Math.random() * 3;
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      p.style.width = `${size}px`;
-      p.style.height = `${size}px`;
-      p.style.background = color;
-      p.style.left = `${cx}px`;
-      p.style.top = `${cy}px`;
-      document.body.appendChild(p);
-      const anim = p.animate(
-        [
-          { opacity: 1, transform: `translate(-50%,-50%) rotate(${angle}deg) translateX(0px)` },
-          {
-            opacity: 0,
-            transform: `translate(-50%,-50%) rotate(${angle}deg) translateX(${dist}px)`,
-          },
-        ],
-        { duration: 300 + Math.random() * 200, easing: 'ease-out', fill: 'forwards' },
-      );
-      anim.onfinish = () => p.remove();
-    }
-
-    const heart = document.createElement('div');
-    heart.textContent = '🤍';
-    heart.style.cssText = `position:fixed;font-size:14px;left:${cx}px;top:${cy}px;pointer-events:none;z-index:9999;`;
-    document.body.appendChild(heart);
-    const heartAnim = heart.animate(
-      [
-        { opacity: 1, transform: 'translate(-50%,-50%) translateY(0px) scale(1)' },
-        { opacity: 0, transform: 'translate(-50%,-50%) translateY(-32px) scale(1.4)' },
-      ],
-      { duration: 600, easing: 'ease-out', fill: 'forwards' },
-    );
-    heartAnim.onfinish = () => heart.remove();
-  }, []);
-
   const startFill = useCallback(() => {
     if (phaseRef.current !== 'idle') return;
     const fill = aboutFillRef.current;
     if (!fill) return;
 
+    const isDark = theme === 'dark';
+    const fillColor = isDark ? 'rgba(255,255,255,0.13)' : 'rgba(0,0,0,0.08)';
+    const fillDoneColor = isDark ? '#404040' : '#262626';
+
     phaseRef.current = 'burning';
     startTimeRef.current = null;
     fill.style.transition = 'none';
-    fill.style.background = 'rgba(255,255,255,0.13)';
+    fill.style.background = fillColor;
     fill.style.opacity = '1';
     fill.style.width = '0%';
 
@@ -120,32 +76,16 @@ export const Header = () => {
         rafRef.current = requestAnimationFrame(burnStep);
       } else {
         phaseRef.current = 'done';
-        fill.style.background = 'rgba(255,255,255,0.85)';
-        fill.style.transition = 'opacity 0.15s';
-        setTimeout(() => {
-          fill.style.opacity = '0';
-        }, 55);
-
-        spawnParticles();
-        setShowToast(true);
-
-        setTimeout(() => {
-          setShowToast(false);
-          fill.style.transition = 'none';
-          fill.style.width = '0%';
-          fill.style.opacity = '0';
-          fill.style.background = 'rgba(255,255,255,0.13)';
-          phaseRef.current = 'idle';
-          router.push('/about');
-        }, TOAST_DURATION);
+        fill.style.background = fillDoneColor;
+        if (aboutBtnRef.current) aboutBtnRef.current.style.color = 'white';
       }
     };
 
     rafRef.current = requestAnimationFrame(burnStep);
-  }, [router, spawnParticles]);
+  }, [theme]);
 
   const cancelFill = useCallback(() => {
-    if (phaseRef.current !== 'burning') return;
+    if (phaseRef.current === 'idle') return;
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     rafRef.current = null;
     startTimeRef.current = null;
@@ -157,7 +97,25 @@ export const Header = () => {
       fill.style.width = '0%';
       fill.style.opacity = '0';
     }
+    if (aboutBtnRef.current) aboutBtnRef.current.style.color = '';
   }, []);
+
+  const handleAboutClick = useCallback(() => {
+    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    rafRef.current = null;
+    startTimeRef.current = null;
+    phaseRef.current = 'idle';
+    const fill = aboutFillRef.current;
+    if (fill) {
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      fill.style.opacity = '0';
+    }
+    if (aboutBtnRef.current) aboutBtnRef.current.style.color = '';
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+    router.push('/about');
+  }, [router]);
 
   const aboutActive = isActive('/about');
 
@@ -189,9 +147,10 @@ export const Header = () => {
           ref={aboutBtnRef}
           onMouseEnter={startFill}
           onMouseLeave={cancelFill}
+          onClick={handleAboutClick}
           onTouchStart={e => {
             e.preventDefault();
-            startFill();
+            handleAboutClick();
           }}
           className={`relative flex items-center gap-2 overflow-hidden rounded-full px-3 py-2 text-sm font-light transition-colors ${
             aboutActive
@@ -202,11 +161,22 @@ export const Header = () => {
           <div
             ref={aboutFillRef}
             className="pointer-events-none absolute inset-0 rounded-full"
-            style={{ width: '0%', opacity: 0, background: 'rgba(255,255,255,0.13)' }}
+            style={{ width: '0%', opacity: 0 }}
           />
           <HiUser className="relative z-10 h-4 w-4" />
           <span className="relative z-10 hidden sm:inline">About</span>
         </button>
+
+        {/* Toast */}
+        <div
+          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-neutral-900 px-4 py-2 text-xs text-neutral-100 transition-all duration-300 md:bottom-auto md:top-[calc(100%+10px)] ${
+            showToast
+              ? 'translate-y-0 opacity-100'
+              : '-translate-y-1.5 opacity-0 md:translate-y-1.5'
+          }`}
+        >
+          oh, you actually clicked — hi 👋
+        </div>
 
         {/* Divider */}
         <div className="mx-1 h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
@@ -221,17 +191,6 @@ export const Header = () => {
             {theme === 'dark' ? <HiSun className="h-4 w-4" /> : <HiMoon className="h-4 w-4" />}
           </button>
         )}
-
-        {/* Toast */}
-        <div
-          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-neutral-900 px-4 py-2 text-xs text-neutral-100 transition-all duration-300 md:bottom-auto md:top-[calc(100%+10px)] ${
-            showToast
-              ? 'translate-y-0 opacity-100'
-              : '-translate-y-1.5 opacity-0 md:translate-y-1.5'
-          }`}
-        >
-          oh, you actually clicked — hi 👋
-        </div>
       </nav>
     </header>
   );
