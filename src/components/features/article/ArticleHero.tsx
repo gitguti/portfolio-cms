@@ -76,7 +76,7 @@ export const ArticleHero = ({
         )} */}
         <h1
           className={twMerge(
-            'mb-6 font-serif text-5xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-6xl',
+            'mb-6 font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-5xl',
           )}
           {...inspectorProps({ fieldId: 'title' })}
         >

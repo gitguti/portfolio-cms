@@ -37,7 +37,7 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="w-full bg-gray-50 px-2 py-6 pb-20 dark:bg-neutral-950 md:px-1 md:pb-6">
+    <footer className="w-full bg-gray-50 px-2 py-6 pb-20 dark:bg-[#1f1f1f] md:px-1 md:pb-6">
       <Container className="flex flex-col items-center justify-center gap-4">
         <div className="flex gap-4">
           {socialLinks.map(link => (

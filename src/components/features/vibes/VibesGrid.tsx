@@ -37,7 +37,7 @@ export const VibesGrid = ({ projects }: VibesGridProps) => {
   }
 
   return (
-    <div ref={gridRef} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div ref={gridRef} className="grid grid-cols-1 gap-2.5 md:grid-cols-2">
       {projects.map(project => (
         <VibesCard key={project.id} project={project} />
       ))}
