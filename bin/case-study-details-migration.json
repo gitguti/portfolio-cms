@@ -1,0 +1,52 @@
+{
+  "name": "Create CaseStudyDetails Content Type",
+  "description": "Create a new Content Model called CaseStudyDetails with fields for role, team, and timeframe",
+  "contentType": {
+    "name": "Case Study Details",
+    "description": "Metadata for case studies including role, team, and timeframe",
+    "displayField": "role",
+    "fields": [
+      {
+        "id": "role",
+        "name": "Role",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "team",
+        "name": "Team",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      },
+      {
+        "id": "timeframe",
+        "name": "Timeframe",
+        "type": "Symbol",
+        "localized": false,
+        "required": false,
+        "validations": [],
+        "disabled": false,
+        "omitted": false
+      }
+    ]
+  },
+  "updatePageBlogPost": {
+    "fieldId": "caseStudyDetails",
+    "fieldName": "Case Study Details",
+    "fieldType": "Link",
+    "linkType": "Entry",
+    "validations": [
+      {
+        "linkContentType": ["caseStudyDetails"]
+      }
+    ]
+  }
+}

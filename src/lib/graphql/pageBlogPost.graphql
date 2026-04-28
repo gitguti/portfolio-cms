@@ -121,6 +121,11 @@ fragment PageBlogPostFields on PageBlogPost {
   featuredImage {
     ...ImageFields
   }
+  caseStudyDetails {
+    role
+    team
+    timeframe
+  }
   content {
     json
     links {
