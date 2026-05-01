@@ -94,6 +94,7 @@ fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide
   fragment ComponentImpactMetrics on ComponentImpactMetrics {
     sys { id }
     __typename
+    isSubtle
     metricsCollection(limit: 8) {
       items {
         ...ComponentMetric

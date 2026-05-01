@@ -9,6 +9,7 @@ import {
   ArticleImageGalleryWithCaptions,
   ArticleFullWidthImage,
   ArticleImpactMetrics,
+  ArticleImpactMetricsSubtle,
 } from '@src/components/features/article';
 import {
   ComponentRichImage,
@@ -70,7 +71,11 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
     case 'ComponentFullWidthImage':
       return <ArticleFullWidthImage fullWidthImage={entry} />;
     case 'ComponentImpactMetrics':
-      return <ArticleImpactMetrics metrics={entry} />;
+      return entry.isSubtle ? (
+        <ArticleImpactMetricsSubtle metrics={entry} />
+      ) : (
+        <ArticleImpactMetrics metrics={entry} />
+      );
     default:
       return null;
   }

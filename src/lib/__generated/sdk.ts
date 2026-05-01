@@ -1432,6 +1432,7 @@ export type ComponentImpactMetrics = Entry & _Node & {
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
+  isSubtle?: Maybe<Scalars['Boolean']['output']>;
   linkedFrom?: Maybe<ComponentImpactMetricsLinkingCollections>;
   metricsCollection?: Maybe<ComponentImpactMetricsMetricsCollection>;
   metricsCursorCollection?: Maybe<ComponentImpactMetricsMetricsCursorCollection>;
@@ -1441,6 +1442,13 @@ export type ComponentImpactMetrics = Entry & _Node & {
 
 /** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
 export type ComponentImpactMetricsInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentImpactMetrics) */
+export type ComponentImpactMetricsIsSubtleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
@@ -1502,6 +1510,9 @@ export type ComponentImpactMetricsFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  isSubtle?: InputMaybe<Scalars['Boolean']['input']>;
+  isSubtle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  isSubtle_not?: InputMaybe<Scalars['Boolean']['input']>;
   metrics?: InputMaybe<CfComponentMetricNestedFilter>;
   metricsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
@@ -1576,6 +1587,8 @@ export enum ComponentImpactMetricsMetricsCursorCollectionOrder {
 export enum ComponentImpactMetricsOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  IsSubtleAsc = 'isSubtle_ASC',
+  IsSubtleDesc = 'isSubtle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1719,6 +1732,8 @@ export type ComponentMetricLinkingCollectionsEntryCursorCollectionArgs = {
 export enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  IsSubtleAsc = 'isSubtle_ASC',
+  IsSubtleDesc = 'isSubtle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1732,6 +1747,8 @@ export enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrd
 export enum ComponentMetricLinkingCollectionsComponentImpactMetricsCursorCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  IsSubtleAsc = 'isSubtle_ASC',
+  IsSubtleDesc = 'isSubtle_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -1765,6 +1782,7 @@ export type ComponentRichImage = Entry & _Node & {
   image?: Maybe<Asset>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ComponentRichImageLinkingCollections>;
+  size?: Maybe<Scalars['String']['output']>;
   sys: Sys;
 };
 
@@ -1801,6 +1819,13 @@ export type ComponentRichImageInternalNameArgs = {
 /** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentRichImage) */
 export type ComponentRichImageLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentRichImage) */
+export type ComponentRichImageSizeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ComponentRichImageCollection = {
@@ -1840,6 +1865,13 @@ export type ComponentRichImageFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  size?: InputMaybe<Scalars['String']['input']>;
+  size_contains?: InputMaybe<Scalars['String']['input']>;
+  size_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  size_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  size_not?: InputMaybe<Scalars['String']['input']>;
+  size_not_contains?: InputMaybe<Scalars['String']['input']>;
+  size_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -1875,6 +1907,8 @@ export enum ComponentRichImageOrder {
   FullWidthDesc = 'fullWidth_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  SizeAsc = 'size_ASC',
+  SizeDesc = 'size_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -5236,7 +5270,7 @@ export type PageLandingCollectionQuery = { __typename?: 'Query', pageLandingColl
       & PageLandingFieldsFragment
     ) | null> } | null };
 
-export type RichImageFieldsFragment = { __typename: 'ComponentRichImage', internalName?: string | null, caption?: string | null, fullWidth?: boolean | null, sys: { __typename?: 'Sys', id: string }, image?: (
+export type RichImageFieldsFragment = { __typename: 'ComponentRichImage', internalName?: string | null, caption?: string | null, fullWidth?: boolean | null, size?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null };
@@ -5370,6 +5404,7 @@ export const RichImageFieldsFragmentDoc = gql`
   }
   caption
   fullWidth
+  size
 }
     `;
 export const ComponentTextImageSideBySideFragmentDoc = gql`
@@ -5472,6 +5507,7 @@ export const ComponentImpactMetricsFragmentDoc = gql`
     id
   }
   __typename
+  isSubtle
   metricsCollection(limit: 8) {
     items {
       ...ComponentMetric

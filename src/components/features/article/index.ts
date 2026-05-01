@@ -10,6 +10,7 @@ export * from './ArticleImageGallery';
 export * from './ArticleImageGalleryWithCaptions';
 export * from './ArticleFullWidthImage';
 export * from './ArticleImpactMetrics';
+export * from './ArticleImpactMetricsSubtle';
 export * from './CaseStudyLayout';
 export * from './CaseStudyDetails';
 export * from './WorkCard';

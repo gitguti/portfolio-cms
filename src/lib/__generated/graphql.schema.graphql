@@ -748,6 +748,7 @@ type ComponentImpactMetrics implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String, useFallbackLocale: Boolean): String
+  isSubtle(locale: String, useFallbackLocale: Boolean): Boolean
   linkedFrom(allowedLocales: [String]): ComponentImpactMetricsLinkingCollections
   metricsCollection(limit: Int = 100, locale: String, order: [ComponentImpactMetricsMetricsCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentMetricFilter): ComponentImpactMetricsMetricsCollection
   metricsCursorCollection(limit: Int = 100, locale: String, order: [ComponentImpactMetricsMetricsCursorCollectionOrder], pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentMetricFilter): ComponentImpactMetricsMetricsCursorCollection
@@ -778,6 +779,9 @@ input ComponentImpactMetricsFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  isSubtle: Boolean
+  isSubtle_exists: Boolean
+  isSubtle_not: Boolean
   metrics: cfComponentMetricNestedFilter
   metricsCollection_exists: Boolean
   sys: SysFilter
@@ -830,6 +834,8 @@ enum ComponentImpactMetricsMetricsCursorCollectionOrder {
 enum ComponentImpactMetricsOrder {
   internalName_ASC
   internalName_DESC
+  isSubtle_ASC
+  isSubtle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -904,6 +910,8 @@ type ComponentMetricLinkingCollections {
 enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder {
   internalName_ASC
   internalName_DESC
+  isSubtle_ASC
+  isSubtle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -917,6 +925,8 @@ enum ComponentMetricLinkingCollectionsComponentImpactMetricsCollectionOrder {
 enum ComponentMetricLinkingCollectionsComponentImpactMetricsCursorCollectionOrder {
   internalName_ASC
   internalName_DESC
+  isSubtle_ASC
+  isSubtle_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -951,6 +961,7 @@ type ComponentRichImage implements Entry & _Node {
   image(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   internalName(locale: String, useFallbackLocale: Boolean): String
   linkedFrom(allowedLocales: [String]): ComponentRichImageLinkingCollections
+  size(locale: String, useFallbackLocale: Boolean): String
   sys: Sys!
 }
 
@@ -989,6 +1000,13 @@ input ComponentRichImageFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  size: String
+  size_contains: String
+  size_exists: Boolean
+  size_in: [String]
+  size_not: String
+  size_not_contains: String
+  size_not_in: [String]
   sys: SysFilter
 }
 
@@ -1004,6 +1022,8 @@ enum ComponentRichImageOrder {
   fullWidth_DESC
   internalName_ASC
   internalName_DESC
+  size_ASC
+  size_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
