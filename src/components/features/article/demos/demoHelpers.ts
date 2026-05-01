@@ -71,3 +71,41 @@ export const relPos = (el: Element, wrapper: Element) => {
   const wr = wrapper.getBoundingClientRect();
   return { x: er.left - wr.left + er.width / 2, y: er.top - wr.top + er.height / 2 };
 };
+
+export const typeText = async (
+  setter: (fn: (prev: string) => string) => void,
+  text: string,
+  msPerChar = 90,
+) => {
+  for (const char of text) {
+    setter(prev => prev + char);
+    await delay(msPerChar + Math.random() * 30);
+  }
+};
+
+export const shakeElement = (el: HTMLElement | null) =>
+  new Promise<void>(resolve => {
+    if (!el) return resolve();
+    gsap.to(el, {
+      keyframes: [{ x: 0 }, { x: -5 }, { x: 5 }, { x: -4 }, { x: 4 }, { x: 0 }],
+      duration: 0.38,
+      ease: 'none',
+      onComplete: resolve,
+    });
+  });
+
+export const revealElement = (el: HTMLElement | null) =>
+  new Promise<void>(resolve => {
+    if (!el) return resolve();
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 6 },
+      { opacity: 1, y: 0, duration: 0.28, ease: 'power2.out', onComplete: resolve },
+    );
+  });
+
+export const hideElement = (el: HTMLElement | null) =>
+  new Promise<void>(resolve => {
+    if (!el) return resolve();
+    gsap.to(el, { opacity: 0, y: 4, duration: 0.2, ease: 'power2.in', onComplete: resolve });
+  });

@@ -99,7 +99,7 @@ function SimpleStep({ wrapperRef, cursorRef, onDone }: StepProps) {
   }, onDone);
 
   return (
-    <>
+    <div className="min-h-[220px]">
       <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.1em] text-zinc-400">
         Status
       </p>
@@ -125,7 +125,7 @@ function SimpleStep({ wrapperRef, cursorRef, onDone }: StepProps) {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -228,7 +228,7 @@ function MultiStep({ wrapperRef, cursorRef, onDone }: StepProps) {
   }, onDone);
 
   return (
-    <>
+    <div className="min-h-[220px]">
       <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.1em] text-zinc-400">
         Status
       </p>
@@ -253,7 +253,7 @@ function MultiStep({ wrapperRef, cursorRef, onDone }: StepProps) {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
@@ -319,7 +319,7 @@ function SearchStep({ wrapperRef, cursorRef, onDone }: StepProps) {
   const displayFiltered = OPTIONS.filter(o => o.toLowerCase().includes(query.toLowerCase()));
 
   return (
-    <>
+    <div className="min-h-[220px]">
       <p className="mb-2 text-[10px] font-medium uppercase tracking-[0.1em] text-zinc-400">
         Status
       </p>
@@ -367,7 +367,7 @@ function SearchStep({ wrapperRef, cursorRef, onDone }: StepProps) {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

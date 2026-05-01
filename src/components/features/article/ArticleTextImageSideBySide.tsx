@@ -20,7 +20,7 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
 
   return (
     <div
-      className={`my-6 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-center md:gap-10 ${
+      className={`my-6 flex flex-col gap-8 md:grid md:grid-cols-2 md:gap-10 ${
         isImageLeft ? 'md:grid-flow-col-dense' : ''
       }`}
       {...inspectorProps({ fieldId: 'text' })}
@@ -31,7 +31,11 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
       </div>
 
       {/* Image or embedded demo */}
-      <div className={`order-2 flex md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
+      <div
+        className={`order-2 flex min-h-[320px] md:order-none md:self-start ${
+          isImageLeft ? 'md:col-start-1' : ''
+        }`}
+      >
         {embeddedDemo?.__typename === 'ComponentDropdownPatternDemo' ? (
           <ArticlePatternDemo demo={embeddedDemo} />
         ) : textImage.image ? (

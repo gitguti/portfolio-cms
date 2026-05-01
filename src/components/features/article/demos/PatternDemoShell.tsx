@@ -23,8 +23,6 @@ export interface StepProps {
 
 interface PatternDemoShellProps {
   steps: DemoStep[];
-  /** Tailwind class controlling how tall the card is — should leave room for open dropdowns etc. */
-  minHeightClass?: string;
 }
 
 // ─── Fake cursor ──────────────────────────────────────────────────────────────
@@ -41,9 +39,10 @@ function Cursor({ cursorRef }: { cursorRef: React.RefObject<HTMLDivElement | nul
 
 // ─── Shell ────────────────────────────────────────────────────────────────────
 
-export function PatternDemoShell({ steps, minHeightClass = 'pb-[220px]' }: PatternDemoShellProps) {
+export function PatternDemoShell({ steps }: PatternDemoShellProps) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [key, setKey] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
   const demoRef = useRef<HTMLDivElement>(null);
   const tabsRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -60,18 +59,39 @@ export function PatternDemoShell({ steps, minHeightClass = 'pb-[220px]' }: Patte
     }
 
     if (animate) {
-      gsap.to(demoRef.current, {
+      const card = cardRef.current;
+      const demo = demoRef.current;
+
+      // Lock the card to its current pixel height so the surrounding layout
+      // never sees a reflow while the step content is swapped out.
+      if (card) {
+        card.style.height = `${card.offsetHeight}px`;
+        card.style.overflow = 'hidden';
+      }
+
+      gsap.to(demo, {
         opacity: 0,
-        y: 6,
         duration: 0.18,
         onComplete: () => {
           setActiveIdx(nextIdx);
           setKey(k => k + 1);
-          gsap.fromTo(
-            demoRef.current,
-            { opacity: 0, y: -6 },
-            { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' },
-          );
+
+          // After React renders the new step, animate the card to its new
+          // natural height, then release the lock.
+          requestAnimationFrame(() => {
+            if (!card || !demo) return;
+            const newHeight = card.scrollHeight;
+            gsap.to(card, {
+              height: newHeight,
+              duration: 0.22,
+              ease: 'power2.out',
+              onComplete: () => {
+                card.style.height = '';
+                card.style.overflow = '';
+              },
+            });
+            gsap.fromTo(demo, { opacity: 0 }, { opacity: 1, duration: 0.22, ease: 'power2.out' });
+          });
         },
       });
     } else {
@@ -87,9 +107,7 @@ export function PatternDemoShell({ steps, minHeightClass = 'pb-[220px]' }: Patte
   const ActiveStep = steps[activeIdx]?.component;
 
   return (
-    <div
-      className={`rounded-2xl border border-black/[0.08] bg-[rgb(249,250,251)] p-6 ${minHeightClass}`}
-    >
+    <div ref={cardRef} className="rounded-2xl border border-black/[0.08] bg-[rgb(249,250,251)] p-6">
       {/* Tab pills */}
       <div ref={tabsRef} className="mb-5 flex flex-wrap gap-2">
         {steps.map((step, i) => (
