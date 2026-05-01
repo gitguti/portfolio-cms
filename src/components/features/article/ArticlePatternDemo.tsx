@@ -15,7 +15,7 @@ interface ArticlePatternDemoProps {
 
 export function ArticlePatternDemo({ demo }: ArticlePatternDemoProps) {
   const type = demo?.variant ?? 'dropdown';
-  const Demo = DEMO_REGISTRY[type];
+  const Demo = DEMO_REGISTRY[type] ?? DEMO_REGISTRY['dropdown'];
   if (!Demo) return null;
   return <Demo />;
 }
