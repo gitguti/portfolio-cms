@@ -1,49 +1,18 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { BLOCKS, Document, Node } from '@contentful/rich-text-types';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { ArticleContent } from './ArticleContent';
-import { ArticleFullWidthImage } from './ArticleFullWidthImage';
 import { ArticleImpactMetrics } from './ArticleImpactMetrics';
 import { CaseStudyDetails } from './CaseStudyDetails';
 import { CtfImage } from '@src/components/features/contentful/CtfImage';
 
-import { slugifyHeading } from '@src/components/features/contentful/CtfRichText';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
 interface CaseStudyLayoutProps {
   article: PageBlogPostFieldsFragment;
 }
 
-interface TocItem {
-  id: string;
-  label: string;
-}
-
 const INFRA_TAG_IDS = new Set(['caseStudy', 'blogArticle']);
-
-const extractText = (node: Node): string => {
-  if (!node) return '';
-  if ('value' in node && typeof (node as any).value === 'string') return (node as any).value;
-  if ('content' in node && Array.isArray((node as any).content)) {
-    return (node as any).content.map(extractText).join('');
-  }
-  return '';
-};
-
-const collectHeadings = (json?: Document): TocItem[] => {
-  if (!json?.content) return [];
-  const items: TocItem[] = [];
-  for (const node of json.content) {
-    if (node.nodeType === BLOCKS.HEADING_4) {
-      const label = extractText(node).trim();
-      if (label) {
-        items.push({ id: slugifyHeading(label), label });
-      }
-    }
-  }
-  return items;
-};
 
 export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
@@ -65,43 +34,9 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
     [article.title],
   );
 
-  const tocItems = useMemo(
-    () => collectHeadings(article.content?.json as Document | undefined),
-    [article.content?.json],
-  );
-
   const impactMetrics = article.content?.links?.entries?.block?.find(
     entry => entry?.__typename === 'ComponentImpactMetrics',
   );
-
-  // Scroll-spy for active TOC item
-  useEffect(() => {
-    if (tocItems.length === 0) return;
-
-    const items = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc-id]'));
-    const sections = items
-      .map(i => document.getElementById(i.dataset.tocId!))
-      .filter(Boolean) as HTMLElement[];
-
-    if (sections.length === 0) return;
-
-    const activate = (id: string | undefined) => {
-      items.forEach(i => i.classList.toggle('cs-toc-active', i.dataset.tocId === id));
-    };
-
-    const onScroll = () => {
-      const y = window.scrollY + 120;
-      let current: string | undefined = sections[0]?.id;
-      for (const s of sections) {
-        if (s.offsetTop <= y) current = s.id;
-      }
-      activate(current);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [tocItems]);
 
   return (
     <div className="case-study w-full bg-[rgb(249,250,251)] font-cs-sans text-zinc-900 dark:bg-[#1f1f1f] dark:text-zinc-100">
@@ -178,38 +113,14 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
         )}
       </section>
 
-      {/* CONTENT SECTION — sticky TOC + main content starts here */}
+      {/* CONTENT SECTION */}
       <div className="mx-auto w-full max-w-[1080px]">
-        <div className="grid grid-cols-1 items-start lg:grid-cols-[220px_1fr]">
-          {/* sticky TOC */}
-          {tocItems.length > 0 && (
-            <aside className="hidden lg:sticky lg:top-14 lg:flex lg:max-h-[calc(100vh-56px)] lg:flex-col lg:overflow-y-auto lg:px-7 lg:py-8">
-              <div className="mb-3 text-[10px] font-medium uppercase tracking-[0.1em] text-zinc-400 dark:text-zinc-500">
-                Contents
-              </div>
-              <nav className="flex flex-col gap-px">
-                {tocItems.map(t => (
-                  <a
-                    key={t.id}
-                    href={`#${t.id}`}
-                    data-toc-id={t.id}
-                    className="block border-l-[1.5px] border-transparent py-1.5 pl-3 text-xs leading-[1.4] text-zinc-400 transition-colors hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300 [&.cs-toc-active]:border-zinc-900 [&.cs-toc-active]:text-zinc-900 dark:[&.cs-toc-active]:border-zinc-100 dark:[&.cs-toc-active]:text-zinc-100"
-                  >
-                    {t.label}
-                  </a>
-                ))}
-              </nav>
-            </aside>
-          )}
-
-          {/* main content */}
-          <main className="px-6 pb-20 pt-12 sm:px-12">
-            <ArticleContent
-              article={article}
-              excludeBlockIds={impactMetrics?.sys?.id ? [impactMetrics.sys.id] : undefined}
-            />
-          </main>
-        </div>
+        <main className="px-6 pb-20 pt-12 sm:px-12">
+          <ArticleContent
+            article={article}
+            excludeBlockIds={impactMetrics?.sys?.id ? [impactMetrics.sys.id] : undefined}
+          />
+        </main>
       </div>
     </div>
   );
