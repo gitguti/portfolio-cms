@@ -490,6 +490,104 @@ enum ComponentCaptionedImageOrder {
 }
 
 """
+[See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentDropdownPatternDemo)
+"""
+type ComponentDropdownPatternDemo implements Entry & _Node {
+  _id: ID!
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String, useFallbackLocale: Boolean): String
+  linkedFrom(allowedLocales: [String]): ComponentDropdownPatternDemoLinkingCollections
+  sys: Sys!
+  variant(locale: String, useFallbackLocale: Boolean): String
+}
+
+type ComponentDropdownPatternDemoCollection {
+  items: [ComponentDropdownPatternDemo]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ComponentDropdownPatternDemoCursorCollection {
+  items: [ComponentDropdownPatternDemo]!
+  limit: Int!
+  pages: CursorPages!
+}
+
+input ComponentDropdownPatternDemoFilter {
+  AND: [ComponentDropdownPatternDemoFilter]
+  OR: [ComponentDropdownPatternDemoFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+  variant: String
+  variant_contains: String
+  variant_exists: Boolean
+  variant_in: [String]
+  variant_not: String
+  variant_not_contains: String
+  variant_not_in: [String]
+}
+
+type ComponentDropdownPatternDemoLinkingCollections {
+  componentTextImageSideBySideCollection(limit: Int = 100, locale: String, order: [ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCollectionOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): ComponentTextImageSideBySideCollection
+  componentTextImageSideBySideCursorCollection(limit: Int = 100, locale: String, order: [ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCursorCollectionOrder], pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean): ComponentTextImageSideBySideCursorCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean): EntryCollection
+  entryCursorCollection(limit: Int = 100, locale: String, pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean): EntryCursorCollection
+}
+
+enum ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCollectionOrder {
+  imagePosition_ASC
+  imagePosition_DESC
+  imageSize_ASC
+  imageSize_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCursorCollectionOrder {
+  imagePosition_ASC
+  imagePosition_DESC
+  imageSize_ASC
+  imageSize_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ComponentDropdownPatternDemoOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  variant_ASC
+  variant_DESC
+}
+
+"""
 [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage)
 """
 type ComponentFullWidthImage implements Entry & _Node {
@@ -1347,6 +1445,7 @@ enum ComponentSeoOrder {
 type ComponentTextImageSideBySide implements Entry & _Node {
   _id: ID!
   contentfulMetadata: ContentfulMetadata!
+  embeddedDemo(locale: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentDropdownPatternDemoFilter): ComponentDropdownPatternDemo
   image(locale: String, preview: Boolean, useFallbackLocale: Boolean): Asset
   imagePosition(locale: String, useFallbackLocale: Boolean): String
   imageSize(locale: String, useFallbackLocale: Boolean): String
@@ -1372,6 +1471,8 @@ input ComponentTextImageSideBySideFilter {
   AND: [ComponentTextImageSideBySideFilter]
   OR: [ComponentTextImageSideBySideFilter]
   contentfulMetadata: ContentfulMetadataFilter
+  embeddedDemo: cfComponentDropdownPatternDemoNestedFilter
+  embeddedDemo_exists: Boolean
   imagePosition: String
   imagePosition_contains: String
   imagePosition_exists: Boolean
@@ -2324,6 +2425,9 @@ type Query {
   componentCaptionedImage(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentCaptionedImage
   componentCaptionedImageCollection(limit: Int = 100, locale: String, order: [ComponentCaptionedImageOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentCaptionedImageFilter): ComponentCaptionedImageCollection
   componentCaptionedImageCursorCollection(limit: Int = 100, locale: String, order: [ComponentCaptionedImageOrder], pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentCaptionedImageFilter): ComponentCaptionedImageCursorCollection
+  componentDropdownPatternDemo(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentDropdownPatternDemo
+  componentDropdownPatternDemoCollection(limit: Int = 100, locale: String, order: [ComponentDropdownPatternDemoOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentDropdownPatternDemoFilter): ComponentDropdownPatternDemoCollection
+  componentDropdownPatternDemoCursorCollection(limit: Int = 100, locale: String, order: [ComponentDropdownPatternDemoOrder], pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentDropdownPatternDemoFilter): ComponentDropdownPatternDemoCursorCollection
   componentFullWidthImage(id: String!, locale: String, preview: Boolean, useFallbackLocale: Boolean): ComponentFullWidthImage
   componentFullWidthImageCollection(limit: Int = 100, locale: String, order: [ComponentFullWidthImageOrder], preview: Boolean, skip: Int = 0, useFallbackLocale: Boolean, where: ComponentFullWidthImageFilter): ComponentFullWidthImageCollection
   componentFullWidthImageCursorCollection(limit: Int = 100, locale: String, order: [ComponentFullWidthImageOrder], pageNext: String, pagePrev: String, preview: Boolean, useFallbackLocale: Boolean, where: ComponentFullWidthImageFilter): ComponentFullWidthImageCursorCollection
@@ -2760,6 +2864,27 @@ input cfComponentCaptionedImageNestedFilter {
   title_not: String
   title_not_contains: String
   title_not_in: [String]
+}
+
+input cfComponentDropdownPatternDemoNestedFilter {
+  AND: [cfComponentDropdownPatternDemoNestedFilter]
+  OR: [cfComponentDropdownPatternDemoNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+  variant: String
+  variant_contains: String
+  variant_exists: Boolean
+  variant_in: [String]
+  variant_not: String
+  variant_not_contains: String
+  variant_not_in: [String]
 }
 
 input cfComponentMetricNestedFilter {

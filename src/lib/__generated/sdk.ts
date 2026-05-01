@@ -995,6 +995,166 @@ export enum ComponentCaptionedImageOrder {
   TitleDesc = 'title_DESC'
 }
 
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentDropdownPatternDemo) */
+export type ComponentDropdownPatternDemo = Entry & _Node & {
+  __typename?: 'ComponentDropdownPatternDemo';
+  _id: Scalars['ID']['output'];
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ComponentDropdownPatternDemoLinkingCollections>;
+  sys: Sys;
+  variant?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentDropdownPatternDemo) */
+export type ComponentDropdownPatternDemoInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentDropdownPatternDemo) */
+export type ComponentDropdownPatternDemoLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentDropdownPatternDemo) */
+export type ComponentDropdownPatternDemoVariantArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type ComponentDropdownPatternDemoCollection = {
+  __typename?: 'ComponentDropdownPatternDemoCollection';
+  items: Array<Maybe<ComponentDropdownPatternDemo>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ComponentDropdownPatternDemoCursorCollection = {
+  __typename?: 'ComponentDropdownPatternDemoCursorCollection';
+  items: Array<Maybe<ComponentDropdownPatternDemo>>;
+  limit: Scalars['Int']['output'];
+  pages: CursorPages;
+};
+
+export type ComponentDropdownPatternDemoFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+  variant_contains?: InputMaybe<Scalars['String']['input']>;
+  variant_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  variant_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  variant_not?: InputMaybe<Scalars['String']['input']>;
+  variant_not_contains?: InputMaybe<Scalars['String']['input']>;
+  variant_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentDropdownPatternDemoLinkingCollections = {
+  __typename?: 'ComponentDropdownPatternDemoLinkingCollections';
+  componentTextImageSideBySideCollection?: Maybe<ComponentTextImageSideBySideCollection>;
+  componentTextImageSideBySideCursorCollection?: Maybe<ComponentTextImageSideBySideCursorCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+  entryCursorCollection?: Maybe<EntryCursorCollection>;
+};
+
+
+export type ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCursorCollectionOrder>>>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ComponentDropdownPatternDemoLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ComponentDropdownPatternDemoLinkingCollectionsEntryCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export enum ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCollectionOrder {
+  ImagePositionAsc = 'imagePosition_ASC',
+  ImagePositionDesc = 'imagePosition_DESC',
+  ImageSizeAsc = 'imageSize_ASC',
+  ImageSizeDesc = 'imageSize_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentDropdownPatternDemoLinkingCollectionsComponentTextImageSideBySideCursorCollectionOrder {
+  ImagePositionAsc = 'imagePosition_ASC',
+  ImagePositionDesc = 'imagePosition_DESC',
+  ImageSizeAsc = 'imageSize_ASC',
+  ImageSizeDesc = 'imageSize_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export enum ComponentDropdownPatternDemoOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  VariantAsc = 'variant_ASC',
+  VariantDesc = 'variant_DESC'
+}
+
 /** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentFullWidthImage) */
 export type ComponentFullWidthImage = Entry & _Node & {
   __typename?: 'ComponentFullWidthImage';
@@ -2440,12 +2600,22 @@ export type ComponentTextImageSideBySide = Entry & _Node & {
   __typename?: 'ComponentTextImageSideBySide';
   _id: Scalars['ID']['output'];
   contentfulMetadata: ContentfulMetadata;
+  embeddedDemo?: Maybe<ComponentDropdownPatternDemo>;
   image?: Maybe<Asset>;
   imagePosition?: Maybe<Scalars['String']['output']>;
   imageSize?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ComponentTextImageSideBySideLinkingCollections>;
   sys: Sys;
   text?: Maybe<ComponentTextImageSideBySideText>;
+};
+
+
+/** [See type definition](https://app.contentful.com/spaces/lx69lkfzk4yq/content_types/componentTextImageSideBySide) */
+export type ComponentTextImageSideBySideEmbeddedDemoArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<ComponentDropdownPatternDemoFilter>;
 };
 
 
@@ -2502,6 +2672,8 @@ export type ComponentTextImageSideBySideFilter = {
   AND?: InputMaybe<Array<InputMaybe<ComponentTextImageSideBySideFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<ComponentTextImageSideBySideFilter>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  embeddedDemo?: InputMaybe<CfComponentDropdownPatternDemoNestedFilter>;
+  embeddedDemo_exists?: InputMaybe<Scalars['Boolean']['input']>;
   imagePosition?: InputMaybe<Scalars['String']['input']>;
   imagePosition_contains?: InputMaybe<Scalars['String']['input']>;
   imagePosition_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -3872,6 +4044,9 @@ export type Query = {
   componentCaptionedImage?: Maybe<ComponentCaptionedImage>;
   componentCaptionedImageCollection?: Maybe<ComponentCaptionedImageCollection>;
   componentCaptionedImageCursorCollection?: Maybe<ComponentCaptionedImageCursorCollection>;
+  componentDropdownPatternDemo?: Maybe<ComponentDropdownPatternDemo>;
+  componentDropdownPatternDemoCollection?: Maybe<ComponentDropdownPatternDemoCollection>;
+  componentDropdownPatternDemoCursorCollection?: Maybe<ComponentDropdownPatternDemoCursorCollection>;
   componentFullWidthImage?: Maybe<ComponentFullWidthImage>;
   componentFullWidthImageCollection?: Maybe<ComponentFullWidthImageCollection>;
   componentFullWidthImageCursorCollection?: Maybe<ComponentFullWidthImageCursorCollection>;
@@ -4062,6 +4237,37 @@ export type QueryComponentCaptionedImageCursorCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
   where?: InputMaybe<ComponentCaptionedImageFilter>;
+};
+
+
+export type QueryComponentDropdownPatternDemoArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryComponentDropdownPatternDemoCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<ComponentDropdownPatternDemoFilter>;
+};
+
+
+export type QueryComponentDropdownPatternDemoCursorCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ComponentDropdownPatternDemoOrder>>>;
+  pageNext?: InputMaybe<Scalars['String']['input']>;
+  pagePrev?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  useFallbackLocale?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<ComponentDropdownPatternDemoFilter>;
 };
 
 
@@ -5151,6 +5357,27 @@ export type CfComponentCaptionedImageNestedFilter = {
   title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
+export type CfComponentDropdownPatternDemoNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfComponentDropdownPatternDemoNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfComponentDropdownPatternDemoNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  variant?: InputMaybe<Scalars['String']['input']>;
+  variant_contains?: InputMaybe<Scalars['String']['input']>;
+  variant_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  variant_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  variant_not?: InputMaybe<Scalars['String']['input']>;
+  variant_not_contains?: InputMaybe<Scalars['String']['input']>;
+  variant_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type CfComponentMetricNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfComponentMetricNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfComponentMetricNestedFilter>>>;
@@ -5307,6 +5534,7 @@ export type HackathonFieldsFragment = { __typename: 'Hackathon', internalName?: 
       | { __typename?: 'CaseStudyDetails' }
       | { __typename?: 'ComponentAuthor' }
       | { __typename?: 'ComponentCaptionedImage' }
+      | { __typename?: 'ComponentDropdownPatternDemo' }
       | { __typename?: 'ComponentFullWidthImage' }
       | { __typename?: 'ComponentImageGallery' }
       | { __typename?: 'ComponentImageGalleryWithCaptions' }
@@ -5337,6 +5565,7 @@ export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', 
       & AuthorFieldsFragment
     )
     | { __typename?: 'ComponentCaptionedImage' }
+    | { __typename?: 'ComponentDropdownPatternDemo' }
     | { __typename?: 'ComponentFullWidthImage' }
     | { __typename?: 'ComponentImageGallery' }
     | { __typename?: 'ComponentImageGalleryWithCaptions' }
@@ -5358,7 +5587,7 @@ export type ReferencePageBlogPostFieldsFragment = { __typename: 'PageBlogPost', 
     & ImageFieldsFragment
   ) | null };
 
-export type ComponentTextImageSideBySideFragment = { __typename: 'ComponentTextImageSideBySide', imagePosition?: string | null, sys: { __typename?: 'Sys', id: string }, text?: { __typename?: 'ComponentTextImageSideBySideText', json: any } | null, image?: { __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null };
+export type ComponentTextImageSideBySideFragment = { __typename: 'ComponentTextImageSideBySide', imagePosition?: string | null, sys: { __typename?: 'Sys', id: string }, text?: { __typename?: 'ComponentTextImageSideBySideText', json: any } | null, image?: { __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null, embeddedDemo?: { __typename: 'ComponentDropdownPatternDemo', internalName?: string | null, variant?: string | null, sys: { __typename?: 'Sys', id: string } } | null };
 
 export type ComponentImageGalleryFragment = { __typename: 'ComponentImageGallery', columns?: number | null, caption?: string | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<{ __typename?: 'Asset', url?: string | null, title?: string | null, width?: number | null, height?: number | null } | null> } | null };
 
@@ -5380,6 +5609,8 @@ export type ComponentImpactMetricsFragment = { __typename: 'ComponentImpactMetri
 
 export type ComponentQuoteFieldsFragment = { __typename: 'ComponentQuote', role?: string | null, label?: string | null, initials?: string | null, avatarColor?: string | null, sys: { __typename?: 'Sys', id: string }, body?: { __typename?: 'ComponentQuoteBody', json: any } | null };
 
+export type ComponentDropdownPatternDemoFieldsFragment = { __typename: 'ComponentDropdownPatternDemo', internalName?: string | null, variant?: string | null, sys: { __typename?: 'Sys', id: string } };
+
 export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalName?: string | null, slug?: string | null, publishedDate?: any | null, title?: string | null, shortDescription?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
@@ -5390,6 +5621,7 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
       & AuthorFieldsFragment
     )
     | { __typename?: 'ComponentCaptionedImage' }
+    | { __typename?: 'ComponentDropdownPatternDemo' }
     | { __typename?: 'ComponentFullWidthImage' }
     | { __typename?: 'ComponentImageGallery' }
     | { __typename?: 'ComponentImageGalleryWithCaptions' }
@@ -5413,6 +5645,10 @@ export type PageBlogPostFieldsFragment = { __typename: 'PageBlogPost', internalN
           | { __typename?: 'CaseStudyDetails' }
           | { __typename?: 'ComponentAuthor' }
           | { __typename?: 'ComponentCaptionedImage' }
+          | (
+            { __typename?: 'ComponentDropdownPatternDemo' }
+            & ComponentDropdownPatternDemoFieldsFragment
+          )
           | (
             { __typename?: 'ComponentFullWidthImage' }
             & ComponentFullWidthImageFragment
@@ -5488,6 +5724,7 @@ export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalNam
     | { __typename?: 'CaseStudyDetails' }
     | { __typename?: 'ComponentAuthor' }
     | { __typename?: 'ComponentCaptionedImage' }
+    | { __typename?: 'ComponentDropdownPatternDemo' }
     | { __typename?: 'ComponentFullWidthImage' }
     | { __typename?: 'ComponentImageGallery' }
     | { __typename?: 'ComponentImageGalleryWithCaptions' }
@@ -5684,6 +5921,16 @@ export const ComponentTextImageSideBySideFragmentDoc = gql`
     width
     height
   }
+  embeddedDemo {
+    ... on ComponentDropdownPatternDemo {
+      sys {
+        id
+      }
+      __typename
+      internalName
+      variant
+    }
+  }
 }
     `;
 export const ComponentImageGalleryFragmentDoc = gql`
@@ -5791,6 +6038,16 @@ export const ComponentQuoteFieldsFragmentDoc = gql`
   avatarColor
 }
     `;
+export const ComponentDropdownPatternDemoFieldsFragmentDoc = gql`
+    fragment ComponentDropdownPatternDemoFields on ComponentDropdownPatternDemo {
+  sys {
+    id
+  }
+  __typename
+  internalName
+  variant
+}
+    `;
 export const ReferencePageBlogPostFieldsFragmentDoc = gql`
     fragment ReferencePageBlogPostFields on PageBlogPost {
   __typename
@@ -5848,6 +6105,7 @@ export const PageBlogPostFieldsFragmentDoc = gql`
           ...ComponentFullWidthImage
           ...ComponentImpactMetrics
           ...ComponentQuoteFields
+          ...ComponentDropdownPatternDemoFields
         }
       }
     }
@@ -5943,6 +6201,7 @@ ${ComponentFullWidthImageFragmentDoc}
 ${ComponentImpactMetricsFragmentDoc}
 ${ComponentMetricFragmentDoc}
 ${ComponentQuoteFieldsFragmentDoc}
+${ComponentDropdownPatternDemoFieldsFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}`;
 export const PageBlogPostCollectionDocument = gql`
     query pageBlogPostCollection($locale: String, $preview: Boolean, $limit: Int, $order: [PageBlogPostOrder], $where: PageBlogPostFilter) {
@@ -5971,6 +6230,7 @@ ${ComponentFullWidthImageFragmentDoc}
 ${ComponentImpactMetricsFragmentDoc}
 ${ComponentMetricFragmentDoc}
 ${ComponentQuoteFieldsFragmentDoc}
+${ComponentDropdownPatternDemoFieldsFragmentDoc}
 ${ReferencePageBlogPostFieldsFragmentDoc}`;
 export const PageLandingDocument = gql`
     query pageLanding($locale: String, $preview: Boolean) {

@@ -28,6 +28,14 @@ fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide
       width
       height
     }
+    embeddedDemo {
+      ... on ComponentDropdownPatternDemo {
+        sys { id }
+        __typename
+        internalName
+        variant
+      }
+    }
   }
 
   fragment ComponentImageGallery on ComponentImageGallery {
@@ -114,6 +122,13 @@ fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide
     avatarColor
   }
 
+  fragment ComponentDropdownPatternDemoFields on ComponentDropdownPatternDemo {
+    sys { id }
+    __typename
+    internalName
+    variant
+  }
+
 fragment PageBlogPostFields on PageBlogPost {
   __typename
   sys {
@@ -151,6 +166,7 @@ fragment PageBlogPostFields on PageBlogPost {
           ...ComponentFullWidthImage
           ...ComponentImpactMetrics
           ...ComponentQuoteFields
+          ...ComponentDropdownPatternDemoFields
         }
       }
     }

@@ -15,3 +15,4 @@ export * from './ArticleQuote';
 export * from './CaseStudyLayout';
 export * from './CaseStudyDetails';
 export * from './WorkCard';
+export * from './ArticleDropdownPatternDemo';

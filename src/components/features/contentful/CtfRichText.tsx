@@ -11,25 +11,28 @@ import {
   ArticleImpactMetrics,
   ArticleImpactMetricsSubtle,
   ArticleQuote,
+  ArticleDropdownPatternDemo,
 } from '@src/components/features/article';
 import {
   ComponentRichImage,
-  ComponentTextImageSideBySide,
+  ComponentTextImageSideBySideFragment,
   ComponentImageGallery,
   ComponentImageGalleryWithCaptions,
   ComponentFullWidthImage,
   ComponentImpactMetrics,
   ComponentQuoteFieldsFragment,
+  ComponentDropdownPatternDemoFieldsFragment,
 } from '@src/lib/__generated/sdk';
 
 export type EmbeddedEntryType =
   | ComponentRichImage
-  | ComponentTextImageSideBySide
+  | ComponentTextImageSideBySideFragment
   | ComponentImageGallery
   | ComponentImageGalleryWithCaptions
   | ComponentFullWidthImage
   | ComponentImpactMetrics
   | ComponentQuoteFieldsFragment
+  | ComponentDropdownPatternDemoFieldsFragment
   | null;
 
 export interface ContentfulRichTextInterface {
@@ -81,6 +84,8 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
       );
     case 'ComponentQuote':
       return <ArticleQuote quote={entry} />;
+    case 'ComponentDropdownPatternDemo':
+      return <ArticleDropdownPatternDemo demo={entry} />;
     default:
       return null;
   }
@@ -123,9 +128,7 @@ export const contentfulBaseRichTextOptions = ({
       );
     },
     [BLOCKS.HEADING_3]: (_node, children) => (
-      <h3 className="mb-3 mt-8 font-serif text-xl font-normal text-zinc-700 dark:text-zinc-200">
-        {children}
-      </h3>
+      <h3 className="mb-3 mt-3 text-xl font-medium text-zinc-700 dark:text-zinc-200">{children}</h3>
     ),
     [BLOCKS.HEADING_4]: (node, children) => {
       const id = slugifyHeading(extractText(node));

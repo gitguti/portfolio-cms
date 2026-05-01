@@ -1,18 +1,22 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
-import { CtfImage } from '@src/components/features/contentful';
+import NextImage from 'next/image';
+
+import { ArticleDropdownPatternDemo } from '@src/components/features/article/ArticleDropdownPatternDemo';
 import { CtfRichText } from '@src/components/features/contentful/CtfRichText';
-import { ComponentTextImageSideBySide } from '@src/lib/__generated/sdk';
+import { ComponentTextImageSideBySideFragment } from '@src/lib/__generated/sdk';
 
 interface ArticleTextImageSideBySideProps {
-  textImage: ComponentTextImageSideBySide;
+  textImage: ComponentTextImageSideBySideFragment;
 }
 
 export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBySideProps) => {
   const inspectorProps = useContentfulInspectorMode({ entryId: textImage.sys.id });
   const isImageLeft = textImage.imagePosition === 'left';
 
-  if (!textImage.text?.json || !textImage.image) return null;
+  const embeddedDemo = textImage.embeddedDemo;
+
+  if (!textImage.text?.json || (!textImage.image && !embeddedDemo)) return null;
 
   return (
     <div
@@ -23,19 +27,26 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
     >
       {/* Text */}
       <div className={`order-1 md:order-none ${isImageLeft ? 'md:col-start-2' : ''}`}>
-        <CtfRichText json={textImage.text.json} links={textImage.text.links} />
+        <CtfRichText json={textImage.text.json} />
       </div>
 
-      {/* Image */}
-      <div className={`order-2 flex  md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
-        <div className="overflow-hidden  rounded-lg ">
-          <CtfImage
-            nextImageProps={{
-              className: 'w-full h-auto object-contain',
-            }}
-            {...textImage.image}
-          />
-        </div>
+      {/* Image or embedded demo */}
+      <div className={`order-2 flex md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
+        {embeddedDemo?.__typename === 'ComponentDropdownPatternDemo' ? (
+          <ArticleDropdownPatternDemo demo={embeddedDemo} />
+        ) : textImage.image ? (
+          <div className="overflow-hidden rounded-lg">
+            {textImage.image.url && textImage.image.width && textImage.image.height && (
+              <NextImage
+                src={textImage.image.url}
+                width={textImage.image.width}
+                height={textImage.image.height}
+                alt={textImage.image.title ?? ''}
+                className="h-auto w-full object-contain transition-all"
+              />
+            )}
+          </div>
+        ) : null}
       </div>
     </div>
   );
