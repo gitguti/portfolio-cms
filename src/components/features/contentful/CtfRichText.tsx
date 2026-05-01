@@ -96,7 +96,7 @@ export const contentfulBaseRichTextOptions = ({
     },
     [BLOCKS.QUOTE]: (_node, children) => (
       <aside className="my-6 rounded-[10px] border border-black/[0.08] bg-white p-6 dark:border-white/10 dark:bg-zinc-900/60">
-        <div className="font-cs-sans text-[15px] leading-[1.75] text-zinc-600 dark:text-zinc-300 [&>p]:m-0 [&>p]:max-w-none [&>p]:text-inherit">
+        <div className="font-sans text-[15px] leading-[1.75] text-zinc-600 dark:text-zinc-300 [&>p]:m-0 [&>p]:max-w-none [&>p]:text-inherit">
           {children}
         </div>
       </aside>
@@ -106,14 +106,14 @@ export const contentfulBaseRichTextOptions = ({
       return (
         <h2
           id={id}
-          className="mb-3 mt-3 font-cs-serif text-[26px] font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 md:text-[30px]"
+          className="mb-3 mt-3 text-[26px] font-medium font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 md:text-[30px]"
         >
           {children}
         </h2>
       );
     },
     [BLOCKS.HEADING_3]: (_node, children) => (
-      <h3 className="mb-3 mt-8 font-cs-serif text-xl font-normal text-zinc-700 dark:text-zinc-200">
+      <h3 className="mb-3 mt-8 font-serif text-xl font-normal text-zinc-700 dark:text-zinc-200">
         {children}
       </h3>
     ),
@@ -122,14 +122,14 @@ export const contentfulBaseRichTextOptions = ({
       return (
         <p
           id={id}
-          className="mb-2 mt-12 text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-zinc-500"
+          className="mb-2 mt-12 max-w-[560px] text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-zinc-500"
         >
           {children}
         </p>
       );
     },
     [BLOCKS.PARAGRAPH]: (_node, children) => (
-      <p className="mb-3.5 max-w-[560px] font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <p className="mb-3.5 max-w-[560px] font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
         {children}
       </p>
     ),
@@ -164,12 +164,12 @@ export const contentfulBaseRichTextOptions = ({
       </th>
     ),
     [BLOCKS.UL_LIST]: (_node, children) => (
-      <ul className="my-4 max-w-[560px] list-disc space-y-1.5 pl-6 font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <ul className="my-4 max-w-[560px] list-disc space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
         {children}
       </ul>
     ),
     [BLOCKS.OL_LIST]: (_node, children) => (
-      <ol className="my-4 max-w-[560px] list-decimal space-y-1.5 pl-6 font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <ol className="my-4 max-w-[560px] list-decimal space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
         {children}
       </ol>
     ),
@@ -192,7 +192,7 @@ export const CtfRichText = ({ json, links, excludeBlockIds }: ContentfulRichText
   const baseOptions = contentfulBaseRichTextOptions({ json, links, excludeBlockIds });
 
   return (
-    <article className="cs-article font-cs-sans text-[15px] leading-[1.6] text-zinc-600 dark:text-zinc-300">
+    <article className="cs-article font-sans text-[15px] leading-[1.6] text-zinc-600 dark:text-zinc-300">
       {documentToReactComponents(json, baseOptions)}
     </article>
   );

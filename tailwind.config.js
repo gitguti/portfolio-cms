@@ -32,8 +32,9 @@ module.exports = {
         tighter: 1.1,
       },
       fontFamily: {
-        sans: ['Inter', ...fontFamily.sans],
-        serif: ['Lora', ...fontFamily.serif],
+        sans: ['DM Sans', ...fontFamily.sans],
+        serif: ['DM Serif Display', ...fontFamily.serif],
+        mono: ['DM Mono', ...fontFamily.mono],
         'cs-sans': ['"DM Sans"', ...fontFamily.sans],
         'cs-serif': ['"DM Serif Display"', ...fontFamily.serif],
         'cs-mono': ['"DM Mono"', ...fontFamily.mono],
