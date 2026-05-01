@@ -30,7 +30,7 @@ export const ArticleImageGalleryWithCaptions = ({
 
           return (
             <div key={index} className="flex flex-col overflow-hidden rounded-md ">
-              <div className="aspect-[4/3] border-black/[0.08] dark:border-white/10 ">
+              <div className="aspect-[4/3] ">
                 <CtfImage
                   nextImageProps={{
                     className: 'h-full w-full object-contain',

@@ -23,10 +23,7 @@ export const ArticleImageGallery = ({ gallery }: ArticleImageGalleryProps) => {
     <div className="my-6" {...inspectorProps({ fieldId: 'imagesCollection' })}>
       <div className={`grid grid-cols-1 gap-3.5 ${gridCols}`}>
         {images.map((image, index) => (
-          <div
-            key={index}
-            className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900"
-          >
+          <div key={index} className="overflow-hidden rounded-lg ">
             <CtfImage
               nextImageProps={{
                 className: 'w-full aspect-[4/3] object-cover',

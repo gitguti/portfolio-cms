@@ -28,7 +28,7 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
 
       {/* Image */}
       <div className={`order-2 flex  md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
-        <div className="overflow-hidden  rounded-[10px] border border-black/[0.08] dark:border-white/10">
+        <div className="overflow-hidden  rounded-lg ">
           <CtfImage
             nextImageProps={{
               className: 'w-full h-auto object-contain',

@@ -20,7 +20,7 @@ export const ArticleImage = ({ image }: ArticleImageProps) => {
     <figure className={isSmall ? 'flex justify-center' : undefined}>
       <div
         className={[
-          'overflow-hidden rounded-[10px] border border-black/[0.08] dark:border-white/10',
+          'overflow-hidden rounded-lg',
           isFull ? 'w-full' : isSmall ? 'max-w-[320px]' : 'mx-auto max-w-[760px]',
         ].join(' ')}
         {...inspectorProps({ fieldId: 'image' })}
