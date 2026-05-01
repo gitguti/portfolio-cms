@@ -102,6 +102,18 @@ fragment ComponentTextImageSideBySide on ComponentTextImageSideBySide
     }
   }
 
+  fragment ComponentQuoteFields on ComponentQuote {
+    sys { id }
+    __typename
+    role
+    label
+    body {
+      json
+    }
+    initials
+    avatarColor
+  }
+
 fragment PageBlogPostFields on PageBlogPost {
   __typename
   sys {
@@ -138,6 +150,7 @@ fragment PageBlogPostFields on PageBlogPost {
           ...ComponentImageGalleryWithCaptions
           ...ComponentFullWidthImage
           ...ComponentImpactMetrics
+          ...ComponentQuoteFields
         }
       }
     }

@@ -11,6 +11,7 @@ export * from './ArticleImageGalleryWithCaptions';
 export * from './ArticleFullWidthImage';
 export * from './ArticleImpactMetrics';
 export * from './ArticleImpactMetricsSubtle';
+export * from './ArticleQuote';
 export * from './CaseStudyLayout';
 export * from './CaseStudyDetails';
 export * from './WorkCard';

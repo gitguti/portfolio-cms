@@ -10,6 +10,7 @@ import {
   ArticleFullWidthImage,
   ArticleImpactMetrics,
   ArticleImpactMetricsSubtle,
+  ArticleQuote,
 } from '@src/components/features/article';
 import {
   ComponentRichImage,
@@ -18,6 +19,7 @@ import {
   ComponentImageGalleryWithCaptions,
   ComponentFullWidthImage,
   ComponentImpactMetrics,
+  ComponentQuoteFieldsFragment,
 } from '@src/lib/__generated/sdk';
 
 export type EmbeddedEntryType =
@@ -27,6 +29,7 @@ export type EmbeddedEntryType =
   | ComponentImageGalleryWithCaptions
   | ComponentFullWidthImage
   | ComponentImpactMetrics
+  | ComponentQuoteFieldsFragment
   | null;
 
 export interface ContentfulRichTextInterface {
@@ -76,6 +79,8 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
       ) : (
         <ArticleImpactMetrics metrics={entry} />
       );
+    case 'ComponentQuote':
+      return <ArticleQuote quote={entry} />;
     default:
       return null;
   }
