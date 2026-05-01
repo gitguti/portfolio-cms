@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge';
 // import { ArticleAuthor } from '@src/components/features/article/ArticleAuthor';
 // import { ArticleLabel } from '@src/components/features/article/ArticleLabel';
 // import { CtfImage } from '@src/components/features/contentful';
+import { ArticleImpactMetrics } from '@src/components/features/article/ArticleImpactMetrics';
 import { FormatDate } from '@src/components/shared/format-date';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
@@ -22,6 +23,10 @@ export const ArticleHero = ({
   const inspectorProps = useContentfulInspectorMode({ entryId: article.sys.id });
 
   const { title, shortDescription, publishedDate } = article;
+
+  const impactMetrics = article.content?.links?.entries?.block?.find(
+    entry => entry?.__typename === 'ComponentImpactMetrics',
+  );
 
   return (
     <div className={twMerge(`flex max-w-6xl flex-col overflow-hidden`)}>
@@ -90,6 +95,11 @@ export const ArticleHero = ({
           >
             {shortDescription}
           </p>
+        )}
+        {impactMetrics && impactMetrics.__typename === 'ComponentImpactMetrics' && (
+          <div className="mt-6 border-t border-black/[0.08] dark:border-white/10">
+            <ArticleImpactMetrics metrics={impactMetrics as any} />
+          </div>
         )}
         <div
           className={twMerge(

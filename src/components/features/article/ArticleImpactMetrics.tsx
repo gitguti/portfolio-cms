@@ -6,6 +6,25 @@ interface ArticleImpactMetricsProps {
   metrics: ComponentImpactMetrics;
 }
 
+// Renders text with **bold** markers as inline <strong> elements
+function InlineBold({ text }: { text: string }) {
+  const parts = text.split(/(__[^_]+__)/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        if (part.startsWith('__') && part.endsWith('__')) {
+          return (
+            <strong key={i} className="font-semibold text-white">
+              {part.slice(2, -2)}
+            </strong>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
+  );
+}
+
 export const ArticleImpactMetrics = ({ metrics }: ArticleImpactMetricsProps) => {
   const inspectorProps = useContentfulInspectorMode({ entryId: metrics.sys.id });
 
@@ -14,17 +33,16 @@ export const ArticleImpactMetrics = ({ metrics }: ArticleImpactMetricsProps) => 
   if (metricsData.length === 0) return null;
 
   return (
-    <div className="" {...inspectorProps({ fieldId: 'metricsCollection' })}>
-      <div className="flex w-full flex-col md:flex-row">
+    <div {...inspectorProps({ fieldId: 'metricsCollection' })}>
+      <div className="grid grid-cols-1 divide-y divide-white/10 rounded-2xl bg-[#111111] md:grid-cols-3 md:divide-x md:divide-y-0">
         {metricsData.map((metric, index) => (
-          <div
-            key={index}
-            className="border-r border-black/[0.08] px-6 py-4 last:border-r-0 dark:border-white/10"
-          >
-            <div className="mb-2 pb-2 text-4xl font-bold leading-none text-zinc-900 dark:text-zinc-100">
-              {metric.value}
-            </div>
-            <div className="text-base text-zinc-500 dark:text-zinc-400">{metric.label}</div>
+          <div key={index} className="flex flex-col gap-3 px-8 py-8">
+            <p className="text-xl font-bold leading-snug text-white">{metric.value}</p>
+            {metric.label && (
+              <p className="text-sm leading-relaxed text-zinc-400">
+                <InlineBold text={metric.label} />
+              </p>
+            )}
           </div>
         ))}
       </div>
