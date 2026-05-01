@@ -2,7 +2,7 @@ import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 
 import NextImage from 'next/image';
 
-import { ArticleDropdownPatternDemo } from '@src/components/features/article/ArticleDropdownPatternDemo';
+import { ArticlePatternDemo } from '@src/components/features/article/ArticlePatternDemo';
 import { CtfRichText } from '@src/components/features/contentful/CtfRichText';
 import { ComponentTextImageSideBySideFragment } from '@src/lib/__generated/sdk';
 
@@ -33,7 +33,7 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
       {/* Image or embedded demo */}
       <div className={`order-2 flex md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
         {embeddedDemo?.__typename === 'ComponentDropdownPatternDemo' ? (
-          <ArticleDropdownPatternDemo demo={embeddedDemo} />
+          <ArticlePatternDemo demo={embeddedDemo} />
         ) : textImage.image ? (
           <div className="overflow-hidden rounded-lg">
             {textImage.image.url && textImage.image.width && textImage.image.height && (

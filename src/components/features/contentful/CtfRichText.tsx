@@ -11,7 +11,7 @@ import {
   ArticleImpactMetrics,
   ArticleImpactMetricsSubtle,
   ArticleQuote,
-  ArticleDropdownPatternDemo,
+  ArticlePatternDemo,
 } from '@src/components/features/article';
 import {
   ComponentRichImage,
@@ -85,7 +85,7 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
     case 'ComponentQuote':
       return <ArticleQuote quote={entry} />;
     case 'ComponentDropdownPatternDemo':
-      return <ArticleDropdownPatternDemo demo={entry} />;
+      return <ArticlePatternDemo demo={entry} />;
     default:
       return null;
   }
