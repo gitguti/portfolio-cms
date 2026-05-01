@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   HiHome,
   HiBriefcase,
@@ -11,6 +12,7 @@ import {
   HiSun,
   HiMoon,
   HiUser,
+  HiArrowLeft,
 } from 'react-icons/hi';
 import { contactConfig } from '@src/components/features/about/about-data';
 import { useActiveSection } from '@src/lib/hooks/useActiveSection';
@@ -32,6 +34,7 @@ const FILL_SPEED = 900;
 
 export const Header = () => {
   const router = useRouter();
+  const variant = router.route === '/[slug]' ? 'article' : 'default';
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -135,6 +138,126 @@ export const Header = () => {
   }, [router]);
 
   const aboutActive = router.pathname === '/about';
+
+  const [articleAnim, setArticleAnim] = useState<'enter' | 'exit' | 'idle'>('idle');
+  const articleAnimDuration = 700;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    if (variant !== 'article') return;
+    // Reset to idle first so changing asPath always re-triggers the enter animation
+    setArticleAnim('idle');
+    const id = requestAnimationFrame(() => setArticleAnim('enter'));
+    return () => cancelAnimationFrame(id);
+  }, [variant, router.asPath]);
+
+  useEffect(() => {
+    if (variant !== 'article') return;
+
+    const handleRouteChangeStart = () => {
+      setArticleAnim('exit');
+    };
+
+    router.events.on('routeChangeStart', handleRouteChangeStart);
+    return () => router.events.off('routeChangeStart', handleRouteChangeStart);
+  }, [variant, router.events]);
+
+  useEffect(() => {
+    if (variant !== 'article') return;
+    setScrolled(false);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [variant, router.asPath]);
+
+  if (variant === 'article') {
+    const enterAnim = (name: string): React.CSSProperties =>
+      articleAnim === 'enter'
+        ? { animation: `${name} ${articleAnimDuration}ms cubic-bezier(0.22,1,0.36,1) both` }
+        : articleAnim === 'exit'
+        ? { animation: `${name}-out ${articleAnimDuration}ms cubic-bezier(0.22,1,0.36,1) both` }
+        : { opacity: 0 };
+
+    const resting =
+      'bg-white/70 backdrop-blur-xl dark:bg-black/60 border border-black/[0.08] dark:border-white/10 shadow-sm';
+
+    return (
+      <header
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between transition-all duration-300 ${
+          scrolled
+            ? 'bg-white/80 px-6 py-2.5 backdrop-blur-xl dark:bg-[#1f1f1f]/90 md:px-10'
+            : 'bg-transparent px-6 py-5 md:px-10'
+        }`}
+      >
+        {/* Left — back to work */}
+        <Link
+          href="/"
+          className={
+            'flex items-center gap-1.5 rounded-full font-light transition-all duration-300 ' +
+            'text-neutral-600 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-100 ' +
+            (scrolled ? 'px-0 py-1 text-xs' : `px-3.5 py-2 text-sm ${resting}`)
+          }
+          style={enterAnim('article-header-left')}
+        >
+          <HiArrowLeft
+            className={`shrink-0 transition-all duration-300 ${
+              scrolled ? 'h-3 w-3' : 'h-3.5 w-3.5'
+            }`}
+          />
+          Back to home
+        </Link>
+
+        {/* Right — craft + about */}
+        <div className="flex items-center gap-2" style={enterAnim('article-header-right')}>
+          <Link
+            href="/craft"
+            className={
+              'group flex items-center rounded-full font-light transition-all duration-300 ' +
+              'text-neutral-500 hover:text-neutral-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
+            }
+          >
+            <HiViewGrid
+              className={`shrink-0 transition-all duration-300 ${
+                scrolled ? 'h-3.5 w-3.5' : 'h-4 w-4'
+              }`}
+            />
+            {scrolled ? (
+              <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs opacity-0 transition-all duration-300 group-hover:ml-1.5 group-hover:max-w-[120px] group-hover:opacity-100">
+                Some explorations
+              </span>
+            ) : (
+              <span>Some explorations</span>
+            )}
+          </Link>
+
+          <Link
+            href="/about"
+            className={
+              'group flex items-center rounded-full font-light transition-all duration-300 ' +
+              'text-neutral-500 hover:text-neutral-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
+            }
+          >
+            <Image
+              src="/avatar.png"
+              alt="gitmel"
+              width={scrolled ? 16 : 20}
+              height={scrolled ? 16 : 20}
+              className="shrink-0 rounded-full object-cover transition-all duration-300"
+            />
+            {scrolled ? (
+              <span className="max-w-0 overflow-hidden whitespace-nowrap text-xs opacity-0 transition-all duration-300 group-hover:ml-1.5 group-hover:max-w-[80px] group-hover:opacity-100">
+                About me
+              </span>
+            ) : (
+              <span>About me</span>
+            )}
+          </Link>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:bottom-auto md:top-6">

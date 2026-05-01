@@ -2,9 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes article-header-left {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes article-header-left-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(60px); }
+}
+
+@keyframes article-header-right {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes article-header-right-out {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-60px); }
+}
+
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-sm md:text-sm bg-gray-50 dark:bg-[#1f1f1f];
+  }
+
+  .cs-article h2[id] {
+    scroll-margin-top: 80px;
   }
 
   .h1,
@@ -222,7 +248,7 @@
   
   /* In your CSS file */
 .custom-blockquote p {
-  @apply text-3xl md:text-4xl font-serif italic text-zinc-800 dark:text-zinc-200 leading-relaxed md:leading-normal;
+  @apply text-lg md:text-2xl font-serif italic text-zinc-800 dark:text-zinc-200 leading-relaxed md:leading-normal;
 }
 
 

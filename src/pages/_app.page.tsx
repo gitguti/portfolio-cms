@@ -19,8 +19,15 @@ import { Layout } from '@src/components/templates/layout';
 const urbanist = Urbanist({ subsets: ['latin'], variable: '--font-urbanist' });
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { locale } = useRouter();
+  const router = useRouter();
+  const { locale } = router;
   const [loadHotjar, setLoadHotjar] = useState(false);
+
+  useEffect(() => {
+    const onRouteChangeComplete = () => window.scrollTo(0, 0);
+    router.events.on('routeChangeComplete', onRouteChangeComplete);
+    return () => router.events.off('routeChangeComplete', onRouteChangeComplete);
+  }, [router.events]);
 
   // Delay Hotjar loading until after initial page load
   useEffect(() => {
