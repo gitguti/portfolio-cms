@@ -8,5 +8,6 @@ fragment RichImageFields on ComponentRichImage {
     ...ImageFields
   }
   caption
-  fullWidth
+  fullWidth,
+  size
 }

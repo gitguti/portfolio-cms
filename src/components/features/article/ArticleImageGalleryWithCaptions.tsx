@@ -29,28 +29,25 @@ export const ArticleImageGalleryWithCaptions = ({
           if (!item.image) return null;
 
           return (
-            <div
-              key={index}
-              className="flex flex-col overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900"
-            >
-              <div className="aspect-[4/3] border-b border-black/[0.08] bg-[#F2F0ED] dark:border-white/10 dark:bg-zinc-800">
+            <div key={index} className="flex flex-col overflow-hidden rounded-md ">
+              <div className="aspect-[4/3] border-black/[0.08] dark:border-white/10 ">
                 <CtfImage
                   nextImageProps={{
-                    className: 'h-full w-full object-cover',
+                    className: 'h-full w-full object-contain',
                   }}
                   {...item.image}
                 />
               </div>
 
-              <div className="p-3.5">
+              <div className="">
                 {item.title && (
-                  <div className="mb-0.5 text-[13px] font-medium text-zinc-900 dark:text-zinc-100">
+                  <div className="text-md mb-0.5 font-medium text-zinc-900 dark:text-zinc-100">
                     {item.title}
                   </div>
                 )}
 
                 {item.caption?.json && (
-                  <div className="mt-2 border-t border-black/[0.08] pt-2.5 text-[12px] leading-[1.55] text-zinc-600 dark:border-white/10 dark:text-zinc-300">
+                  <div className="text-sm leading-[1.55] text-zinc-600 dark:text-zinc-300">
                     {documentToReactComponents(item.caption.json)}
                   </div>
                 )}

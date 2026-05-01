@@ -12,16 +12,21 @@ export const ArticleImage = ({ image }: ArticleImageProps) => {
 
   if (!image.image) return null;
 
+  const isSmall = image.size === 'small';
+  const isMedium = image.size === 'medium' || !image.size;
+  const isFull = image.size === 'full';
+
   return (
-    <figure className="my-6">
+    <figure className={isSmall ? 'flex justify-center' : undefined}>
       <div
-        className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900"
+        className={[
+          'overflow-hidden rounded-[10px] border border-black/[0.08] dark:border-white/10',
+          isFull ? 'w-full' : isSmall ? 'max-w-[320px]' : 'mx-auto max-w-[760px]',
+        ].join(' ')}
         {...inspectorProps({ fieldId: 'image' })}
       >
         <CtfImage
-          nextImageProps={{
-            className: image.fullWidth ? 'w-full object-cover' : 'mx-auto w-full max-w-md',
-          }}
+          nextImageProps={{ className: '', style: { width: '100%', height: 'auto' } }}
           {...image.image}
         />
       </div>

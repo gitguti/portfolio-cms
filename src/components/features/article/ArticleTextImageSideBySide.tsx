@@ -16,7 +16,7 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
 
   return (
     <div
-      className={`my-6 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-start md:gap-10 ${
+      className={`my-6 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-center md:gap-10 ${
         isImageLeft ? 'md:grid-flow-col-dense' : ''
       }`}
       {...inspectorProps({ fieldId: 'text' })}
@@ -27,8 +27,8 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
       </div>
 
       {/* Image */}
-      <div className={`order-2 md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
-        <div className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900">
+      <div className={`order-2 flex  md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
+        <div className="overflow-hidden  rounded-[10px] border border-black/[0.08] dark:border-white/10">
           <CtfImage
             nextImageProps={{
               className: 'w-full h-auto object-contain',
