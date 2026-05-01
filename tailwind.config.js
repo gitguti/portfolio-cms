@@ -33,7 +33,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter', ...fontFamily.sans],
-        serif: ['Lora', ...fontFamily.serif]
+        serif: ['Lora', ...fontFamily.serif],
+        'cs-sans': ['"DM Sans"', ...fontFamily.sans],
+        'cs-serif': ['"DM Serif Display"', ...fontFamily.serif],
+        'cs-mono': ['"DM Mono"', ...fontFamily.mono],
       },
     },
   },

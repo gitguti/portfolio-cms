@@ -21,7 +21,7 @@ const BlogPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         title="Blog"
         description="Thoughts on design, technology, and building better products"
       />
-      <Container className="my-12 max-w-3xl py-12">
+      <Container className="my-12 max-w-6xl py-12">
         <div className="mb-12">
           <h1 className="mb-4 font-serif text-4xl font-bold text-neutral-800 dark:text-zinc-50 md:text-5xl">
             Blog

@@ -1,4 +1,5 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+
 import { ComponentImpactMetrics } from '@src/lib/__generated/sdk';
 
 interface ArticleImpactMetricsProps {
@@ -13,17 +14,17 @@ export const ArticleImpactMetrics = ({ metrics }: ArticleImpactMetricsProps) => 
   if (metricsData.length === 0) return null;
 
   return (
-    <div className="my-16" {...inspectorProps({ fieldId: 'metricsCollection' })}>
-      <div className="flex flex-col md:flex-row md:justify-between md:gap-4">
+    <div className="" {...inspectorProps({ fieldId: 'metricsCollection' })}>
+      <div className="flex w-full flex-col md:flex-row">
         {metricsData.map((metric, index) => (
-          <div key={index} className="flex flex-1 flex-col items-center p-6 text-center">
-            {/* Número prominente */}
-            <div className="mb-3 font-serif text-5xl font-bold text-zinc-900 dark:text-zinc-100 md:text-6xl">
+          <div
+            key={index}
+            className="border-r border-black/[0.08] px-6 py-4 last:border-r-0 dark:border-white/10"
+          >
+            <div className="mb-2 pb-2 text-4xl font-bold leading-none text-zinc-900 dark:text-zinc-100">
               {metric.value}
             </div>
-
-            {/* Texto descriptivo */}
-            <div className="text-base text-zinc-600 dark:text-zinc-400">{metric.label}</div>
+            <div className="text-base text-zinc-500 dark:text-zinc-400">{metric.label}</div>
           </div>
         ))}
       </div>

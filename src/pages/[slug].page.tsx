@@ -1,19 +1,15 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import { useTranslation } from 'next-i18next';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
-import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 
-import { ArticleContent, ArticleHero, ArticleTileGrid } from '@src/components/features/article';
+import { ArticleTile, CaseStudyLayout } from '@src/components/features/article';
 import { SeoFields } from '@src/components/features/seo';
-import { Container } from '@src/components/shared/container';
-
+import { SectionLabel } from '@src/components/shared/section-label';
 import { client, previewClient } from '@src/lib/client';
+import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 import { revalidateDuration } from '@src/pages/utils/constants';
 
 const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { t } = useTranslation();
-
   const blogPost = useConditionalLiveUpdates(props.blogPost, props.previewActive);
   const relatedPosts = blogPost?.relatedBlogPostsCollection?.items;
   if (!blogPost) return null;
@@ -21,17 +17,26 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
       {blogPost.seoFields && <SeoFields {...blogPost.seoFields} />}
-      <Container className="mt-8 max-w-3xl">
-        <ArticleHero article={blogPost} isFeatured={props.isFeatured} isReversedLayout={true} />
-      </Container>
-      <Container className="mt-8 max-w-3xl">
-        <ArticleContent article={blogPost} />
-      </Container>
-      {relatedPosts && (
-        <Container className="mt-8 max-w-3xl">
-          <h2 className="mb-4 text-neutral-800 dark:text-zinc-50 md:mb-6">Next case</h2>
-          <ArticleTileGrid className="md:grid-cols-2" articles={relatedPosts} />
-        </Container>
+      <CaseStudyLayout article={blogPost} />
+
+      {relatedPosts && relatedPosts.length > 0 && (
+        <div className="mx-auto w-full max-w-[1080px] px-6 sm:px-12">
+          <section className="border-t border-black/[0.08] py-16 dark:border-white/10">
+            <SectionLabel title="Next case" />
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {relatedPosts.map((post, i) =>
+                post ? (
+                  <ArticleTile
+                    key={post.sys?.id ?? i}
+                    article={post}
+                    layout="vertical"
+                    className="rounded-[10px] border border-black/[0.08] bg-white p-5 dark:border-white/10 dark:bg-zinc-900/60"
+                  />
+                ) : null,
+              )}
+            </div>
+          </section>
+        </div>
       )}
     </>
   );

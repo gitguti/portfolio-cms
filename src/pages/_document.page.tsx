@@ -7,8 +7,16 @@ export default function Document() {
         {/* Preconnect to external domains for faster resource loading */}
         <link rel="preconnect" href="https://images.ctfassets.net" />
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.ctfassets.net" />
         <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+        {/* DM font family — used by case-study layout */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono&display=swap"
+          rel="stylesheet"
+        />
 
         {/* Favicon links */}
         <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png" />

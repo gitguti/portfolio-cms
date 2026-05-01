@@ -41,7 +41,7 @@ export const NowSection = () => {
 
   return (
     <section className="py-4 md:py-6" ref={sectionRef}>
-      <Container className="max-w-3xl px-4 md:px-6">
+      <Container className="max-w-6xl px-4 md:px-6">
         <div className="space-y-4">
           {/* Header with title and last updated */}
           <div className="now-item space-y-2">

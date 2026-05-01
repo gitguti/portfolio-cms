@@ -317,9 +317,9 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     <p className="hero-stagger text-base font-light tracking-wide text-neutral-500 dark:text-zinc-400">
                       Hi, I&apos;m Git
                     </p>
-                    <h1 className="hero-stagger font-serif leading-tight text-neutral-800 dark:text-zinc-100">
-                      <span className="block text-4xl lg:text-5xl">I design things.</span>
-                      <span className="block text-4xl italic text-neutral-400 dark:text-zinc-500 lg:text-5xl">
+                    <h1 className="hero-stagger font-cs text-3xl font-normal leading-[1.1] tracking-[-0.02em] text-neutral-800 dark:text-zinc-100 md:text-4xl lg:text-5xl">
+                      <span className="block">I design things.</span>
+                      <span className="block italic text-neutral-400 dark:text-zinc-500">
                         Then I build them.
                       </span>
                     </h1>

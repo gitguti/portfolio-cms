@@ -95,7 +95,7 @@ const AboutPage = () => {
 
         {/* About Section */}
         <section className="py-16 md:py-20" ref={aboutSectionRef}>
-          <Container className="max-w-3xl px-4 md:px-6">
+          <Container className="max-w-6xl px-4 md:px-6">
             <h2 className="mb-8 font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
               {aboutContent.title}
             </h2>
@@ -117,7 +117,7 @@ const AboutPage = () => {
 
         {/* Beliefs Section */}
         <section className="py-16 md:py-20" ref={beliefsSectionRef}>
-          <Container className="max-w-3xl px-4 md:px-6">
+          <Container className="max-w-6xl px-4 md:px-6">
             <h2 className="mb-8 font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
               Things I believe
             </h2>

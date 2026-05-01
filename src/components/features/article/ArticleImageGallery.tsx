@@ -1,4 +1,5 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+
 import { CtfImage } from '@src/components/features/contentful';
 import { ComponentImageGallery } from '@src/lib/__generated/sdk';
 
@@ -19,13 +20,16 @@ export const ArticleImageGallery = ({ gallery }: ArticleImageGalleryProps) => {
   if (images.length === 0) return null;
 
   return (
-    <div className="my-16" {...inspectorProps({ fieldId: 'imagesCollection' })}>
-      <div className={`grid grid-cols-1 gap-4 ${gridCols}`}>
+    <div className="my-6" {...inspectorProps({ fieldId: 'imagesCollection' })}>
+      <div className={`grid grid-cols-1 gap-3.5 ${gridCols}`}>
         {images.map((image, index) => (
-          <div key={index} className="overflow-hidden rounded-lg bg-white">
+          <div
+            key={index}
+            className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900"
+          >
             <CtfImage
               nextImageProps={{
-                className: 'w-full h-64 aspect-video object-contain',
+                className: 'w-full aspect-[4/3] object-cover',
               }}
               {...image}
             />
@@ -33,7 +37,7 @@ export const ArticleImageGallery = ({ gallery }: ArticleImageGalleryProps) => {
         ))}
       </div>
       {gallery.caption && (
-        <p className="mt-4 text-center text-sm italic text-zinc-600 dark:text-zinc-400">
+        <p className="mt-3 text-center text-xs text-zinc-400 dark:text-zinc-500">
           {gallery.caption}
         </p>
       )}

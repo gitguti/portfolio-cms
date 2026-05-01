@@ -1,5 +1,4 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-import { twMerge } from 'tailwind-merge';
 
 import { CtfImage } from '@src/components/features/contentful';
 import { ComponentRichImage } from '@src/lib/__generated/sdk';
@@ -11,24 +10,29 @@ interface ArticleImageProps {
 export const ArticleImage = ({ image }: ArticleImageProps) => {
   const inspectorProps = useContentfulInspectorMode({ entryId: image.sys.id });
 
-  return image.image ? (
-    <figure>
-      <div className="flex justify-center" {...inspectorProps({ fieldId: 'image' })}>
+  if (!image.image) return null;
+
+  return (
+    <figure className="my-6">
+      <div
+        className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900"
+        {...inspectorProps({ fieldId: 'image' })}
+      >
         <CtfImage
           nextImageProps={{
-            className: twMerge(
-              'mt-12 mb-8 rounded-lg',
-              image.fullWidth ? 'w-full' : 'w-full max-w-md',
-            ),
+            className: image.fullWidth ? 'w-full object-cover' : 'mx-auto w-full max-w-md',
           }}
           {...image.image}
         />
       </div>
       {image.caption && (
-        <figcaption className="mt-4" {...inspectorProps({ fieldId: 'caption' })}>
+        <figcaption
+          className="mt-3 text-[12px] italic text-zinc-400 dark:text-zinc-500"
+          {...inspectorProps({ fieldId: 'caption' })}
+        >
           {image.caption}
         </figcaption>
       )}
     </figure>
-  ) : null;
+  );
 };

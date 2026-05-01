@@ -30,7 +30,7 @@ export const AboutHero = () => {
 
   return (
     <section className="pt-24 md:pt-32" ref={heroRef}>
-      <Container className="max-w-3xl px-4 md:px-6">
+      <Container className="max-w-6xl px-4 md:px-6">
         <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:gap-12">
           {/* Avatar */}
           <div className="hero-avatar relative h-36 w-36 flex-shrink-0 overflow-hidden rounded-full border-2 border-neutral-200 dark:border-zinc-700 md:h-44 md:w-44 lg:h-52 lg:w-52">

@@ -1,6 +1,6 @@
-import React from 'react';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
-import { BLOCKS, INLINES, Document } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES, Document, Node } from '@contentful/rich-text-types';
+import React from 'react';
 
 import {
   ArticleImage,
@@ -37,7 +37,25 @@ export interface ContentfulRichTextInterface {
         };
       }
     | any;
+  excludeBlockIds?: string[];
 }
+
+export const slugifyHeading = (text: string): string =>
+  text
+    .toLowerCase()
+    .trim()
+    .replace(/['"]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
+const extractText = (node: Node): string => {
+  if (!node) return '';
+  if ('value' in node && typeof (node as any).value === 'string') return (node as any).value;
+  if ('content' in node && Array.isArray((node as any).content)) {
+    return (node as any).content.map(extractText).join('');
+  }
+  return '';
+};
 
 export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
   switch (entry?.__typename) {
@@ -58,43 +76,71 @@ export const EmbeddedEntry = (entry: EmbeddedEntryType) => {
   }
 };
 
-export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInterface): Options => ({
+export const contentfulBaseRichTextOptions = ({
+  links,
+  excludeBlockIds,
+}: ContentfulRichTextInterface): Options => ({
   renderNode: {
     [BLOCKS.EMBEDDED_ENTRY]: node => {
+      const targetId = node.data?.target?.sys?.id;
+      if (excludeBlockIds && targetId && excludeBlockIds.includes(targetId)) {
+        return null;
+      }
       const entry = links?.entries?.block?.find(
-        (item: EmbeddedEntryType) => item?.sys?.id === node.data.target.sys.id,
+        (item: EmbeddedEntryType) => item?.sys?.id === targetId,
       );
 
       if (!entry) return null;
 
-      return <EmbeddedEntry {...entry} />;
+      return <div className="not-prose my-6">{<EmbeddedEntry {...entry} />}</div>;
     },
-    [BLOCKS.QUOTE]: (node, children) => (
-      <blockquote className="custom-blockquote relative py-8 font-serif text-2xl italic leading-relaxed text-zinc-800 md:text-5xl dark:text-zinc-200 ">
-        {children}
-      </blockquote>
+    [BLOCKS.QUOTE]: (_node, children) => (
+      <aside className="my-6 rounded-[10px] border border-black/[0.08] bg-white p-6 dark:border-white/10 dark:bg-zinc-900/60">
+        <div className="font-cs-sans text-[15px] leading-[1.75] text-zinc-600 dark:text-zinc-300 [&>p]:m-0 [&>p]:max-w-none [&>p]:text-inherit">
+          {children}
+        </div>
+      </aside>
     ),
-    [BLOCKS.HEADING_2]: (node, children) => (
-      <h2 className="mt-16 font-serif text-3xl font-medium text-zinc-800 dark:text-zinc-200">
-        {children}
-      </h2>
-    ),
-    [BLOCKS.HEADING_3]: (node, children) => (
-      <h3 className="mb-4 mt-8 font-serif text-2xl font-medium text-zinc-700 dark:text-zinc-300">
+    [BLOCKS.HEADING_2]: (node, children) => {
+      const id = slugifyHeading(extractText(node));
+      return (
+        <h2
+          id={id}
+          className="mb-3 mt-3 font-cs-serif text-[26px] font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 md:text-[30px]"
+        >
+          {children}
+        </h2>
+      );
+    },
+    [BLOCKS.HEADING_3]: (_node, children) => (
+      <h3 className="mb-3 mt-8 font-cs-serif text-xl font-normal text-zinc-700 dark:text-zinc-200">
         {children}
       </h3>
     ),
-    [BLOCKS.PARAGRAPH]: (node, children) => (
-      <p className="mb-5 mt-2 text-xl leading-8 text-zinc-700 dark:text-zinc-300">{children}</p>
+    [BLOCKS.HEADING_4]: (node, children) => {
+      const id = slugifyHeading(extractText(node));
+      return (
+        <p
+          id={id}
+          className="mb-2 mt-12 text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-zinc-500"
+        >
+          {children}
+        </p>
+      );
+    },
+    [BLOCKS.PARAGRAPH]: (_node, children) => (
+      <p className="mb-3.5 max-w-[560px] font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+        {children}
+      </p>
     ),
-    [BLOCKS.TABLE]: (node, children) => {
+    [BLOCKS.TABLE]: (_node, children) => {
       const rows = Array.isArray(children) ? children : [children];
       const headRows = rows.filter(
         row =>
           row &&
-          row.props &&
-          row.props.children &&
-          React.Children.toArray(row.props.children).some(
+          (row as any).props &&
+          (row as any).props.children &&
+          React.Children.toArray((row as any).props.children).some(
             child => React.isValidElement(child) && child.type === 'th',
           ),
       );
@@ -106,37 +152,35 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
         </table>
       );
     },
-    [BLOCKS.TABLE_ROW]: (node, children) => (
-      <tr className="border-t border-zinc-200 dark:border-zinc-700">{children}</tr>
+    [BLOCKS.TABLE_ROW]: (_node, children) => (
+      <tr className="border-t border-black/[0.08] dark:border-white/10">{children}</tr>
     ),
-    [BLOCKS.TABLE_CELL]: (node, children) => (
-      <td className=" dark:text-zinc-200x py-4 align-top text-zinc-800">{children}</td>
+    [BLOCKS.TABLE_CELL]: (_node, children) => (
+      <td className="py-3 align-top text-[14px] text-zinc-700 dark:text-zinc-300">{children}</td>
     ),
-    [BLOCKS.TABLE_HEADER_CELL]: (node, children) => (
-      <th className=" border-b border-zinc-300 bg-zinc-100 py-4 text-left font-bold text-zinc-900 dark:border-zinc-600 dark:bg-zinc-800 dark:text-zinc-100">
+    [BLOCKS.TABLE_HEADER_CELL]: (_node, children) => (
+      <th className="border-b border-black/[0.08] py-3 text-left text-[12px] font-medium uppercase tracking-[0.08em] text-zinc-500 dark:border-white/10 dark:text-zinc-400">
         {children}
       </th>
     ),
-    [BLOCKS.UL_LIST]: (node, children) => (
-      <ul className="my-6 list-disc space-y-2 pl-8 text-xl text-zinc-700 dark:text-zinc-300">
+    [BLOCKS.UL_LIST]: (_node, children) => (
+      <ul className="my-4 max-w-[560px] list-disc space-y-1.5 pl-6 font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
         {children}
       </ul>
     ),
-    [BLOCKS.OL_LIST]: (node, children) => (
-      <ol className="my-6 list-decimal space-y-2 pl-8 text-xl text-zinc-700 dark:text-zinc-300">
+    [BLOCKS.OL_LIST]: (_node, children) => (
+      <ol className="my-4 max-w-[560px] list-decimal space-y-1.5 pl-6 font-cs-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
         {children}
       </ol>
     ),
-    [BLOCKS.LIST_ITEM]: (node, children) => <li className="ml-2">{children}</li>,
-    [BLOCKS.HR]: () => (
-      <hr className="my-12 border-0 border-t border-zinc-300 dark:border-zinc-700" />
-    ),
+    [BLOCKS.LIST_ITEM]: (_node, children) => <li className="ml-1">{children}</li>,
+    [BLOCKS.HR]: () => <hr className="my-8 h-px border-0 bg-black/[0.08] dark:bg-white/10" />,
     [INLINES.HYPERLINK]: (node, children) => (
       <a
         href={node.data.uri}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-medium text-blue-600 underline decoration-blue-600/30 underline-offset-4 transition-colors hover:text-blue-700 hover:decoration-blue-700/50 dark:text-blue-400 dark:decoration-blue-400/30 dark:hover:text-blue-300 dark:hover:decoration-blue-300/50"
+        className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-zinc-700 dark:text-zinc-100 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
       >
         {children}
       </a>
@@ -144,12 +188,12 @@ export const contentfulBaseRichTextOptions = ({ links }: ContentfulRichTextInter
   },
 });
 
-export const CtfRichText = ({ json, links }: ContentfulRichTextInterface) => {
-  const baseOptions = contentfulBaseRichTextOptions({ links, json });
+export const CtfRichText = ({ json, links, excludeBlockIds }: ContentfulRichTextInterface) => {
+  const baseOptions = contentfulBaseRichTextOptions({ json, links, excludeBlockIds });
 
   return (
-    <div>
-      <article className=" mx-auto pb-16">{documentToReactComponents(json, baseOptions)}</article>
-    </div>
+    <article className="cs-article font-cs-sans text-[15px] leading-[1.6] text-zinc-600 dark:text-zinc-300">
+      {documentToReactComponents(json, baseOptions)}
+    </article>
   );
 };

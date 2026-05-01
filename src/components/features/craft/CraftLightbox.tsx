@@ -128,7 +128,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
         {/* Content */}
         <div
           ref={contentRef}
-          className="relative max-h-[90vh] w-full overflow-y-auto rounded-2xl bg-white p-6 dark:bg-zinc-900 md:max-w-3xl md:p-8"
+          className="relative max-h-[90vh] w-full overflow-y-auto rounded-2xl bg-white p-6 dark:bg-zinc-900 md:max-w-6xl md:p-8"
         >
           {/* Close button */}
           <button

@@ -1,4 +1,5 @@
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
+
 import { CtfImage } from '@src/components/features/contentful';
 import { CtfRichText } from '@src/components/features/contentful/CtfRichText';
 import { ComponentTextImageSideBySide } from '@src/lib/__generated/sdk';
@@ -15,24 +16,26 @@ export const ArticleTextImageSideBySide = ({ textImage }: ArticleTextImageSideBy
 
   return (
     <div
-      className={`my-16 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-start md:gap-12 ${
+      className={`my-6 flex flex-col gap-8 md:grid md:grid-cols-2 md:items-start md:gap-10 ${
         isImageLeft ? 'md:grid-flow-col-dense' : ''
       }`}
       {...inspectorProps({ fieldId: 'text' })}
     >
-      {/* Texto */}
+      {/* Text */}
       <div className={`order-1 md:order-none ${isImageLeft ? 'md:col-start-2' : ''}`}>
         <CtfRichText json={textImage.text.json} links={textImage.text.links} />
       </div>
 
-      {/* Imagen */}
+      {/* Image */}
       <div className={`order-2 md:order-none ${isImageLeft ? 'md:col-start-1' : ''}`}>
-        <CtfImage
-          nextImageProps={{
-            className: 'rounded-lg w-full h-auto object-contain',
-          }}
-          {...textImage.image}
-        />
+        <div className="overflow-hidden rounded-[10px] border border-black/[0.08] bg-white dark:border-white/10 dark:bg-zinc-900">
+          <CtfImage
+            nextImageProps={{
+              className: 'w-full h-auto object-contain',
+            }}
+            {...textImage.image}
+          />
+        </div>
       </div>
     </div>
   );
