@@ -5,6 +5,7 @@ import { ChatDemo } from './demos/ChatDemo';
 import { DropdownDemo } from './demos/DropdownDemo';
 import { OptimisticDemo } from './demos/OptimisticDemo';
 import { PaginationDemo } from './demos/PaginationDemo';
+import { RequirementsHeroCinematic } from './demos/RequirementsHeroCinematic';
 import { SuggestionComparisonDemo } from './demos/SuggestionComparisonDemo';
 import { SuggestionIterationDemo } from './demos/SuggestionIterationDemo';
 import { ValidationBentoDemo } from './demos/ValidationBentoDemo';
@@ -16,6 +17,7 @@ const DEMO_REGISTRY: Record<string, React.ComponentType> = {
   pagination: PaginationDemo,
   optimistic: OptimisticDemo,
   chat: ChatDemo,
+  requirementsHero: RequirementsHeroCinematic,
   suggestionIteration: SuggestionIterationDemo,
   suggestionComparison: SuggestionComparisonDemo,
   validationBento: ValidationBentoDemo,
