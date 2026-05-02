@@ -107,7 +107,10 @@ export function PatternDemoShell({ steps }: PatternDemoShellProps) {
   const ActiveStep = steps[activeIdx]?.component;
 
   return (
-    <div ref={cardRef} className="rounded-2xl border border-black/[0.08] bg-[rgb(249,250,251)] p-6">
+    <div
+      ref={cardRef}
+      className="min-w-[280px] rounded-2xl border border-black/[0.08] bg-[rgb(249,250,251)] p-6"
+    >
       {/* Tab pills */}
       {/* <div ref={tabsRef} className="mb-5 flex flex-wrap gap-2">
         {steps.map((step, i) => (

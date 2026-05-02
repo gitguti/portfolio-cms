@@ -17,7 +17,7 @@ import { useAutoPlay } from './useAutoPlay';
 
 // ─── Shared UI ────────────────────────────────────────────────────────────────
 
-const cardCls = 'rounded-xl border border-black/[0.08] bg-white p-4';
+const cardCls = 'min-w-[240px] rounded-xl border border-black/[0.08] bg-white p-4';
 
 const ARTICLE_TITLE = 'Design tokens at scale';
 const ARTICLE_META = 'Miguel · 4 min read';

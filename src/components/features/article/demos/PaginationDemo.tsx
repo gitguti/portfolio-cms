@@ -11,7 +11,7 @@ const STEPS_LABELS = ['Basics', 'Details', 'Team', 'Review', 'Submit'];
 
 // ─── Shared ───────────────────────────────────────────────────────────────────
 
-const cardCls = 'rounded-xl border border-black/[0.08] bg-white p-4';
+const cardCls = 'min-w-[240px] rounded-xl border border-black/[0.08] bg-white p-4';
 
 // Counter that animates in on each page change
 function PageCounter({ page }: { page: number }) {
