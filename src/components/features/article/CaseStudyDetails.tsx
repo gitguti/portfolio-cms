@@ -15,7 +15,7 @@ export const CaseStudyDetails = ({ role, team, timeframe, entryId }: CaseStudyDe
   }
 
   return (
-    <dl className="flex flex-col gap-6" {...inspectorProps({ fieldId: 'caseStudyDetails' })}>
+    <dl className="mb-4 flex flex-col gap-4" {...inspectorProps({ fieldId: 'caseStudyDetails' })}>
       {role && (
         <div>
           <dt className="mb-1.5 text-xs font-medium uppercase tracking-[0.08em] text-zinc-500 dark:text-zinc-400">

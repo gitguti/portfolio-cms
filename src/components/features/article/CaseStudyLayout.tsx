@@ -43,7 +43,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
       {/* HERO SECTION — title, meta, full-width image */}
       <section className="mx-auto w-full max-w-[1080px] px-6 pt-24 sm:px-12">
         {/* title + meta */}
-        <div className=" grid grid-cols-1 items-start gap-12 lg:grid-cols-[1fr_320px]">
+        <div className=" grid grid-cols-1 items-start md:gap-12 lg:grid-cols-[1fr_320px]">
           <div>
             <h1
               className="font-cs-sans text-3xl font-normal leading-[1.1] tracking-[-0.02em] text-zinc-900 dark:text-zinc-100 md:text-4xl lg:text-6xl"
@@ -69,7 +69,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
             </p>
             {/* chips */}
             {chips.length > 0 && (
-              <div className="mb-8 flex flex-wrap gap-2">
+              <div className="mb-8 flex flex-wrap gap-1 md:gap-2">
                 {chips.map(chip => (
                   <span
                     key={chip.id}

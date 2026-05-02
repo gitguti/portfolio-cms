@@ -294,6 +294,13 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
       {/* Main Feed */}
       <div className="flex min-h-screen flex-col">
+        {/* Animated background blobs — fixed to viewport top so they aren't clipped by section bounds */}
+        <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[100dvh]">
+          <div className="absolute left-1/2 top-0 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-sky-200/50 blur-3xl dark:bg-sky-500/20" />
+          <div className="absolute left-[14%] top-[22%] h-[420px] w-[420px] rounded-full bg-emerald-200/60 blur-3xl dark:bg-emerald-400/20" />
+          <div className="absolute right-[12%] top-[24%] h-[380px] w-[380px] rounded-full bg-violet-200/55 blur-3xl dark:bg-violet-500/20" />
+          <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),transparent_35%)] dark:bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.04),transparent_35%)]" />
+        </div>
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* ── 00 Hero ─────────────────────────────────────────── */}
           <section
@@ -301,14 +308,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             ref={heroRef}
             className="relative scroll-mt-24 pb-12 pt-32 md:scroll-mt-20"
           >
-            {/* Animated background blobs */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[680px] overflow-hidden">
-              <div className="absolute left-1/2 top-0 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-sky-200/50 blur-3xl dark:bg-sky-500/20" />
-              <div className="absolute left-[14%] top-[22%] h-[420px] w-[420px] rounded-full bg-emerald-200/60 blur-3xl dark:bg-emerald-400/20" />
-              <div className="absolute right-[12%] top-[24%] h-[380px] w-[380px] rounded-full bg-violet-200/55 blur-3xl dark:bg-violet-500/20" />
-              <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),transparent_35%)] dark:bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.04),transparent_35%)]" />
-            </div>
-
             <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-[1fr_300px]">
               {/* Left: main hero card */}
               <div className="rounded-[2rem] border border-neutral-200/70 bg-white/95 p-8 shadow-[0_24px_100px_-60px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-colors duration-300 dark:border-zinc-700/70 dark:bg-[#1c1b1d] dark:shadow-[0_24px_100px_-60px_rgba(15,23,42,0.5)] sm:p-10">
