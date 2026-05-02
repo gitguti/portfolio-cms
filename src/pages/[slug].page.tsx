@@ -25,14 +25,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             <SectionLabel title="Next case" />
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {relatedPosts.map((post, i) =>
-                post ? (
-                  <ArticleTile
-                    key={post.sys?.id ?? i}
-                    article={post}
-                    layout="vertical"
-                    className="rounded-[10px] border border-black/[0.08] bg-white p-5 dark:border-white/10 dark:bg-zinc-900/60"
-                  />
-                ) : null,
+                post ? <ArticleTile key={post.sys?.id ?? i} article={post} /> : null,
               )}
             </div>
           </section>

@@ -1,12 +1,13 @@
 import gsap from 'gsap';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
 import { RequirementsHeroCinematic } from './demos/RequirementsHeroCinematic';
+import { RequirementsHeroCinematicMobile } from './demos/RequirementsHeroCinematicMobile';
 import { BirdsEyeHeroCinematic } from './demos/BirdsEyeHeroCinematic';
-import { FormBuilderHeroCinematic } from './demos/FormBuilderHeroCinematic';
+import { OptimisticDemo } from './demos/OptimisticDemo';
 
 interface WorkCardProps {
   article: PageBlogPostFieldsFragment;
@@ -14,16 +15,19 @@ interface WorkCardProps {
   className?: string;
 }
 
-const demoByVariant = {
-  requirements: RequirementsHeroCinematic,
-  pattern: BirdsEyeHeroCinematic,
-  form: FormBuilderHeroCinematic,
-};
-
 // ── WorkCard ──────────────────────────────────────────────────────────────────
 export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
   const { title, shortDescription } = article;
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isMd, setIsMd] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    setIsMd(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMd(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const handleMouseEnter = () => gsap.to(cardRef.current, { scale: 1.015, duration: 0.3 });
   const handleMouseLeave = () => gsap.to(cardRef.current, { scale: 1, duration: 0.3 });
@@ -34,6 +38,14 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
     article.contentfulMetadata?.tags
       ?.filter((t: any) => t?.id && !['caseStudy', 'blogArticle'].includes(t.id))
       .slice(0, 3) ?? [];
+
+  const RequirementsDemo = isMd ? RequirementsHeroCinematic : RequirementsHeroCinematicMobile;
+
+  const demoByVariant = {
+    requirements: RequirementsDemo,
+    pattern: BirdsEyeHeroCinematic,
+    form: OptimisticDemo,
+  };
 
   const Demo = demoByVariant[variant];
 

@@ -434,11 +434,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
               {/* Remaining posts: fallback thirds grid */}
               {filteredPosts.slice(3).map((post: any, i: number) => (
                 <div key={post.sys?.id ?? i} className="bento-reveal col-span-12 md:col-span-4">
-                  <ArticleTile
-                    article={post}
-                    layout="vertical"
-                    className="h-full rounded-2xl border border-neutral-200/70 bg-white/95 p-4 dark:border-zinc-700/70 dark:bg-zinc-900/80 sm:p-5"
-                  />
+                  <ArticleTile article={post} className="h-full" />
                 </div>
               ))}
             </div>

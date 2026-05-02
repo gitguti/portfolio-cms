@@ -69,7 +69,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
             </p>
             {/* chips */}
             {chips.length > 0 && (
-              <div className="mb-8 flex flex-wrap gap-1 md:gap-2">
+              <div className="mb-8  flex flex-wrap gap-1 capitalize md:gap-2">
                 {chips.map(chip => (
                   <span
                     key={chip.id}
