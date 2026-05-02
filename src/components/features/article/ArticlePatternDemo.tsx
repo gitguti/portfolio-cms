@@ -7,6 +7,7 @@ import { OptimisticDemo } from './demos/OptimisticDemo';
 import { PaginationDemo } from './demos/PaginationDemo';
 import { SuggestionComparisonDemo } from './demos/SuggestionComparisonDemo';
 import { SuggestionIterationDemo } from './demos/SuggestionIterationDemo';
+import { ValidationBentoDemo } from './demos/ValidationBentoDemo';
 
 // Registry — add new demos here as you build them
 const DEMO_REGISTRY: Record<string, React.ComponentType> = {
@@ -17,6 +18,7 @@ const DEMO_REGISTRY: Record<string, React.ComponentType> = {
   chat: ChatDemo,
   suggestionIteration: SuggestionIterationDemo,
   suggestionComparison: SuggestionComparisonDemo,
+  validationBento: ValidationBentoDemo,
 };
 
 interface ArticlePatternDemoProps {
