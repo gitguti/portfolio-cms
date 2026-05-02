@@ -7,8 +7,31 @@ interface ImageProps extends Omit<ImageFieldsFragment, '__typename'> {
   nextImageProps?: Omit<NextImageProps, 'src' | 'alt'>;
 }
 
-export const CtfImage = ({ url, width, height, title, nextImageProps }: ImageProps) => {
-  if (!url || !width || !height) return null;
+export const CtfImage = ({
+  url,
+  width,
+  height,
+  title,
+  contentType,
+  nextImageProps,
+}: ImageProps) => {
+  if (!url) return null;
+
+  if (contentType?.startsWith('video/')) {
+    return (
+      <video
+        src={url}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={twMerge(nextImageProps?.className, 'transition-all')}
+        style={width && height ? { aspectRatio: `${width} / ${height}` } : undefined}
+      />
+    );
+  }
+
+  if (!width || !height) return null;
 
   const blurURL = new URL(url);
   blurURL.searchParams.set('w', '10');
@@ -21,7 +44,6 @@ export const CtfImage = ({ url, width, height, title, nextImageProps }: ImagePro
       sizes="100vw"
       quality="85"
       alt={title || ''}
-      // sizes="(max-width: 1200px) 100vw, 50vw"
       placeholder="blur"
       blurDataURL={blurURL.toString()}
       {...nextImageProps}
