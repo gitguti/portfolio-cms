@@ -7,7 +7,8 @@ import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 import { RequirementsHeroCinematic } from './demos/RequirementsHeroCinematic';
 import { RequirementsHeroCinematicMobile } from './demos/RequirementsHeroCinematicMobile';
 import { BirdsEyeHeroCinematic } from './demos/BirdsEyeHeroCinematic';
-import { OptimisticDemo } from './demos/OptimisticDemo';
+import { BirdsEyeHeroCinematicMobile } from './demos/BirdsEyeHeroCinematicMobile';
+import { FormBuilderHeroCinematic } from './demos/FormBuilderHeroCinematic';
 
 interface WorkCardProps {
   article: PageBlogPostFieldsFragment;
@@ -39,12 +40,10 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
       ?.filter((t: any) => t?.id && !['caseStudy', 'blogArticle'].includes(t.id))
       .slice(0, 3) ?? [];
 
-  const RequirementsDemo = isMd ? RequirementsHeroCinematic : RequirementsHeroCinematicMobile;
-
   const demoByVariant = {
-    requirements: RequirementsDemo,
-    pattern: BirdsEyeHeroCinematic,
-    form: OptimisticDemo,
+    requirements: isMd ? RequirementsHeroCinematic : RequirementsHeroCinematicMobile,
+    pattern: isMd ? BirdsEyeHeroCinematic : BirdsEyeHeroCinematicMobile,
+    form: FormBuilderHeroCinematic,
   };
 
   const Demo = demoByVariant[variant];
