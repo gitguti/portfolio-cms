@@ -6,7 +6,7 @@ import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
 import { RequirementsHeroCinematic } from './demos/RequirementsHeroCinematic';
 import { BirdsEyeHeroCinematic } from './demos/BirdsEyeHeroCinematic';
-import { OptimisticDemo } from './demos/OptimisticDemo';
+import { FormBuilderHeroCinematic } from './demos/FormBuilderHeroCinematic';
 
 interface WorkCardProps {
   article: PageBlogPostFieldsFragment;
@@ -17,7 +17,7 @@ interface WorkCardProps {
 const demoByVariant = {
   requirements: RequirementsHeroCinematic,
   pattern: BirdsEyeHeroCinematic,
-  form: OptimisticDemo,
+  form: FormBuilderHeroCinematic,
 };
 
 // ── WorkCard ──────────────────────────────────────────────────────────────────
