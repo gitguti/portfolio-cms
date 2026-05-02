@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
@@ -20,11 +20,12 @@ interface WorkCardProps {
 export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
   const { title, shortDescription } = article;
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isMd, setIsMd] = useState(false);
+  const [isMd, setIsMd] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false,
+  );
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 768px)');
-    setIsMd(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsMd(e.matches);
     mq.addEventListener('change', handler);
     return () => mq.removeEventListener('change', handler);
@@ -39,14 +40,6 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
     article.contentfulMetadata?.tags
       ?.filter((t: any) => t?.id && !['caseStudy', 'blogArticle'].includes(t.id))
       .slice(0, 3) ?? [];
-
-  const demoByVariant = {
-    requirements: isMd ? RequirementsHeroCinematic : RequirementsHeroCinematicMobile,
-    pattern: isMd ? BirdsEyeHeroCinematic : BirdsEyeHeroCinematicMobile,
-    form: FormBuilderHeroCinematic,
-  };
-
-  const Demo = demoByVariant[variant];
 
   return (
     <Link className="flex h-full" href={`/${article.slug}`}>
@@ -94,9 +87,13 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
         </div>
 
         {/* Demo animation area */}
-        <div className="flex-1 overflow-hidden p-5">
+        <div className="overflow-hidden p-5">
           <div className="pointer-events-none h-full w-full overflow-hidden rounded-xl">
-            <Demo />
+            {variant === 'requirements' &&
+              (isMd ? <RequirementsHeroCinematic /> : <RequirementsHeroCinematicMobile />)}
+            {variant === 'pattern' &&
+              (isMd ? <BirdsEyeHeroCinematic /> : <BirdsEyeHeroCinematicMobile />)}
+            {variant === 'form' && <FormBuilderHeroCinematic />}
           </div>
         </div>
       </div>

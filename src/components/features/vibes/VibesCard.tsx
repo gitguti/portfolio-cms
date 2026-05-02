@@ -65,7 +65,7 @@ const DockCard = ({ project: _project }: { project: VibesProject }) => {
   return (
     <div
       ref={cardRef}
-      className="vibes-card building-card flex flex-col overflow-hidden rounded-2xl md:col-span-2"
+      className="vibes-card building-card flex min-h-[400px] flex-col overflow-hidden rounded-2xl md:col-span-2"
       style={{ background: app.cardBg, transition: 'background 0.5s ease' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

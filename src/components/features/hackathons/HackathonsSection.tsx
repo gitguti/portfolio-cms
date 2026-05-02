@@ -84,7 +84,7 @@ const HackathonRow = ({ hackathon, index }: HackathonRowProps) => {
 
         {/* Name */}
         <h3
-          className={`font-serif text-lg font-medium capitalize text-neutral-900 dark:text-zinc-100 md:w-40 md:flex-shrink-0 ${
+          className={`text-lg font-medium capitalize text-neutral-900 dark:text-zinc-100 md:w-40 md:flex-shrink-0 ${
             isClickable ? 'group-hover:underline' : ''
           }`}
           {...inspectorProps({ fieldId: 'name' })}

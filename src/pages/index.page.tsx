@@ -4,13 +4,13 @@ import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpdates';
 import { useTranslation } from 'next-i18next';
 import { useState, useEffect, useRef } from 'react';
-import { HiArrowRight, HiArrowDown } from 'react-icons/hi';
+import { HiArrowRight } from 'react-icons/hi';
 import { contactConfig, socialLinks } from '@src/components/features/about/about-data';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
 
 import { ArticleTile, WorkCard } from '@src/components/features/article';
-import { HackathonCard, HackathonsSection } from '@src/components/features/hackathons';
+import { HackathonsSection } from '@src/components/features/hackathons';
 import { SeoFields } from '@src/components/features/seo';
 import { VibesCard } from '@src/components/features/vibes';
 import { vibesProjects } from '@src/components/features/vibes/vibes-data';
@@ -18,7 +18,7 @@ import { SectionLabel } from '@src/components/shared/section-label';
 import { Cursor } from '@src/components/shared/cursor';
 import { PageBlogPostOrder } from '@src/lib/__generated/sdk';
 import { client, previewClient } from '@src/lib/client';
-import { gsap, ScrollTrigger } from '@src/lib/gsap';
+import { gsap } from '@src/lib/gsap';
 import { revalidateDuration } from '@src/pages/utils/constants';
 
 const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -29,13 +29,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   // Refs
-  const shape1Ref = useRef<HTMLDivElement>(null);
-  const shape2Ref = useRef<HTMLDivElement>(null);
-  const shape3Ref = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const workSectionRef = useRef<HTMLElement>(null);
-  const buildingSectionRef = useRef<HTMLElement>(null);
-  const hackathonsSectionRef = useRef<HTMLElement>(null);
 
   // Mobile detection
   const [isMobile, setIsMobile] = useState(false);
@@ -47,116 +41,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // GSAP Animated Blobs
-  useEffect(() => {
-    if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    // Shape 1
-    gsap.to(shape1Ref.current, {
-      keyframes: [
-        {
-          borderRadius: '50% 70%',
-          width: '160px',
-          height: '200px',
-          filter: 'blur(60px) saturate(90%)',
-          opacity: 0.5,
-          scale: 1,
-          duration: 0,
-        },
-        {
-          borderRadius: '50%',
-          width: '200px',
-          height: '160px',
-          opacity: 0.6,
-          scale: 1.03,
-          duration: 1.5,
-        },
-        {
-          borderRadius: '70% 50%',
-          width: '240px',
-          height: '120px',
-          opacity: 0.5,
-          scale: 1,
-          duration: 1.5,
-        },
-      ],
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-    });
-
-    // Shape 2
-    gsap.to(shape2Ref.current, {
-      keyframes: [
-        {
-          borderRadius: '40% 60%',
-          width: '140px',
-          height: '240px',
-          filter: 'blur(80px) saturate(100%)',
-          opacity: 0.3,
-          scale: 1,
-          duration: 0,
-        },
-        {
-          borderRadius: '50%',
-          width: '180px',
-          height: '180px',
-          opacity: 0.4,
-          scale: 1.01,
-          duration: 1.5,
-        },
-        {
-          borderRadius: '60% 40%',
-          width: '160px',
-          height: '120px',
-          opacity: 0.3,
-          scale: 1,
-          duration: 1.5,
-        },
-      ],
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-    });
-
-    // Shape 3
-    gsap.to(shape3Ref.current, {
-      keyframes: [
-        {
-          borderRadius: '60% 50%',
-          width: '120px',
-          height: '180px',
-          filter: 'blur(100px) saturate(150%)',
-          opacity: 0.2,
-          scale: 1,
-          duration: 0,
-        },
-        {
-          borderRadius: '50%',
-          width: '150px',
-          height: '140px',
-          opacity: 0.25,
-          scale: 1.02,
-          duration: 1.5,
-        },
-        {
-          borderRadius: '50% 60%',
-          width: '180px',
-          height: '100px',
-          opacity: 0.2,
-          scale: 1,
-          duration: 1.5,
-        },
-      ],
-      repeat: -1,
-      yoyo: true,
-      ease: 'power1.inOut',
-    });
   }, []);
 
   // Hero entrance stagger animation
@@ -180,101 +64,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
         delay: 0.2,
       },
     );
-  }, []);
-
-  // Scroll-triggered reveals on content sections
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    // Work section
-    if (workSectionRef.current) {
-      const workItems = workSectionRef.current.querySelectorAll('.bento-reveal');
-      gsap.fromTo(
-        workItems,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: workSectionRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-        },
-      );
-    }
-
-    // Building section
-    if (buildingSectionRef.current) {
-      const buildingItems = buildingSectionRef.current.querySelectorAll('.bento-reveal');
-      gsap.fromTo(
-        buildingItems,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: buildingSectionRef.current,
-            start: 'top 80%',
-            once: true,
-          },
-        },
-      );
-    }
-
-    // Hacks section
-    if (hackathonsSectionRef.current) {
-      const hackItems = hackathonsSectionRef.current.querySelectorAll('.bento-reveal');
-      gsap.fromTo(
-        hackItems,
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: hackathonsSectionRef.current,
-            start: 'top 85%',
-            once: true,
-          },
-        },
-      );
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [posts, hackathons]);
-
-  // Scroll-linked blob parallax
-  useEffect(() => {
-    if (!shape1Ref.current || !shape2Ref.current || !shape3Ref.current) return;
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) return;
-
-    const blobs = [shape1Ref.current, shape2Ref.current, shape3Ref.current];
-    blobs.forEach((blob, i) => {
-      gsap.to(blob, {
-        yPercent: 50 + i * 20,
-        opacity: 0.1,
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        },
-      });
-    });
   }, []);
 
   // Filter posts by selected tag (if any)
@@ -390,11 +179,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           </section>
 
           {/* ── 01 Work ─────────────────────────────────────────── */}
-          <section
-            id="work"
-            ref={workSectionRef}
-            className="scroll-mt-24 pb-12 pt-8 md:scroll-mt-20"
-          >
+          <section id="work" className="scroll-mt-24 pb-12 pt-8 md:scroll-mt-20">
             <SectionLabel title="Work" />
 
             <div className="grid grid-cols-12 gap-[10px]">
@@ -410,7 +195,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <WorkCard
                     article={filteredPosts[0]}
                     variant="requirements"
-                    className="min-h-[260px]"
+                    className="md:min-h-[560px]"
                   />
                 </div>
               )}
@@ -441,11 +226,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           </section>
 
           {/* ── 02 Building ─────────────────────────────────────── */}
-          <section
-            id="building"
-            ref={buildingSectionRef}
-            className="scroll-mt-24 pb-12 pt-8 md:scroll-mt-20"
-          >
+          <section id="building" className="min-h-[500px] scroll-mt-24 pb-12 pt-16 md:scroll-mt-20">
             <SectionLabel title="Building" />
 
             {/* 4-column portrait grid */}
@@ -460,11 +241,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
           {/* ── 03 Hacks ────────────────────────────────────────── */}
           {hackathons && hackathons.length > 0 && (
-            <section
-              id="hacks"
-              ref={hackathonsSectionRef}
-              className="scroll-mt-24 pb-24 pt-8 md:scroll-mt-20"
-            >
+            <section id="hacks" className="scroll-mt-24 pb-24 pt-8 md:scroll-mt-20">
               <SectionLabel title="Hacks" />
 
               <HackathonsSection hackathons={hackathons} className="bento-reveal col-span-12" />
