@@ -1,5 +1,6 @@
 'use client';
 
+import { BirdsEyeHeroCinematic } from './demos/BirdsEyeHeroCinematic';
 import { ButtonStateDemo } from './demos/ButtonStateDemo';
 import { ChatDemo } from './demos/ChatDemo';
 import { DropdownDemo } from './demos/DropdownDemo';
@@ -18,6 +19,7 @@ const DEMO_REGISTRY: Record<string, React.ComponentType> = {
   optimistic: OptimisticDemo,
   chat: ChatDemo,
   requirementsHero: RequirementsHeroCinematic,
+  birdsEyeHero: BirdsEyeHeroCinematic,
   suggestionIteration: SuggestionIterationDemo,
   suggestionComparison: SuggestionComparisonDemo,
   validationBento: ValidationBentoDemo,
