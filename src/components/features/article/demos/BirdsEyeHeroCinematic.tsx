@@ -128,43 +128,42 @@ function SidebarPanel({
       style={{
         position: 'absolute',
         top: '35%',
-        left: 16,
+        left: 10,
         transform: `translateY(-50%) translateX(${tx}%)`,
-        width: 160,
+        width: 118,
         background: '#FFFFFF',
-        borderRadius: 12,
+        borderRadius: 10,
         border: '1px solid rgba(0,0,0,0.07)',
         boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
-        padding: '16px 14px',
+        padding: '8px',
         display: 'flex',
         flexDirection: 'column',
-        gap: 14,
+        gap: 4,
         zIndex: 10,
         willChange: 'transform',
       }}
     >
       {/* Search field */}
       <div>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 5, letterSpacing: '0.02em' }}>
-          Search by people leader name
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 3, letterSpacing: '0.02em' }}>
+          Search
         </div>
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 6,
+            gap: 4,
             border: '1px solid',
             borderColor: filterActive ? 'rgba(55,138,221,0.5)' : 'rgba(0,0,0,0.1)',
-            borderRadius: 7,
-            padding: '6px 9px',
+            borderRadius: 5,
+            padding: '4px 6px',
             background: '#FAFAFA',
             transition: 'border-color 0.3s ease',
           }}
         >
-          {/* Search icon */}
           <svg
-            width="9"
-            height="9"
+            width="7"
+            height="7"
             viewBox="0 0 12 12"
             fill="none"
             style={{ flexShrink: 0, opacity: 0.35 }}
@@ -182,11 +181,11 @@ function SidebarPanel({
           </svg>
           <span
             style={{
-              fontSize: 10,
+              fontSize: 8,
               color: searchText ? '#111827' : '#C4C4C4',
               flex: 1,
-              minHeight: 14,
-              lineHeight: '14px',
+              minHeight: 11,
+              lineHeight: '11px',
             }}
           >
             {searchText || 'Search…'}
@@ -195,10 +194,10 @@ function SidebarPanel({
                 className="bev-cursor"
                 style={{
                   display: 'inline-block',
-                  width: 1.5,
-                  height: 10,
+                  width: 1,
+                  height: 8,
                   background: '#378ADD',
-                  marginLeft: 1.5,
+                  marginLeft: 1,
                   verticalAlign: 'middle',
                 }}
               />
@@ -209,7 +208,7 @@ function SidebarPanel({
 
       {/* Analyse by */}
       <div>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 5, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 3, letterSpacing: '0.02em' }}>
           Analyse by
         </div>
         <div
@@ -218,13 +217,13 @@ function SidebarPanel({
             alignItems: 'center',
             justifyContent: 'space-between',
             border: '1px solid rgba(0,0,0,0.1)',
-            borderRadius: 7,
-            padding: '6px 9px',
+            borderRadius: 5,
+            padding: '3px 6px',
             background: '#FAFAFA',
           }}
         >
-          <span style={{ fontSize: 10, color: '#374151' }}>Score scale</span>
-          <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+          <span style={{ fontSize: 7, color: '#374151' }}>Score scale</span>
+          <svg width="6" height="6" viewBox="0 0 10 10" fill="none">
             <path
               d="M2 3.5L5 6.5L8 3.5"
               stroke="#9CA3AF"
@@ -238,13 +237,13 @@ function SidebarPanel({
 
       {/* Show results for */}
       <div>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 5, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 3, letterSpacing: '0.02em' }}>
           Show results for
         </div>
         <div
           style={{
             display: 'flex',
-            borderRadius: 7,
+            borderRadius: 5,
             overflow: 'hidden',
             border: '1px solid rgba(0,0,0,0.08)',
           }}
@@ -253,8 +252,8 @@ function SidebarPanel({
             style={{
               flex: 1,
               textAlign: 'center',
-              padding: '5px 0',
-              fontSize: 10,
+              padding: '2px 0',
+              fontSize: 7,
               fontWeight: 600,
               background: '#111827',
               color: '#fff',
@@ -266,8 +265,8 @@ function SidebarPanel({
             style={{
               flex: 1,
               textAlign: 'center',
-              padding: '5px 0',
-              fontSize: 10,
+              padding: '2px 0',
+              fontSize: 7,
               color: '#9CA3AF',
               background: '#F5F5F5',
             }}
@@ -279,13 +278,13 @@ function SidebarPanel({
 
       {/* View type */}
       <div>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 5, letterSpacing: '0.02em' }}>
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 3, letterSpacing: '0.02em' }}>
           View type
         </div>
         <div
           style={{
             display: 'flex',
-            borderRadius: 7,
+            borderRadius: 5,
             overflow: 'hidden',
             border: '1px solid rgba(0,0,0,0.08)',
           }}
@@ -294,8 +293,8 @@ function SidebarPanel({
             style={{
               flex: 1,
               textAlign: 'center',
-              padding: '5px 0',
-              fontSize: 10,
+              padding: '2px 0',
+              fontSize: 7,
               fontWeight: 600,
               background: '#111827',
               color: '#fff',
@@ -307,8 +306,8 @@ function SidebarPanel({
             style={{
               flex: 1,
               textAlign: 'center',
-              padding: '5px 0',
-              fontSize: 10,
+              padding: '2px 0',
+              fontSize: 7,
               color: '#9CA3AF',
               background: '#F5F5F5',
             }}
@@ -353,12 +352,12 @@ function DetailPanel({
     <div
       style={{
         position: 'absolute',
-        top: '35%',
-        right: 16,
+        top: '45%',
+        right: 10,
         transform: `translateY(-50%) translateX(${tx}%)`,
-        width: 182,
+        width: 136,
         background: '#FFFFFF',
-        borderRadius: 12,
+        borderRadius: 10,
         border: '1px solid rgba(0,0,0,0.07)',
         boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
         display: 'flex',
@@ -369,12 +368,12 @@ function DetailPanel({
       }}
     >
       {/* Overview card */}
-      <div style={{ padding: '14px 14px 12px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
+      <div style={{ padding: '8px 10px 6px', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
         <div
           style={{
-            fontSize: 9,
+            fontSize: 7,
             color: '#9CA3AF',
-            marginBottom: 8,
+            marginBottom: 4,
             letterSpacing: '0.06em',
             textTransform: 'uppercase',
           }}
@@ -384,18 +383,18 @@ function DetailPanel({
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0 }}>
           {overviewItems.map(({ label, val, delta }) => (
             <div key={label} style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: 8, color: '#9CA3AF', marginBottom: 3 }}>{label}</div>
+              <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 2 }}>{label}</div>
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'baseline',
                   justifyContent: 'center',
-                  gap: 2,
+                  gap: 1,
                 }}
               >
                 <span
                   style={{
-                    fontSize: 16,
+                    fontSize: 12,
                     fontWeight: 700,
                     color: '#111827',
                     opacity: numbersVisible ? 1 : 0,
@@ -407,7 +406,7 @@ function DetailPanel({
                 {delta && (
                   <span
                     style={{
-                      fontSize: 8,
+                      fontSize: 7,
                       color: '#9CA3AF',
                       opacity: numbersVisible ? 1 : 0,
                       transition: 'opacity 0.3s ease 0.2s',
@@ -423,11 +422,11 @@ function DetailPanel({
       </div>
 
       {/* Survey scores */}
-      <div style={{ padding: '12px 14px', flex: 1 }}>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 8, letterSpacing: '0.04em' }}>
+      <div style={{ padding: '6px 10px', flex: 1 }}>
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 4, letterSpacing: '0.04em' }}>
           Question
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           {surveyItems.map(({ label, score, bm, low }, i) => {
             const visible = surveyProgress >= (i + 1) / surveyItems.length;
             return (
@@ -442,23 +441,23 @@ function DetailPanel({
                   transition: `opacity 0.25s ease, transform 0.25s ease`,
                 }}
               >
-                <span style={{ fontSize: 10, color: '#374151', flex: 1 }}>{label}</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                <span style={{ fontSize: 8, color: '#374151', flex: 1 }}>{label}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                   <span
                     style={{
-                      fontSize: 11,
+                      fontSize: 8,
                       fontWeight: 700,
                       color: '#fff',
                       background: low ? '#E24B4A' : '#378ADD',
-                      borderRadius: 4,
-                      padding: '1px 6px',
-                      minWidth: 26,
+                      borderRadius: 3,
+                      padding: '1px 4px',
+                      minWidth: 20,
                       textAlign: 'center',
                     }}
                   >
                     {score}
                   </span>
-                  <span style={{ fontSize: 9, color: '#9CA3AF', width: 22, textAlign: 'right' }}>
+                  <span style={{ fontSize: 7, color: '#9CA3AF', width: 18, textAlign: 'right' }}>
                     {bm}
                   </span>
                 </div>
@@ -469,14 +468,14 @@ function DetailPanel({
       </div>
 
       {/* Sparkline section */}
-      <div style={{ padding: '10px 14px 14px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
-        <div style={{ fontSize: 9, color: '#9CA3AF', marginBottom: 6, letterSpacing: '0.04em' }}>
+      <div style={{ padding: '5px 10px 8px', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <div style={{ fontSize: 7, color: '#9CA3AF', marginBottom: 3, letterSpacing: '0.04em' }}>
           Engagement history
         </div>
-        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 22 }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', gap: 2, height: 16 }}>
           {sparkBars.map((v, i) => {
             const pct = (v - 46) / (68 - 46);
-            const h = Math.round(pct * 22);
+            const h = Math.round(pct * 16);
             const revealed = sparkProgress >= (i + 1) / sparkBars.length;
             return (
               <div
@@ -493,9 +492,9 @@ function DetailPanel({
             );
           })}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-          <span style={{ fontSize: 8, color: '#C4C4C4' }}>Q1</span>
-          <span style={{ fontSize: 8, color: '#C4C4C4' }}>Q5</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 3 }}>
+          <span style={{ fontSize: 7, color: '#C4C4C4' }}>Q1</span>
+          <span style={{ fontSize: 7, color: '#C4C4C4' }}>Q5</span>
         </div>
       </div>
     </div>
@@ -694,7 +693,7 @@ function BirdsEyeInner() {
       style={{
         position: 'relative',
         aspectRatio: '16/10',
-        borderRadius: 20,
+        borderRadius: 14,
         background: '#F5F5F4',
         overflow: 'hidden',
       }}
@@ -703,9 +702,9 @@ function BirdsEyeInner() {
       <div
         style={{
           position: 'absolute',
-          inset: 10,
+          inset: 7,
           background: '#FFFFFF',
-          borderRadius: 16,
+          borderRadius: 10,
           border: '1px solid rgba(0,0,0,0.07)',
           boxShadow: '0 2px 16px rgba(0,0,0,0.04)',
           overflow: 'hidden',

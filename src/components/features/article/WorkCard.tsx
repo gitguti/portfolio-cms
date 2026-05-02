@@ -4,8 +4,8 @@ import { useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
-import { ValidationBentoDemo } from './demos/ValidationBentoDemo';
-import { DropdownDemo } from './demos/DropdownDemo';
+import { RequirementsHeroCinematic } from './demos/RequirementsHeroCinematic';
+import { BirdsEyeHeroCinematic } from './demos/BirdsEyeHeroCinematic';
 import { OptimisticDemo } from './demos/OptimisticDemo';
 
 interface WorkCardProps {
@@ -15,8 +15,8 @@ interface WorkCardProps {
 }
 
 const demoByVariant = {
-  requirements: ValidationBentoDemo,
-  pattern: DropdownDemo,
+  requirements: RequirementsHeroCinematic,
+  pattern: BirdsEyeHeroCinematic,
   form: OptimisticDemo,
 };
 
@@ -50,25 +50,6 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
       >
         {/* Text block */}
         <div className="flex flex-col gap-2 px-5 pt-5">
-          {/* Chips row */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            {displayTags.map((tag: any) =>
-              tag?.name ? (
-                <span
-                  key={tag.id}
-                  className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
-                >
-                  {tag.name}
-                </span>
-              ) : null,
-            )}
-            {year && (
-              <span className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
-                {year}
-              </span>
-            )}
-          </div>
-
           {title && (
             <h3 className="text-[18px] font-medium leading-snug tracking-tight text-neutral-900 dark:text-zinc-100">
               {title}
@@ -80,6 +61,25 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
               {shortDescription}
             </p>
           )}
+
+          {/* Chips row */}
+          <div className="flex flex-wrap items-center gap-1.5">
+            {displayTags.map((tag: any) =>
+              tag?.name ? (
+                <span
+                  key={tag.id}
+                  className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium capitalize text-neutral-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
+                >
+                  {tag.name}
+                </span>
+              ) : null,
+            )}
+            {year && (
+              <span className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
+                {year}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Demo animation area */}
