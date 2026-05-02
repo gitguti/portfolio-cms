@@ -109,7 +109,7 @@ export function PatternDemoShell({ steps }: PatternDemoShellProps) {
   return (
     <div ref={cardRef} className="rounded-2xl border border-black/[0.08] bg-[rgb(249,250,251)] p-6">
       {/* Tab pills */}
-      <div ref={tabsRef} className="mb-5 flex flex-wrap gap-2">
+      {/* <div ref={tabsRef} className="mb-5 flex flex-wrap gap-2">
         {steps.map((step, i) => (
           <button
             key={step.label}
@@ -123,10 +123,10 @@ export function PatternDemoShell({ steps }: PatternDemoShellProps) {
             {step.label}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* Demo area — cursor lives here so coordinates are relative to this wrapper */}
-      <div ref={demoRef} className="relative w-full max-w-[280px]">
+      <div ref={demoRef} className="relative w-full">
         <div ref={wrapperRef} className="relative w-full">
           <Cursor cursorRef={cursorRef} />
           {ActiveStep && (

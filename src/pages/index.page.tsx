@@ -412,7 +412,6 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                     article={filteredPosts[0]}
                     variant="requirements"
                     className="min-h-[260px]"
-                    comingSoon
                   />
                 </div>
               )}

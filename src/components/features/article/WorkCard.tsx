@@ -8,7 +8,6 @@ interface WorkCardProps {
   article: PageBlogPostFieldsFragment;
   variant: 'pattern' | 'form' | 'requirements';
   className?: string;
-  comingSoon?: boolean;
 }
 
 // ── Pattern Discovery Visual ──────────────────────────────────────────────────
@@ -371,7 +370,7 @@ const RequirementsVisual = () => (
 );
 
 // ── WorkCard ──────────────────────────────────────────────────────────────────
-export const WorkCard = ({ article, variant, className, comingSoon = false }: WorkCardProps) => {
+export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
   const { title, shortDescription } = article;
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -411,13 +410,12 @@ export const WorkCard = ({ article, variant, className, comingSoon = false }: Wo
     <div
       ref={cardRef}
       className={twMerge(
-        'flex w-full flex-1 overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/95 dark:border-zinc-700/70 dark:bg-[#1c1b1d]',
-        comingSoon ? 'cursor-default' : 'cursor-pointer',
+        'flex w-full flex-1 cursor-pointer overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/95 dark:border-zinc-700/70 dark:bg-[#1c1b1d]',
         isRequirements ? 'flex-col md:flex-row' : 'flex-col',
         className,
       )}
-      onMouseEnter={comingSoon ? undefined : handleMouseEnter}
-      onMouseLeave={comingSoon ? undefined : handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Text block */}
       <div className={twMerge('flex flex-col justify-between p-8', isRequirements && 'md:w-1/2')}>
@@ -453,15 +451,9 @@ export const WorkCard = ({ article, variant, className, comingSoon = false }: Wo
 
         {/* Bottom row */}
         <div className="mt-5 flex flex-wrap items-center justify-between gap-2">
-          {comingSoon ? (
-            <span className="whitespace-nowrap text-xs font-medium italic text-black/30 dark:text-white/30">
-              Sharing under request
-            </span>
-          ) : (
-            <span className="whitespace-nowrap text-xs font-medium text-black/35 dark:text-white/35">
-              Case study →
-            </span>
-          )}
+          <span className="whitespace-nowrap text-xs font-medium text-black/35 dark:text-white/35">
+            Case study →
+          </span>
         </div>
       </div>
 
@@ -477,10 +469,6 @@ export const WorkCard = ({ article, variant, className, comingSoon = false }: Wo
       )}
     </div>
   );
-
-  if (comingSoon) {
-    return <div className="flex h-full">{inner}</div>;
-  }
 
   return (
     <Link className="flex h-full" href={`/${article.slug}`}>
