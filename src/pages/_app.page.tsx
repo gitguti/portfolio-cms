@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { GoogleAnalytics } from 'nextjs-google-analytics';
 import { Hotjar } from 'nextjs-hotjar';
 
-import { Layout } from '@src/components/templates/layout';
+import { Layout, lenisInstance } from '@src/components/templates/layout';
 
 const urbanist = Urbanist({ subsets: ['latin'], variable: '--font-urbanist' });
 
@@ -24,9 +24,18 @@ const App = ({ Component, pageProps }: AppProps) => {
   const [loadHotjar, setLoadHotjar] = useState(false);
 
   useEffect(() => {
-    const onRouteChangeComplete = () => window.scrollTo(0, 0);
-    router.events.on('routeChangeComplete', onRouteChangeComplete);
-    return () => router.events.off('routeChangeComplete', onRouteChangeComplete);
+    history.scrollRestoration = 'manual';
+    const scrollToTop = () => {
+      if (lenisInstance) {
+        lenisInstance.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+    };
+    router.events.on('routeChangeComplete', scrollToTop);
+    return () => {
+      router.events.off('routeChangeComplete', scrollToTop);
+    };
   }, [router.events]);
 
   // Delay Hotjar loading until after initial page load

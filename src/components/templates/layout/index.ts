@@ -1,1 +1,1 @@
-export { Layout } from './layout';
+export { Layout, lenisInstance } from './layout';

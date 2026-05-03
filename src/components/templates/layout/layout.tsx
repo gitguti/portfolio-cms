@@ -11,6 +11,8 @@ interface LayoutPropsInterface {
   children: ReactNode;
 }
 
+export let lenisInstance: Lenis | null = null;
+
 export const Layout = ({ children }: LayoutPropsInterface) => {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -23,6 +25,8 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
+    lenisInstance = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time: number) => {
@@ -32,6 +36,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
 
     return () => {
       lenis.destroy();
+      lenisInstance = null;
     };
   }, []);
 
