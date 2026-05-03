@@ -52,7 +52,7 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
         onMouseLeave={handleMouseLeave}
       >
         {/* Demo animation area — fixed height per breakpoint, both variants in DOM, CSS toggles visibility */}
-        <div className={`${demoHeight} overflow-hidden p-3`}>
+        <div className={`${demoHeight} overflow-hidden p-4`}>
           <div className="pointer-events-none h-full w-full overflow-hidden rounded-xl">
             {variant === 'requirements' && (
               <>
@@ -78,7 +78,7 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
           </div>
         </div>
         {/* Text block */}
-        <div className="flex flex-col gap-2 px-5">
+        <div className="flex flex-col px-5">
           {title && (
             <h3 className="leading- text-base font-medium tracking-tight text-gray-700 dark:text-gray-100 md:text-2xl">
               {title}
@@ -86,7 +86,7 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
           )}
 
           {shortDescription && (
-            <p className="text-base text-black/45 dark:text-white/45">{shortDescription}</p>
+            <p className="mb-3 text-base text-black/45 dark:text-white/45">{shortDescription}</p>
           )}
 
           {/* Chips row */}
