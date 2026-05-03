@@ -34,55 +34,25 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
   // Fixed heights per variant per breakpoint — prevents layout shift from
   // aspectRatio recalculation and from swapping mobile/desktop demo components.
   const demoHeight =
-    variant === 'requirements' ? 'h-[300px] md:h-[420px]' : 'h-[300px] md:h-[380px]';
+    variant === 'requirements'
+      ? 'h-[300px] md:h-[420px]'
+      : variant === 'pattern'
+      ? 'h-[322px] md:h-[402px]'
+      : 'h-[300px] md:h-[380px]';
 
   return (
     <Link className="flex h-full" href={`/${article.slug}`}>
       <div
         ref={cardRef}
         className={twMerge(
-          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden rounded-2xl border border-neutral-200/70 bg-white/95 dark:border-zinc-700/70 dark:bg-[#1c1b1d]',
+          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden rounded-3xl bg-white/95 dark:border-zinc-700/70 dark:bg-[#1c1b1d]',
           className,
         )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        {/* Text block */}
-        <div className="flex flex-col gap-2 px-5 pt-5">
-          {title && (
-            <h3 className="text-[18px] font-medium leading-snug tracking-tight text-neutral-900 dark:text-zinc-100">
-              {title}
-            </h3>
-          )}
-
-          {shortDescription && (
-            <p className="text-[13px] leading-relaxed text-black/45 dark:text-white/45">
-              {shortDescription}
-            </p>
-          )}
-
-          {/* Chips row */}
-          <div className="flex flex-wrap items-center gap-1.5">
-            {displayTags.map((tag: any) =>
-              tag?.name ? (
-                <span
-                  key={tag.id}
-                  className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium capitalize text-neutral-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
-                >
-                  {tag.name}
-                </span>
-              ) : null,
-            )}
-            {year && (
-              <span className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
-                {year}
-              </span>
-            )}
-          </div>
-        </div>
-
         {/* Demo animation area — fixed height per breakpoint, both variants in DOM, CSS toggles visibility */}
-        <div className={`${demoHeight} overflow-hidden p-5`}>
+        <div className={`${demoHeight} overflow-hidden p-3`}>
           <div className="pointer-events-none h-full w-full overflow-hidden rounded-xl">
             {variant === 'requirements' && (
               <>
@@ -105,6 +75,37 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
               </>
             )}
             {variant === 'form' && <FormBuilderHeroCinematic />}
+          </div>
+        </div>
+        {/* Text block */}
+        <div className="flex flex-col gap-2 px-5">
+          {title && (
+            <h3 className="leading- text-base font-medium tracking-tight text-neutral-900 dark:text-zinc-100 md:text-2xl">
+              {title}
+            </h3>
+          )}
+
+          {shortDescription && (
+            <p className="text-base text-black/45 dark:text-white/45">{shortDescription}</p>
+          )}
+
+          {/* Chips row */}
+          <div className="mb-4 flex flex-wrap items-center gap-1.5">
+            {displayTags.map((tag: any) =>
+              tag?.name ? (
+                <span
+                  key={tag.id}
+                  className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-xs font-medium capitalize text-neutral-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
+                >
+                  {tag.name}
+                </span>
+              ) : null,
+            )}
+            {year && (
+              <span className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
+                {year}
+              </span>
+            )}
           </div>
         </div>
       </div>
