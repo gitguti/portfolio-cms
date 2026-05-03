@@ -30,8 +30,6 @@ const feedLinks = [
 // Link that always navigates to a page route
 const craftLink = { href: '/craft', label: 'Craft', icon: HiViewGrid };
 
-const FILL_SPEED = 900;
-
 export const Header = () => {
   const router = useRouter();
   const variant = router.route === '/[slug]' ? 'article' : 'default';
@@ -39,11 +37,10 @@ export const Header = () => {
   const [mounted, setMounted] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
-  const aboutBtnRef = useRef<HTMLButtonElement>(null);
-  const aboutFillRef = useRef<HTMLDivElement>(null);
-  const phaseRef = useRef<'idle' | 'burning' | 'done'>('idle');
-  const rafRef = useRef<number | null>(null);
-  const startTimeRef = useRef<number | null>(null);
+  const handleAboutClick = useCallback(() => {
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  }, []);
 
   // Only use IntersectionObserver-based active section on the homepage
   const isHomePage = router.pathname === '/';
@@ -51,12 +48,6 @@ export const Header = () => {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    };
   }, []);
 
   const handleAnchorClick = useCallback(
@@ -70,72 +61,6 @@ export const Header = () => {
     },
     [isHomePage],
   );
-
-  const startFill = useCallback(() => {
-    if (phaseRef.current !== 'idle') return;
-    const fill = aboutFillRef.current;
-    if (!fill) return;
-
-    const isDark = theme === 'dark';
-    const fillColor = isDark ? 'rgba(255,255,255,0.13)' : 'rgba(0,0,0,0.08)';
-    const fillDoneColor = isDark ? '#404040' : '#262626';
-
-    phaseRef.current = 'burning';
-    startTimeRef.current = null;
-    fill.style.transition = 'none';
-    fill.style.background = fillColor;
-    fill.style.opacity = '1';
-    fill.style.width = '0%';
-
-    const burnStep = (ts: number) => {
-      if (!startTimeRef.current) startTimeRef.current = ts;
-      const progress = Math.min((ts - startTimeRef.current) / FILL_SPEED, 1);
-      if (fill) fill.style.width = `${progress * 100}%`;
-
-      if (progress < 1) {
-        rafRef.current = requestAnimationFrame(burnStep);
-      } else {
-        phaseRef.current = 'done';
-        fill.style.background = fillDoneColor;
-        if (aboutBtnRef.current) aboutBtnRef.current.style.color = 'white';
-      }
-    };
-
-    rafRef.current = requestAnimationFrame(burnStep);
-  }, [theme]);
-
-  const cancelFill = useCallback(() => {
-    if (phaseRef.current === 'idle') return;
-    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    rafRef.current = null;
-    startTimeRef.current = null;
-    phaseRef.current = 'idle';
-
-    const fill = aboutFillRef.current;
-    if (fill) {
-      fill.style.transition = 'width 0.3s ease-out, opacity 0.25s';
-      fill.style.width = '0%';
-      fill.style.opacity = '0';
-    }
-    if (aboutBtnRef.current) aboutBtnRef.current.style.color = '';
-  }, []);
-
-  const handleAboutClick = useCallback(() => {
-    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
-    rafRef.current = null;
-    startTimeRef.current = null;
-    phaseRef.current = 'idle';
-    const fill = aboutFillRef.current;
-    if (fill) {
-      fill.style.transition = 'none';
-      fill.style.width = '0%';
-      fill.style.opacity = '0';
-    }
-    if (aboutBtnRef.current) aboutBtnRef.current.style.color = '';
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 2000);
-    router.push('/about');
-  }, [router]);
 
   const aboutActive = router.pathname === '/about';
 
@@ -179,13 +104,13 @@ export const Header = () => {
         : { opacity: 0 };
 
     const resting =
-      'bg-white/70 backdrop-blur-xl dark:bg-black/60 border border-black/[0.08] dark:border-white/10 shadow-sm';
+      'bg-white/70 backdrop-blur-xl dark:bg-[#131416]/80 border border-black/[0.08] dark:border-white/[0.08] shadow-sm';
 
     return (
       <header
         className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between transition-all duration-300 ${
           scrolled
-            ? 'bg-white/80 px-6 py-2.5 backdrop-blur-xl dark:bg-[#1f1f1f]/90 md:px-10'
+            ? 'bg-white/80 px-6 py-2.5 backdrop-blur-xl dark:bg-[#101113]/95 md:px-10'
             : 'bg-transparent px-6 py-5 md:px-10'
         }`}
       >
@@ -194,7 +119,7 @@ export const Header = () => {
           href="/"
           className={
             'flex items-center gap-1.5 rounded-full font-light transition-all duration-300 ' +
-            'text-gray-600 hover:text-gray-900 dark:text-zinc-400 dark:hover:text-zinc-100 ' +
+            'text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 ' +
             (scrolled ? 'px-0 py-1 text-xs' : `px-3.5 py-2 text-sm ${resting}`)
           }
           style={enterAnim('article-header-left')}
@@ -213,7 +138,7 @@ export const Header = () => {
             href="/craft"
             className={
               'group flex items-center rounded-full font-light transition-all duration-300 ' +
-              'text-gray-500 hover:text-gray-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              'text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100 ' +
               (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
             }
           >
@@ -235,7 +160,7 @@ export const Header = () => {
             href="/about"
             className={
               'group flex items-center rounded-full font-light transition-all duration-300 ' +
-              'text-gray-500 hover:text-gray-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              'text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100 ' +
               (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
             }
           >
@@ -261,7 +186,7 @@ export const Header = () => {
 
   return (
     <header className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 md:bottom-auto md:top-6">
-      <nav className="relative flex items-center gap-1 rounded-full border border-white/20 bg-white/70 px-2 py-2 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-black/60">
+      <nav className="relative flex items-center gap-1 rounded-full border border-white/20 bg-white/70 px-2 py-2 shadow-2xl backdrop-blur-xl dark:border-white/[0.08] dark:bg-[#131416]/80">
         {feedLinks.map(link => {
           const Icon = link.icon;
           // Active on homepage: driven by IntersectionObserver
@@ -275,8 +200,8 @@ export const Header = () => {
               onClick={e => handleAnchorClick(e, link.id)}
               className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
                 isActive
-                  ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50'
+                  ? 'bg-gray-800 text-white dark:bg-white/90 dark:text-[#101113]'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-100'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -294,8 +219,8 @@ export const Header = () => {
               href={craftLink.href}
               className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
                 isActive
-                  ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
-                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50'
+                  ? 'bg-gray-800 text-white dark:bg-white/90 dark:text-[#101113]'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-100'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -304,30 +229,19 @@ export const Header = () => {
           );
         })()}
 
-        {/* About — special fill interaction */}
-        <button
-          ref={aboutBtnRef}
-          onMouseEnter={startFill}
-          onMouseLeave={cancelFill}
+        {/* About */}
+        <Link
+          href="/about"
           onClick={handleAboutClick}
-          onTouchStart={e => {
-            e.preventDefault();
-            handleAboutClick();
-          }}
-          className={`relative flex items-center gap-2 overflow-hidden rounded-full px-3 py-2 text-sm font-light transition-colors ${
+          className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
             aboutActive
-              ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
-              : 'text-gray-600 dark:text-zinc-400'
+              ? 'bg-gray-800 text-white dark:bg-white/90 dark:text-[#101113]'
+              : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-100'
           }`}
         >
-          <div
-            ref={aboutFillRef}
-            className="pointer-events-none absolute inset-0 rounded-full"
-            style={{ width: '0%', opacity: 0 }}
-          />
-          <HiUser className="relative z-10 h-4 w-4" />
-          <span className="relative z-10 hidden sm:inline">About</span>
-        </button>
+          <HiUser className="h-4 w-4" />
+          <span className="hidden sm:inline">About</span>
+        </Link>
 
         {/* Toast */}
         <div
@@ -341,13 +255,13 @@ export const Header = () => {
         </div>
 
         {/* Divider */}
-        <div className="mx-1 h-6 w-px bg-gray-300 dark:bg-gray-700" />
+        <div className="mx-1 h-6 w-px bg-gray-300 dark:bg-white/10" />
 
         {/* Theme toggle */}
         {mounted && (
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="flex items-center justify-center rounded-full px-2.5 py-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50"
+            className="flex items-center justify-center rounded-full px-2.5 py-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-800 dark:text-gray-400 dark:hover:bg-white/10 dark:hover:text-gray-100"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <HiSun className="h-4 w-4" /> : <HiMoon className="h-4 w-4" />}

@@ -26,7 +26,7 @@
   }
 
   body {
-    @apply text-sm md:text-sm bg-gray-50 dark:bg-[#1f1f1f];
+    @apply text-sm md:text-sm bg-gray-50 dark:bg-[#101113];
   }
 
   .cs-article h2[id] {
@@ -54,7 +54,7 @@
   }
 
   p {
-    @apply text-neutral-800 dark:text-zinc-400 tracking-snug font-normal leading-snug md:leading-normal;
+    @apply text-gray-800 dark:text-gray-400 tracking-snug font-normal leading-snug md:leading-normal;
   }
 
   .bg-zinc-950 {
@@ -248,7 +248,7 @@
   
   /* In your CSS file */
 .custom-blockquote p {
-  @apply text-lg md:text-2xl font-serif italic text-zinc-800 dark:text-zinc-200 leading-relaxed md:leading-normal;
+  @apply text-lg md:text-2xl font-serif italic text-zinc-800 dark:text-gray-200 leading-relaxed md:leading-normal;
 }
 
 
