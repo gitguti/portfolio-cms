@@ -28,26 +28,29 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="I ❤️ to build = design + develop" />
-        <meta property="og:title" content="gitmel gutierrez" />
+        <meta
+          name="description"
+          content="Designer and builder — I build things that make work (and life) a little better."
+        />
+        <meta property="og:title" content="git" />
         <meta
           property="og:description"
-          content="Product Designer & Builder — 0-to-1 data & AI products"
+          content="Designer and builder — I build things that make work (and life) a little better."
         />
         <meta property="og:url" content="https://www.gitmelgutierrez.com" />
-        <meta property="og:image" content="https://www.gitmelgutierrez.com/opengraph.jpg" />
+        <meta property="og:image" content="https://www.gitmelgutierrez.com/opengraph.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="gitmel gutierrez" />
+        <meta property="og:site_name" content="git" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="gitmel gutierrez" />
+        <meta name="twitter:title" content="git" />
         <meta
           name="twitter:description"
-          content="Product Designer & Builder — 0-to-1 data & AI products"
+          content="Designer and builder — I build things that make work (and life) a little better."
         />
-        <meta name="twitter:image" content="https://www.gitmelgutierrez.com/opengraph.jpg" />
+        <meta name="twitter:image" content="https://www.gitmelgutierrez.com/opengraph.png" />
       </Head>
       <body>
         <Main />
