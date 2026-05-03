@@ -114,13 +114,13 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   Designer and builder.
                 </span>
               </h1>
-              <p className="hero-stagger text-3xl font-light leading-relaxed text-gray-500 dark:text-zinc-400">
+              <p className="hero-stagger text-xl font-light leading-relaxed text-gray-500 dark:text-zinc-400 md:text-3xl">
                 I build things that make work (and life) a little better.
               </p>
               <div className="hero-stagger flex flex-wrap items-center gap-3 pt-2">
                 <a
                   href={contactConfig.url}
-                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+                  className="inline-flex items-center gap-2 rounded-full bg-gray-800 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-gray-700 dark:bg-gray-100 dark:text-gray-900 dark:hover:bg-white"
                 >
                   <span>{contactConfig.cta.home}</span>
                   <HiArrowRight className="h-4 w-4" />
@@ -129,7 +129,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   onClick={() => {
                     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-6 py-3 text-sm font-light text-neutral-700 transition-all hover:border-neutral-500 hover:bg-neutral-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-3 text-sm font-light text-gray-700 transition-all hover:border-gray-500 hover:bg-gray-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
                   aria-label="Scroll to selected work"
                 >
                   <span>See my work ↓</span>
@@ -144,7 +144,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
             <div className="grid grid-cols-12 gap-[10px]">
               {filteredPosts.length === 0 && (
-                <div className="col-span-12 py-12 text-center text-sm text-neutral-400 dark:text-zinc-500">
+                <div className="col-span-12 py-12 text-center text-sm text-gray-400 dark:text-zinc-500">
                   No posts found.
                 </div>
               )}
