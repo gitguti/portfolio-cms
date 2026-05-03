@@ -30,7 +30,7 @@ export const VibesGrid = ({ projects }: VibesGridProps) => {
 
   if (projects.length === 0) {
     return (
-      <p className="py-16 text-center text-neutral-500 dark:text-zinc-500">
+      <p className="py-16 text-center text-gray-500 dark:text-gray-500">
         Nothing here yet — check back soon.
       </p>
     );

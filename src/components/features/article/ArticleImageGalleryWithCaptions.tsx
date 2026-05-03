@@ -41,13 +41,13 @@ export const ArticleImageGalleryWithCaptions = ({
 
               <div className="">
                 {item.title && (
-                  <div className="text-md mb-0.5 font-medium text-zinc-900 dark:text-zinc-100">
+                  <div className="text-md mb-0.5 font-medium text-zinc-900 dark:text-gray-100">
                     {item.title}
                   </div>
                 )}
 
                 {item.caption?.json && (
-                  <div className="text-sm leading-[1.55] text-zinc-600 dark:text-zinc-300">
+                  <div className="text-sm leading-[1.55] text-zinc-600 dark:text-gray-300">
                     {documentToReactComponents(item.caption.json)}
                   </div>
                 )}

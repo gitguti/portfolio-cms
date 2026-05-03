@@ -33,13 +33,13 @@ const BlogArticleItem = ({ article }: BlogArticleItemProps) => {
       <article className="group cursor-pointer border-b border-gray-200 pb-6 transition-all hover:border-gray-400 dark:border-zinc-700 dark:hover:border-zinc-500">
         <div className="flex flex-col gap-2">
           {publishedDate && (
-            <time className="text-sm text-gray-500 dark:text-zinc-400">
+            <time className="text-sm text-gray-500 dark:text-gray-400">
               <FormatDate date={publishedDate} />
             </time>
           )}
           {title && (
             <h2
-              className="font-serif text-2xl font-medium text-neutral-800 transition-colors group-hover:text-blue-600 dark:text-zinc-50 dark:group-hover:text-blue-400"
+              className="font-serif text-2xl font-medium text-gray-800 transition-colors group-hover:text-blue-600 dark:text-gray-50 dark:group-hover:text-blue-400"
               {...inspectorProps({ fieldId: 'title' })}
             >
               {title}
@@ -47,7 +47,7 @@ const BlogArticleItem = ({ article }: BlogArticleItemProps) => {
           )}
           {shortDescription && (
             <p
-              className="text-base leading-relaxed text-neutral-600 dark:text-zinc-300"
+              className="text-base leading-relaxed text-gray-600 dark:text-gray-300"
               {...inspectorProps({ fieldId: 'shortDescription' })}
             >
               {shortDescription}

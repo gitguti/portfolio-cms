@@ -26,7 +26,7 @@ function SendIcon() {
 function AssistantBubble() {
   return (
     <div className="flex justify-start">
-      <div className="max-w-[90%] rounded-2xl rounded-tl-sm bg-zinc-100 px-3 py-2 text-[12px] leading-relaxed text-zinc-900 dark:bg-zinc-700 dark:text-zinc-100">
+      <div className="max-w-[90%] rounded-2xl rounded-tl-sm bg-zinc-100 px-3 py-2 text-[12px] leading-relaxed text-zinc-900 dark:bg-zinc-700 dark:text-gray-100">
         I&apos;ve improved the requirement. Anything else I can help with?
       </div>
     </div>
@@ -36,8 +36,8 @@ function AssistantBubble() {
 function InputBar() {
   return (
     <div className="flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-700 dark:bg-zinc-800">
-      <span className="flex-1 text-[12px] text-zinc-400 dark:text-zinc-500">Write your prompt</span>
-      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400">
+      <span className="flex-1 text-[12px] text-zinc-400 dark:text-gray-500">Write your prompt</span>
+      <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500 dark:bg-zinc-700 dark:text-gray-400">
         <SendIcon />
       </span>
     </div>
@@ -77,15 +77,15 @@ function Column({
 }) {
   return (
     <div className="flex flex-col gap-2" role="group" aria-label={`${eyebrow} — ${title}`}>
-      <span className="text-[11px] font-medium uppercase tracking-[0.06em] text-zinc-400 dark:text-zinc-500">
+      <span className="text-[11px] font-medium uppercase tracking-[0.06em] text-zinc-400 dark:text-gray-500">
         {eyebrow}
       </span>
-      <p className="text-[15px] font-medium leading-snug text-zinc-900 dark:text-zinc-100">
+      <p className="text-[15px] font-medium leading-snug text-zinc-900 dark:text-gray-100">
         {title}
       </p>
       <Snippet shipped={shipped}>{children}</Snippet>
       <div className="flex items-center gap-1.5">
-        <p className="text-[12px] leading-relaxed text-zinc-500 dark:text-zinc-400">{caption}</p>
+        <p className="text-[12px] leading-relaxed text-zinc-500 dark:text-gray-400">{caption}</p>
         {shipped && (
           <span className="rounded-full bg-violet-100 px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.04em] text-violet-700 dark:bg-violet-900/40 dark:text-violet-300">
             shipped
@@ -103,7 +103,7 @@ function FormSnippet() {
     <>
       <AssistantBubble />
       <div className="flex flex-1 flex-col rounded-xl border border-zinc-200 bg-white p-3 dark:border-zinc-700 dark:bg-zinc-900">
-        <p className="mb-3 text-[11.5px] font-medium text-zinc-600 dark:text-zinc-300">
+        <p className="mb-3 text-[11.5px] font-medium text-zinc-600 dark:text-gray-300">
           Can I help you with something else?
         </p>
         <div className="flex flex-col gap-2.5">
@@ -111,14 +111,14 @@ function FormSnippet() {
             <span className="mt-[1px] flex h-[13px] w-[13px] flex-shrink-0 items-center justify-center rounded-full border-2 border-violet-600 bg-white dark:bg-zinc-900">
               <span className="h-[5px] w-[5px] rounded-full bg-violet-600" />
             </span>
-            <span className="text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+            <span className="text-[11px] leading-snug text-zinc-500 dark:text-gray-400">
               I noticed this requirement might contain multiple thoughts. Would you like me to split
               it into atomic requirements?
             </span>
           </div>
           <div className="flex items-start gap-2.5">
             <span className="mt-[1px] flex h-[13px] w-[13px] flex-shrink-0 items-center justify-center rounded-full border-2 border-zinc-300 bg-white dark:border-zinc-600 dark:bg-zinc-900" />
-            <span className="text-[11px] leading-snug text-zinc-500 dark:text-zinc-400">
+            <span className="text-[11px] leading-snug text-zinc-500 dark:text-gray-400">
               Do you want to generate test cases to validate this requirement?
             </span>
           </div>
@@ -141,15 +141,15 @@ function InlineSnippet() {
     <>
       <AssistantBubble />
       <div className="flex flex-1 flex-col gap-2 pl-0.5">
-        <p className="text-[12px] leading-relaxed text-zinc-900 dark:text-zinc-100">
+        <p className="text-[12px] leading-relaxed text-zinc-900 dark:text-gray-100">
           Can I help you with <strong className="font-semibold">something else?</strong>
         </p>
         <ul className="flex flex-col gap-1.5">
-          <li className="flex items-start gap-2 text-[11.5px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <li className="flex items-start gap-2 text-[11.5px] leading-relaxed text-zinc-500 dark:text-gray-400">
             <span className="mt-[5px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
             Check if this requirement violates atomicity and needs splitting
           </li>
-          <li className="flex items-start gap-2 text-[11.5px] leading-relaxed text-zinc-500 dark:text-zinc-400">
+          <li className="flex items-start gap-2 text-[11.5px] leading-relaxed text-zinc-500 dark:text-gray-400">
             <span className="mt-[5px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
             Generate test cases for this requirement
           </li>
@@ -171,7 +171,7 @@ function ChipsSnippet() {
         {CHIPS.map(chip => (
           <span
             key={chip}
-            className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-600 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-300"
+            className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-600 dark:border-zinc-600 dark:bg-zinc-700 dark:text-gray-300"
           >
             {chip}
           </span>
@@ -229,7 +229,7 @@ function MobileCarousel() {
       <div className="mt-4 flex items-center justify-end gap-2">
         <button
           onClick={() => setActive(i => (i - 1 + COLUMNS.length) % COLUMNS.length)}
-          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-400"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-gray-400"
           aria-label="Previous"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -245,7 +245,7 @@ function MobileCarousel() {
 
         <button
           onClick={() => setActive(i => (i + 1) % COLUMNS.length)}
-          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-400"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-gray-400"
           aria-label="Next"
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

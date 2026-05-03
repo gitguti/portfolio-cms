@@ -23,17 +23,17 @@ const BlogPage = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
       />
       <Container className="my-12 max-w-6xl py-12">
         <div className="mb-12">
-          <h1 className="mb-4 font-serif text-4xl font-bold text-neutral-800 dark:text-zinc-50 md:text-5xl">
+          <h1 className="mb-4 font-serif text-4xl font-bold text-gray-800 dark:text-gray-50 md:text-5xl">
             Blog
           </h1>
-          <p className="text-lg text-neutral-600 dark:text-zinc-300">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Thoughts on design, technology, and building better products
           </p>
         </div>
         {articles && articles.length > 0 ? (
           <BlogArticleList articles={articles} />
         ) : (
-          <p className="text-neutral-600 dark:text-zinc-400">No articles yet.</p>
+          <p className="text-gray-600 dark:text-gray-400">No articles yet.</p>
         )}
       </Container>
     </>

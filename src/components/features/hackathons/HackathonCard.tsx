@@ -119,19 +119,19 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
         <div className="flex min-w-0 flex-col">
           {name && (
             <h3
-              className="truncate font-serif text-base font-semibold capitalize text-neutral-800 dark:text-zinc-50"
+              className="truncate font-serif text-base font-semibold capitalize text-gray-800 dark:text-gray-50"
               {...inspectorProps({ fieldId: 'name' })}
             >
               {name}
             </h3>
           )}
           {eventName && (
-            <span className="text-xs text-neutral-600 dark:text-zinc-400">
+            <span className="text-xs text-gray-600 dark:text-gray-400">
               <span {...inspectorProps({ fieldId: 'eventName' })}>{eventName}</span>
               {eventDate && (
                 <>
-                  <span className="text-neutral-400 dark:text-zinc-600"> · </span>
-                  <span className="text-neutral-500 dark:text-zinc-500">
+                  <span className="text-gray-400 dark:text-gray-600"> · </span>
+                  <span className="text-gray-500 dark:text-gray-500">
                     <FormatDate date={new Date(eventDate)} />
                   </span>
                 </>
@@ -140,7 +140,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
           )}
           {myRole && (
             <span
-              className="text-xs text-neutral-500 dark:text-zinc-400"
+              className="text-xs text-gray-500 dark:text-gray-400"
               {...inspectorProps({ fieldId: 'myRole' })}
             >
               {myRole}
@@ -154,7 +154,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
         <div className="mt-3 flex flex-col gap-2">
           {oneLiner && (
             <p
-              className="text-xs text-neutral-600 dark:text-zinc-300 sm:text-sm"
+              className="text-xs text-gray-600 dark:text-gray-300 sm:text-sm"
               {...inspectorProps({ fieldId: 'oneLiner' })}
             >
               {oneLiner}
@@ -166,7 +166,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
               {showcaseUrl && (
                 <button
                   onClick={e => handleLinkClick(showcaseUrl, e)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-gray-300 dark:hover:bg-zinc-800"
                   aria-label="View showcase"
                 >
                   <HiEye className="h-3.5 w-3.5" />
@@ -176,7 +176,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
               {demoUrl && (
                 <button
                   onClick={e => handleLinkClick(demoUrl, e)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-gray-300 dark:hover:bg-zinc-800"
                   aria-label="View demo"
                 >
                   <HiExternalLink className="h-3.5 w-3.5" />
@@ -186,7 +186,7 @@ export const HackathonCard = ({ hackathon, className }: HackathonCardProps) => {
               {codeUrl && (
                 <button
                   onClick={e => handleLinkClick(codeUrl, e)}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-neutral-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 transition-all hover:bg-neutral-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-gray-300 dark:hover:bg-zinc-800"
                   aria-label="View code"
                 >
                   <HiCode className="h-3.5 w-3.5" />

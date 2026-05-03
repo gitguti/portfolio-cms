@@ -59,7 +59,7 @@ export const TeamAvatarStack = ({ members, maxVisible = 3, className }: TeamAvat
                 {...member.photo}
               />
             ) : (
-              <div className="flex h-full w-full items-center justify-center bg-gray-200 text-xs font-medium text-gray-600 dark:bg-zinc-700 dark:text-zinc-300">
+              <div className="flex h-full w-full items-center justify-center bg-gray-200 text-xs font-medium text-gray-600 dark:bg-zinc-700 dark:text-gray-300">
                 {getInitials(member?.name)}
               </div>
             )}
@@ -67,7 +67,7 @@ export const TeamAvatarStack = ({ members, maxVisible = 3, className }: TeamAvat
         ))}
       </div>
       {remainingCount > 0 && (
-        <span className="ml-2 text-xs text-neutral-600 dark:text-zinc-400">
+        <span className="ml-2 text-xs text-gray-600 dark:text-gray-400">
           +{remainingCount} more
         </span>
       )}

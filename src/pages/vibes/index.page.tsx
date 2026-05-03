@@ -15,11 +15,11 @@ const VibesPage = () => {
     <>
       <NextSeo title="Vibes" description="Side quests, rabbit holes, and things I built for fun" />
       <Container className="my-12 max-w-5xl py-12">
-        <div className="mb-12 pt-16">
-          <h1 className="mb-4 font-serif text-3xl font-light text-neutral-800 md:text-5xl dark:text-zinc-50">
+        <div className="mb-12 md:pt-16">
+          <h1 className="mb-4 font-serif text-3xl font-light text-gray-800 dark:text-gray-50 md:text-5xl">
             Vibes
           </h1>
-          <p className="text-base text-neutral-600 md:text-lg dark:text-zinc-300">
+          <p className="text-base text-gray-600 dark:text-gray-300 md:text-lg">
             Side quests, rabbit holes, and things I built for fun.
           </p>
         </div>

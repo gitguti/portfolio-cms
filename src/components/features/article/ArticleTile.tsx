@@ -39,7 +39,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
         <div className="flex flex-col gap-2">
           {title && (
             <h3
-              className="text-xl font-semibold leading-snug text-neutral-900 dark:text-zinc-100"
+              className="text-xl font-semibold leading-snug text-gray-900 dark:text-gray-100"
               {...inspectorProps({ fieldId: 'title' })}
             >
               {title}
@@ -47,7 +47,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
           )}
           {shortDescription && (
             <p
-              className="text-sm leading-relaxed text-neutral-600 dark:text-zinc-400"
+              className="text-sm leading-relaxed text-gray-600 dark:text-gray-400"
               {...inspectorProps({ fieldId: 'shortDescription' })}
             >
               {shortDescription}
@@ -58,7 +58,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
               {chips.map((tag: any) => (
                 <span
                   key={tag.id}
-                  className="rounded-full bg-white/60 px-3 py-1 text-xs font-medium capitalize text-neutral-600 dark:bg-white/10 dark:text-zinc-300"
+                  className="rounded-full bg-white/60 px-3 py-1 text-xs font-medium capitalize text-gray-600 dark:bg-white/10 dark:text-gray-300"
                 >
                   {tag.name}
                 </span>
@@ -68,7 +68,7 @@ export const ArticleTile = ({ article, className }: ArticleTileProps) => {
         </div>
 
         <div className="flex justify-end">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/70 text-neutral-700 transition-transform duration-200 group-hover:translate-x-0.5 dark:bg-white/15 dark:text-zinc-200">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/70 text-gray-700 transition-transform duration-200 group-hover:translate-x-0.5 dark:bg-white/15 dark:text-gray-200">
             <svg
               width="14"
               height="14"

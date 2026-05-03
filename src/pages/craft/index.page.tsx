@@ -35,13 +35,13 @@ const CraftPage = ({ projects, tags }: InferGetStaticPropsType<typeof getStaticP
         description="Design experiments, interactions, and visual explorations"
       />
       <Container className="my-12 max-w-5xl py-12">
-        <div className="mb-12 pt-16">
+        <div className="mb-12 md:pt-16">
           <h1 className="mb-4">
-            <span className="block text-5xl font-bold leading-[1.05] text-gray-700 dark:text-violet-500 md:text-7xl lg:text-8xl">
+            <span className="block text-5xl font-bold leading-[1.05] text-gray-700 dark:text-gray-50 md:text-7xl">
               Craft
             </span>
           </h1>
-          <p className="text-xl font-light leading-relaxed text-gray-500 dark:text-zinc-400 md:text-3xl">
+          <p className="text-xl font-light leading-relaxed text-gray-500 dark:text-gray-400 md:text-2xl">
             Experiments, interactions, and visual explorations... just for fun.
           </p>
         </div>

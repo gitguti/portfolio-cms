@@ -96,14 +96,14 @@ const AboutPage = () => {
         {/* About Section */}
         <section className="py-16 md:py-20" ref={aboutSectionRef}>
           <Container className="max-w-6xl px-4 md:px-6">
-            <h2 className="mb-8 font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
+            <h2 className="mb-8 text-2xl font-bold text-gray-700 dark:text-gray-50 md:text-3xl">
               {aboutContent.title}
             </h2>
             <div className="space-y-6">
               {aboutContent.paragraphs.map((para, i) => (
                 <p
                   key={i}
-                  className="about-paragraph text-lg leading-relaxed text-neutral-700 dark:text-zinc-300"
+                  className="about-paragraph text-base leading-relaxed text-gray-700 dark:text-gray-300 md:text-lg"
                 >
                   {para}
                 </p>
@@ -118,16 +118,16 @@ const AboutPage = () => {
         {/* Beliefs Section */}
         <section className="py-16 md:py-20" ref={beliefsSectionRef}>
           <Container className="max-w-6xl px-4 md:px-6">
-            <h2 className="mb-8 font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
+            <h2 className="mb-8 text-2xl font-bold text-gray-700 dark:text-gray-50 md:text-3xl">
               Things I believe
             </h2>
             <ul className="space-y-3">
               {beliefs.map((belief, index) => (
                 <li
                   key={index}
-                  className="belief-item flex items-start text-base leading-relaxed text-neutral-700 dark:text-zinc-300"
+                  className="belief-item flex items-start text-base leading-relaxed text-gray-700 dark:text-gray-300 md:text-lg"
                 >
-                  <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-neutral-400 dark:bg-zinc-600" />
+                  <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400 dark:bg-zinc-600" />
                   <span>{belief}</span>
                 </li>
               ))}

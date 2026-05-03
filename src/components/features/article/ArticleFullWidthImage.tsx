@@ -30,7 +30,7 @@ export const ArticleFullWidthImage = ({
             <span className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#FEBC2E]" />
             <span className="h-2.5 w-2.5 rounded-full bg-[#28C840]" />
-            <span className="ml-2.5 max-w-[320px] flex-1 truncate rounded-md bg-white/70 px-3 py-1 font-cs-mono text-[10px] text-zinc-400 dark:bg-zinc-700 dark:text-zinc-500">
+            <span className="ml-2.5 max-w-[320px] flex-1 truncate rounded-md bg-white/70 px-3 py-1 font-cs-mono text-[10px] text-zinc-400 dark:bg-zinc-700 dark:text-gray-500">
               {fullWidthImage.caption || 'preview'}
             </span>
           </div>
@@ -58,7 +58,7 @@ export const ArticleFullWidthImage = ({
         {...fullWidthImage.image}
       />
       {fullWidthImage.caption && (
-        <p className="mt-3 text-center text-[12px] italic text-zinc-400 dark:text-zinc-500">
+        <p className="mt-3 text-center text-[12px] italic text-zinc-400 dark:text-gray-500">
           {fullWidthImage.caption}
         </p>
       )}

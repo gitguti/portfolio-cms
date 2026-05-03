@@ -54,7 +54,7 @@ export const ArticleHero = ({
           )} */}
           <div
             className={twMerge(
-              'ml-auto hidden pl-2 text-xs text-neutral-600 dark:text-zinc-200',
+              'ml-auto hidden pl-2 text-xs text-gray-600 dark:text-gray-200',
               isReversedLayout ? 'lg:block' : '',
             )}
             {...inspectorProps({ fieldId: 'publishedDate' })}
@@ -71,7 +71,7 @@ export const ArticleHero = ({
                 tag?.name && (
                   <span
                     key={tag.id}
-                    className="rounded-full border border-gray-600 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
+                    className="rounded-full border border-gray-600 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-gray-300"
                   >
                     {tag.name}
                   </span>
@@ -81,7 +81,7 @@ export const ArticleHero = ({
         )} */}
         <h1
           className={twMerge(
-            'mb-6 font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-zinc-100 md:text-5xl',
+            'mb-6 font-serif text-4xl font-semibold leading-tight tracking-tight text-zinc-900 dark:text-gray-100 md:text-5xl',
           )}
           {...inspectorProps({ fieldId: 'title' })}
         >
@@ -90,7 +90,7 @@ export const ArticleHero = ({
 
         {shortDescription && (
           <p
-            className="text-xl italic text-zinc-500 dark:text-zinc-400 md:text-2xl"
+            className="text-xl italic text-zinc-500 dark:text-gray-400 md:text-2xl"
             {...inspectorProps({ fieldId: 'shortDescription' })}
           >
             {shortDescription}
@@ -103,7 +103,7 @@ export const ArticleHero = ({
         )}
         <div
           className={twMerge(
-            'mt-2 text-xs text-neutral-700 dark:text-zinc-400',
+            'mt-2 text-xs text-gray-700 dark:text-gray-400',
             isReversedLayout ? 'lg:hidden' : '',
           )}
           {...inspectorProps({ fieldId: 'publishedDate' })}

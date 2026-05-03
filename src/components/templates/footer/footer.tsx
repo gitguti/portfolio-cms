@@ -37,7 +37,7 @@ export const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="w-full bg-gray-50 px-2 py-6 pb-20 dark:bg-[#1f1f1f] md:px-1 md:pb-6">
+    <footer className="w-full bg-gray-50 px-2 py-6 pb-20 dark:bg-[#101113] md:px-1 md:pb-6">
       <Container className="flex flex-col items-center justify-center gap-4">
         <div className="flex gap-4">
           {socialLinks.map(link => (
@@ -48,13 +48,13 @@ export const Footer = () => {
               rel="noopener noreferrer"
               aria-label={link.label}
             >
-              <div className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-colors hover:border-neutral-800 hover:bg-neutral-800 hover:text-white dark:border-neutral-700 dark:text-zinc-400 dark:hover:border-neutral-500 dark:hover:bg-neutral-700 dark:hover:text-white">
+              <div className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-300 text-gray-600 transition-colors hover:border-neutral-800 hover:bg-neutral-800 hover:text-white dark:border-neutral-700 dark:text-gray-400 dark:hover:border-neutral-500 dark:hover:bg-neutral-700 dark:hover:text-white">
                 {link.icon}
               </div>
             </a>
           ))}
         </div>
-        <div className="text-xs text-neutral-800 dark:text-neutral-500">
+        <div className="text-xs text-gray-800 dark:text-gray-500">
           © Git / Made with ❤️ in Next / 2026
         </div>
       </Container>

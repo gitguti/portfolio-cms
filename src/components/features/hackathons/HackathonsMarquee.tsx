@@ -126,7 +126,7 @@ export const HackathonsMarquee = ({
 
   if (!hackathons || hackathons.length === 0) {
     return (
-      <p className="py-16 text-center text-neutral-500 dark:text-zinc-500">
+      <p className="py-16 text-center text-gray-500 dark:text-gray-500">
         No hackathons to display yet.
       </p>
     );

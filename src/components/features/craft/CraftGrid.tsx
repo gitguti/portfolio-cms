@@ -31,7 +31,7 @@ export const CraftGrid = ({ projects, onItemClick }: CraftGridProps) => {
 
   if (projects.length === 0) {
     return (
-      <p className="py-16 text-center text-gray-500 dark:text-zinc-500">
+      <p className="py-16 text-center text-gray-500 dark:text-gray-500">
         No projects found for this filter.
       </p>
     );

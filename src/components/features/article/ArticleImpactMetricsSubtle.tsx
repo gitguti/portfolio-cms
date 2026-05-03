@@ -13,7 +13,7 @@ function InlineBold({ text }: { text: string }) {
       {parts.map((part, i) => {
         if (part.startsWith('__') && part.endsWith('__')) {
           return (
-            <strong key={i} className="font-semibold text-zinc-900 dark:text-zinc-100">
+            <strong key={i} className="font-semibold text-zinc-900 dark:text-gray-100">
               {part.slice(2, -2)}
             </strong>
           );
@@ -39,11 +39,11 @@ export const ArticleImpactMetricsSubtle = ({ metrics }: ArticleImpactMetricsSubt
             key={index}
             className="flex flex-col gap-2 rounded-xl bg-zinc-100 px-6 py-5 dark:bg-zinc-800/60"
           >
-            <p className="text-3xl font-semibold leading-none tracking-tight text-zinc-900 dark:text-zinc-100 md:text-4xl">
+            <p className="text-3xl font-semibold leading-none tracking-tight text-zinc-900 dark:text-gray-100 md:text-4xl">
               {metric.value}
             </p>
             {metric.label && (
-              <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+              <p className="text-sm leading-relaxed text-zinc-500 dark:text-gray-400">
                 <InlineBold text={metric.label} />
               </p>
             )}

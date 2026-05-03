@@ -39,14 +39,14 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
   );
 
   return (
-    <div className="case-study w-full bg-[rgb(249,250,251)] font-cs-sans text-zinc-900 dark:bg-[#1f1f1f] dark:text-zinc-100">
+    <div className="case-study w-full bg-[rgb(249,250,251)] font-cs-sans text-zinc-900 dark:bg-[#1f1f1f] dark:text-gray-100">
       {/* HERO SECTION — title, meta, full-width image */}
       <section className="mx-auto w-full max-w-[1080px] px-6 pt-24 sm:px-12">
         {/* title + meta */}
         <div className=" grid grid-cols-1 items-start md:gap-12 lg:grid-cols-[1fr_320px]">
           <div>
             <h1
-              className="font-cs-sans text-3xl font-normal leading-[1.1] tracking-[-0.02em] text-zinc-900 dark:text-zinc-100 md:text-4xl lg:text-6xl"
+              className="font-cs-sans text-3xl font-normal leading-[1.1] tracking-[-0.02em] text-zinc-900 dark:text-gray-100 md:text-4xl lg:text-6xl"
               {...inspectorProps({ fieldId: 'title' })}
             >
               {titleLines.length > 0
@@ -55,16 +55,16 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
                       {i === 0 ? (
                         line
                       ) : (
-                        <em className="italic text-zinc-400 dark:text-zinc-500">{line}</em>
+                        <em className="italic text-zinc-400 dark:text-gray-500">{line}</em>
                       )}
                     </span>
                   ))
                 : article.title}
             </h1>
-            <p className="mt-8 text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="mt-8 text-lg text-zinc-600 dark:text-gray-400">
               {article.shortDescription}
             </p>
-            <p className="mt-2 text-xs font-medium uppercase tracking-[0.08em] text-zinc-500 dark:text-zinc-400">
+            <p className="mt-2 text-xs font-medium uppercase tracking-[0.08em] text-zinc-500 dark:text-gray-400">
               What I did
             </p>
             {/* chips */}
@@ -73,7 +73,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
                 {chips.map(chip => (
                   <span
                     key={chip.id}
-                    className="mt-2 rounded-full border border-black/[0.13] px-3.5 py-1.5 text-xs tracking-[0.01em] text-zinc-600 dark:border-white/15 dark:text-zinc-300"
+                    className="mt-2 rounded-full border border-black/[0.13] px-3.5 py-1.5 text-xs tracking-[0.01em] text-zinc-600 dark:border-white/15 dark:text-gray-300"
                   >
                     {chip.name}
                   </span>
@@ -105,7 +105,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
         )}
         {impactMetrics && impactMetrics.__typename === 'ComponentImpactMetrics' && (
           <div className="mt-12">
-            <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-zinc-500">
+            <p className="mb-4 text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-gray-500">
               Impact
             </p>
             <ArticleImpactMetrics metrics={impactMetrics as any} />

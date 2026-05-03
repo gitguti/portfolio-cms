@@ -30,7 +30,7 @@ const BlogArticlePage = (props: InferGetStaticPropsType<typeof getStaticProps>) 
       </Container>
       {relatedPosts && relatedPosts.length > 0 && (
         <Container className="mt-12 max-w-6xl">
-          <h2 className="mb-6 font-serif text-2xl font-medium text-neutral-800 dark:text-zinc-50">
+          <h2 className="mb-6 font-serif text-2xl font-medium text-gray-800 dark:text-gray-50">
             Related Articles
           </h2>
           <BlogArticleList articles={relatedPosts} />

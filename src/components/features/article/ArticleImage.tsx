@@ -32,7 +32,7 @@ export const ArticleImage = ({ image }: ArticleImageProps) => {
       </div>
       {image.caption && (
         <figcaption
-          className="mt-3 text-[12px] italic text-zinc-400 dark:text-zinc-500"
+          className="mt-3 text-[12px] italic text-zinc-400 dark:text-gray-500"
           {...inspectorProps({ fieldId: 'caption' })}
         >
           {image.caption}

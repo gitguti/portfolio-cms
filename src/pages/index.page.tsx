@@ -90,7 +90,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
             className="relative scroll-mt-24 pb-16 pt-32 md:scroll-mt-20 md:pb-20 md:pt-40"
           >
             <div className="space-y-6">
-              <h1 className="hero-stagger font-cs font-medium tracking-[-0.03em] text-gray-700 dark:text-zinc-100">
+              <h1 className="hero-stagger font-cs font-medium tracking-[-0.03em] text-gray-700 dark:text-gray-100">
                 {/* Line 1: text + chip inline */}
                 <span className="flex items-baseline gap-4 text-5xl md:text-7xl lg:text-8xl">
                   <span className="leading-[1.05]">Hola! I&apos;m</span>
@@ -110,11 +110,11 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   </a>
                 </span>
                 {/* Line 2 */}
-                <span className="block text-5xl font-bold leading-[1.05] text-gray-700 dark:text-violet-500 md:text-7xl lg:text-8xl">
+                <span className="block text-5xl font-bold leading-[1.05] text-gray-700 dark:text-gray-50 md:text-7xl lg:text-8xl">
                   Designer and builder.
                 </span>
               </h1>
-              <p className="hero-stagger text-xl font-light leading-relaxed text-gray-500 dark:text-zinc-400 md:text-3xl">
+              <p className="hero-stagger text-xl font-light leading-relaxed text-gray-500 dark:text-gray-400 md:text-3xl">
                 I build things that make work (and life) a little better.
               </p>
               <div className="hero-stagger flex flex-wrap items-center gap-3 pt-2">
@@ -129,7 +129,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   onClick={() => {
                     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-3 text-sm font-light text-gray-700 transition-all hover:border-gray-500 hover:bg-gray-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-300 px-6 py-3 text-sm font-light text-gray-700 transition-all hover:border-gray-500 hover:bg-gray-100 dark:border-zinc-700 dark:text-gray-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
                   aria-label="Scroll to selected work"
                 >
                   <span>See my work ↓</span>
@@ -144,7 +144,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
             <div className="grid grid-cols-12 gap-[10px]">
               {filteredPosts.length === 0 && (
-                <div className="col-span-12 py-12 text-center text-sm text-gray-400 dark:text-zinc-500">
+                <div className="col-span-12 py-12 text-center text-sm text-gray-400 dark:text-gray-500">
                   No posts found.
                 </div>
               )}

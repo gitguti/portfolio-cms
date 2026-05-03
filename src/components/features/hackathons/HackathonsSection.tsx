@@ -78,13 +78,13 @@ const HackathonRow = ({ hackathon, index }: HackathonRowProps) => {
       {/* Index + Name + Badge row */}
       <div className="flex items-center gap-3 md:gap-0">
         {/* Index */}
-        <span className="w-6 flex-shrink-0 text-sm tabular-nums text-neutral-400 dark:text-zinc-600">
+        <span className="w-6 flex-shrink-0 text-sm tabular-nums text-gray-400 dark:text-gray-600">
           {String(index + 1).padStart(2, '0')}
         </span>
 
         {/* Name */}
         <h3
-          className={`text-lg font-medium capitalize text-neutral-900 dark:text-zinc-100 md:w-40 md:flex-shrink-0 ${
+          className={`text-lg font-medium capitalize text-gray-900 dark:text-gray-100 md:w-40 md:flex-shrink-0 ${
             isClickable ? 'group-hover:underline' : ''
           }`}
           {...inspectorProps({ fieldId: 'name' })}
@@ -95,7 +95,7 @@ const HackathonRow = ({ hackathon, index }: HackathonRowProps) => {
         {/* Outcome badge (mobile: next to name) */}
         {outcome && (
           <span
-            className="ml-auto flex-shrink-0 rounded border border-neutral-300 px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-neutral-600 dark:border-zinc-700 dark:text-zinc-400 md:ml-0 md:hidden"
+            className="ml-auto flex-shrink-0 rounded border border-neutral-300 px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-gray-600 dark:border-zinc-700 dark:text-gray-400 md:ml-0 md:hidden"
             {...inspectorProps({ fieldId: 'outcome' })}
           >
             {outcome}
@@ -106,7 +106,7 @@ const HackathonRow = ({ hackathon, index }: HackathonRowProps) => {
       {/* One-liner */}
       {oneLiner && (
         <p
-          className="text-sm text-neutral-500 dark:text-zinc-400 md:flex-1"
+          className="text-sm text-gray-500 dark:text-gray-400 md:flex-1"
           {...inspectorProps({ fieldId: 'oneLiner' })}
         >
           {oneLiner}
@@ -116,7 +116,7 @@ const HackathonRow = ({ hackathon, index }: HackathonRowProps) => {
       {/* Outcome badge (desktop: right side) */}
       {outcome && (
         <span
-          className="hidden flex-shrink-0 rounded border border-neutral-300 px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-neutral-600 dark:border-zinc-700 dark:text-zinc-400 md:inline-block"
+          className="hidden flex-shrink-0 rounded border border-neutral-300 px-2.5 py-1 text-xs font-medium uppercase tracking-wider text-gray-600 dark:border-zinc-700 dark:text-gray-400 md:inline-block"
           {...inspectorProps({ fieldId: 'outcome' })}
         >
           {outcome}

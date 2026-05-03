@@ -41,14 +41,14 @@ export const ArticleQuote = ({ quote }: ArticleQuoteProps) => {
           {quote.role && (
             <div className="flex flex-wrap items-baseline gap-x-2">
               <span
-                className="text-md font-semibold text-zinc-900 dark:text-zinc-100"
+                className="text-md font-semibold text-zinc-900 dark:text-gray-100"
                 {...inspectorProps({ fieldId: 'role' })}
               >
                 {quote.role}
               </span>
               {quote.label && (
                 <span
-                  className="text-[12px] text-zinc-400 dark:text-zinc-500"
+                  className="text-[12px] text-zinc-400 dark:text-gray-500"
                   {...inspectorProps({ fieldId: 'label' })}
                 >
                   {quote.label}

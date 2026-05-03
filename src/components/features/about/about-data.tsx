@@ -39,7 +39,7 @@ export const contactConfig = {
 // Hero Data
 export const heroData = {
   name: 'git',
-  tagline: 'Designer and builder making complex workflows simple, automated, and usable.',
+  tagline: 'I build things that make work (and life) a little better.',
   avatarPath: '/avatar.png',
 };
 

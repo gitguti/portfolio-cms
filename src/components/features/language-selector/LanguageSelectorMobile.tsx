@@ -34,7 +34,7 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
         aria-expanded={showDrawer}
         aria-controls="locale-drawer"
       >
-        <AiOutlineMenu className="text-2xl font-light text-neutral-800 md:text-sm dark:text-zinc-50" />
+        <AiOutlineMenu className="text-2xl font-light text-gray-800 dark:text-gray-50 md:text-sm" />
       </button>
 
       <Portal>
@@ -58,14 +58,14 @@ export const LanguageSelectorMobile = ({ localeName, displayName }) => {
             )}
           >
             <div className="flex items-center">
-              {/* <h2 className="text-xl font-semibold  text-zinc-200 dark:text-neutral-800 md:text-sm">{t('common.regionalSettings')}</h2> */}
+              {/* <h2 className="text-xl font-semibold  text-zinc-200 dark:text-gray-800 md:text-sm">{t('common.regionalSettings')}</h2> */}
 
               <button className="ml-auto pl-2" onClick={() => setShowDrawer(false)}>
-                <XIcon className="text-2xl font-light text-neutral-800 md:text-sm dark:text-zinc-50" />
+                <XIcon className="text-2xl font-light text-gray-800 dark:text-gray-50 md:text-sm" />
               </button>
             </div>
             {/*
-            <p className="mt-8 text-base text-zinc-200 dark:text-neutral-800"> {t('common.language')}</p> */}
+            <p className="mt-8 text-base text-zinc-200 dark:text-gray-800"> {t('common.language')}</p> */}
             {/* <select
               className="mt-2 block w-full rounded-md py-3 px-2 text-sm bg-neutral-800"
               defaultValue={locale}

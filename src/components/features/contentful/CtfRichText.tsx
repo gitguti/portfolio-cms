@@ -111,7 +111,7 @@ export const contentfulBaseRichTextOptions = ({
     },
     [BLOCKS.QUOTE]: (_node, children) => (
       <aside className="my-6 rounded-[10px] border border-black/[0.08] bg-white p-6 dark:border-white/10 dark:bg-zinc-900/60">
-        <div className="font-sans text-[15px] leading-[1.75] text-zinc-600 dark:text-zinc-300 [&>p]:m-0 [&>p]:max-w-none [&>p]:text-inherit">
+        <div className="font-sans text-[15px] leading-[1.75] text-zinc-600 dark:text-gray-300 [&>p]:m-0 [&>p]:max-w-none [&>p]:text-inherit">
           {children}
         </div>
       </aside>
@@ -121,28 +121,28 @@ export const contentfulBaseRichTextOptions = ({
       return (
         <h2
           id={id}
-          className="mb-3 mt-3 text-[26px] font-medium font-normal leading-[1.15] text-zinc-900 dark:text-zinc-100 md:text-[30px]"
+          className="mb-3 mt-3 text-[26px] font-medium font-normal leading-[1.15] text-zinc-900 dark:text-gray-100 md:text-[30px]"
         >
           {children}
         </h2>
       );
     },
     [BLOCKS.HEADING_3]: (_node, children) => (
-      <h3 className="mb-3 mt-3 text-xl font-medium text-zinc-700 dark:text-zinc-200">{children}</h3>
+      <h3 className="mb-3 mt-3 text-xl font-medium text-zinc-700 dark:text-gray-200">{children}</h3>
     ),
     [BLOCKS.HEADING_4]: (node, children) => {
       const id = slugifyHeading(extractText(node));
       return (
         <p
           id={id}
-          className="mb-2 mt-12 max-w-[560px] text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-zinc-500"
+          className="mb-2 mt-12 max-w-[560px] text-[10px] font-medium uppercase tracking-[0.12em] text-zinc-400 dark:text-gray-500"
         >
           {children}
         </p>
       );
     },
     [BLOCKS.PARAGRAPH]: (_node, children) => (
-      <p className="mb-3.5 max-w-[560px] font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <p className="mb-3.5 max-w-[560px] font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-gray-300">
         {children}
       </p>
     ),
@@ -169,20 +169,20 @@ export const contentfulBaseRichTextOptions = ({
       <tr className="border-t border-black/[0.08] dark:border-white/10">{children}</tr>
     ),
     [BLOCKS.TABLE_CELL]: (_node, children) => (
-      <td className="py-3 align-top text-[14px] text-zinc-700 dark:text-zinc-300">{children}</td>
+      <td className="py-3 align-top text-[14px] text-zinc-700 dark:text-gray-300">{children}</td>
     ),
     [BLOCKS.TABLE_HEADER_CELL]: (_node, children) => (
-      <th className="border-b border-black/[0.08] py-3 text-left text-[12px] font-medium uppercase tracking-[0.08em] text-zinc-500 dark:border-white/10 dark:text-zinc-400">
+      <th className="border-b border-black/[0.08] py-3 text-left text-[12px] font-medium uppercase tracking-[0.08em] text-zinc-500 dark:border-white/10 dark:text-gray-400">
         {children}
       </th>
     ),
     [BLOCKS.UL_LIST]: (_node, children) => (
-      <ul className="my-4 max-w-[560px] list-disc space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <ul className="my-4 max-w-[560px] list-disc space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-gray-300">
         {children}
       </ul>
     ),
     [BLOCKS.OL_LIST]: (_node, children) => (
-      <ol className="my-4 max-w-[560px] list-decimal space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-zinc-300">
+      <ol className="my-4 max-w-[560px] list-decimal space-y-1.5 pl-6 font-sans text-[15px] leading-[1.72] text-zinc-600 dark:text-gray-300">
         {children}
       </ol>
     ),
@@ -193,7 +193,7 @@ export const contentfulBaseRichTextOptions = ({
         href={node.data.uri}
         target="_blank"
         rel="noopener noreferrer"
-        className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-zinc-700 dark:text-zinc-100 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
+        className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition-colors hover:decoration-zinc-700 dark:text-gray-100 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
       >
         {children}
       </a>
@@ -205,7 +205,7 @@ export const CtfRichText = ({ json, links, excludeBlockIds }: ContentfulRichText
   const baseOptions = contentfulBaseRichTextOptions({ json, links, excludeBlockIds });
 
   return (
-    <article className="cs-article font-sans text-[15px] leading-[1.6] text-zinc-600 dark:text-zinc-300">
+    <article className="cs-article font-sans text-[15px] leading-[1.6] text-zinc-600 dark:text-gray-300">
       {documentToReactComponents(json, baseOptions)}
     </article>
   );

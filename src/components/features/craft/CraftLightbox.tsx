@@ -133,7 +133,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
           {/* Close button */}
           <button
             onClick={animateClose}
-            className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+            className="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200 dark:bg-zinc-800 dark:text-gray-300 dark:hover:bg-zinc-700"
             aria-label="Close"
           >
             <FiX className="h-4 w-4" />
@@ -144,11 +144,11 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
 
           {/* Details */}
           <div className="space-y-4">
-            <h2 className="text-2xl font-light text-gray-700 dark:text-zinc-50 md:text-3xl">
+            <h2 className="text-2xl font-light text-gray-700 dark:text-gray-50 md:text-3xl">
               {project.title}
             </h2>
 
-            <p className="text-sm leading-relaxed text-gray-500 dark:text-zinc-300">
+            <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-300">
               {project.description}
             </p>
 
@@ -156,7 +156,7 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
               {project.tags.map(tag => (
                 <span
                   key={tag}
-                  className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-zinc-300"
+                  className="rounded-full bg-gray-100 px-3 py-1 text-xs font-medium capitalize text-gray-700 dark:bg-zinc-800 dark:text-gray-300"
                 >
                   {tag}
                 </span>
@@ -164,14 +164,14 @@ export const CraftLightbox = ({ project, onClose }: CraftLightboxProps) => {
             </div>
 
             <div className="flex items-center justify-between border-t border-gray-100 pt-4 dark:border-zinc-800">
-              <time className="text-xs text-gray-500 dark:text-zinc-500">{formattedDate}</time>
+              <time className="text-xs text-gray-500 dark:text-gray-500">{formattedDate}</time>
 
               {project.link && (
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-gray-900 dark:text-zinc-300 dark:hover:text-zinc-50"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-zinc-50"
                 >
                   View project
                   <FiExternalLink className="h-3.5 w-3.5" />

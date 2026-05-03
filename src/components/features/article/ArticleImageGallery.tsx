@@ -34,7 +34,7 @@ export const ArticleImageGallery = ({ gallery }: ArticleImageGalleryProps) => {
         ))}
       </div>
       {gallery.caption && (
-        <p className="mt-3 text-center text-xs text-zinc-400 dark:text-zinc-500">
+        <p className="mt-3 text-center text-xs text-zinc-400 dark:text-gray-500">
           {gallery.caption}
         </p>
       )}
