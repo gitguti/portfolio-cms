@@ -39,7 +39,7 @@ export const CaseStudyLayout = ({ article }: CaseStudyLayoutProps) => {
   );
 
   return (
-    <div className="case-study w-full bg-[rgb(249,250,251)] font-cs-sans text-zinc-900 dark:bg-[#1f1f1f] dark:text-gray-100">
+    <div className="case-study w-full font-cs-sans text-zinc-900 dark:text-gray-100">
       {/* HERO SECTION — title, meta, full-width image */}
       <section className="mx-auto w-full max-w-[1080px] px-6 pt-24 sm:px-12">
         {/* title + meta */}

@@ -137,6 +137,7 @@ export const Header = () => {
           <Link
             href="/craft"
             className={
+              `hidden sm:flex ` +
               'group flex items-center rounded-full font-light transition-all duration-300 ' +
               'text-gray-500 hover:text-gray-900 dark:text-gray-500 dark:hover:text-gray-100 ' +
               (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)

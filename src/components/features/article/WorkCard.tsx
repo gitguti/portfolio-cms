@@ -45,7 +45,7 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
       <div
         ref={cardRef}
         className={twMerge(
-          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden rounded-3xl bg-white/95 dark:border-white/[0.08] dark:bg-[#131416]',
+          'flex w-full flex-1 cursor-pointer flex-col overflow-hidden rounded-3xl bg-white/95 dark:border-white/[0.08] dark:bg-zinc-900',
           className,
         )}
         onMouseEnter={handleMouseEnter}

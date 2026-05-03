@@ -43,7 +43,7 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      <div className="mx-4 flex-grow">{children}</div>
+      <div className=" flex-grow">{children}</div>
       <Footer />
     </div>
   );

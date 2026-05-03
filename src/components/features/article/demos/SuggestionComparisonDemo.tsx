@@ -49,7 +49,7 @@ function InputBar() {
 function Snippet({ children, shipped }: { children: React.ReactNode; shipped?: boolean }) {
   return (
     <div
-      className={`flex aspect-[3/2] flex-col gap-3 rounded-xl p-4 sm:aspect-[4/5] sm:p-5 ${
+      className={`flex aspect-[3/4] flex-col gap-3 rounded-xl p-4 sm:aspect-[4/5] sm:p-5 ${
         shipped
           ? 'border border-violet-300/70 bg-zinc-50 dark:border-violet-500/40 dark:bg-zinc-800/60'
           : 'border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800/60'
@@ -218,7 +218,7 @@ function MobileCarousel() {
 
   return (
     <div
-      className="mx-auto max-w-md sm:hidden"
+      className="sm:hidden"
       aria-label="Three iterations of the assistant's follow-up suggestions: form pattern, inline suggestions, and chip actions"
     >
       <Column eyebrow={eyebrow} title={title} caption={caption} shipped={shipped}>
