@@ -245,7 +245,7 @@ export const Header = () => {
 
         {/* Toast */}
         <div
-          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-gray-900 px-4 py-2 text-xs text-gray-100 transition-all duration-300 md:bottom-auto md:top-[calc(100%+10px)] ${
+          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/20 bg-white/70 px-4 py-2 text-xs text-gray-700 shadow-2xl backdrop-blur-xl transition-all duration-300 dark:border-white/[0.08] dark:bg-[#131416]/80 dark:text-gray-300 md:bottom-auto md:top-[calc(100%+10px)] ${
             showToast
               ? 'translate-y-0 opacity-100'
               : '-translate-y-1.5 opacity-0 md:translate-y-1.5'
