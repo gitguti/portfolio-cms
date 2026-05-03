@@ -5,7 +5,7 @@ import { useConditionalLiveUpdates } from '@src/lib/hooks/useConditionalLiveUpda
 import { useTranslation } from 'next-i18next';
 import { useState, useEffect, useRef } from 'react';
 import { HiArrowRight } from 'react-icons/hi';
-import { contactConfig, socialLinks } from '@src/components/features/about/about-data';
+import { contactConfig } from '@src/components/features/about/about-data';
 
 import { getServerSideTranslations } from './utils/get-serverside-translations';
 
@@ -81,97 +81,59 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 
       {/* Main Feed */}
       <div className="flex min-h-screen flex-col">
-        {/* Animated background blobs — fixed to viewport top so they aren't clipped by section bounds */}
-        <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[100dvh]">
-          <div className="absolute left-1/2 top-0 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-sky-200/50 blur-3xl dark:bg-sky-500/20" />
-          <div className="absolute left-[14%] top-[22%] h-[420px] w-[420px] rounded-full bg-emerald-200/60 blur-3xl dark:bg-emerald-400/20" />
-          <div className="absolute right-[12%] top-[24%] h-[380px] w-[380px] rounded-full bg-violet-200/55 blur-3xl dark:bg-violet-500/20" />
-          <div className="absolute inset-x-0 top-0 h-full bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.8),transparent_35%)] dark:bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.04),transparent_35%)]" />
-        </div>
+        {/* Background blobs — right-side only, kept well away from the text */}
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           {/* ── 00 Hero ─────────────────────────────────────────── */}
           <section
             id="hero"
             ref={heroRef}
-            className="relative scroll-mt-24 pb-12 pt-32 md:scroll-mt-20"
+            className="relative scroll-mt-24 pb-16 pt-32 md:scroll-mt-20 md:pb-20 md:pt-40"
           >
-            <div className="grid w-full grid-cols-1 gap-3 lg:grid-cols-[1fr_300px]">
-              {/* Left: main hero card */}
-              <div className="rounded-[2rem] border border-neutral-200/70 bg-white/95 p-8 shadow-[0_24px_100px_-60px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-colors duration-300 dark:border-zinc-700/70 dark:bg-[#1c1b1d] dark:shadow-[0_24px_100px_-60px_rgba(15,23,42,0.5)] sm:p-10">
-                <div className="flex h-full flex-col justify-between gap-8">
-                  <div className="space-y-4">
-                    <p className="hero-stagger text-base font-light tracking-wide text-neutral-500 dark:text-zinc-400">
-                      Hi, I&apos;m Git
-                    </p>
-                    <h1 className="hero-stagger font-cs text-3xl font-normal leading-[1.1] tracking-[-0.02em] text-neutral-800 dark:text-zinc-100 md:text-4xl lg:text-5xl">
-                      <span className="block">I design things.</span>
-                      <span className="block italic text-neutral-400 dark:text-zinc-500">
-                        Then I build them.
-                      </span>
-                    </h1>
-                    <p className="hero-stagger max-w-xl text-base font-light leading-relaxed text-neutral-500 dark:text-zinc-400">
-                      Product designer + engineer building AI, automation and data tools — making
-                      complex workflows feel simple, at work and in real life.
-                    </p>
-                  </div>
-                  <div className="hero-stagger flex flex-wrap items-center gap-3">
-                    <a
-                      href={contactConfig.url}
-                      className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
-                    >
-                      <span>{contactConfig.cta.home}</span>
-                      <HiArrowRight className="h-4 w-4" />
-                    </a>
-                    <button
-                      onClick={() => {
-                        document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-6 py-3 text-sm font-light text-neutral-700 transition-all hover:border-neutral-500 hover:bg-neutral-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
-                      aria-label="Scroll to selected work"
-                    >
-                      <span>See my work ↓</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: profile + video cards */}
-              <div className="flex hidden flex-col gap-3 md:block">
-                {/* Profile card */}
-                <div className="hero-stagger flex h-full flex-col items-center justify-center gap-4 rounded-[2rem] border border-neutral-200/70 bg-white/95 p-6 text-center shadow-[0_24px_100px_-60px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-colors duration-300 dark:border-zinc-700/70 dark:bg-[#1c1b1d]">
-                  <div className="h-24 w-24 overflow-hidden rounded-full bg-neutral-100 dark:bg-zinc-800">
-                    <img
-                      src="/avatar.jpg"
-                      alt="Git Gutierrez"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <p className="font-medium text-neutral-900 dark:text-zinc-100">Git Gutierrez</p>
-                    <p className="text-sm text-neutral-500 dark:text-zinc-400">
-                      Designer + Engineer
-                    </p>
-                    <p className="text-sm text-neutral-400 dark:text-zinc-500">Gothenburg, SE</p>
-                  </div>
-                  <div className="flex items-center justify-center gap-3">
-                    {socialLinks.map(link => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        aria-label={link.label}
-                        className="inline-flex items-center justify-center rounded-full p-2 text-neutral-600 transition-colors hover:bg-neutral-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
-                      >
-                        {link.icon}
-                      </a>
-                    ))}
-                  </div>
+            <div className="space-y-6">
+              <h1 className="hero-stagger font-cs font-medium tracking-[-0.03em] text-gray-700 dark:text-zinc-100">
+                {/* Line 1: text + chip inline */}
+                <span className="flex items-baseline gap-4 text-5xl md:text-7xl lg:text-8xl">
+                  <span className="leading-[1.05]">Hola! I&apos;m</span>
                   <a
                     href="/about"
-                    className="mt-2 inline-flex items-center justify-center rounded-full border border-neutral-300 px-4 py-2 text-xs font-light text-neutral-700 transition-all hover:border-neutral-500 hover:bg-neutral-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
+                    className="group relative inline-flex translate-y-[-0.05em] items-center gap-2 rounded-full bg-[#ddeaf8] py-1 pl-1 pr-4 text-3xl font-semibold transition-all duration-300 group-hover:pr-6 md:gap-3 md:py-1.5 md:pl-1.5 md:pr-5 md:text-5xl md:group-hover:pr-8 lg:text-7xl"
                   >
-                    More about me →
+                    <img
+                      src="/avatar.png"
+                      alt="Git"
+                      className="h-8 w-8 rounded-full object-cover md:h-12 md:w-12 lg:h-16 lg:w-16"
+                    />
+                    <span className="text-gray-700">Git</span>
+                    <span className="flex max-w-0 items-center gap-2 overflow-hidden whitespace-nowrap text-[0.5em] font-medium tracking-normal text-[#1d4ed8] opacity-0 transition-all duration-300 group-hover:max-w-[10em] group-hover:opacity-100">
+                      <HiArrowRight className="inline-block h-[0.9em] w-[0.9em] shrink-0" /> meet me
+                    </span>
                   </a>
-                </div>
+                </span>
+                {/* Line 2 */}
+                <span className="block text-5xl font-bold leading-[1.05] text-gray-700 dark:text-violet-500 md:text-7xl lg:text-8xl">
+                  Designer and builder.
+                </span>
+              </h1>
+              <p className="hero-stagger text-3xl font-light leading-relaxed text-gray-500 dark:text-zinc-400">
+                I build things that make work (and life) a little better.
+              </p>
+              <div className="hero-stagger flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href={contactConfig.url}
+                  className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-all hover:gap-3 hover:bg-neutral-700 dark:bg-neutral-100 dark:text-neutral-900 dark:hover:bg-white"
+                >
+                  <span>{contactConfig.cta.home}</span>
+                  <HiArrowRight className="h-4 w-4" />
+                </a>
+                <button
+                  onClick={() => {
+                    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-6 py-3 text-sm font-light text-neutral-700 transition-all hover:border-neutral-500 hover:bg-neutral-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500 dark:hover:bg-zinc-800/50"
+                  aria-label="Scroll to selected work"
+                >
+                  <span>See my work ↓</span>
+                </button>
               </div>
             </div>
           </section>
