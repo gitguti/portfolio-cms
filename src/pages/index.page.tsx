@@ -35,9 +35,7 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -206,13 +204,17 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
                   <WorkCard
                     article={filteredPosts[1]}
                     variant="pattern"
-                    className="min-h-[480px]"
+                    className="md:min-h-[480px]"
                   />
                 </div>
               )}
               {filteredPosts[2] && (
                 <div className="bento-reveal col-span-12 md:col-span-5">
-                  <WorkCard article={filteredPosts[2]} variant="form" className="min-h-[480px]" />
+                  <WorkCard
+                    article={filteredPosts[2]}
+                    variant="form"
+                    className="md:min-h-[480px]"
+                  />
                 </div>
               )}
 
@@ -226,7 +228,10 @@ const Page = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
           </section>
 
           {/* ── 02 Building ─────────────────────────────────────── */}
-          <section id="building" className="min-h-[500px] scroll-mt-24 pb-12 pt-16 md:scroll-mt-20">
+          <section
+            id="building"
+            className="min-h-[450px] scroll-mt-24 pb-12 pt-16 md:min-h-[500px] md:scroll-mt-20"
+          >
             <SectionLabel title="Building" />
 
             {/* 4-column portrait grid */}

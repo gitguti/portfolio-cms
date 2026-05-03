@@ -1,6 +1,6 @@
 import gsap from 'gsap';
 import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { PageBlogPostFieldsFragment } from '@src/lib/__generated/sdk';
 
@@ -20,16 +20,6 @@ interface WorkCardProps {
 export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
   const { title, shortDescription } = article;
   const cardRef = useRef<HTMLDivElement>(null);
-  const [isMd, setIsMd] = useState(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false,
-  );
-
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 768px)');
-    const handler = (e: MediaQueryListEvent) => setIsMd(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
 
   const handleMouseEnter = () => gsap.to(cardRef.current, { scale: 1.015, duration: 0.3 });
   const handleMouseLeave = () => gsap.to(cardRef.current, { scale: 1, duration: 0.3 });
@@ -40,6 +30,11 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
     article.contentfulMetadata?.tags
       ?.filter((t: any) => t?.id && !['caseStudy', 'blogArticle'].includes(t.id))
       .slice(0, 3) ?? [];
+
+  // Fixed heights per variant per breakpoint — prevents layout shift from
+  // aspectRatio recalculation and from swapping mobile/desktop demo components.
+  const demoHeight =
+    variant === 'requirements' ? 'h-[300px] md:h-[420px]' : 'h-[300px] md:h-[380px]';
 
   return (
     <Link className="flex h-full" href={`/${article.slug}`}>
@@ -86,13 +81,29 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
           </div>
         </div>
 
-        {/* Demo animation area */}
-        <div className="overflow-hidden p-5">
+        {/* Demo animation area — fixed height per breakpoint, both variants in DOM, CSS toggles visibility */}
+        <div className={`${demoHeight} overflow-hidden p-5`}>
           <div className="pointer-events-none h-full w-full overflow-hidden rounded-xl">
-            {variant === 'requirements' &&
-              (isMd ? <RequirementsHeroCinematic /> : <RequirementsHeroCinematicMobile />)}
-            {variant === 'pattern' &&
-              (isMd ? <BirdsEyeHeroCinematic /> : <BirdsEyeHeroCinematicMobile />)}
+            {variant === 'requirements' && (
+              <>
+                <div className="h-full md:hidden">
+                  <RequirementsHeroCinematicMobile />
+                </div>
+                <div className="hidden h-full md:block">
+                  <RequirementsHeroCinematic />
+                </div>
+              </>
+            )}
+            {variant === 'pattern' && (
+              <>
+                <div className="h-full md:hidden">
+                  <BirdsEyeHeroCinematicMobile />
+                </div>
+                <div className="hidden h-full md:block">
+                  <BirdsEyeHeroCinematic />
+                </div>
+              </>
+            )}
             {variant === 'form' && <FormBuilderHeroCinematic />}
           </div>
         </div>
