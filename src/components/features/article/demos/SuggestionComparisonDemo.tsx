@@ -171,7 +171,7 @@ function ChipsSnippet() {
         {CHIPS.map(chip => (
           <span
             key={chip}
-            className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] text-zinc-600 dark:border-zinc-600 dark:bg-zinc-700 dark:text-gray-300"
+            className="rounded-full border border-zinc-200 bg-zinc-100 px-2 py-0.5 text-[10px] text-zinc-600 dark:border-zinc-600 dark:bg-zinc-700 dark:text-gray-300 sm:px-2.5 sm:py-1 sm:text-[11px]"
           >
             {chip}
           </span>
@@ -218,7 +218,7 @@ function MobileCarousel() {
 
   return (
     <div
-      className="sm:hidden"
+      className="mx-auto max-w-md sm:hidden"
       aria-label="Three iterations of the assistant's follow-up suggestions: form pattern, inline suggestions, and chip actions"
     >
       <Column eyebrow={eyebrow} title={title} caption={caption} shipped={shipped}>
