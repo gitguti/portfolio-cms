@@ -194,7 +194,7 @@ export const Header = () => {
           href="/"
           className={
             'flex items-center gap-1.5 rounded-full font-light transition-all duration-300 ' +
-            'text-neutral-600 hover:text-neutral-900 dark:text-zinc-400 dark:hover:text-zinc-100 ' +
+            'text-gray-600 hover:text-gray-900 dark:text-zinc-400 dark:hover:text-zinc-100 ' +
             (scrolled ? 'px-0 py-1 text-xs' : `px-3.5 py-2 text-sm ${resting}`)
           }
           style={enterAnim('article-header-left')}
@@ -213,7 +213,7 @@ export const Header = () => {
             href="/craft"
             className={
               'group flex items-center rounded-full font-light transition-all duration-300 ' +
-              'text-neutral-500 hover:text-neutral-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              'text-gray-500 hover:text-gray-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
               (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
             }
           >
@@ -235,7 +235,7 @@ export const Header = () => {
             href="/about"
             className={
               'group flex items-center rounded-full font-light transition-all duration-300 ' +
-              'text-neutral-500 hover:text-neutral-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
+              'text-gray-500 hover:text-gray-900 dark:text-zinc-500 dark:hover:text-zinc-100 ' +
               (scrolled ? 'gap-0 p-1.5' : `gap-1.5 px-3.5 py-2 text-sm ${resting}`)
             }
           >
@@ -275,8 +275,8 @@ export const Header = () => {
               onClick={e => handleAnchorClick(e, link.id)}
               className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
                 isActive
-                  ? 'bg-neutral-800 text-white dark:bg-neutral-700 dark:text-white'
-                  : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-50'
+                  ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -294,8 +294,8 @@ export const Header = () => {
               href={craftLink.href}
               className={`flex items-center gap-2 rounded-full px-3 py-2 text-sm font-light transition-all ${
                 isActive
-                  ? 'bg-neutral-800 text-white dark:bg-neutral-700 dark:text-white'
-                  : 'text-neutral-600 hover:bg-neutral-100 hover:text-neutral-800 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-50'
+                  ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50'
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -316,8 +316,8 @@ export const Header = () => {
           }}
           className={`relative flex items-center gap-2 overflow-hidden rounded-full px-3 py-2 text-sm font-light transition-colors ${
             aboutActive
-              ? 'bg-neutral-800 text-white dark:bg-neutral-700 dark:text-white'
-              : 'text-neutral-600 dark:text-zinc-400'
+              ? 'bg-gray-800 text-white dark:bg-gray-700 dark:text-white'
+              : 'text-gray-600 dark:text-zinc-400'
           }`}
         >
           <div
@@ -331,7 +331,7 @@ export const Header = () => {
 
         {/* Toast */}
         <div
-          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-neutral-900 px-4 py-2 text-xs text-neutral-100 transition-all duration-300 md:bottom-auto md:top-[calc(100%+10px)] ${
+          className={`pointer-events-none absolute bottom-[calc(100%+10px)] left-1/2 z-50 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/10 bg-gray-900 px-4 py-2 text-xs text-gray-100 transition-all duration-300 md:bottom-auto md:top-[calc(100%+10px)] ${
             showToast
               ? 'translate-y-0 opacity-100'
               : '-translate-y-1.5 opacity-0 md:translate-y-1.5'
@@ -341,13 +341,13 @@ export const Header = () => {
         </div>
 
         {/* Divider */}
-        <div className="mx-1 h-6 w-px bg-neutral-300 dark:bg-neutral-700" />
+        <div className="mx-1 h-6 w-px bg-gray-300 dark:bg-gray-700" />
 
         {/* Theme toggle */}
         {mounted && (
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="flex items-center justify-center rounded-full px-2.5 py-2 text-neutral-600 transition-all hover:bg-neutral-100 hover:text-neutral-800 dark:text-zinc-400 dark:hover:bg-neutral-800 dark:hover:text-zinc-50"
+            className="flex items-center justify-center rounded-full px-2.5 py-2 text-gray-600 transition-all hover:bg-gray-100 hover:text-gray-800 dark:text-zinc-400 dark:hover:bg-gray-800 dark:hover:text-zinc-50"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <HiSun className="h-4 w-4" /> : <HiMoon className="h-4 w-4" />}

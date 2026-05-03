@@ -80,7 +80,7 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
         {/* Text block */}
         <div className="flex flex-col gap-2 px-5">
           {title && (
-            <h3 className="leading- text-base font-medium tracking-tight text-neutral-900 dark:text-zinc-100 md:text-2xl">
+            <h3 className="leading- text-base font-medium tracking-tight text-gray-700 dark:text-zinc-100 md:text-2xl">
               {title}
             </h3>
           )}
@@ -95,14 +95,14 @@ export const WorkCard = ({ article, variant, className }: WorkCardProps) => {
               tag?.name ? (
                 <span
                   key={tag.id}
-                  className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-xs font-medium capitalize text-neutral-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
+                  className="rounded-full border border-gray-200 bg-gray-100 px-2.5 py-0.5 text-xs font-medium capitalize text-gray-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400"
                 >
                   {tag.name}
                 </span>
               ) : null,
             )}
             {year && (
-              <span className="rounded-full border border-neutral-200 bg-neutral-100 px-2.5 py-0.5 text-[11px] font-medium text-neutral-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
+              <span className="rounded-full border border-gray-200 bg-gray-100 px-2.5 py-0.5 text-[11px] font-medium text-gray-400 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-500">
                 {year}
               </span>
             )}

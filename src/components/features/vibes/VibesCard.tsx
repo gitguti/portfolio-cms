@@ -71,28 +71,21 @@ const DockCard = ({ project: _project }: { project: VibesProject }) => {
       onMouseLeave={handleMouseLeave}
     >
       {/* ── Text + carousel nav ── */}
-      <div className="flex flex-shrink-0 items-start justify-between gap-4 px-6 pb-4 pt-6">
-        <div className="min-w-0">
-          <h3
-            className="card-title mb-1 font-serif text-3xl font-normal leading-snug"
-            style={{ color: 'rgba(232,228,248,1)' }}
-          >
+      <div className="flex flex-shrink-0 flex-col gap-3 px-6 pb-4 pt-6 md:flex-row md:items-start md:justify-between md:gap-4">
+        <div className="min-w-0 flex-1">
+          <h3 className="card-title mb-1 text-3xl font-bold leading-snug text-gray-100">
             {app.title}
           </h3>
-          <p
-            className="card-desc text-base leading-relaxed"
-            style={{ color: 'rgba(255,255,255,0.38)', maxWidth: '52ch' }}
-          >
+          <p className="card-desc text-md leading-relaxed text-gray-300 md:text-lg">
             {app.description}
           </p>
           <div className="mt-3 flex flex-wrap gap-1.5">
             {app.stack.map(tech => (
               <span
                 key={tech}
-                className="rounded-full border px-2.5 py-0.5 text-[10px]"
+                className="rounded-full border px-2.5 py-0.5 text-[10px] text-gray-500"
                 style={{
                   background: 'rgba(255,255,255,0.06)',
-                  color: 'rgba(255,255,255,0.32)',
                   borderColor: 'rgba(255,255,255,0.08)',
                 }}
               >
@@ -103,7 +96,7 @@ const DockCard = ({ project: _project }: { project: VibesProject }) => {
         </div>
 
         {/* ── Carousel controls ── */}
-        <div className="flex flex-shrink-0 items-center gap-3 pt-0.5">
+        <div className="flex flex-shrink-0 items-center justify-end gap-3 md:justify-start md:pt-0.5">
           <button
             onClick={prev}
             className="flex h-7 w-7 items-center justify-center rounded-full border border-white/10 transition-colors hover:bg-white/10"
@@ -242,7 +235,7 @@ export const VibesCard = ({ project }: VibesCardProps) => {
     >
       <div className="text flex-shrink-0 px-5 pb-3.5 pt-5">
         <h3
-          className="card-title mb-1.5 font-serif font-normal leading-snug"
+          className="card-title mb-1.5 font-normal leading-snug"
           style={{ color: textColor, fontSize: 17 }}
         >
           {project.title}

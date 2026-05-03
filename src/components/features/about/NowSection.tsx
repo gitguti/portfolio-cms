@@ -45,33 +45,29 @@ export const NowSection = () => {
         <div className="space-y-4">
           {/* Header with title and last updated */}
           <div className="now-item space-y-2">
-            <h2 className="font-serif text-2xl font-light text-neutral-800 dark:text-zinc-50 md:text-3xl">
-              Now
-            </h2>
-            <p className="text-xs text-neutral-500 dark:text-zinc-500">
+            <h2 className="text-2xl font-light text-gray-700 dark:text-zinc-50 md:text-3xl">Now</h2>
+            <p className="text-xs text-gray-500 dark:text-zinc-500">
               Last updated: {formatDate(nowData.lastUpdated)}
             </p>
           </div>
 
           {/* Current Project */}
           <div className="now-item space-y-2">
-            <p className="text-base leading-relaxed text-neutral-700 dark:text-zinc-300">
+            <p className="text-base leading-relaxed text-gray-700 dark:text-zinc-300">
               {nowData.currentProject}
             </p>
           </div>
 
           {/* Learning */}
           <div className="now-item space-y-3">
-            <h3 className="font-serif font-medium text-neutral-800 dark:text-zinc-200">
-              Currently exploring
-            </h3>
+            <h3 className="font-medium text-gray-700 dark:text-zinc-200">Currently exploring</h3>
             <ul className="space-y-2">
               {nowData.learning.map((item, index) => (
                 <li
                   key={index}
-                  className="flex items-start text-base leading-relaxed text-neutral-700 dark:text-zinc-300"
+                  className="flex items-start text-base leading-relaxed text-gray-700 dark:text-zinc-300"
                 >
-                  <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-neutral-400 dark:bg-zinc-600" />
+                  <span className="mr-2 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400 dark:bg-zinc-600" />
                   <span>{item}</span>
                 </li>
               ))}

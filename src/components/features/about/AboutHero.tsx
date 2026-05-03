@@ -47,12 +47,12 @@ export const AboutHero = () => {
           {/* Content */}
           <div className="flex flex-col gap-4">
             {/* Name */}
-            <h1 className="hero-name font-serif text-3xl font-light text-neutral-800 dark:text-zinc-50 md:text-4xl lg:text-5xl">
+            <h1 className="hero-name text-3xl font-light text-gray-700 dark:text-zinc-50 md:text-4xl lg:text-5xl">
               {heroData.name}
             </h1>
 
             {/* Tagline */}
-            <p className="hero-tagline max-w-2xl text-lg text-neutral-600 dark:text-zinc-300 md:text-xl">
+            <p className="hero-tagline max-w-2xl text-lg text-gray-500 dark:text-zinc-300 md:text-xl">
               {heroData.tagline}
             </p>
 
@@ -65,7 +65,7 @@ export const AboutHero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={link.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-neutral-300 text-neutral-600 transition-colors hover:border-neutral-800 hover:bg-neutral-800 hover:text-white dark:border-neutral-700 dark:text-zinc-400 dark:hover:border-neutral-500 dark:hover:bg-neutral-700 dark:hover:text-white"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 text-gray-500 transition-colors hover:border-gray-800 hover:bg-gray-800 hover:text-white dark:border-gray-700 dark:text-zinc-400 dark:hover:border-gray-500 dark:hover:bg-gray-700 dark:hover:text-white"
                 >
                   {link.icon}
                 </a>
